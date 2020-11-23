@@ -193,7 +193,7 @@
         </header>
 
         <div class="post-content">
-            <h1 id="1-数据"><a href="#1-数据" class="headerlink" title="1.数据"></a>1.数据</h1><h2 id="图像预处理-EDA"><a href="#图像预处理-EDA" class="headerlink" title="图像预处理 + EDA"></a>图像预处理 + EDA</h2><p>每一个机器学习/深度学习解决方案都从原始数据开始。在数据处理管道中有两个基本步骤。</p>
+            <h1 id="1-数据"><a href="#1-数据" class="headerlink" title="1.数据"></a>1.数据</h1><h2 id="图像预处理-EDA"><a href="#图像预处理-EDA" class="headerlink" title="图像预处理 + EDA"></a>图像预处理 + EDA</h2><p>每一个机器学习/深度学习解决方案都从原始数据开始。在<strong>数据处理</strong>管道中有两个基本步骤。</p>
 <p>第一步是探索性数据分析 (EDA)。它帮助我们分析整个数据集并总结它的主要特征，比如类分布、大小分布等等。通常使用可视化方法来显示这种分析的结果。</p>
 <p>第二步是图像预处理，目的是对原始图像提高图像数据(也称为图像特征)的质量，通过抑制不必要的扭曲，缩放，增强重要的特征，使数据更适合模型并提高性能。</p>
 <p>你可以钻研这些Kaggle笔记本，看看一些图像预处理技术：</p>
@@ -209,12 +209,12 @@
 <li><p>Pre-processing：<a href="https://www.kaggle.com/ratthachat/aptos-eye-preprocessing-in-diabetic-retinopathy#3.A-Important-Update-on-Color-Version-of-Cropping-&amp;-Ben&#39;s-Preprocessing" target="_blank" rel="noopener">https://www.kaggle.com/ratthachat/aptos-eye-preprocessing-in-diabetic-retinopathy#3.A-Important-Update-on-Color-Version-of-Cropping-&amp;-Ben&#39;s-Preprocessing</a></p>
 </li>
 </ul>
-<h2 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h2><p>数据增强可以通过从现有的训练样本中生成更多的训练数据来扩展我们的数据集。通过大量的随机转换生成新的样本，这些转换不仅可以生成可信的图像，而且还反映了真实的场景 —— 稍后将对此进行详细介绍。</p>
+<h2 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h2><p>数据增强可以通过从现有的训练样本中生成更多的训练数据来<strong>扩展我们的数据集</strong>。通过大量的随机转换生成新的样本，这些转换不仅可以生成可信的图像，而且还反映了真实的场景 —— 稍后将对此进行详细介绍。</p>
 <p>这种技术得到了广泛的应用，不仅仅是在训练模型的数据样本太少的情况下。在这种情况下，模型开始记忆训练集，但无法泛化(在从未见过的数据上表现很差)。</p>
 <p>通常，当一个模型在训练数据上表现很好，但在验证数据上表现很差时，我们称之为过拟合。为了解决这个问题，我们通常会尝试获取新数据，如果没有可用的新数据，则可以使用数据增强。</p>
 <p>注：一般的经验法则是始终使用数据增强技术，因为它有助于使我们的模型见识更多的变化并更好地泛化。即使我们有一个很大的数据集，也要使用数据增强，但这是以较慢的训练速度为代价的，因为增强是在线完成的(即在训练期间)。</p>
-<p>此外，对于每个任务或数据集，我们必须使用反映可能的现实场景的增强技术(例如，如果我们有一个猫/狗探测器，我们可以使用水平翻转、剪裁、亮度和对比度，因为这些增强匹配不同的照片拍摄方式。</p>
-<p>这里是一些Kaggle比赛notebooks，你可以查看流行的数据增强技术：</p>
+<p>此外，对于每个任务或数据集，我们必须使用反映可能的现实场景的增强技术(例如，如果我们有一个猫/狗探测器，我们可以使用水平翻转、剪裁、亮度和对比度)，因为这些增强匹配不同的照片拍摄方式。</p>
+<p>这里是一些Kaggle笔记本，你可以查看流行的数据增强技术：</p>
 <ul>
 <li><p>Horizontal Flip：<a href="https://www.kaggle.com/datafan07/analysis-of-melanoma-metadata-and-effnet-ensemble" target="_blank" rel="noopener">https://www.kaggle.com/datafan07/analysis-of-melanoma-metadata-and-effnet-ensemble</a></p>
 </li>
@@ -225,16 +225,16 @@
 <li><p>Colour jitter：<a href="https://www.kaggle.com/nroman/melanoma-pytorch-starter-efficientnet" target="_blank" rel="noopener">https://www.kaggle.com/nroman/melanoma-pytorch-starter-efficientnet</a></p>
 </li>
 </ul>
-<h1 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h1><h2 id="开发一个基线"><a href="#开发一个基线" class="headerlink" title="开发一个基线"></a>开发一个基线</h2><p>在这里，我们使用一个非常简单的架构创建一个基本的模型，没有任何正则化或dropout层，看看我们是否能超过50%的准确率基线。尽管我们不可能总能达到这个目标，但如果我们在尝试了多种合理的架构后不能超过基线，那么输入数据可能不包含模型进行预测所需的信息。</p>
+<h1 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h1><h2 id="开发一个基线"><a href="#开发一个基线" class="headerlink" title="开发一个基线"></a>开发一个基线</h2><p>在这里，我们使用一个非常简单的架构创建一个基本的模型，没有任何正则化或dropout层，看看我们是否能超过50%的<strong>准确率基线</strong>。尽管我们不可能总能达到这个目标，但如果我们在尝试了多种合理的架构后不能超过基线，那么输入数据可能不包含模型进行预测所需的信息。</p>
 <p>用Jeremy Howard的名言：<br>“你应该能够在15分钟内使用50%或更少的数据集快速测试你是否正在朝着一个有希望的方向前进，如果没有，你必须重新考虑一切。”</p>
-<h2 id="开发一个足够大可以过拟合的模型"><a href="#开发一个足够大可以过拟合的模型" class="headerlink" title="开发一个足够大可以过拟合的模型"></a>开发一个足够大可以过拟合的模型</h2><p>一旦我们的基线模型有足够的能力超过基线分数，我们就可以增加基线模型的能力，直到它在数据集上过拟合为止，然后我们就开始应用正则化。</p>
+<h2 id="开发一个足够大可以过拟合的模型"><a href="#开发一个足够大可以过拟合的模型" class="headerlink" title="开发一个足够大可以过拟合的模型"></a>开发一个足够大可以过拟合的模型</h2><p>一旦我们的基线模型有足够的能力超过基线分数，我们就可以增加基线模型的能力，直到它在数据集上<strong>过拟合为止</strong>，然后我们就开始应用正则化。</p>
 <p>我们可以通过以下方式增加模块容量：</p>
 <ol>
 <li>添加更多层</li>
 <li>使用更好的结构</li>
 <li>更完善的训练流程</li>
 </ol>
-<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>根据文献，以下架构的改进提高了模型的容量，但几乎没有改变计算复杂度。</p>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>根据文献，以下<strong>架构的改进</strong>提高了模型的容量，但几乎没有改变计算复杂度。</p>
 <ul>
 <li><p>Residual Networks</p>
 </li>
@@ -250,7 +250,7 @@
 </li>
 </ul>
 <p>大多数时候，模型容量和精度是正相关的 —— 随着容量的增加，精度也会增加，反之亦然。</p>
-<h2 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h2><p>下面是一些你可以用来调整你的模型的训练过程，通过实例项目来看看它们是如何工作的：</p>
+<h2 id="训练过程"><a href="#训练过程" class="headerlink" title="训练过程"></a>训练过程</h2><p>下面是一些你可以用来调整你的模型的<strong>训练过程</strong>，通过实例项目来看看它们是如何工作的：</p>
 <ul>
 <li><p>Mixed-Precision Training</p>
 </li>
@@ -278,10 +278,10 @@
 </li>
 </ul>
 <h2 id="超参数调试"><a href="#超参数调试" class="headerlink" title="超参数调试"></a>超参数调试</h2><p>与参数不同，hyperparameters是由你在配置模型时指定的(即学习率、epoch的数量、hidden units的数量、batch size大小等)。</p>
-<p>你可以通过使用hyperparameter调优库，比如Scikit learn Grid Search，Keras Tuner来自动化这个过程，而不是去手动配置。这些库会在你指定的范围内尝试所有的hyperparameter组合，返回表现最好的模型。</p>
+<p>你可以通过使用<strong>hyperparameter调优库</strong>，比如Scikit learn Grid Search，Keras Tuner来自动化这个过程，而不是去手动配置。这些库会在你指定的范围内尝试所有的hyperparameter组合，返回表现最好的模型。</p>
 <p>需要调优的超参数越多，过程就越慢，因此最好选择模型超参数的最小子集进行调优。</p>
 <p>并不是所有的模型超参数都同样重要。一些超参数会对机器学习算法的行为产生巨大的影响，进而影响其性能。你应该小心地选择那些对模型性能影响最大的参数，并对它们进行调优以获得最佳性能。</p>
-<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>这种方法迫使模型学习有意义和具有泛化能力的数据表示，通过对记忆/过拟合和欠拟合进行惩罚来实现，使模型对于它没见过的数据更鲁棒。</p>
+<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>这种方法迫使模型学习有意义和具有泛化能力的数据表示，通过<strong>对记忆/过拟合和欠拟合进行惩罚</strong>来实现，使模型对于它没见过的数据更鲁棒。</p>
 <p>解决上述问题的一个简单方法是获得更多的训练数据，因为一个模型训练的数据越多，自然就会泛化得越好。</p>
 <p>这里有一些技巧你可以试着减轻过拟合和欠拟合，项目如下：</p>
 <ul>
@@ -298,8 +298,8 @@
 <li><p>Gradient clipping：<a href="https://www.kaggle.com/allunia/protein-atlas-exploration-and-baseline" target="_blank" rel="noopener">https://www.kaggle.com/allunia/protein-atlas-exploration-and-baseline</a></p>
 </li>
 </ul>
-<h1 id="3-损失函数"><a href="#3-损失函数" class="headerlink" title="3.损失函数"></a>3.损失函数</h1><p>损失函数也被称为成本函数或目标函数，用于查找目标输出的模型之间的差异，并帮助模型最小化它们之间的距离。</p>
-<p>这里是一些最流行的损失函数，与项目实例，你会发现一些技巧，以提高你的模型的能力：</p>
+<h2 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h2><p>损失函数也被称为成本函数或目标函数，用于<strong>查找目标输出的模型之间的差异</strong>，并帮助模型最小化它们之间的距离。</p>
+<p>这里是一些最流行的损失函数与项目实例，你会发现一些技巧，以提高你的模型的能力：</p>
 <ul>
 <li><p>Label smoothing</p>
 </li>
@@ -312,7 +312,7 @@
 <li><p>Additive Angular Margin Loss for Deep Face Recognition</p>
 </li>
 </ul>
-<h2 id="评估-错误分析"><a href="#评估-错误分析" class="headerlink" title="评估 + 错误分析"></a>评估 + 错误分析</h2><p>在这里，我们做消融研究，并分析我们的实验结果。我们确定了我们的模型的弱点和长处，并确定了未来需要改进的地方。</p>
+<h1 id="3-评估-错误分析"><a href="#3-评估-错误分析" class="headerlink" title="3.评估 + 错误分析"></a>3.评估 + 错误分析</h1><p>在这里，我们做<strong>消融研究</strong>，并分析我们的实验结果。我们确定了我们的模型的弱点和长处，并确定了未来需要改进的地方。</p>
 <p>在这个阶段，你可以使用以下技术，并在链接的示例中查看它们是如何实现的：</p>
 <ul>
 <li><p>Tracking metrics and Confusion matrix：<a href="https://www.kaggle.com/vincee/intel-image-classification-cnn-keras" target="_blank" rel="noopener">https://www.kaggle.com/vincee/intel-image-classification-cnn-keras</a></p>
@@ -325,16 +325,16 @@
 <p>有许多实验跟踪和管理工具，采取最小设置为你自动保存所有数据，这使消融研究更容易。</p>
 <h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>有许多方法来调整你的模型，并且新的想法总是会出现。深度学习是一个快速发展的领域，没有什么灵丹妙药。我们必须做很多实验，足够的试验和错误会带来突破。</p>
 <blockquote>
-<p>另外，从Kaggle比赛中挑选出好的Kaggle kernel。这些比赛是:</p>
-<p>Intel Image Classification:<a href="https://www.kaggle.com/puneet6060/intel-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/puneet6060/intel-image-classification</a></p>
-<p>Recursion Cellular Image Classification:<a href="https://www.kaggle.com/c/recursion-cellular-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/recursion-cellular-image-classification</a></p>
-<p>SIIM-ISIC Melanoma Classification:<a href="https://www.kaggle.com/c/siim-isic-melanoma-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/siim-isic-melanoma-classification</a></p>
-<p>APTOS 2019 Blindness Detection:<a href="https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks</a></p>
-<p>Diabetic Retinopathy Detection:<a href="https://www.kaggle.com/c/diabetic-retinopathy-detection" target="_blank" rel="noopener">https://www.kaggle.com/c/diabetic-retinopathy-detection</a></p>
-<p>ML Project—Image Classification:<a href="https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks</a></p>
-<p>Cdiscount’s Image Classification Challenge:<a href="https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks</a></p>
-<p>Plant seedlings classifications:<a href="https://www.kaggle.com/c/plant-seedlings-classification/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/plant-seedlings-classification/notebooks</a></p>
-<p>Aesthetic Visual Analysis:<a href="https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks</a></p>
+<p>这里从Kaggle比赛中挑选出了好的Kaggle kernel。这些比赛是:</p>
+<p>Intel Image Classification: <a href="https://www.kaggle.com/puneet6060/intel-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/puneet6060/intel-image-classification</a></p>
+<p>Recursion Cellular Image Classification: <a href="https://www.kaggle.com/c/recursion-cellular-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/recursion-cellular-image-classification</a></p>
+<p>SIIM-ISIC Melanoma Classification: <a href="https://www.kaggle.com/c/siim-isic-melanoma-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/siim-isic-melanoma-classification</a></p>
+<p>APTOS 2019 Blindness Detection: <a href="https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks</a></p>
+<p>Diabetic Retinopathy Detection: <a href="https://www.kaggle.com/c/diabetic-retinopathy-detection" target="_blank" rel="noopener">https://www.kaggle.com/c/diabetic-retinopathy-detection</a></p>
+<p>ML Project—Image Classification: <a href="https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks</a></p>
+<p>Cdiscount’s Image Classification Challenge: <a href="https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks</a></p>
+<p>Plant seedlings classifications: <a href="https://www.kaggle.com/c/plant-seedlings-classification/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/plant-seedlings-classification/notebooks</a></p>
+<p>Aesthetic Visual Analysis: <a href="https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks</a></p>
 </blockquote>
 <p>英文原文：<a href="https://neptune.ai/blog/image-classification-tips-and-tricks-from-13-kaggle-competitions" target="_blank" rel="noopener">https://neptune.ai/blog/image-classification-tips-and-tricks-from-13-kaggle-competitions</a></p>
 
