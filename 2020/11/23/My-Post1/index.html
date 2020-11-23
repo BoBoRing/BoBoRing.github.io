@@ -202,7 +202,7 @@
 </li>
 <li><p>Dealing with Class imbalance：<a href="https://www.kaggle.com/rohandeysarkar/ultimate-image-classification-guide-2020" target="_blank" rel="noopener">https://www.kaggle.com/rohandeysarkar/ultimate-image-classification-guide-2020</a></p>
 </li>
-<li><p>Fill missing values (labels, features and, etc.)：<a href="https://www.kaggle.com/datafan07/analysis-of-melanoma-metadata-and-effnet-ensemble" target="_blank" rel="noopener">https://www.kaggle.com/datafan07/analysis-of-melanoma-metadata-and-effnet-ensemble</a></p>
+<li><p>Fill missing values(labels, features and, etc.)：<a href="https://www.kaggle.com/datafan07/analysis-of-melanoma-metadata-and-effnet-ensemble" target="_blank" rel="noopener">https://www.kaggle.com/datafan07/analysis-of-melanoma-metadata-and-effnet-ensemble</a></p>
 </li>
 <li><p>Normalisation ：<a href="https://www.kaggle.com/vincee/intel-image-classification-cnn-keras" target="_blank" rel="noopener">https://www.kaggle.com/vincee/intel-image-classification-cnn-keras</a></p>
 </li>
@@ -235,9 +235,9 @@
 <li><p>使用更好的结构</p>
 </li>
 <li><p>更完善的训练流程</p>
-<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2><p>根据文献，以下架构的改进提高了模型的容量，但几乎没有改变计算复杂度。</p>
-</li>
+<h2 id="结构"><a href="#结构" class="headerlink" title="结构"></a>结构</h2></li>
 </ol>
+<p>根据文献，以下架构的改进提高了模型的容量，但几乎没有改变计算复杂度。</p>
 <ul>
 <li><p>Residual Networks</p>
 </li>
@@ -263,7 +263,7 @@
 </li>
 <li><p>Weight Initialization</p>
 </li>
-<li><p>Self-Supervised Training (Knowledge Distillation)</p>
+<li><p>Self-Supervised Training(Knowledge Distillation)</p>
 </li>
 <li><p>Learning Rate Scheduler</p>
 </li>
@@ -278,9 +278,9 @@
 <li><p>Transfer Learning</p>
 </li>
 <li><p>Fine-Tuning</p>
-<h2 id="超参数调试"><a href="#超参数调试" class="headerlink" title="超参数调试"></a>超参数调试</h2></li>
+</li>
 </ul>
-<p>与参数不同，hyperparameters是由你在配置模型时指定的(即学习率、epoch的数量、hidden units的数量、batch size大小等)。</p>
+<h2 id="超参数调试"><a href="#超参数调试" class="headerlink" title="超参数调试"></a>超参数调试</h2><p>与参数不同，hyperparameters是由你在配置模型时指定的(即学习率、epoch的数量、hidden units的数量、batch size大小等)。</p>
 <p>你可以通过使用hyperparameter调优库，比如Scikit learn Grid Search，Keras Tuner来自动化这个过程，而不是去手动配置。这些库会在你指定的范围内尝试所有的hyperparameter组合，返回表现最好的模型。</p>
 <p>需要调优的超参数越多，过程就越慢，因此最好选择模型超参数的最小子集进行调优。</p>
 <p>并不是所有的模型超参数都同样重要。一些超参数会对机器学习算法的行为产生巨大的影响，进而影响其性能。你应该小心地选择那些对模型性能影响最大的参数，并对它们进行调优以获得最佳性能。</p>
@@ -313,31 +313,31 @@
 <li><p>BCE loss, BCE with logits loss and Categorical cross-entropy loss</p>
 </li>
 <li><p>Additive Angular Margin Loss for Deep Face Recognition</p>
-<h2 id="评估-错误分析"><a href="#评估-错误分析" class="headerlink" title="评估 + 错误分析"></a>评估 + 错误分析</h2></li>
+</li>
 </ul>
-<p>在这里，我们做消融研究，并分析我们的实验结果。我们确定了我们的模型的弱点和长处，并确定了未来需要改进的地方。</p>
+<h2 id="评估-错误分析"><a href="#评估-错误分析" class="headerlink" title="评估 + 错误分析"></a>评估 + 错误分析</h2><p>在这里，我们做消融研究，并分析我们的实验结果。我们确定了我们的模型的弱点和长处，并确定了未来需要改进的地方。</p>
 <p>在这个阶段，你可以使用以下技术，并在链接的示例中查看它们是如何实现的：</p>
 <ul>
 <li><p>Tracking metrics and Confusion matrix：<a href="https://www.kaggle.com/vincee/intel-image-classification-cnn-keras" target="_blank" rel="noopener">https://www.kaggle.com/vincee/intel-image-classification-cnn-keras</a></p>
 </li>
 <li><p>Grad CAM：<a href="https://arxiv.org/pdf/1610.02391v1.pdf" target="_blank" rel="noopener">https://arxiv.org/pdf/1610.02391v1.pdf</a></p>
 </li>
-<li><p>Test Time Augmentation (TTA)：<a href="https://www.kaggle.com/iafoss/pretrained-resnet34-with-rgby-0-460-public-lb" target="_blank" rel="noopener">https://www.kaggle.com/iafoss/pretrained-resnet34-with-rgby-0-460-public-lb</a></p>
+<li><p>Test Time Augmentation(TTA)：<a href="https://www.kaggle.com/iafoss/pretrained-resnet34-with-rgby-0-460-public-lb" target="_blank" rel="noopener">https://www.kaggle.com/iafoss/pretrained-resnet34-with-rgby-0-460-public-lb</a></p>
 </li>
 </ul>
 <p>有许多实验跟踪和管理工具，采取最小设置为你自动保存所有数据，这使消融研究更容易。</p>
 <h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>有许多方法来调整你的模型，并且新的想法总是会出现。深度学习是一个快速发展的领域，没有什么灵丹妙药。我们必须做很多实验，足够的试验和错误会带来突破。</p>
 <blockquote>
-<p>另外，从Kaggle比赛中挑选出的最好的Kaggle kernel。这些比赛是:</p>
-<p>Intel Image Classification：<a href="https://www.kaggle.com/puneet6060/intel-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/puneet6060/intel-image-classification</a></p>
-<p>Recursion Cellular Image Classification：<a href="https://www.kaggle.com/c/recursion-cellular-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/recursion-cellular-image-classification</a></p>
-<p>SIIM-ISIC Melanoma Classification：<a href="https://www.kaggle.com/c/siim-isic-melanoma-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/siim-isic-melanoma-classification</a></p>
-<p>APTOS 2019 Blindness Detection：<a href="https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks</a></p>
-<p>Diabetic Retinopathy Detection：<a href="https://www.kaggle.com/c/diabetic-retinopathy-detection" target="_blank" rel="noopener">https://www.kaggle.com/c/diabetic-retinopathy-detection</a></p>
-<p>ML Project — Image Classification：<a href="https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks</a></p>
-<p>Cdiscount’s Image Classification Challenge：<a href="https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks</a></p>
-<p>Plant seedlings classifications：<a href="https://www.kaggle.com/c/plant-seedlings-classification/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/plant-seedlings-classification/notebooks</a></p>
-<p>Aesthetic Visual Analysis：<a href="https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks</a></p>
+<p>另外，从Kaggle比赛中挑选出好的Kaggle kernel。这些比赛是:</p>
+<p>Intel Image Classification:<a href="https://www.kaggle.com/puneet6060/intel-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/puneet6060/intel-image-classification</a></p>
+<p>Recursion Cellular Image Classification:<a href="https://www.kaggle.com/c/recursion-cellular-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/recursion-cellular-image-classification</a></p>
+<p>SIIM-ISIC Melanoma Classification:<a href="https://www.kaggle.com/c/siim-isic-melanoma-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/siim-isic-melanoma-classification</a></p>
+<p>APTOS 2019 Blindness Detection:<a href="https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks</a></p>
+<p>Diabetic Retinopathy Detection:<a href="https://www.kaggle.com/c/diabetic-retinopathy-detection" target="_blank" rel="noopener">https://www.kaggle.com/c/diabetic-retinopathy-detection</a></p>
+<p>ML Project—Image Classification:<a href="https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks</a></p>
+<p>Cdiscount’s Image Classification Challenge:<a href="https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks</a></p>
+<p>Plant seedlings classifications:<a href="https://www.kaggle.com/c/plant-seedlings-classification/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/plant-seedlings-classification/notebooks</a></p>
+<p>Aesthetic Visual Analysis:<a href="https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks</a></p>
 </blockquote>
 <p>英文原文：<a href="https://neptune.ai/blog/image-classification-tips-and-tricks-from-13-kaggle-competitions" target="_blank" rel="noopener">https://neptune.ai/blog/image-classification-tips-and-tricks-from-13-kaggle-competitions</a></p>
 
