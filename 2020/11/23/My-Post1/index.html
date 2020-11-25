@@ -204,9 +204,9 @@
         </header>
 
         <div class="post-content">
-            <h1 id="1-数据"><a href="#1-数据" class="headerlink" title="1.数据"></a>1.数据</h1><h2 id="图像预处理-EDA"><a href="#图像预处理-EDA" class="headerlink" title="图像预处理 + EDA"></a>图像预处理 + EDA</h2><p>每一个机器学习/深度学习解决方案都从原始数据开始。在<strong>数据处理</strong>管道中有两个基本步骤。</p>
-<p>第一步是探索性数据分析 (EDA)。它帮助我们分析整个数据集并总结它的主要特征，比如类分布、大小分布等等。通常使用可视化方法来显示这种分析的结果。</p>
-<p>第二步是图像预处理，目的是对原始图像提高图像数据(也称为图像特征)的质量，通过抑制不必要的扭曲，缩放，增强重要的特征，使数据更适合模型并提高性能。</p>
+            <h1 id="1-数据"><a href="#1-数据" class="headerlink" title="1.数据"></a>1.数据</h1><h2 id="图像预处理-EDA"><a href="#图像预处理-EDA" class="headerlink" title="图像预处理 + EDA"></a>图像预处理 + EDA</h2><p>每一个机器学习/深度学习解决方案都从原始数据开始。在数据处理管道中有两个基本步骤。</p>
+<p>第一步是<strong>探索性数据分析 (EDA)</strong>。它帮助我们分析整个数据集并总结它的主要特征，比如类分布、大小分布等等。通常使用可视化方法来显示这种分析的结果。</p>
+<p>第二步是<strong>图像预处理</strong>，目的是对原始图像提高图像数据(也称为图像特征)的质量，通过抑制不必要的扭曲，缩放，增强重要的特征，使数据更适合模型并提高性能。</p>
 <p>你可以钻研这些Kaggle笔记本，看看一些图像预处理技术：</p>
 <ul>
 <li><p>Visualisation：<a href="https://www.kaggle.com/allunia/protein-atlas-exploration-and-baseline#Building-a-baseline-model-" target="_blank" rel="noopener">https://www.kaggle.com/allunia/protein-atlas-exploration-and-baseline#Building-a-baseline-model-</a></p>
@@ -334,9 +334,21 @@
 </li>
 </ul>
 <p>有许多实验跟踪和管理工具，采取最小设置为你自动保存所有数据，这使消融研究更容易。</p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>有许多方法来调整你的模型，并且新的想法总是会出现。深度学习是一个快速发展的领域，没有什么灵丹妙药。我们必须做很多实验，足够的试验和错误会带来突破。</p>
+<p>有许多方法来调整你的模型，并且新的想法总是会出现。深度学习是一个快速发展的领域，没有什么灵丹妙药。我们必须做很多实验，足够的试验和错误会带来突破。</p>
+<h1 id="创新"><a href="#创新" class="headerlink" title="创新"></a>创新</h1><h2 id="知识蒸馏"><a href="#知识蒸馏" class="headerlink" title="知识蒸馏"></a>知识蒸馏</h2><p>知识蒸馏是将一个已经训练好的网络迁移到另外一个新网络，常采用teacher-student学习策略，已经被广泛应用在<strong>模型压缩</strong>和<strong>迁移学习</strong>中。</p>
+<p>例如，MEAL V2是通过知识蒸馏提升ResNet50在ImageNet上的分类准确度，MEAL V2不需要修改网络结构，也不需要其他特殊的训练策略和数据增强就可以使原始ResNet50的Top-1准确度提升至80%+。</p>
+<p>MEAL V2主要的思路是将<strong>多个模型的集成效果</strong>通过知识蒸馏迁移到一个单一网络中，整个设计非常简单，只包括三个重要的部分：teacher模型集成，KL散度loss以及一个判别器。</p>
+<p>MEAL V2采用对抗学习来防止student在训练数据上过拟合，即不让student过分学习teacher的输出，这其实是一种正则化手段。</p>
+<p>有一点需要注意，在蒸馏时，ResNet50不是随机初始化的，而是从预训练好的ImageNet模型进行初始化，就是说student也需要一个好的初始化，如果是随机初始化可能需要更长的训练时长。</p>
+<p>在最新的无监督方法研究如谷歌的SimCLRv2和Noisy Student均有知识蒸馏的身影。</p>
 <blockquote>
-<p>这里从Kaggle比赛中挑选出了好的Kaggle kernel。这些比赛是:</p>
+<p>参考：</p>
+<p>MEAL V2: Boosting Vanilla ResNet-50 to 80%+ Top-1 Accuracy on ImageNet without Tricks∗</p>
+<p>MEAL: Multi-Model Ensemble via Adversarial Learning</p>
+<p>Distilling the Knowledge in a Neural Network</p>
+<p>szq0214/MEAL-V2</p>
+</blockquote>
+<h1 id="项目实例"><a href="#项目实例" class="headerlink" title="项目实例"></a>项目实例</h1><p>这里从Kaggle比赛中挑选出了好的Kaggle kernel。这些比赛是:</p>
 <p>Intel Image Classification: <a href="https://www.kaggle.com/puneet6060/intel-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/puneet6060/intel-image-classification</a></p>
 <p>Recursion Cellular Image Classification: <a href="https://www.kaggle.com/c/recursion-cellular-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/recursion-cellular-image-classification</a></p>
 <p>SIIM-ISIC Melanoma Classification: <a href="https://www.kaggle.com/c/siim-isic-melanoma-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/siim-isic-melanoma-classification</a></p>
@@ -346,8 +358,9 @@
 <p>Cdiscount’s Image Classification Challenge: <a href="https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks</a></p>
 <p>Plant seedlings classifications: <a href="https://www.kaggle.com/c/plant-seedlings-classification/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/plant-seedlings-classification/notebooks</a></p>
 <p>Aesthetic Visual Analysis: <a href="https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks</a></p>
-</blockquote>
+<blockquote>
 <p>英文原文：<a href="https://neptune.ai/blog/image-classification-tips-and-tricks-from-13-kaggle-competitions" target="_blank" rel="noopener">https://neptune.ai/blog/image-classification-tips-and-tricks-from-13-kaggle-competitions</a></p>
+</blockquote>
 
         </div>
 
