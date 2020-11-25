@@ -110,16 +110,8 @@
     }
 </script>
         <div class="main">
-            <% if(is_links()){ %>
-    <%- partial('_page/links', {pagination: config.links, index: true}) %>
-<% }else{ %>
-
- 
-  
-  
-  
-
-    <div id="links">
+            
+        <div id="links">
         <style>
 
             #links{
@@ -191,20 +183,29 @@
                 white-space: nowrap;
             }
         </style>
+
         <div class="links-content">
             <div class="link-navigation">
 
-                
+                {% for link in theme.mylinks %}
+
+                    <div class="card">
+                        <img class="ava" src="{{ link.avatar }}"/>
+                        <div class="card-header">
+                           <div>
+                              <a href="{{ link.site }}" target="_blank"> {{ link.nickname }}</a>
+                              <a href="{{ link.site }}" target="_blank"><span class="focus-links">关注</span></a>
+                           </div>
+                           <div class="info">{{ link.info }}</div>
+                        </div>
+                    </div>
+
+                {% endfor %}
 
             </div>
-            
+            {{ page.content }}
             </div>
         </div>
-
-  
-  
-  
-
         </div>
         <footer id="footer" class="footer">
     <div class="copyright">
