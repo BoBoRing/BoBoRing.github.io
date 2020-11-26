@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="BoBoRing">
+
+
+    <meta name="subtitle" content="All can be accepted.">
+
+
+
+
+<title>西瓜书学习记录 | BoBoRing&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">BoBoRing&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">BoBoRing&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">西瓜书学习记录</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">BoBoRing</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">十一月 26, 2020&nbsp;&nbsp;17:36:57</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">机器学习</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="第2章-模型评估与模型选择"><a href="#第2章-模型评估与模型选择" class="headerlink" title="第2章 模型评估与模型选择"></a>第2章 模型评估与模型选择</h1><p>1.数据集<strong>评估方法</strong>：留出法，k折交叉验证法，自助采样。</p>
+<p>2.模型<strong>性能度量</strong>：均方误差，错误率，精度；查准率、查全率、混淆矩阵、P-R曲线和F1度量；ROC曲线和AUC；代价矩阵、代价敏感错误率和代价曲线。 <a href="https://zhuanlan.zhihu.com/p/137305152" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/137305152</a></p>
+<p>3.<strong>统计假设检验</strong>：单个算法采用二项检验和t检验，两个算法采用交叉验证t检验和McNemar检验，多个算法采用两两比较检验方法，或者Friedman检验+Nemenyi后续检验。</p>
+<p>4.利用<strong>偏差-方差分解</strong>来查看算法的泛化能力，缓解过拟合的方法：权重衰减（通过在⽬标函数后添加L2范数惩罚项来实现权重衰减）和正则化。</p>
+<h1 id="第3章-线性模型"><a href="#第3章-线性模型" class="headerlink" title="第3章 线性模型"></a>第3章 线性模型</h1><p>1.线性回归和多元线性回归，利用最小二乘法和引入正则化进行模型求解。</p>
+<p>2.线性回归模型和广义线性模型（对数线性回归模型和Sigmoid函数形成的logistic回归模型）。</p>
+<p>3.<strong>二分类任务</strong>的logistic回归方法和LDA(线性判别分析)方法，<strong>多分类任务</strong>的OvO、OvR、MvM方法和纠错输出码技术ECOC，如何处理分类问题中类别不平衡问题。多分类的logistic回归叫softmax回归。</p>
+<h1 id="第4章-决策树"><a href="#第4章-决策树" class="headerlink" title="第4章 决策树"></a>第4章 决策树</h1><p>1.<strong>生成决策树</strong>（划分选择）的三种算法：ID3，C4.5和CART。</p>
+<p>2.<strong>剪枝</strong>方法：预剪枝和后剪枝。</p>
+<p>3.如何处理<strong>连续</strong>属性（二分法），如何处理样本存在<strong>缺失值</strong>的方法。</p>
+<p>4.决策树的升级：多变量决策树（斜决策树）。</p>
+<h1 id="第5章-神经网络"><a href="#第5章-神经网络" class="headerlink" title="第5章 神经网络"></a>第5章 神经网络</h1><p>1.M-P神经元，感知机（只有一层功能神经元），多层感知机（有多层功能神经元），<strong>多层前馈神经网络</strong>。</p>
+<p>2.<strong>BP算法</strong>：计算梯度，更新连接权和阈值，计算误差，根据误差调整连接权和阈值，不断迭代<strong>寻找最优参数使误差最小</strong>。缓解BP网络过拟合的方法：早停和正则化。BP算法的改进：自适应缩小学习率等。</p>
+<p>3.“最优”：局部极小和<strong>全局最小</strong>，跳过局部最优寻找全局最优方法：模拟退火、随机梯度下降SGD和遗传算法，用局部最优代替全局最优方法：贪心算法。</p>
+<p>4.常见神经网络：RBF网络（径向基函数），ART网络（算法族:ART2网络、FuzzyART网络、ARTMAP网络等），SOM网络（高维映射到低维），级联相关网络（结构自适应），Elman网络（递归神经网络），Boltzmann机（基于能量的模型、递归神经网络，常用的是RBM(CD算法训练)）。</p>
+<h1 id="第6章-支持向量机SVM"><a href="#第6章-支持向量机SVM" class="headerlink" title="第6章 支持向量机SVM"></a>第6章 支持向量机SVM</h1><p>1.二分类任务：划分超平面，支持向量，间隔(训练目的:找到具有最大间隔的划分超平面)-&gt;<strong>支持向量机</strong>(优化目标)</p>
+<p>2.求解过程：用拉格朗日乘子法得到对偶问题(二次规划问题)，二次规划算法、SOM算法(固定其他参数，仅优化两个参数，求得优化后的参数)，最终得到模型参数，求得支持向量机模型。</p>
+<p>3.训练样本不是线性可分的：将样本映射到一个更高维的特征空间，通过训练样本的<strong>核函数</strong>求模型最优解。核函数的选择，常用核函数及它们的组合。</p>
+<p>4.现实任务很难确定合适的核函数使训练样本在特征空间中线性可分：<strong>软间隔支持向量机</strong>（引入松弛变量和损失函数(0/1损失函数、hinge损失函数、指数损失函数、对率损失函数)允许支持向量机在一些样本上出错）</p>
+<p>5.回归问题：<strong>支持向量回归SVR</strong>（引入松弛变量和ε-不敏感损失函数，允许模型输出和真实输出有ε的误差）</p>
+<p>6.核方法(基于核函数的学习方法)，KLDA(核线性判别分析)方法</p>
+<h1 id="第7章-贝叶斯分类器"><a href="#第7章-贝叶斯分类器" class="headerlink" title="第7章 贝叶斯分类器"></a>第7章 贝叶斯分类器</h1><p>1.贝叶斯决策论，<strong>贝叶斯最优分类器</strong>：估计类先验概率(样本频率)和类条件概率(极大似然估计法)代入公式求解。</p>
+<p>2.<strong>朴素贝叶斯分类器</strong>(所有属性相互独立)：估计类先验概率和每个属性的条件概率代入公式求解，拉普拉斯修正。</p>
+<p>3.<strong>半朴素贝叶斯分类器</strong>(每个属性在类别之外最多仅依赖于一个其他属性)：独依赖估计(SPODE方法、TAN方法和AODE方法)和k依赖估计。</p>
+<p>4.<strong>贝叶斯网</strong>：由结构(有向无环图或道德图-表示属性的依赖关系)和参数(包含每个属性的条件概率表)组成。学习任务：寻找结构最优-&gt;综合编码长度最短(最小描述长度准则)-&gt;评分函数最小(评分搜索方法)的贝叶斯网。方法：对参数进行极大似然估计。贝叶斯网近似推断：吉布斯采样算法和马尔可夫链。</p>
+<p>5.训练样本含隐变量：<strong>EM算法</strong>(推断期望和最大似然估计并不断迭代)。</p>
+<h1 id="第8章-集成学习"><a href="#第8章-集成学习" class="headerlink" title="第8章 集成学习"></a>第8章 集成学习</h1><p>1.个体与集成：个体学习器间存在强依赖关系<strong>Boosting算法</strong>(AdaBoost算法:重赋权值+重采样法,优化目标:最小化指数损失函数);个体学习器间不存在强依赖关系<strong>Bagging</strong>(自助采样法,包外估计)和<strong>随机森林</strong>(Bagging+随机属性选择)。</p>
+<p>2.基学习器结合的好处和<strong>结合策略</strong>(平均法、投票法、学习法)。</p>
+<p>3.<strong>误差-分歧分解</strong>：个体学习器准确率越高、多样性越大则集成越好。<strong>多样性度量</strong>方法：不合度量、相关系数、Q-统计量、k-统计量。<strong>多样性增强</strong>方法：数据样本扰动(采样法)、输入属性扰动(随机子空间算法)、输出表示扰动(翻转法、输出调制法、ECOC法)、算法参数扰动(负相关法)。</p>
+<h1 id="第9章-聚类"><a href="#第9章-聚类" class="headerlink" title="第9章 聚类"></a>第9章 聚类</h1><p>1.聚类性能度量：外部指标(Jaccard系数、FM指数、Rand指数),内部指标(DB指数、Dunn指数)。</p>
+<p>2.<strong>距离计算</strong>：有序属性采用闵可夫斯基距离，无序属性采用VDM，集合间距离采用豪斯多夫距离。非度量距离(模式识别、图像检索)，距离度量学习。</p>
+<p>3.原型聚类：<strong>K-means聚类</strong>算法(采用贪心策略迭代优化使误差最小)、学习向量量化<strong>LVQ</strong>(根据距离+标记进行更新)、<strong>高斯混合聚类</strong>(采用概率模型对原型进行刻画-EM算法对模型参数迭代更新)。</p>
+<p>4.<strong>密度聚类</strong>：DBSCAN算法(基于邻域参数刻画样本分布的紧密程度,由紧密程度确定聚类结构)。</p>
+<p>5.<strong>层次聚类</strong>：AGNES算法(自底向上聚合,不断合并距离最近的聚类簇并更新距离矩阵,形成树形的聚类结构)</p>
+<h1 id="第10章-降维与度量学习"><a href="#第10章-降维与度量学习" class="headerlink" title="第10章 降维与度量学习"></a>第10章 降维与度量学习</h1><p>1.<strong>k近邻学习</strong>(kNN-先把训练样本保存，给定测试样本后基于某种距离度量找出训练集中与其最靠近的k个训练样本，基于此进行预测)。</p>
+<p>2.线性降维方法(对原始高维空间进行线性变换)：<strong>多维缩放MDS，主成分分析PCA</strong>(最近重构性，最大可分性，步骤：中心化-&gt;协方差矩阵-&gt;特征值分解/奇异值分解-&gt;取特征值大的特征向量)，线性判别分析LDA</p>
+<p>3.非线性降维方法：<strong>核主成分分析</strong>(基于核技巧对线性降维方法进行‘核化’，引入核函数-&gt;特征值分解)，核线性判别分析KLDA</p>
+<p>4.流形学习：<strong>等度量映射Isomap</strong>(构建近邻连接图，将测地线距离转变为计算近邻连接图上两点之间的最短路径-Dijkstra算法和Floyd算法)，<strong>局部线性嵌入LLE</strong>(寻找样本点的领域样本点集-&gt;得到线性重构系数-&gt;计算协方差矩阵M-&gt;特征值分解-&gt;取M最小的一定个数特征值对应的特征向量组成的矩阵即可得到样本点的低维空间投影坐标)</p>
+<p>5.<strong>度量学习</strong>：通过学习找到合适的距离度量矩阵M(近邻成分分析方法NCA：求解优化目标即可得到使留一法正确率最大化的距离度量矩阵)，对M进行特征值分解进行降维。</p>
+<h1 id="第11章-特征选择与稀疏学习"><a href="#第11章-特征选择与稀疏学习" class="headerlink" title="第11章 特征选择与稀疏学习"></a>第11章 特征选择与稀疏学习</h1><p>1.特征选择方法：<strong>子集搜索</strong>(贪心的前向搜索、后向搜索、双向搜素)+<strong>子集评价</strong>(基于训练数据计算候选特征子集的信息增益)</p>
+<p>2.特征选择类型：<strong>过滤式</strong>(先特征选择再训练学习器，如Relief用相关统计量(根据猜中近邻值和猜错近邻值来不断调整统计量分量)来度量特征的重要性-二分类问题，Relief-F能处理多分类问题)、<strong>包裹式</strong>(直接针对给定学习器进行优化，如LVM算法(子集搜素：拉斯维加斯框架下随机策略；子集评价：最终分类器的误差-由交叉验证法得到))、<strong>嵌入式</strong>（将特征选择过程与学习器训练过程融为一体，线性回归模型引入正则化：L1范数正则化(LASSO-&gt;求w，优化目标求解：考虑L1范数最小化的近端梯度下降法)比L2范数正则化(岭回归)更易于得到稀疏解）。</p>
+<p>3.<strong>字典学习</strong>与稀疏编码：学得一个字典(求字典矩阵B)-&gt;对样本进行<strong>稀疏表达</strong>(求样本xi的稀疏表示ɑi)，用户能通过控制字典规模从而影响稀疏程度。优化目标求解：基于逐列更新策略的KSVD，采用保留稀疏性的奇异值分解方法。</p>
+<p>4.<strong>压缩感知</strong>：基于部分信息恢复全部信息（对部分信息处理获得稀疏样本表示(傅里叶变换、小波变换、字典学习和稀疏编码)-&gt;基于稀疏性恢复原始信号），压缩感知问题求解=L1范数最小化问题求解(使用基寻踪去噪)，矩阵补全技术(最小化矩阵核范数-凸优化问题-半正定规划SDP)</p>
+<h1 id="第12章-计算学习理论"><a href="#第12章-计算学习理论" class="headerlink" title="第12章 计算学习理论"></a>第12章 计算学习理论</h1><p>1.<strong>PAC学习</strong>：概念类C，假设空间H，学习算法ε</p>
+<p>2.度量假设空间的复杂度：<strong>VC维</strong>，<strong>Rademacher复杂度</strong>(一定程度上考虑了数据分布)；与算法有关的分析：稳定性分析</p>
+<h1 id="第13章-半监督学习"><a href="#第13章-半监督学习" class="headerlink" title="第13章 半监督学习"></a>第13章 半监督学习</h1><p>1.半监督学习：让学习器不依赖外界交互、自动地利用未标记样本来提升学习性能。(采用<strong>主动学习</strong>，引入<strong>专家知识</strong>，可通过与外界的交互来将部分未标记样本转变为有标记样本)</p>
+<p>2.半监督学习思路：<strong>聚类假设、流形假设</strong>(本质：相似的样本具有相似的输出)。半监督学习 = 纯半监督学习(未标记样本≠待预测数据)+直推学习(未标记样本=待预测数据)</p>
+<p>3.半监督学习<strong>四大范型</strong>：生成式半监督学习方法，半监督SVM，图半监督学习(标记传播算法)，基于分歧的方法(多学习器，协同训练)</p>
+<p>4.聚类是无监督学习任务，半监督聚类：约束k均值算法，约束种子k均值算法。</p>
+<h1 id="第14章-概率图模型"><a href="#第14章-概率图模型" class="headerlink" title="第14章 概率图模型"></a>第14章 概率图模型</h1><p>1.概率模型-&gt;<strong>概率图模型</strong>有两类：①有向图模型=贝叶斯网：<strong>隐马尔可夫</strong>模型，话题模型-生成式模型(处理离散型数据例如文本集合，隐狄利克雷分配模型LDA)；②无向图模型=<strong>马尔可夫网</strong>：马尔可夫随机场MRF，条件随机场CRF-判别式模型。</p>
+<p>2.推断：利用已知变量推断未知变量的分布。概率图模型的推断方法：①精确推断法(<strong>动态规划</strong>)：变量消去法，信念传播算法；②近似推断法：采样<strong>(马尔可夫链蒙特卡洛</strong>MCMC方法-Metropolis-Hastings算法)，确定性近似(变分推断)。</p>
+<h1 id="第15章-规则学习"><a href="#第15章-规则学习" class="headerlink" title="第15章 规则学习"></a>第15章 规则学习</h1><p>1.规则学习：从训练数据中学习出一组能用于对未见实例进行判别的规则。规则可分为两类：命题规则和一阶规则。</p>
+<p>2.规则学习的目标：产生一个能<strong>覆盖尽可能多的样例</strong>的规则集。<strong>序贯覆盖</strong>(规则学习的基本框架)：逐条归纳，分治策略。<strong>剪枝优化</strong>：缓解过拟合风险，预剪枝(统计显著性检验-CN2算法)，后剪枝(减错剪枝REP-IREF算法、RIPPER算法)。</p>
+<p>3.命题规则学习，<strong>一阶规则学习</strong>(FOIL算法:遵循序贯覆盖框架采用自顶向下的规则归纳策略)，<strong>归纳逻辑程序设计</strong>(关系学习)：在一阶规则学习中引入了函数和逻辑表达式嵌套，采用自底向上的规则生成策略(最小一般泛化，逆归结)。</p>
+<h1 id="第16章-强化学习"><a href="#第16章-强化学习" class="headerlink" title="第16章 强化学习"></a>第16章 强化学习</h1><p>1.强化学习：找到能使长期累积奖赏最大化的策略(T步累积奖赏，γ折扣累积奖赏)，通常用<strong>马尔可夫决策过程MDP</strong>来描述。</p>
+<p>2.单步强化学习任务-&gt;<strong>K-摇臂赌博机</strong>：仅探索法(概率估计摇臂的优劣)，仅利用法(选择当前最优摇臂)，ε贪心算法(基于一个概率对探索和利用进行折中)，Softmax算法(基于当前已知的摇臂平均奖赏来对探索和利用进行折中)。</p>
+<p>3.多步强化学习任务-&gt;<strong>有模型学习</strong>(基于动态规划的寻优问题)：策略评估、策略改进、策略迭代与值迭代。-&gt;<strong>免模型学习</strong>：蒙特卡罗强化学习(进行策略评估和策略改进)，分为同策略和异策略。-&gt;<strong>时序差分TD学习</strong>：结合动态规划与蒙特卡罗方法(Sarsa算法-同策略，Q-学习算法-异策略)</p>
+<p>4.连续状态空间：<strong>值函数近似法</strong>(线性值函数近似Sarsa算法，线性值函数近似Q-学习算法)。</p>
+<p>5.模仿学习(从人类专家的决策过程<strong>范例中学习</strong>)：直接模仿学习(直接模仿人类专家的“状态-动作对”)、逆强化学习(从人类专家提供的范例数据中反推出奖赏函数)</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>BoBoRing</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/11/26/My-Post2/">http://yoursite.com/2020/11/26/My-Post2/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span><strong>Peace</strong> and <strong>Love</strong>.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E8%A5%BF%E7%93%9C%E4%B9%A6/"># 西瓜书</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/11/23/My-Post1/">图像分类项目性能提升方案</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© BoBoRing | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
