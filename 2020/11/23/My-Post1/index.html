@@ -220,11 +220,37 @@
 <li><p>Pre-processing：<a href="https://www.kaggle.com/ratthachat/aptos-eye-preprocessing-in-diabetic-retinopathy#3.A-Important-Update-on-Color-Version-of-Cropping-&amp;-Ben&#39;s-Preprocessing" target="_blank" rel="noopener">https://www.kaggle.com/ratthachat/aptos-eye-preprocessing-in-diabetic-retinopathy#3.A-Important-Update-on-Color-Version-of-Cropping-&amp;-Ben&#39;s-Preprocessing</a></p>
 </li>
 </ul>
-<h2 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h2><p>数据增强可以通过从现有的训练样本中生成更多的训练数据来<strong>扩展我们的数据集</strong>。通过大量的随机转换生成新的样本，这些转换不仅可以生成可信的图像，而且还反映了真实的场景 —— 稍后将对此进行详细介绍。</p>
-<p>这种技术得到了广泛的应用，不仅仅是在训练模型的数据样本太少的情况下。在这种情况下，模型开始记忆训练集，但无法泛化(在从未见过的数据上表现很差)。</p>
+<h2 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h2><p>数据增强可以通过从现有的训练样本中生成更多的训练数据来<strong>扩展我们的数据集</strong>。通过大量的随机转换生成新的样本，这些转换不仅可以生成可信的图像，而且还反映了真实的场景。</p>
 <p>通常，当一个模型在训练数据上表现很好，但在验证数据上表现很差时，我们称之为过拟合。为了解决这个问题，我们通常会尝试获取新数据，如果没有可用的新数据，则可以使用数据增强。</p>
 <p>注：一般的经验法则是始终使用数据增强技术，因为它有助于使我们的模型见识更多的变化并更好地泛化。即使我们有一个很大的数据集，也要使用数据增强，但这是以较慢的训练速度为代价的，因为增强是在线完成的(即在训练期间)。</p>
 <p>此外，对于每个任务或数据集，我们必须使用反映可能的现实场景的增强技术(例如，如果我们有一个猫/狗探测器，我们可以使用水平翻转、剪裁、亮度和对比度)，因为这些增强匹配不同的照片拍摄方式。</p>
+<p><strong>Pytroch图像增强方法</strong>。使用pytorch中的图像预处理包torchvision.transforms，一般用Compose把多个步骤整合到一起，常见步骤有：</p>
+<p>1.裁剪—Crop</p>
+<p>中心裁剪：transforms.CenterCrop</p>
+<p>随机裁剪：transforms.RandomCrop</p>
+<p>随机长宽比裁剪：transforms.RandomResizedCrop</p>
+<p>上下左右中心裁剪：transforms.FiveCrop</p>
+<p>上下左右中心裁剪后翻转，transforms.TenCrop</p>
+<p>2.翻转和旋转—Flip and Rotation</p>
+<p>依概率p水平翻转：transforms.RandomHorizontalFlip(p=0.5)</p>
+<p>依概率p垂直翻转：transforms.RandomVerticalFlip(p=0.5)</p>
+<p>随机旋转：transforms.RandomRotation</p>
+<p>3.图像变换</p>
+<p>resize：transforms.Resize</p>
+<p>标准化：transforms.Normalize</p>
+<p>转为tensor,并归一化至[0-1]：transforms.ToTensor</p>
+<p>填充：transforms.Pad</p>
+<p>修改亮度、对比度和饱和度：transforms.ColorJitter</p>
+<p>转灰度图：transforms.Grayscale</p>
+<p>线性变换：transforms.LinearTransformation()</p>
+<p>仿射变换：transforms.RandomAffine</p>
+<p>依概率p转为灰度图：transforms.RandomGrayscale</p>
+<p>将数据转换为PILImage：transforms.ToPILImage</p>
+<p>transforms.Lambda：Apply a user-defined lambda as a transform.</p>
+<p>4.对transforms操作，使数据增强更灵活</p>
+<p>transforms.RandomChoice(transforms)，从给定的一系列transforms中选一个进行操作</p>
+<p>transforms.RandomApply(transforms, p=0.5)，给一个transform加上概率，依概率进行操作</p>
+<p>transforms.RandomOrder，将transforms中的操作随机打乱</p>
 <p>这里是一些Kaggle笔记本，你可以查看流行的数据增强技术：</p>
 <ul>
 <li><p>Horizontal Flip：<a href="https://www.kaggle.com/datafan07/analysis-of-melanoma-metadata-and-effnet-ensemble" target="_blank" rel="noopener">https://www.kaggle.com/datafan07/analysis-of-melanoma-metadata-and-effnet-ensemble</a></p>
@@ -335,7 +361,16 @@
 </ul>
 <p>有许多实验跟踪和管理工具，采取最小设置为你自动保存所有数据，这使消融研究更容易。</p>
 <p>有许多方法来调整你的模型，并且新的想法总是会出现。深度学习是一个快速发展的领域，没有什么灵丹妙药。我们必须做很多实验，足够的试验和错误会带来突破。</p>
-<h1 id="创新"><a href="#创新" class="headerlink" title="创新"></a>创新</h1><h2 id="知识蒸馏"><a href="#知识蒸馏" class="headerlink" title="知识蒸馏"></a>知识蒸馏</h2><p>知识蒸馏是将一个已经训练好的网络迁移到另外一个新网络，常采用teacher-student学习策略，已经被广泛应用在<strong>模型压缩</strong>和<strong>迁移学习</strong>中。</p>
+<h1 id="创新"><a href="#创新" class="headerlink" title="创新"></a>创新</h1><h2 id="迁移学习-微调"><a href="#迁移学习-微调" class="headerlink" title="迁移学习-微调"></a>迁移学习-微调</h2><p><strong>迁移学习</strong>将从源数据集学到的知识迁移到目标数据集。常见的迁移学习方法有：</p>
+<p>1.载入权重后训练所有参数</p>
+<p>2.载入权重后只训练最后几层参数</p>
+<p>3.载入权重后在冤枉了基础上再添加一层全连接层，仅训练最后一个全连接层</p>
+<p><strong>微调</strong>（迁移学习的常用技术）的步骤：</p>
+<p>1.在源数据集（如ImageNet数据集）上预训练一个神经网络模型，即源模型。</p>
+<p>2.创建一个新的神经网络模型，即目标模型。它复制了源模型上除了输出层外的所有模型设计及其参数。我们假设这些模型参数包含了源数据集上学习到的知识，且这些知识同样适用于目标数据集。我们还假设源模型的输出层与源数据集的标签紧密相关，因此在目标模型中不予采用。</p>
+<p>3.为目标模型添加一个输出大小为目标数据集类别个数的输出层，并随机初始化该层的模型参数。</p>
+<p>4.在目标数据集（如椅子数据集）上训练目标模型。我们将从头训练输出层，而其余层的参数都是基于源模型的参数微调得到的。</p>
+<h2 id="知识蒸馏"><a href="#知识蒸馏" class="headerlink" title="知识蒸馏"></a>知识蒸馏</h2><p>知识蒸馏是将一个已经训练好的网络迁移到另外一个新网络，常采用teacher-student学习策略，已经被广泛应用在<strong>模型压缩</strong>和<strong>迁移学习</strong>中。</p>
 <p>例如，MEAL V2是通过知识蒸馏提升ResNet50在ImageNet上的分类准确度，MEAL V2不需要修改网络结构，也不需要其他特殊的训练策略和数据增强就可以使原始ResNet50的Top-1准确度提升至80%+。</p>
 <p>MEAL V2主要的思路是将<strong>多个模型的集成效果</strong>通过知识蒸馏迁移到一个单一网络中，整个设计非常简单，只包括三个重要的部分：teacher模型集成，KL散度loss以及一个判别器。</p>
 <p>MEAL V2采用对抗学习来防止student在训练数据上过拟合，即不让student过分学习teacher的输出，这其实是一种正则化手段。</p>
@@ -343,21 +378,39 @@
 <p>在最新的无监督方法研究如谷歌的SimCLRv2和Noisy Student均有知识蒸馏的身影。</p>
 <blockquote>
 <p>参考：</p>
-<p>MEAL V2: Boosting Vanilla ResNet-50 to 80%+ Top-1 Accuracy on ImageNet without Tricks∗</p>
-<p>MEAL: Multi-Model Ensemble via Adversarial Learning</p>
-<p>Distilling the Knowledge in a Neural Network</p>
-<p>szq0214/MEAL-V2</p>
+<p>1.MEAL V2: Boosting Vanilla ResNet-50 to 80%+ Top-1 Accuracy on ImageNet without Tricks∗</p>
+<p>2.MEAL: Multi-Model Ensemble via Adversarial Learning</p>
+<p>3.Distilling the Knowledge in a Neural Network</p>
+<p>4.szq0214/MEAL-V2</p>
 </blockquote>
 <h1 id="项目实例"><a href="#项目实例" class="headerlink" title="项目实例"></a>项目实例</h1><p>这里从Kaggle比赛中挑选出了好的Kaggle kernel。这些比赛是:</p>
-<p>Intel Image Classification: <a href="https://www.kaggle.com/puneet6060/intel-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/puneet6060/intel-image-classification</a></p>
-<p>Recursion Cellular Image Classification: <a href="https://www.kaggle.com/c/recursion-cellular-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/recursion-cellular-image-classification</a></p>
-<p>SIIM-ISIC Melanoma Classification: <a href="https://www.kaggle.com/c/siim-isic-melanoma-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/siim-isic-melanoma-classification</a></p>
-<p>APTOS 2019 Blindness Detection: <a href="https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks</a></p>
-<p>Diabetic Retinopathy Detection: <a href="https://www.kaggle.com/c/diabetic-retinopathy-detection" target="_blank" rel="noopener">https://www.kaggle.com/c/diabetic-retinopathy-detection</a></p>
-<p>ML Project—Image Classification: <a href="https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks</a></p>
-<p>Cdiscount’s Image Classification Challenge: <a href="https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks</a></p>
-<p>Plant seedlings classifications: <a href="https://www.kaggle.com/c/plant-seedlings-classification/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/plant-seedlings-classification/notebooks</a></p>
-<p>Aesthetic Visual Analysis: <a href="https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks</a></p>
+<ul>
+<li>Intel Image Classification: <a href="https://www.kaggle.com/puneet6060/intel-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/puneet6060/intel-image-classification</a></li>
+</ul>
+<ul>
+<li>Recursion Cellular Image Classification: <a href="https://www.kaggle.com/c/recursion-cellular-image-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/recursion-cellular-image-classification</a></li>
+</ul>
+<ul>
+<li>SIIM-ISIC Melanoma Classification: <a href="https://www.kaggle.com/c/siim-isic-melanoma-classification" target="_blank" rel="noopener">https://www.kaggle.com/c/siim-isic-melanoma-classification</a></li>
+</ul>
+<ul>
+<li>APTOS 2019 Blindness Detection: <a href="https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aptos2019-blindness-detection/notebooks</a></li>
+</ul>
+<ul>
+<li>Diabetic Retinopathy Detection: <a href="https://www.kaggle.com/c/diabetic-retinopathy-detection" target="_blank" rel="noopener">https://www.kaggle.com/c/diabetic-retinopathy-detection</a></li>
+</ul>
+<ul>
+<li>ML Project—Image Classification: <a href="https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/image-classification-fashion-mnist/notebooks</a></li>
+</ul>
+<ul>
+<li>Cdiscount’s Image Classification Challenge: <a href="https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/cdiscount-image-classification-challenge/notebooks</a></li>
+</ul>
+<ul>
+<li>Plant seedlings classifications: <a href="https://www.kaggle.com/c/plant-seedlings-classification/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/plant-seedlings-classification/notebooks</a></li>
+</ul>
+<ul>
+<li>Aesthetic Visual Analysis: <a href="https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks" target="_blank" rel="noopener">https://www.kaggle.com/c/aesthetic-visual-analysis/notebooks</a></li>
+</ul>
 
         </div>
 
