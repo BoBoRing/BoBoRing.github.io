@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="BoBoRing">
+
+
+    <meta name="subtitle" content="All can be accepted.">
+
+
+
+
+<title>Python GUI开发记录 | BoBoRing&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">BoBoRing&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">BoBoRing&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">Python GUI开发记录</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">BoBoRing</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">十一月 26, 2020&nbsp;&nbsp;17:36:57</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/Python/">Python</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="学习开发的历程"><a href="#学习开发的历程" class="headerlink" title="学习开发的历程"></a>学习开发的历程</h1><h2 id="学习与GUI相关的3个库Tkinter，PySide2和PyQt5"><a href="#学习与GUI相关的3个库Tkinter，PySide2和PyQt5" class="headerlink" title="学习与GUI相关的3个库Tkinter，PySide2和PyQt5"></a>学习与GUI相关的3个库Tkinter，PySide2和PyQt5</h2><p>1.学习<strong>Tkinter</strong>库时跟着视频教程设计了<strong>登录窗口</strong> 并配置了用户数据库，设置了按钮的回调函数，添加了提示窗口，为主界面添加了<strong>菜单栏</strong>并且设置了菜单栏选项的回调函数。    </p>
+<p>2.跟着白月黑羽课程学习<strong>PySide2</strong>库的使用和<strong>Qt Designer</strong>平台的界面布局，学习对GUI窗口的相关操作，了解了常用控件和对应的操作函数，实现了一个小实例-统计薪资水平，学习了用PyInstaller发布程序和为界面添加图标的方法。</p>
+<p>3.PyQt5和PySide2操作类似，且使用更加方便，所以后面的设计采用<strong>PyQt5</strong>来完成，还学习了ui文件转py文件的方法，并且为我的pycharm配置了ui文件转py文件的快捷方式。</p>
+<h2 id="使用Qt-Designer搭建信号与系统虚拟实验平台的界面"><a href="#使用Qt-Designer搭建信号与系统虚拟实验平台的界面" class="headerlink" title="使用Qt Designer搭建信号与系统虚拟实验平台的界面"></a>使用Qt Designer搭建信号与系统虚拟实验平台的界面</h2><p>1.首先按照自己的想法设计了只有<strong>2层的系统界面</strong>，分别是连续和离散信号展示层、包含四个实验的实验层。</p>
+<p>2.然后根据导师的图纸设计了包含<strong>6层的系统界面</strong>（这里只截取了部分界面），具体思路就是将信号展示环节和实验操作环节分开。</p>
+<h2 id="编写界面入口程序，为组件添加功能函数"><a href="#编写界面入口程序，为组件添加功能函数" class="headerlink" title="编写界面入口程序，为组件添加功能函数"></a>编写界面入口程序，为组件添加功能函数</h2><p>1.编写整个系统的<strong>入口程序</strong>，该程序连接着系统开始界面。</p>
+<pre><code>app=QtWidgets.QApplication(sys.argv)
+widget=QtWidgets.QWidget()
+ui=Ui_widge()
+ui.setupUi(widget)
+widget.show()
+sys.exit(app.exec_())</code></pre><p>2.将每个界面的ui文件转换成py文件，并且通过编写函数为控件添加功能，包括获取文本框的输入文本（文本框输入的是字符串，先用eval函数将其转换为列表或数字）、为按钮添加动作连接函数、获取滑块的值显示到文本框中、为实验添加说明框等等。下面为某个界面的<strong>功能函数和界面转换</strong>代码。</p>
+<pre><code>def zhishu(self):
+    Form_16 = QtWidgets.QDialog()
+    self.ui = Ui_Form16()
+    self.ui.setupUi(Form_16)
+    Form_16.show()
+    Form_16.exec_()
+    self.Form10.show()
+def close(self):
+    self.Form10.close()
+
+def retranslateUi(self, Form10):
+    _translate = QtCore.QCoreApplication.translate
+    Form10.setWindowTitle(_translate(&quot;Form10&quot;, &quot;辅助实验教学子系统 - 信号 - 基本信号&quot;))
+    Form10.setWindowIcon(QtGui.QIcon(&apos;1.jpg&apos;))
+    self.pushButton_1.setText(_translate(&quot;Form10&quot;, &quot;指数信号&quot;))
+    self.pushButton_1.clicked.connect(self.zhishu)
+    self.pushButton_2.setText(_translate(&quot;Form10&quot;, &quot;返回上一级&quot;))
+    self.pushButton_2.clicked.connect(self.close)</code></pre><h2 id="将matplotlib绘制的图片（信号波形和实验波形）插入到GUI界面的tabel标签内"><a href="#将matplotlib绘制的图片（信号波形和实验波形）插入到GUI界面的tabel标签内" class="headerlink" title="将matplotlib绘制的图片（信号波形和实验波形）插入到GUI界面的tabel标签内"></a>将matplotlib绘制的图片（信号波形和实验波形）插入到GUI界面的tabel标签内</h2><p>1.学习了用<strong>matplotlib</strong>绘图的基本方法，编写代码绘制实现了连续信号（阶跃、方波、正弦波、三角波、锯齿波），离散信号（单位序列、正弦序列、指数序列），信号和序列的相加相乘运算，卷积运算，方波合成与分解运算，不同间隔不同频率采样后的信号，不同滤波效果得到的信号等等。</p>
+<p>2.实现信号后绘制得到了相应图片，通过使用<strong>label控件的setPixmap函数</strong>将matplotlib绘制的图片插入到Qt界面中。</p>
+<h2 id="实现多层界面转换（上一个界面仍然保留-，添加返回上一级按钮。"><a href="#实现多层界面转换（上一个界面仍然保留-，添加返回上一级按钮。" class="headerlink" title="实现多层界面转换（上一个界面仍然保留)，添加返回上一级按钮。"></a>实现多层界面转换（上一个界面仍然保留)，添加返回上一级按钮。</h2><p>1.在每个界面的py文件中先导入需要跳转的界面模块，用<strong>QDialog</strong>函数来连接需要跳转到的下一个界面，用<strong>show</strong>函数和<strong>exec</strong>函数实现界面显示运行。</p>
+<p>2.编写<strong>关闭函数</strong>，点击返回上一级按钮时将该界面关闭。</p>
+<h2 id="用PyInstaller将所有py文件打包成exe可执行文件。"><a href="#用PyInstaller将所有py文件打包成exe可执行文件。" class="headerlink" title="用PyInstaller将所有py文件打包成exe可执行文件。"></a>用PyInstaller将所有py文件打包成exe可执行文件。</h2><p>1.在命令行中输入<strong>pyi-makespec 000_plot.py</strong>生成<strong>spec文件</strong>修改文本内容添加所有用到的py文件和图片数据并保存文件，在spec文件路径下打开命令行，输入<strong>pyinstaller -D 000_plot.spec</strong>生成exe程序。</p>
+<p>2.生成的exe程序在dist文件夹中，dist文件夹里包含了整个项目所需的代码和环境，可在其他电脑中进行使用。（这里必须在<strong>Anaconda</strong>中打包而且打包后的文件非常大，用其它打包会出错）</p>
+<p>3.最终打包成功了，文件夹比较大，点击exe文件每次都能成功打开系统。</p>
+<h1 id="设计心得"><a href="#设计心得" class="headerlink" title="设计心得"></a>设计心得</h1><p>此次设计是在学习Python语言之后尝试完成的一项具体性设计任务，我也深刻体会到了Python在GUI设计方面功能的强大。完成任何一项设计都是不易的，从前期基础知识的学习，到自己动手后的不知所措，这个过程中我遇到了非常多的难题，针对难题也查阅了无数的经验帖和资料，功夫不负有心人，难题被一个接一个的解决了，不过因为我看到论文不够多经验不够目前还是有些难题存在困难或者解决的效果不够好。</p>
+<p>此次任务，我发自内心地感受到了解决难题带给人的快乐，以后的学习中还是会遇到很多难题的，我会把这看成一件幸运的事情，<strong>遇到难题说明我正在提升的轨道上</strong>，只有攻克一道道难关才能看到最后的彩虹，加油向前冲！</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>BoBoRing</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/11/26/My-Post3/">http://yoursite.com/2020/11/26/My-Post3/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span><strong>Peace</strong> and <strong>Love</strong>.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Python-GUI/"># Python GUI</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2020/11/26/My-Post2/">西瓜书学习记录</a>
+            
+            
+            <a class="next" rel="next" href="/2020/11/23/My-Post1/">图像分类项目性能提升方案</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© BoBoRing | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic</a></span>
+    </div>
+</footer>
+
+    </div>
+</body>
+</html>
