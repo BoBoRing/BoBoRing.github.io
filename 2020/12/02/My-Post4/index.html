@@ -221,7 +221,7 @@
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 print(im.format) #打印出格式信息
-im.show()</code></pre><h2 id="mode属性"><a href="#mode属性" class="headerlink" title="mode属性"></a>mode属性</h2><pre><code>im.mode ⇒ string</code></pre><p><strong>图像的模式</strong>，常见的mode 有 “L” (luminance) 表示灰度图像，“RGB”表示真彩色图像，和 “CMYK” 表示出版图像，表明图像所使用像素格式。如下为常见的nodes描述：</p>
+im.show()</code></pre><h2 id="mode属性"><a href="#mode属性" class="headerlink" title="mode属性"></a>mode属性</h2><pre><code>im.mode ⇒ string</code></pre><p><strong>图像的模式</strong>，常见的mode 有 “L” (luminance) 表示灰度图像，“RGB”表示真彩色图像，和 “CMYK” 表示出版图像，表明图像所使用像素格式。如下为常见的mode描述：</p>
 <p>“1”表示1位像素，黑白图像，存成8位像素</p>
 <p>“L”表示8位像素，黑白图像</p>
 <p>“P”表示9位像素，使用调色板映射到任何其他模式</p>
@@ -305,7 +305,7 @@ n_im.show()</code></pre><p>生成的图像为128x128大小的绿色图像：</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 n_im= Image.new(&quot;RGB&quot;, (128, 128),&quot;green&quot;)
-n_im.show()</code></pre><h2 id="Copy方法"><a href="#Copy方法" class="headerlink" title="Copy方法"></a>Copy方法</h2><pre><code>im.copy() ⇒ image</code></pre><p><strong>拷贝这个图像</strong>。如果用户想粘贴一些数据到这张图，可以使用这个方法，但是原始图像不会受到影响。</p>
+n_im.show()</code></pre><h2 id="copy方法"><a href="#copy方法" class="headerlink" title="copy方法"></a>copy方法</h2><pre><code>im.copy() ⇒ image</code></pre><p><strong>拷贝这个图像</strong>。如果用户想粘贴一些数据到这张图，可以使用这个方法，但是原始图像不会受到影响。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 im_copy = im.copy()</code></pre><p>图像im_copy和im完全一样。</p>
@@ -409,7 +409,7 @@ im = Image.open(&quot;3d.jpg&quot;)
 print(im.getpixel((0,0)))
 print(im.getpixel((4,0)))
 r,g,b = im.split()
-print(b.getpixel((11,8)))  </code></pre><h2 id="直方图histogram方法"><a href="#直方图histogram方法" class="headerlink" title="直方图histogram方法"></a>直方图histogram方法</h2><p>①<code>im.histogram()⇒ list</code></p>
+print(b.getpixel((11,8)))  </code></pre><h2 id="histogram方法"><a href="#histogram方法" class="headerlink" title="histogram方法"></a>histogram方法</h2><p>①<code>im.histogram()⇒ list</code></p>
 <p>返回一个<strong>图像的直方图</strong>。这个直方图是关于像素数量的list，图像中的每个象素值对应一个成员。如果图像有多个通道，所有通道的直方图会连接起来（例如，“RGB”图像的直方图有768个值)。二值图像（模式为“1”）当作灰度图像（模式为“L”）处理。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
