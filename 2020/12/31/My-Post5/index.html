@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="BoBoRing">
+
+
+    <meta name="subtitle" content="All can be accepted.">
+
+
+
+
+<title>研一前半学期学习总结 | BoBoRing&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">BoBoRing&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">BoBoRing&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">研一前半学期学习总结</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">BoBoRing</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">十二月 31, 2020&nbsp;&nbsp;17:36:57</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%BF%9B%E5%B1%95%E9%98%B6%E6%AE%B5%E6%80%A7%E6%80%BB%E7%BB%93/">学习进展阶段性总结</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="Python："><a href="#Python：" class="headerlink" title="Python："></a>Python：</h1><p>MOOC北京理工大学《Python语言程序设计》课程学完(包含11章内容7个库16个实例)，笔记记录在幕布；</p>
+<p>读完了《Python编程从入门到实践》这本书(包含Python基础知识和3个项目实战)，笔记补充进上一条的幕布；</p>
+<p>对Python常用的操作方法和函数做了整理，记录在幕布；</p>
+<p>学习Python在图形用户界面的应用，用PyQt5库做了一个简易信号与系统教学实验界面，撰写了一篇关于该系统的教改论文(未完成)。</p>
+<h1 id="数据结构："><a href="#数据结构：" class="headerlink" title="数据结构："></a>数据结构：</h1><p>B站上北京大学《数据结构与算法分析(Python版)》课程看完，笔记记录在幕布；</p>
+<p>Leetcode刷了一些数据结构题目，笔记记录在word中，题目类型划分记录在幕布。</p>
+<h1 id="离散数学："><a href="#离散数学：" class="headerlink" title="离散数学："></a>离散数学：</h1><p>B站上北京大学《离散数学》课程看了集合论和图论，但是基本没懂，笔记在打印的PPT上；</p>
+<p>读《离散数学及其应用》这本书，书中例题有看，但是每节练习题都没做，书没看完。</p>
+<h1 id="数学建模："><a href="#数学建模：" class="headerlink" title="数学建模："></a>数学建模：</h1><p>B站上清华大学基础课程看了一些，笔记记录在幕布；</p>
+<p>B站小石老师建模算法课程看完，笔记记录在幕布，代码在文件夹中；</p>
+<p>B站Python在数学建模中的应用课程看了PPT，笔记记录在幕布，代码在PPT上；</p>
+<p>看了几份历年真题和优秀论文，总结了题目框架和解题思路在幕布；</p>
+<p>成功参赛2020年中国研究生数学建模竞赛，完成了B题(汽油辛烷值优化建模)解题和论文撰写。</p>
+<h1 id="机器学习："><a href="#机器学习：" class="headerlink" title="机器学习："></a>机器学习：</h1><p>周志华《机器学习》西瓜书学习，整理了电子版学习框架在blog，具体笔记在书上。</p>
+<h1 id="深度学习："><a href="#深度学习：" class="headerlink" title="深度学习："></a>深度学习：</h1><p>李沐《动手学深度学习》只看了关于卷积神经网络和计算机视觉方面的东西；</p>
+<p>看了《神经网络和深度学习》这本书，了解神经网络相关知识。</p>
+<h1 id="图像处理："><a href="#图像处理：" class="headerlink" title="图像处理："></a>图像处理：</h1><p>看《机器视觉技术》这本书，整理电子版学习框架在word，具体笔记在本子上；</p>
+<p>学会用Python的PIL库进行图像处理，详情在blog；</p>
+<p>学会使用Pytorch中的图像预处理包torchvision.transforms对训练样本进行图像增强。</p>
+<h1 id="计算机视觉："><a href="#计算机视觉：" class="headerlink" title="计算机视觉："></a>计算机视觉：</h1><h2 id="1-gt-图像分类"><a href="#1-gt-图像分类" class="headerlink" title="1&gt;图像分类"></a>1&gt;图像分类</h2><p>学习了卷积，池化，激活函数，优化算法，损失函数，以及如何缓解过拟合，如何提高计算性能等；</p>
+<p>学习8个卷积神经网络模型，读了其中5个网络的经典论文。8个卷积神经网络模型分别是：LeNet，AlexNet，VGG，NiN，GoogLeNet，ResNet，DenseNet，MobileNet；</p>
+<p>学习了如何用Pytorch，Tensorflow，MXNet编写程序构建上述网络模型，学会了迁移学习和微调；</p>
+<p>搜集了若干图像分类的数据集，总结在excel表格中；</p>
+<p>学会了用Pytorch编写读取数据集的不同方法；</p>
+<p>学习图像增强：调用DataLoader实例进行数据读取，提供tranform函数将图像增强应用到训练样本；</p>
+<p>在不同数据集上跑AlexNet网络代码进行训练和测试；</p>
+<p>学习使用多GPU训练模型-Pytorch；</p>
+<p>总结图像分类性能提升方案在blog中。</p>
+<h2 id="2-gt-目标检测"><a href="#2-gt-目标检测" class="headerlink" title="2&gt;目标检测"></a>2&gt;目标检测</h2><p>下载并了解了目标检测数据集PASCAL VOC的构成；</p>
+<p>学习了7个目标检测算法，读了这7个算法的经典论文。7个目标检测算法分别是：R-CNN，Fast R-CNN，Faster R-CNN，SSD，YOLOv1，YOLOv2，YOLOv3；</p>
+<p>学习了如何用Pytorch编写程序实现Faster R-CNN、SSD、YOLOv3 SPP算法，下载并读了代码，跑了部分程序；</p>
+<p>学习如何计算目标检测结果的mAP值，了解了COCO官方目标检测结果的评价指标。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>BoBoRing</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2020/12/31/My-Post5/">http://yoursite.com/2020/12/31/My-Post5/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span><strong>Peace</strong> and <strong>Love</strong>.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0%E6%80%BB%E7%BB%93/"># 学习总结</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2020/12/02/My-Post4/">Python PIL库进行图像处理</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© BoBoRing | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic<br></a></span>
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div>
+</footer>
+
+    </div>
+</body>
+</html>
