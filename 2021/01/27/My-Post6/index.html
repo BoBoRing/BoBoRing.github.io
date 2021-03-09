@@ -216,7 +216,7 @@
 <li>用0.5阈值对三维分割进行聚类；</li>
 <li>确认在测试标签的分配上是否有实质性的差异。</li>
 </ul>
-<h1 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h1><p>图像预处理方法有：</p>
+<h1 id="图像预处理和数据增强"><a href="#图像预处理和数据增强" class="headerlink" title="图像预处理和数据增强"></a>图像预处理和数据增强</h1><p>图像预处理方法有：</p>
 <ul>
 <li>使用高斯差分方法进行斑点检测；</li>
 <li>使用基于图像块的输入进行训练，以减少训练时间；</li>
@@ -237,7 +237,7 @@
 <li>转换DCM到PNG；</li>
 <li>当有重复的图像时，计算每个图像的md5哈希值。</li>
 </ul>
-<h1 id="数据增强"><a href="#数据增强" class="headerlink" title="数据增强"></a>数据增强</h1><p>数据增强能够使网络具有更复杂的表征能力，从而减小网络性能在验证集和训练集以及最终测试集上的差距，让网络更好地学习迁移数据集上的数据分布。数据增强方法有：</p>
+<p>数据增强能够使网络具有更复杂的表征能力，从而减小网络性能在验证集和训练集以及最终测试集上的差距，让网络更好地学习迁移数据集上的数据分布。数据增强方法有：</p>
 <ul>
 <li>用 albumentations 包进行数据增强；</li>
 <li>使用 90 度随机旋转；</li>
@@ -257,7 +257,7 @@
 <li>对比度受限的自适应直方图均衡化；</li>
 <li>使用自动扩充策略。</li>
 </ul>
-<h1 id="建模"><a href="#建模" class="headerlink" title="建模"></a>建模</h1><p>可用在图像分割上的网络框架有：</p>
+<h1 id="模型架构的改进"><a href="#模型架构的改进" class="headerlink" title="模型架构的改进"></a>模型架构的改进</h1><p>可用在图像分割上的网络框架有：</p>
 <ul>
 <li>使用基于 U-net 的架构，采用这些概念并将其应用于三维输入张量；</li>
 <li>使用自动主动学习和添加手动注释；</li>
@@ -312,17 +312,6 @@
 <li>RetinaNet</li>
 <li>Deformable R-FCN</li>
 <li>Deformable Relation Networks</li>
-</ul>
-<h1 id="硬件配置"><a href="#硬件配置" class="headerlink" title="硬件配置"></a>硬件配置</h1><ul>
-<li>AWS GPU，例如p2.xlarge with a NVIDIA K80 GPU</li>
-<li>Pascal Titan-X GPU</li>
-<li>8 TITAN X GPUs</li>
-<li>6 GPUs: 21080Ti + 41080</li>
-<li>8×NVIDIA Tesla P40服务器, 256 GB RAM and 28 CPU cores</li>
-<li>i7 5930k Intel内核, 2×1080, 64 GB of RAM, 2x512GB SSD, 3TB HDD</li>
-<li>GCP 1x P100, 8x CPU, 15 GB RAM, SSD or 2x P100, 16x CPU, 30 GB RAM</li>
-<li>NVIDIA Tesla P100 GPU with 16GB of RAM</li>
-<li>i7 5930k, 2×1080Intel内核, 64 GB of RAM, 2x512GB SSD, 3TB HDD<br>980Ti GPU, 2600k CPU, and 14GB RAM</li>
 </ul>
 <h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><p>损失函数常用来估计模型预测结果与真值之间的差距。选择合适的损失函数，对模型效果很重要。一系列损失函数和使用场景如下：</p>
 <ul>
@@ -382,16 +371,7 @@
 <li>用5次折叠和30次重复的堆叠方式训练ANNs；</li>
 <li>使用Neptune追踪你的实验。</li>
 </ul>
-<h1 id="评估和交叉验证"><a href="#评估和交叉验证" class="headerlink" title="评估和交叉验证"></a>评估和交叉验证</h1><ul>
-<li>类别不统一的阶级划分；</li>
-<li>在调整模型最后一层时使用交叉验证方法以有效避免过拟合；</li>
-<li>用于分类的10倍CV集成；</li>
-<li>5个用于检测的10倍CV集成进行组合；</li>
-<li>Sklearn的分层K折函数</li>
-<li>k折交叉验证;</li>
-<li>对抗验证和权衡。</li>
-</ul>
-<h1 id="集成方法"><a href="#集成方法" class="headerlink" title="集成方法"></a>集成方法</h1><p>许多机器学习竞赛（包括 Kaggle）中最优秀的解决方案所采用的集成方法都建立在一个这样的假设上：将多个模型组合在一起通常可以产生更强大的模型。集成方法有：</p>
+<h1 id="集成方法"><a href="#集成方法" class="headerlink" title="集成方法"></a>集成方法</h1><p>许多机器学习竞赛（包括 Kaggle）中最优秀的解决方案所采用的集成方法都建立在一个这样的假设上：将<strong>多个模型组合在一起</strong>通常可以产生更强大的模型。集成方法有：</p>
 <ul>
 <li>多数投票法</li>
 <li>XGBoost：最大恶性肿瘤在3个缩放等级，z位置和奇怪组织的数量；</li>
@@ -403,6 +383,15 @@
 <li>目标检测的集成方法；</li>
 <li>由Mask RCNN, YOLOv3和具有DenseNet-121分类网络的Faster RCNN架构n组成的集合，</li>
 </ul>
+<h1 id="模型评估和验证方法的改进"><a href="#模型评估和验证方法的改进" class="headerlink" title="模型评估和验证方法的改进"></a>模型评估和验证方法的改进</h1><ul>
+<li>类别不统一的阶级划分；</li>
+<li>在调整模型最后一层时使用交叉验证方法以有效避免过拟合；</li>
+<li>用于分类的10倍CV集成；</li>
+<li>5个用于检测的10倍CV集成进行组合；</li>
+<li>Sklearn的分层K折函数</li>
+<li>k折交叉验证;</li>
+<li>对抗验证和权衡。</li>
+</ul>
 <h1 id="后处理"><a href="#后处理" class="headerlink" title="后处理"></a>后处理</h1><ul>
 <li>测试时增强（Test Time Augmentation，TTA）：向模型多次展示经过不同随机变换的图像，取预测平均值；</li>
 <li>均衡使用测试预测概率，而不是仅使用预测类；</li>
@@ -411,9 +400,20 @@
 <li>非极大抑制和边界框收缩；</li>
 <li>分水岭后处理：在实例分割问题中分离对象。</li>
 </ul>
+<h1 id="硬件配置"><a href="#硬件配置" class="headerlink" title="硬件配置"></a>硬件配置</h1><ul>
+<li>AWS GPU，例如p2.xlarge with a NVIDIA K80 GPU</li>
+<li>Pascal Titan-X GPU</li>
+<li>8 TITAN X GPUs</li>
+<li>6 GPUs: 21080Ti + 41080</li>
+<li>8×NVIDIA Tesla P40服务器, 256 GB RAM and 28 CPU cores</li>
+<li>i7 5930k Intel内核, 2×1080, 64 GB of RAM, 2x512GB SSD, 3TB HDD</li>
+<li>GCP 1x P100, 8x CPU, 15 GB RAM, SSD or 2x P100, 16x CPU, 30 GB RAM</li>
+<li>NVIDIA Tesla P100 GPU with 16GB of RAM</li>
+<li>i7 5930k, 2×1080Intel内核, 64 GB of RAM, 2x512GB SSD, 3TB HDD<br>980Ti GPU, 2600k CPU, and 14GB RAM</li>
+</ul>
 <h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>需注意某些技巧可能有一定的适用范围，具体能不能用还要视数据而定。</p>
 <p>译自：<a href="https://neptune.ai/blog/image-segmentation-tips-and-tricks-from-kaggle-competitions?utm_source=reddit&amp;utm_medium=post&amp;utm_campaign=blog-image-segmentation-tips-and-tricks-from-kaggle-competitions" target="_blank" rel="noopener">https://neptune.ai/blog/image-segmentation-tips-and-tricks-from-kaggle-competitions?utm_source=reddit&amp;utm_medium=post&amp;utm_campaign=blog-image-segmentation-tips-and-tricks-from-kaggle-competitions</a></p>
-<p>原文中有各技巧的跳转链接，如果你想深入了解，只需跟随链接，看看最好的图像分割模型是如何建立的。</p>
+<p>原文中有各技巧的跳转链接，如果你想深入了解，只需跟随链接，查看最好的图像分割模型是如何建立的。</p>
 
         </div>
 
@@ -464,6 +464,8 @@
             </div>
         </section>
         <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/03/09/My-Post7/">《机器视觉技术》学习记录</a>
             
             
             <a class="next" rel="next" href="/2020/12/31/My-Post5/">研一前半学期学习总结</a>

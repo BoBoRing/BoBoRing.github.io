@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="BoBoRing">
+
+
+    <meta name="subtitle" content="All can be accepted.">
+
+
+
+
+<title>《机器视觉技术》学习记录 | BoBoRing&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">BoBoRing&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">BoBoRing&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">《机器视觉技术》学习记录</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">BoBoRing</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">三月 9, 2021&nbsp;&nbsp;17:36:57</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <p>这里只列出书籍学习后的总结框架，具体笔记知识点见笔记本中。</p>
+<h1 id="第一、二章-机器视觉和图像处理"><a href="#第一、二章-机器视觉和图像处理" class="headerlink" title="第一、二章  机器视觉和图像处理"></a>第一、二章  机器视觉和图像处理</h1><p>1.机器视觉研究现状、现有技术和机器视觉的功能和精度等。</p>
+<p>2.数字图像采集和量化。</p>
+<p>3.彩色图像与灰度图像。</p>
+<h1 id="第三章-目标提取"><a href="#第三章-目标提取" class="headerlink" title="第三章 目标提取"></a>第三章 目标提取</h1><p>1.基于阈值的目标提取。</p>
+<p>2.基于颜色的目标提取（RGB转换成HSI）。</p>
+<p>3.基于差分的目标提取：分帧间差分和背景差分。</p>
+<h1 id="第四章-边缘检测"><a href="#第四章-边缘检测" class="headerlink" title="第四章 边缘检测"></a>第四章 边缘检测</h1><p>1.基于微分的边缘检测。</p>
+<p>2.基于模板匹配的边缘检测。</p>
+<p>3.边缘图像二值化处理和细线化处理。</p>
+<p>4.用于边缘检测的Canny算法。</p>
+<h1 id="第五章-图像平滑处理"><a href="#第五章-图像平滑处理" class="headerlink" title="第五章 图像平滑处理"></a>第五章 图像平滑处理</h1><p>1.常见图像噪声：椒盐噪声和随机噪声。</p>
+<p>2.常见图像滤波方法：均值滤波，中值滤波，高斯滤波。</p>
+<p>3.模糊图像清晰化处理方法：对比度增强，直方图均衡化，暗通道先验法。</p>
+<p>4.二值图像的平滑处理：膨胀和腐蚀。</p>
+<h1 id="第六章-几何参数检测"><a href="#第六章-几何参数检测" class="headerlink" title="第六章 几何参数检测"></a>第六章 几何参数检测</h1><p>1.图形的特征参数，区域标记。</p>
+<p>2.基于特征参数提取物体。</p>
+<p>3.基于特征参数消除噪声。</p>
+<h1 id="第七章-Hough变换"><a href="#第七章-Hough变换" class="headerlink" title="第七章 Hough变换"></a>第七章 Hough变换</h1><p>1.Hough变换直线检测：传统的、过已知点的。</p>
+<ol start="2">
+<li>Hough变换曲线检测。</li>
+</ol>
+<h1 id="第八章-几何变换"><a href="#第八章-几何变换" class="headerlink" title="第八章 几何变换"></a>第八章 几何变换</h1><p>1.图像的放大缩小、平移、旋转。</p>
+<p>2.图像的复杂变形：组合放大缩小、平移、旋转。</p>
+<p>3.几何坐标表示。</p>
+<h1 id="第九章-傅里叶变换"><a href="#第九章-傅里叶变换" class="headerlink" title="第九章 傅里叶变换"></a>第九章 傅里叶变换</h1><p>1.连续信号傅里叶变换-&gt;离散信号傅里叶变换-&gt;图像的二维傅里叶变换。</p>
+<p>2.图像的滤波处理。</p>
+<h1 id="第十章-小波变换"><a href="#第十章-小波变换" class="headerlink" title="第十章 小波变换"></a>第十章 小波变换</h1><p>1.连续信号小波变换-&gt;离散信号小波变换-&gt;小波族。</p>
+<p>2.信号的分解与重构。</p>
+<p>3.二维离散小波变换-&gt;图像处理中的小波变换。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>BoBoRing</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2021/03/09/My-Post7/">http://yoursite.com/2021/03/09/My-Post7/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span><strong>Peace</strong> and <strong>Love</strong>.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"># 图像处理</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/01/27/My-Post6/">语义分割性能提升方案</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© BoBoRing | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic<br></a></span>
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div>
+</footer>
+
+    </div>
+</body>
+</html>
