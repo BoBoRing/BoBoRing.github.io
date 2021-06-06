@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="BoBoRing">
+
+
+    <meta name="subtitle" content="All can be accepted.">
+
+
+
+
+<title>基于图像处理的车辆识别及智能信号灯控制系统 | BoBoRing&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">BoBoRing&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">BoBoRing&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">基于图像处理的车辆识别及智能信号灯控制系统</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">BoBoRing</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">五月 2, 2021&nbsp;&nbsp;17:00:57</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="1-项目概述"><a href="#1-项目概述" class="headerlink" title="1 项目概述"></a>1 项目概述</h1><h2 id="1-1项目要求"><a href="#1-1项目要求" class="headerlink" title="1.1项目要求"></a>1.1项目要求</h2><p>本项目要求使用Simulink仿真实现车辆识别计数和仿真交通信号灯系统，并且使用硬件搭信号灯控制系统的电路，将程序上传至Arduino控制器，实现硬件信号灯显示和数码管计数功能。</p>
+<p>Arduino是一款便捷灵活、方便上手的开源电子原型平台。包含硬件（各种型号的Arduino板）和软件（Arduino IDE)。其特点：</p>
+<p>（1）跨平台：Arduino IDE可以在Windows、Macintosh OS X、Linux三大主流操作系统上运行，而其他的大多数控制器只能在Windows上开发。</p>
+<p>（2）简单清晰：Arduino IDE基于processing IDE开发。对于初学者来说，极易掌握，同时有着足够的灵活性。 </p>
+<p>（3）开放性：Arduino的硬件原理图、电路图、IDE软件及核心库文件都是开源的，在开源协议范围内里可以任意修改原始设计及相应代码。</p>
+<p>（4）编程方式多样，代码简洁：Arduino编程主要有以下几种方式：第一种是使用官网Arduino IDE编程环境，这可以在官网下载，支持Windows，MacOS，Linux操作系统。第二如果不太喜欢写代码，或者是教小孩子玩Arduino，也有图形化的编程环境，比如Mixly/Scratch。</p>
+<h2 id="1-2项目内容及方案"><a href="#1-2项目内容及方案" class="headerlink" title="1.2项目内容及方案"></a>1.2项目内容及方案</h2><p>这里将项目划分成三大块内容，分别是：</p>
+<p>1、视频车辆的识别和计数。该模块使用Simulink仿真实现，共分为三个阶段，分别是背景提取、识别车辆和车辆计数，最终实现视频中车辆的识别用目标框标出，并且统计经过车辆的数目，以字幕的形式显示在画面中。</p>
+<p>2、红绿灯设计。设计一个十字路口（东西、南北）的交通灯控制电路，放行时间由车流量决定。该模块要求实现以下4个状态：</p>
+<p>S1：东西方向绿灯亮，南北方向红灯亮，时间T1； </p>
+<p>S2：东西方向黄灯亮，南北方向红灯亮，时间5s； </p>
+<p>S3：南北方向绿灯亮，东西方向红灯亮，时间T2； </p>
+<p>S4：南北方向黄灯亮，东西方向红灯亮，时间5s。</p>
+<p>红绿灯设计的相关设计要求如下：</p>
+<p>（1）东西及南北方向的车辆交替放行，放行时间依据车流量设定；</p>
+<p>（2）每次绿灯变红灯时，黄灯先亮5秒；</p>
+<p>（3）具有倒计时功能。</p>
+<p>3、人行横道信号灯设计。人行横道信号灯是专门为方便行人设计的一种交通信号灯。行人穿越马路，只需按一下灯杆上的绿色按钮，车辆信号灯变红，人行信号灯变绿，行人就可以安全通过。该模块的设计要求如下：</p>
+<p>（1）车辆信号灯由红灯、绿灯、黄灯组成。红灯表示禁止通行，绿灯表示准许通行，黄灯表示警示。人行信号灯由红灯、绿灯组成，红灯表示禁止通行，绿灯表示准许通行，绿灯闪烁提醒行人快速通过；</p>
+<p>（2）初始状态（S1）：车辆信号灯绿灯亮，人行信号灯红灯亮，车辆行驶；</p>
+<p>（3）当行人按下按钮，车辆信号灯由绿灯→黄灯闪（3秒）→红灯，人行信号灯由红灯→绿灯（亮10秒）→绿灯（闪5秒），灯闪烁的时间间隔为0.5s；</p>
+<p>（4）使用七段数码管进行倒计时；</p>
+<p>（5）使用Simulink编写程序，使用Arduino控制板、面包板、LED灯等搭建电路。</p>
+<h1 id="2-项目原理"><a href="#2-项目原理" class="headerlink" title="2 项目原理"></a>2 项目原理</h1><h2 id="2-1背景提取"><a href="#2-1背景提取" class="headerlink" title="2.1背景提取"></a>2.1背景提取</h2><p>输入车辆行驶路段视频，首先将原视频的RGB图像转换成灰度图像，方便后续处理，然后提取图像背景。背景提取是在视频图像序列中提取出静止不动的景物，因为摄像机是不动的，因此图像中的每个像素点都有一个对应的背景值，在一段时间内，这个背景值是比较固定的。背景提取的目标就是根据视频图像序列，找出图像中每一点的背景值。背景提取有很多算法，包括中值法、帧间差分法、高斯背景差分法、ViBe背景提取算法以及它的改进算法ViBe+，还有针对运动摄像机的光流法等。</p>
+<p>本项目使用简单的中值法来提取图像背景，背景是静止不动的，像素值几乎保持不变。获取视频不同帧的若干张图片，将其对应点的像素大小相加，取中值即为背景像素值，于是就提取出了视频的背景。</p>
+<h2 id="2-2识别车辆"><a href="#2-2识别车辆" class="headerlink" title="2.2识别车辆"></a>2.2识别车辆</h2><p>将原视频减去上一步骤中提取出的背景就可以得到车辆图像，如图2所示。但是这会使黑色车辆无法显示，通过对图像加绝对值的方法实现黑色车辆也可以显示，如图3所示。然后将灰度图像转换成二值图像，使车辆显示更加清晰，如图4所示，从图中可以非常清楚的识别出所有车辆。进而对车辆进行填充，填充后的图像如图5所示。然后使用Blob Analysis模块调用opencv的功能函数包，实现车辆位置检测，给识别到的车辆添加目标框，设置目标框的线宽和颜色等参数，并且添加字幕显示当前画面中的车辆数目。</p>
+<h2 id="2-3车辆计数"><a href="#2-3车辆计数" class="headerlink" title="2.3车辆计数"></a>2.3车辆计数</h2><p>车辆计数使用在图像中放置矩形框并检测是否有车辆通过的方式实现，首先绘制两个矩形框，将其放置在视频底部，使所有通过的车辆都能经过这两个矩形框，从而都能被检测到。</p>
+<p>编写程序，用于判断矩形框中是否有车辆通过，如果有车辆通过则计数加1，不断累计。这里使用Chart模块实现不停的脉冲累计，当计数结果达到100就重新开始计数。将两个矩形框得到的车辆数目相加，即可得到最终的车辆总数。</p>
+<h2 id="2-4红绿灯设计"><a href="#2-4红绿灯设计" class="headerlink" title="2.4红绿灯设计"></a>2.4红绿灯设计</h2><p>红绿灯设计模块使用MATLAB中的Chart模块来设计，首先设计四个状态，并给四个状态添加变量，其对应的状态表如下：</p>
+<p>S1    0    0    1    1    0    0    T1</p>
+<p>S2    0    1    0    1    0    0    5s</p>
+<p>S3    1    0    0    0    0    1    T2</p>
+<p>S4    1    0    0    0    1    0    5s</p>
+<p>根据状态表设置好四个状态，定义好实验所需的计数变量EW_Count和SN_Count，根据设计要求和状态之间的转换条件，在Chart模块的状态之间放置转换条件，添加倒计时功能，其中放行时间T1和T2的设定条件依据表2设定。</p>
+<p>给最终设计好的模块设置输出端口使其与Arduino控制板相连，连接好硬件电路、信号灯和数码管，安装好相关驱动并进行设置，运行程序，数码管开始执行倒计时，倒计时结束信号灯转换，实现了完整的信号灯控制系统。</p>
+<p>序号       条件                   执行</p>
+<p>1     N &gt;30               T1=55; T2=35;</p>
+<p>2     N&gt;10 &amp;&amp; N&lt;=30       T1=50; T2=40;</p>
+<p>3     N&gt;-10 &amp;&amp; N&lt;=10       T1=45; T2=45;</p>
+<p>4     N&gt;-30 &amp;&amp; N&lt;=-10   T1=40; T2=50;</p>
+<p>5     N&lt;=-30               T1=35; T2=55;</p>
+<h2 id="2-5人行横道信号灯"><a href="#2-5人行横道信号灯" class="headerlink" title="2.5人行横道信号灯"></a>2.5人行横道信号灯</h2><p>人行横道信号灯设计模块同样使用MATLAB中的Chart模块，首先设计四个状态并添加变量，其中S2和S4状态要实现闪烁，所以将其分成两个块。</p>
+<p>根据状态表设置每个状态所需变量，根据状态之间的转换条件进行状态连接，使其实现上文设计要求中的状态转换，并实现倒计时功能。给最终设计好的模块设置输出端口使其与Arduino控制板相连，连接好硬件电路、信号灯和数码管，安装好相关驱动并进行设置，运行程序，数码管开始倒计时，倒计时结束状态转换，实现了一个完整的人行横道信号灯控制系统。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>BoBoRing</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2021/05/02/My-Post8/">http://yoursite.com/2021/05/02/My-Post8/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span><strong>Peace</strong> and <strong>Love</strong>.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/"># 图像处理</a>
+                    
+                        <a href="/tags/%E9%A1%B9%E7%9B%AE/"># 项目</a>
+                    
+                        <a href="/tags/MATLAB/"># MATLAB</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+                <a class="prev" rel="prev" href="/2021/05/12/My-Post9/">基于Hough变换的车道线检测</a>
+            
+            
+            <a class="next" rel="next" href="/2021/03/09/My-Post7/">《机器视觉技术》学习记录</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© BoBoRing | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic<br></a></span>
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div>
+</footer>
+
+    </div>
+</body>
+</html>

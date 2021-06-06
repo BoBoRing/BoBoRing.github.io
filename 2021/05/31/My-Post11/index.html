@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta name="author" content="BoBoRing">
+
+
+    <meta name="subtitle" content="All can be accepted.">
+
+
+
+
+<title>基于机器学习的Udacity无人驾驶仿真 | BoBoRing&#39;s Blog</title>
+
+
+
+    <link rel="icon" href="/favicon.ico">
+
+
+
+
+    <!-- stylesheets list from _config.yml -->
+    
+    <link rel="stylesheet" href="/css/style.css">
+    
+
+
+
+    <!-- scripts list from _config.yml -->
+    
+    <script src="/js/script.js"></script>
+    
+    <script src="/js/tocbot.min.js"></script>
+    
+
+
+
+    
+    
+        
+    
+
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+    <div class="wrapper">
+        <header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-header header-logo"><a href="/">BoBoRing&#39;s Blog</a></div>
+            <div class="menu navbar-right">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+                <input id="switch_default" type="checkbox" class="switch_default">
+                <label for="switch_default" class="toggleBtn"></label>
+            </div>
+        </div>
+    </nav>
+
+    
+    <nav class="navbar-mobile" id="nav-mobile">
+        <div class="container">
+            <div class="navbar-header">
+                <div>
+                    <a href="/">BoBoRing&#39;s Blog</a><a id="mobile-toggle-theme">·&nbsp;Light</a>
+                </div>
+                <div class="menu-toggle" onclick="mobileBtn()">&#9776; Menu</div>
+            </div>
+            <div class="menu" id="mobile-menu">
+                
+                    <a class="menu-item" href="/archives">文章</a>
+                
+                    <a class="menu-item" href="/categories">分类</a>
+                
+                    <a class="menu-item" href="/tags">标签</a>
+                
+                    <a class="menu-item" href="/links">友链</a>
+                
+                    <a class="menu-item" href="/about">关于</a>
+                
+            </div>
+        </div>
+    </nav>
+
+</header>
+<script>
+    var mobileBtn = function f() {
+        var toggleMenu = document.getElementsByClassName("menu-toggle")[0];
+        var mobileMenu = document.getElementById("mobile-menu");
+        if(toggleMenu.classList.contains("active")){
+           toggleMenu.classList.remove("active")
+            mobileMenu.classList.remove("active")
+        }else{
+            toggleMenu.classList.add("active")
+            mobileMenu.classList.add("active")
+        }
+    }
+</script>
+        <div class="main">
+            <div class="container">
+    
+    
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
+
+    
+    <article class="post-wrap">
+        <header class="post-header">
+            <h1 class="post-title">基于机器学习的Udacity无人驾驶仿真</h1>
+            
+                <div class="post-meta">
+                    
+                        Author: <a itemprop="author" rel="author" href="/">BoBoRing</a>
+                    
+
+                    
+                        <span class="post-time">
+                        Date: <a href="#">五月 31, 2021&nbsp;&nbsp;17:00:57</a>
+                        </span>
+                    
+                    
+                        <span class="post-category">
+                    Category:
+                            
+                                <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉</a>
+                            
+                        </span>
+                    
+                </div>
+            
+        </header>
+
+        <div class="post-content">
+            <h1 id="1-项目概述"><a href="#1-项目概述" class="headerlink" title="1 项目概述"></a>1 项目概述</h1><h2 id="1-1项目要求"><a href="#1-1项目要求" class="headerlink" title="1.1项目要求"></a>1.1项目要求</h2><p>自动驾驶又称无人驾驶、轮式机器人，是一种通过电脑实现无人驾驶的技术（行为）。自动驾驶依靠人工智能、计算机视觉、雷达、监控装置和全球定位系统，不需要人类主动操作，汽车自动安全地行驶。自动驾驶是目前最热门的也是最有突破性的技术之一，其中人工智能是关键技术之一，又叫深度学习，是自动驾驶的核心。</p>
+<p>Udacity由Google公司x实验室创始人，称作无人驾驶之父的Sebastian Thrun（塞巴斯蒂安·史朗）创立，被人们称作“云端大学”。开设诸如“无人驾驶、大数据、人工智能”等高端前沿课程，授予的学位叫“Nanodegree（纳米学位）”。</p>
+<h2 id="1-2项目内容及方案"><a href="#1-2项目内容及方案" class="headerlink" title="1.2项目内容及方案"></a>1.2项目内容及方案</h2><p>本项目基于深度神经网络，构建一个Udacity无人驾驶仿真环境下的无人驾驶系统。</p>
+<p>Udacity无人驾驶仿真环境是Udacity公司为自己的学员设计的，针对无人驾驶项目的模拟环境，验证代码的有效性。该仿真环境部分免费，本项目用的就是免费部分。项目分四步实现。</p>
+<p>第一步，使用Udacity模拟器采集数据；</p>
+<p>第二步，对采集到的图像数据进行预处理；</p>
+<p>第三步，使用深度卷积神经网络设计、建立、训练自动驾驶模型；</p>
+<p>第四步，使用Udacity模拟器自动驾驶车辆，验证模型。</p>
+<p>项目用到的第三方库包括：opencv，pandas，pillow，keras，scikit-learn，tensorflow，Python-socketio，flask，Flask-SocketIO，Python-engineio，eventlet。</p>
+<h1 id="2-项目原理"><a href="#2-项目原理" class="headerlink" title="2 项目原理"></a>2 项目原理</h1><h2 id="2-1视频图像采集"><a href="#2-1视频图像采集" class="headerlink" title="2.1视频图像采集"></a>2.1视频图像采集</h2><p>本项目使用Udacity模拟器采集视频图像数据，这里直接使用别人采集好的原始数据。原始数据提供了由安装在车辆前方的左、中、右摄像机拍摄的图片，及车辆在这个时刻的转角（方向、油门、刹车、速度），保存在driving_log.csv文件中。本项目会利用这些数据，训练一个深度学习模型模仿车辆的驾驶行为，从而达到自动控制车辆的效果。为了简单、方便，模型只训练一个图像，即模型只输入一个图像，只会预测汽车转向角（只有一个输出），速度采用限速。</p>
+<h2 id="2-2图像数据预处理"><a href="#2-2图像数据预处理" class="headerlink" title="2.2图像数据预处理"></a>2.2图像数据预处理</h2><p>首先在左、中、右三张图片中随机选择一张图片，然后使用Python Opencv库中的图像处理函数对数据集做预处理（视频图像预处理）。考虑复杂的现实环境，如天气、拍摄角度、自然光照、遮挡、摄像机自身原因造成的图像模糊、歪斜或缺损的情况。图像预处理包括选择图像、翻转、平移、阴影、亮度调节、预处理。</p>
+<p>这些图像预处理方法都是随机执行的，确保后期训练的模型具有较强的泛化能力。其中，图像翻转使用cv2.flip函数；图片平移使用仿射变换函数cv2.warpAffine；阴影遮挡方法为先将图像转换为HLS格式，对亮度（L）进行遮挡后再转换为RGB格式；亮度调节方法为将图像转换为HSV格式，对明度（V）进行调整；然后截取图像，去掉机盖和天空，调整图像尺寸并转换为YUV格式（一种颜色编码方法，常使用在各个视频处理组件中）。</p>
+<h2 id="2-3设计、建立、训练深度学习模型"><a href="#2-3设计、建立、训练深度学习模型" class="headerlink" title="2.3设计、建立、训练深度学习模型"></a>2.3设计、建立、训练深度学习模型</h2><p>该阶段的主要内容如下：</p>
+<p>（1）调用argparse模块，用于向模型传递数据。首先创建一个解析对象，然后向该对象中添加你要关注的命令行参数和选项，进而执行 parse_args() 进行解析。</p>
+<p>（2）导入数据（清单），将存储在硬盘中的数据（清单）导入内存。首先使用pd.read_csv函数读取CSV文件，获取需要的数据，然后调用train_test_split函数划分训练集和测试集。</p>
+<p>（3）编写数据生成器，逐批生成数据，分批次向模型送入数据。对随机抽取的图像数据，20%的情况会调用图像预处理程序对图像进行随机预处理，80%的情况会直接获取中间图像。这里使用yield而不用return，目的是使程序从上一次停止的地方继续执行，抽过的数据就不会再抽了。</p>
+<p>（4）利用Keras搭建CNN的一个顺序模型，本项目使用一个现成的模型。模型含有5个卷积层（Conv2D），输入图像是一个3通道的彩色图像，图像像素值首先会被归一化（Lambda）为0~1之间的数值；然后通过5个卷积层（Conv2D），1个扁平层（Flatten），3个全连接层（Dense）的作用后，输出方向盘角度值，这是一个回归问题（该网络被称为nvidia net）。</p>
+<p>（5）将数据送入模型进行训练，送入数据的方式有很多种，这里使用model.fit_generator()的方式送数据。首先使用model.compile()函数设置好模型训练策略，这里使用Adam优化算法（学习率设置为0.0001）和mse损失函数。model.fit_generator()的实现方法是利用生成器，分批次向模型送入数据，生成器与模型并行运行，可以有效节省单次内存的消耗。保存训练得到的模型参数，用于后续的模型验证。</p>
+<h2 id="2-4验证模型"><a href="#2-4验证模型" class="headerlink" title="2.4验证模型"></a>2.4验证模型</h2><p>项目使用socketio和Flask，实现web服务器和web应用程序之间的通信进而对模型进行验证。其中socketio是针对Python开发的基于socket的web服务器，其中，socket为服务器和应用程序提供了双向通信机制，意味着服务器可以推送消息给应用程序。Flask是基于python的web应用程序架构。eventlet是一个网络通信应用程序，用来处理多线程。</p>
+<p>首先，定义（建立）socketio服务器，可看做建立了一个插座。然后，采用Flask做应用程序，相当于插头。进而，将服务器与应用程序打包成WSGI（Web Server Gateway Interface），相当于把插座与插头连接在一起。WSGI指定了web服务器和Python web应用或web框架之间的标准接口，是 python web 开发的标准，规定了各自使用的接口和功能，以便二者互相配合实现连接。 </p>
+<p>连接过程本项目用到的事件包括connect enent、disconnect enent和telemetry event，这三个事件的表示分别是：connect enent表示服务器（Python程序）与客户端（模拟器）连接成功；disconnect enent表示服务器（Python程序）与客户端（模拟器）断开连接；在小车运动过程中，会通过telemetry event模拟器发送小车当前的转向角、油门、车速，以及当前摄像机拍摄的照片，要控制仿真器中小车的运动，需要向仿真器发送如下两个参数：steering_angle：转向角，throttle：油门。</p>
+<p>设置好连接事件及相关响应函数后，加载前面训练好的模型参数文件，使用WSGI托管运行，打开Udacity模拟器点击自动驾驶，就可以看到汽车在自动向前行驶并且可以走相当一段长的距离。</p>
+
+        </div>
+
+        
+            <section class="post-copyright">
+                
+                    <p class="copyright-item">
+                        <span>Author:</span>
+                        <span>BoBoRing</span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>Permalink:</span>
+                        <span><a href="http://yoursite.com/2021/05/31/My-Post11/">http://yoursite.com/2021/05/31/My-Post11/</a></span>
+                    </p>
+                
+                
+                    <p class="copyright-item">
+                        <span>License:</span>
+                        <span>Copyright (c) 2019 <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="noopener">CC-BY-NC-4.0</a> LICENSE</span>
+                    </p>
+                
+                
+                     <p class="copyright-item">
+                         <span>Slogan:</span>
+                         <span><strong>Peace</strong> and <strong>Love</strong>.</span>
+                     </p>
+                
+
+            </section>
+        
+        <section class="post-tags">
+            <div>
+                <span>Tag(s):</span>
+                <span class="tag">
+                    
+                    
+                        <a href="/tags/Python/"># Python</a>
+                    
+                        <a href="/tags/%E9%A1%B9%E7%9B%AE/"># 项目</a>
+                    
+                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"># 机器学习</a>
+                    
+                        
+                </span>
+            </div>
+            <div>
+                <a href="javascript:window.history.back();">back</a>
+                <span>· </span>
+                <a href="/">home</a>
+            </div>
+        </section>
+        <section class="post-nav">
+            
+            
+            <a class="next" rel="next" href="/2021/05/22/My-Post10/">基于OpenCV的人脸识别签到系统</a>
+            
+        </section>
+
+
+    </article>
+</div>
+
+        </div>
+        <footer id="footer" class="footer">
+    <div class="copyright">
+        <span>© BoBoRing | Powered by <a href="https://hexo.io" target="_blank">Hexo</a> & <a href="https://github.com/Siricee/hexo-theme-Chic" target="_blank">Chic<br></a></span>
+        
+        <!-- 不蒜子统计 -->
+        <span id="busuanzi_container_site_pv">
+                本站总访问量<span id="busuanzi_value_site_pv"></span>次
+        </span>
+        <span class="post-meta-divider">|</span>
+        <span id="busuanzi_container_site_uv" style='display:none'>
+                本站访客数<span id="busuanzi_value_site_uv"></span>人
+        </span>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        </div>
+</footer>
+
+    </div>
+</body>
+</html>
