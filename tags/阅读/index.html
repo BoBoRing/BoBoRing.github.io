@@ -230,7 +230,18 @@
 
             <div class="description center-align">
                 
-                    
+                <span id="subtitle"></span>
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                <script>
+                    var typed = new Typed("#subtitle", {
+                        strings: ['我喜欢的，是一个正常人灵魂里躲着的神经病，是一个智者脑子中存在的白痴，是一朵玫瑰脚下的泥土，是宇宙里最特别的那颗星，只被我看见的那部分天真。 ​​',''],
+                        startDelay: 300,
+                        typeSpeed: 100,
+                        loop: true,
+                        backSpeed: 50,
+                        showCursor: false
+                    });
+                </script>
                 
             </div>
         </div>
@@ -239,9 +250,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -261,10 +270,10 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" title="图像分类: 1">
+                <a href="/tags/%E9%98%85%E8%AF%BB/" title="阅读: 1">
                     <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="图像分类" style="background-color: #F9EBEA;">图像分类
+                             chip-active "
+                            data-tagname="阅读" style="background-color: #F9EBEA;">阅读
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -297,20 +306,20 @@
                 </a>
                 
                 
-                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习: 2">
+                <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" title="图像分类: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="机器学习" style="background-color: #FEF9E7;">机器学习
-                        <span class="tag-length">2</span>
+                            data-tagname="图像分类" style="background-color: #FEF9E7;">图像分类
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
                 
-                <a href="/tags/%E9%98%85%E8%AF%BB/" title="阅读: 1">
+                <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" title="机器学习: 2">
                     <span class="chip center-align waves-effect waves-light
-                             chip-active "
-                            data-tagname="阅读" style="background-color: #F8F9F9;">阅读
-                        <span class="tag-length">1</span>
+                             chip-default "
+                            data-tagname="机器学习" style="background-color: #F8F9F9;">机器学习
+                        <span class="tag-length">2</span>
                     </span>
                 </a>
                 
