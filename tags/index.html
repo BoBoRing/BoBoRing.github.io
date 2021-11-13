@@ -235,11 +235,11 @@
                 <script>
                     var typed = new Typed("#subtitle", {
                         strings: ['我喜欢的，是一个正常人灵魂里躲着的神经病，是一个智者脑子中存在的白痴，是一朵玫瑰脚下的泥土，是宇宙里最特别的那颗星，只被我看见的那部分天真。 ​​',''],
-                        startDelay: 300,
-                        typeSpeed: 100,
+                        startDelay: 350,
+                        typeSpeed: 150,
                         loop: true,
                         backSpeed: 50,
-                        showCursor: false
+                        showCursor: true
                     });
                 </script>
                 
@@ -270,28 +270,10 @@
             <div class="tag-chips">
                 
                 
-                <a href="/tags/%E9%98%85%E8%AF%BB/" title="阅读: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="阅读" style="background-color: #F9EBEA;">阅读
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" title="图像分类: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="图像分类" style="background-color: #F5EEF8;">图像分类
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/Python/" title="Python: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="Python" style="background-color: #D5F5E3;">Python
+                            data-tagname="Python" style="background-color: #F9EBEA;">Python
                         <span class="tag-length">3</span>
                     </span>
                 </a>
@@ -300,7 +282,7 @@
                 <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/" title="图像处理: 5">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="图像处理" style="background-color: #E8F8F5;">图像处理
+                            data-tagname="图像处理" style="background-color: #F5EEF8;">图像处理
                         <span class="tag-length">5</span>
                     </span>
                 </a>
@@ -309,8 +291,26 @@
                 <a href="/tags/%E9%A1%B9%E7%9B%AE/" title="项目: 4">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="项目" style="background-color: #FEF9E7;">项目
+                            data-tagname="项目" style="background-color: #D5F5E3;">项目
                         <span class="tag-length">4</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E9%98%85%E8%AF%BB/" title="阅读: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="阅读" style="background-color: #E8F8F5;">阅读
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E5%9B%BE%E5%83%8F%E5%88%86%E7%B1%BB/" title="图像分类: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="图像分类" style="background-color: #FEF9E7;">图像分类
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -383,7 +383,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud([{"text":"阅读","weight":1,"link":"/tags/阅读/"},{"text":"图像分类","weight":1,"link":"/tags/图像分类/"},{"text":"Python","weight":3,"link":"/tags/Python/"},{"text":"图像处理","weight":5,"link":"/tags/图像处理/"},{"text":"项目","weight":4,"link":"/tags/项目/"},{"text":"机器学习","weight":2,"link":"/tags/机器学习/"},{"text":"Python GUI","weight":1,"link":"/tags/Python-GUI/"},{"text":"学习总结","weight":1,"link":"/tags/学习总结/"},{"text":"语义分割","weight":1,"link":"/tags/语义分割/"},{"text":"MATLAB","weight":2,"link":"/tags/MATLAB/"}], {
+    $('#tag-wordcloud').jQCloud([{"text":"Python","weight":3,"link":"/tags/Python/"},{"text":"图像处理","weight":5,"link":"/tags/图像处理/"},{"text":"项目","weight":4,"link":"/tags/项目/"},{"text":"阅读","weight":1,"link":"/tags/阅读/"},{"text":"图像分类","weight":1,"link":"/tags/图像分类/"},{"text":"机器学习","weight":2,"link":"/tags/机器学习/"},{"text":"Python GUI","weight":1,"link":"/tags/Python-GUI/"},{"text":"学习总结","weight":1,"link":"/tags/学习总结/"},{"text":"语义分割","weight":1,"link":"/tags/语义分割/"},{"text":"MATLAB","weight":2,"link":"/tags/MATLAB/"}], {
         autoResize: true
     });
 </script>
@@ -675,6 +675,10 @@ $(function () {
 	
     
 
+    
+    
+    <script type="text/javascript" size="150" alpha='0.6'
+        zIndex="-1" src="/libs/background/ribbon-refresh.min.js" async="async"></script>
     
 
     
