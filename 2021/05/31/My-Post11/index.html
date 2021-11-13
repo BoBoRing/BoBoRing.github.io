@@ -224,7 +224,7 @@
 <p>（5）将数据送入模型进行训练，送入数据的方式有很多种，这里使用model.fit_generator()的方式送数据。首先使用model.compile()函数设置好模型训练策略，这里使用Adam优化算法（学习率设置为0.0001）和mse损失函数。model.fit_generator()的实现方法是利用生成器，分批次向模型送入数据，生成器与模型并行运行，可以有效节省单次内存的消耗。保存训练得到的模型参数，用于后续的模型验证。</p>
 <h2 id="2-4验证模型"><a href="#2-4验证模型" class="headerlink" title="2.4验证模型"></a>2.4验证模型</h2><p>项目使用socketio和Flask，实现web服务器和web应用程序之间的通信进而对模型进行验证。其中socketio是针对Python开发的基于socket的web服务器，其中，socket为服务器和应用程序提供了双向通信机制，意味着服务器可以推送消息给应用程序。Flask是基于python的web应用程序架构。eventlet是一个网络通信应用程序，用来处理多线程。</p>
 <p>首先，定义（建立）socketio服务器，可看做建立了一个插座。然后，采用Flask做应用程序，相当于插头。进而，将服务器与应用程序打包成WSGI（Web Server Gateway Interface），相当于把插座与插头连接在一起。WSGI指定了web服务器和Python web应用或web框架之间的标准接口，是 python web 开发的标准，规定了各自使用的接口和功能，以便二者互相配合实现连接。 </p>
-<p>连接过程本项目用到的事件包括connect enent、disconnect enent和telemetry event，这三个事件的表示分别是：connect enent表示服务器（Python程序）与客户端（模拟器）连接成功；disconnect enent表示服务器（Python程序）与客户端（模拟器）断开连接；在小车运动过程中，会通过telemetry event模拟器发送小车当前的转向角、油门、车速，以及当前摄像机拍摄的照片，要控制仿真器中小车的运动，需要向仿真器发送如下两个参数：steering_angle：转向角，throttle：油门。</p>
+<p>连接过程本项目用到的事件包括connect event、disconnect event和telemetry event，这三个事件的表示分别是：connect event表示服务器（Python程序）与客户端（模拟器）连接成功；disconnect event表示服务器（Python程序）与客户端（模拟器）断开连接；在小车运动过程中，会通过telemetry event模拟器发送小车当前的转向角、油门、车速，以及当前摄像机拍摄的照片，要控制仿真器中小车的运动，需要向仿真器发送如下两个参数：steering_angle：转向角，throttle：油门。</p>
 <p>设置好连接事件及相关响应函数后，加载前面训练好的模型参数文件，使用WSGI托管运行，打开Udacity模拟器点击自动驾驶，就可以看到汽车在自动向前行驶并且可以走相当一段长的距离。</p>
 
         </div>
@@ -240,7 +240,7 @@
                 
                     <p class="copyright-item">
                         <span>Permalink:</span>
-                        <span><a href="http://yoursite.com/2021/05/31/My-Post11/">http://yoursite.com/2021/05/31/My-Post11/</a></span>
+                        <span><a href="https://boboring.github.io/2021/05/31/My-Post11/">https://boboring.github.io/2021/05/31/My-Post11/</a></span>
                     </p>
                 
                 
@@ -264,11 +264,11 @@
                 <span class="tag">
                     
                     
+                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"># 机器学习</a>
+                    
                         <a href="/tags/Python/"># Python</a>
                     
                         <a href="/tags/%E9%A1%B9%E7%9B%AE/"># 项目</a>
-                    
-                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"># 机器学习</a>
                     
                         
                 </span>
