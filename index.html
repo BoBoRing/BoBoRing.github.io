@@ -445,47 +445,42 @@
                     
 
                     
-                        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
-<style>
-    .aplayer .aplayer-lrc p {
-        
-        font-size: 12px;
-        font-weight: 700;
-        line-height: 16px !important;
-    }
 
-    .aplayer .aplayer-lrc p.aplayer-lrc-current {
-        
-        font-size: 15px;
-        color: #42b983;
-    }
-
+                    
+                        <link rel="stylesheet" href="/libs/dplayer/DPlayer.min.css">
+<div class="video-player">
     
-</style>
-<div class="music-player">
+    <div class="title center-align">
+        <i class="fas fa-video-camera"></i>&nbsp;&nbsp;精彩视频
+    </div>
     
     <div class="row">
-        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
-                   server="netease"
-                   type="playlist"
-                   id="699635626"
-                   fixed='false'
-                   autoplay='false'
-                   theme='#42b983'
-                   loop='all'
-                   order='list'
-                   preload='auto'
-                   volume='0.7'
-                   list-folded='true'
-        >
-        </meting-js>
+        <div class="col l8 offset-l2 m10 offset-m1 s12">
+            <div id="dplayer" class="dplayer-video"
+                    ></div>
+        </div>
     </div>
 </div>
 
-<script src="/libs/aplayer/APlayer.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-
-                        
+<script src="/libs/dplayer/DPlayer.min.js"></script>
+<script>
+    $(function () {
+        new DPlayer({
+            container: document.getElementById('dplayer'),
+            autoplay: 'false' === 'true',
+            theme: '#42b983',
+            loop: 'false' === 'true',
+            lang: 'zh-CN' === 'zh-CN' ? 'zh-cn' : 'en',
+            preload: 'auto',
+            volume: Number('0.7'),
+            video: {
+                url: 'https://www.bilibili.com/video/BV1R541167cr?spm_id_from=333.999.0.0',
+                pic: '',
+                thumbnails: ''
+            }
+        });
+    });
+</script>
 
                     
 
@@ -551,12 +546,12 @@
                             <span class="chip bg-color">Python</span>
                         </a>
                         
-                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                            <span class="chip bg-color">机器学习</span>
-                        </a>
-                        
                         <a href="/tags/%E9%A1%B9%E7%9B%AE/">
                             <span class="chip bg-color">项目</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                            <span class="chip bg-color">机器学习</span>
                         </a>
                         
                     </div>
@@ -606,12 +601,12 @@
                             <span class="chip bg-color">Python</span>
                         </a>
                         
-                        <a href="/tags/%E9%A1%B9%E7%9B%AE/">
-                            <span class="chip bg-color">项目</span>
-                        </a>
-                        
                         <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
                             <span class="chip bg-color">图像处理</span>
+                        </a>
+                        
+                        <a href="/tags/%E9%A1%B9%E7%9B%AE/">
+                            <span class="chip bg-color">项目</span>
                         </a>
                         
                     </div>
@@ -658,12 +653,12 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E9%A1%B9%E7%9B%AE/">
-                            <span class="chip bg-color">项目</span>
-                        </a>
-                        
                         <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
                             <span class="chip bg-color">图像处理</span>
+                        </a>
+                        
+                        <a href="/tags/%E9%A1%B9%E7%9B%AE/">
+                            <span class="chip bg-color">项目</span>
                         </a>
                         
                         <a href="/tags/MATLAB/">
@@ -714,12 +709,12 @@ Arduino是一款便捷灵活、方便
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E9%A1%B9%E7%9B%AE/">
-                            <span class="chip bg-color">项目</span>
-                        </a>
-                        
                         <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
                             <span class="chip bg-color">图像处理</span>
+                        </a>
+                        
+                        <a href="/tags/%E9%A1%B9%E7%9B%AE/">
+                            <span class="chip bg-color">项目</span>
                         </a>
                         
                         <a href="/tags/MATLAB/">
