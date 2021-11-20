@@ -433,7 +433,7 @@ im = Image.open(&quot;3d.jpg&quot;)
 print(im.palette)</code></pre><p>返回值为none，对图像进行convert操作，转换成“P”模式：</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
-new_im = im.convert(&apos;P&apos;)
+new_im = im.convert(&#39;P&#39;)
 print(new_im.mode)
 print(new_im.palette)</code></pre><p>返回值为ImagePalette类的实例。</p>
 <h2 id="info属性"><a href="#info属性" class="headerlink" title="info属性"></a>info属性</h2><pre><code>im.info ⇒ dictionary</code></pre><p><strong>存储图像相关数据的字典</strong>。文件句柄使用该字典传递从文件中读取的各种非图像信息。大多数方法在返回新的图像时都会忽略这个字典；因为字典中的键并非标准化的，对于一个方法，它不知道自己的操作如何影响这个字典。如果用户需要这些信息，需要在方法open()返回时保存这个字典。</p>
@@ -459,7 +459,7 @@ print(im.format, im.size, im.mode)</code></pre><h2 id="convert方法"><a href="#
 <p>当转换为2位图像（模式“1”）时，源图像首先被转换为黑白图像。结果数据中大于127的值被设置为白色，其他的设置为黑色；这样图像会出现抖动。如果要使用其他阈值，更改阈值127，可以使用方法point()。为了去掉图像抖动现象，可以使用dither选项。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
-new_im = im.convert(&apos;P&apos;)
+new_im = im.convert(&#39;P&#39;)
 print(new_im.mode)
 new_im.show()</code></pre><p>②P模式：<code>im.convert(“P”,**options) ⇒ image</code></p>
 <p>这个与第一个方法定义一样，但是当“RGB”图像转换为8位调色板图像时能更好的处理。可供选择的选项为：</p>

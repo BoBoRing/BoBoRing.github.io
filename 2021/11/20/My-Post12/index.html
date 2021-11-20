@@ -342,8 +342,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/SQL/">
-                                <span class="chip bg-color">SQL</span>
+                            <a href="/tags/SQL%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">SQL语言</span>
                             </a>
                         
                             <a href="/tags/MySQL/">
@@ -464,8 +464,8 @@ USE db2;</code></pre><p>2.创建完整学生信息表，包括学员的id，姓�
     math double,
     english double
 );</code></pre><p>3.插入全部数据。</p>
-<pre><code>INSERT INTO student VALUES (1,&apos;张三&apos;,19,&apos;男&apos;,&apos;北京市&apos;,&apos;18888888888&apos;,&apos;2010-12-12&apos;,92.5,32.5);</code></pre><p>4.插入部分数据，只往学生表中添加id, name, age, sex, address数据。</p>
-<pre><code>INSERT INTO student (id,name,age,sex,address) values (2,&apos;李四&apos;,20,&apos;女&apos;,&apos;北京市&apos;);</code></pre><p>5.查看表中的数据。</p>
+<pre><code>INSERT INTO student VALUES (1,&#39;张三&#39;,19,&#39;男&#39;,&#39;北京市&#39;,&#39;18888888888&#39;,&#39;2010-12-12&#39;,92.5,32.5);</code></pre><p>4.插入部分数据，只往学生表中添加id, name, age, sex, address数据。</p>
+<pre><code>INSERT INTO student (id,name,age,sex,address) values (2,&#39;李四&#39;,20,&#39;女&#39;,&#39;北京市&#39;);</code></pre><p>5.查看表中的数据。</p>
 <pre><code>SELECT * FROM student;</code></pre><h2 id="2-4-蠕虫复制"><a href="#2-4-蠕虫复制" class="headerlink" title="2.4 蠕虫复制"></a>2.4 蠕虫复制</h2><p>在已有的数据基础之上，将原来的数据进行复制，插入到对应的表中。</p>
 <p>语法格式：</p>
 <pre><code>INSERT INTO 表名1 SELECT * FROM 表名2;</code></pre><p>作用:将表名2中的数据复制到表名1中。</p>
@@ -597,9 +597,9 @@ WHERE: 指定条件</code></pre><p>具体操作示例：</p>
 <p>比如：</p>
 <pre><code>age BETWEEN 35 AND 70</code></pre><p>相当于： </p>
 <pre><code>age&gt;=35 AND age&lt;=70</code></pre><p>具体操作示例：查询英雄上架日期大于等于2013-01-01小于等于2017-01-01之间的英雄</p>
-<pre><code>SELECT * FROM hero WHERE grounding_date BETWEEN &apos;2013-01-01&apos; AND &apos;2017-01-01&apos;;
-SELECT * FROM hero WHERE grounding_date &gt;=&apos;2013-01-01&apos;  AND grounding_date&lt;=&apos;2017-01-01&apos;;</code></pre><h3 id="3-3-4-模糊查询"><a href="#3-3-4-模糊查询" class="headerlink" title="3.3.4 模糊查询"></a>3.3.4 模糊查询</h3><p>用<code>LIKE</code>表示模糊查询</p>
-<pre><code>SELECT * FROM 表名 WHERE 字段名 LIKE &apos;通配符字符串&apos;;</code></pre><p>这样，满足通配符字符串规则的数据就会显示出来。</p>
+<pre><code>SELECT * FROM hero WHERE grounding_date BETWEEN &#39;2013-01-01&#39; AND &#39;2017-01-01&#39;;
+SELECT * FROM hero WHERE grounding_date &gt;=&#39;2013-01-01&#39;  AND grounding_date&lt;=&#39;2017-01-01&#39;;</code></pre><h3 id="3-3-4-模糊查询"><a href="#3-3-4-模糊查询" class="headerlink" title="3.3.4 模糊查询"></a>3.3.4 模糊查询</h3><p>用<code>LIKE</code>表示模糊查询</p>
+<pre><code>SELECT * FROM 表名 WHERE 字段名 LIKE &#39;通配符字符串&#39;;</code></pre><p>这样，满足通配符字符串规则的数据就会显示出来。</p>
 <p>MySQL通配符有两个：</p>
 <p><code>%</code>: 表示0个或多个字符(任意个字符)</p>
 <p><code>_</code>: 表示一个字符</p>
@@ -728,14 +728,14 @@ SELECT * FROM student3 LIMIT 5;</code></pre><p>2.<code>LIMIT 10，5;</code> 不�
     name varchar(20),
     age int
 );</code></pre><p>2.添加数据</p>
-<pre><code>INSERT INTO hero1 (id, NAME) VALUES (1, &apos;盾山&apos;);
-INSERT INTO hero1 (id, NAME) VALUES (2, &apos;梦琪&apos;);
-INSERT INTO hero1 (id, NAME) VALUES (3, &apos;鲁班&apos;);
-INSERT INTO hero1 (id, NAME) VALUES (4, &apos;白起&apos;);</code></pre><p>3.再插入一个<code>id</code>为1的英雄，即插入重复的主键值</p>
-<pre><code>INSERT INTO hero1 (id, NAME) VALUES (1, &apos;盾山&apos;);
--- 主键是唯一的不能重复，报错Duplicate entry &apos;1&apos; for key &apos;PRIMARY&apos;</code></pre><p>4.试着插入一个<code>id</code>为NULL的英雄，即插入NULL的主键值</p>
-<pre><code>INSERT INTO hero1 (id, NAME) VALUES (NULL, &apos;蔡文姬&apos;);
--- 主键是不能为空的，报错Column &apos;id&apos; cannot be null</code></pre><p>###4.1.3 删除主键###</p>
+<pre><code>INSERT INTO hero1 (id, NAME) VALUES (1, &#39;盾山&#39;);
+INSERT INTO hero1 (id, NAME) VALUES (2, &#39;梦琪&#39;);
+INSERT INTO hero1 (id, NAME) VALUES (3, &#39;鲁班&#39;);
+INSERT INTO hero1 (id, NAME) VALUES (4, &#39;白起&#39;);</code></pre><p>3.再插入一个<code>id</code>为1的英雄，即插入重复的主键值</p>
+<pre><code>INSERT INTO hero1 (id, NAME) VALUES (1, &#39;盾山&#39;);
+-- 主键是唯一的不能重复，报错Duplicate entry &#39;1&#39; for key &#39;PRIMARY&#39;</code></pre><p>4.试着插入一个<code>id</code>为NULL的英雄，即插入NULL的主键值</p>
+<pre><code>INSERT INTO hero1 (id, NAME) VALUES (NULL, &#39;蔡文姬&#39;);
+-- 主键是不能为空的，报错Column &#39;id&#39; cannot be null</code></pre><p>###4.1.3 删除主键###</p>
 <pre><code>ALTER TABLE 表名 DROP PRIMARY KEY;</code></pre><p>具体操作示例：删除hero1表的主键</p>
 <pre><code>ALTER TABLE hero1 DROP PRIMARY KEY;</code></pre><p>###4.1.4 主键自增###</p>
 <p>​主键如果让我们自己添加很有可能重复，我们通常希望在每次插入新记录时，数据库自动生成主键字段的值。</p>
@@ -747,10 +747,10 @@ INSERT INTO hero1 (id, NAME) VALUES (4, &apos;白起&apos;);</code></pre><p>3.�
     name varchar(20),
     age int
 );</code></pre><p>2.插入数据</p>
-<pre><code>INSERT INTO hero2 (NAME, age) VALUES (&apos;猪八戒&apos;, 22);
-INSERT INTO hero2 (NAME, age) VALUES (&apos;关羽&apos;, 26);
-INSERT INTO hero2 (NAME, age) VALUES (&apos;诸葛亮&apos;, 25);
-INSERT INTO hero2 (NAME, age) VALUES (&apos;孙膑&apos;, 20);
+<pre><code>INSERT INTO hero2 (NAME, age) VALUES (&#39;猪八戒&#39;, 22);
+INSERT INTO hero2 (NAME, age) VALUES (&#39;关羽&#39;, 26);
+INSERT INTO hero2 (NAME, age) VALUES (&#39;诸葛亮&#39;, 25);
+INSERT INTO hero2 (NAME, age) VALUES (&#39;孙膑&#39;, 20);
 -- 不维护id字段，主键默认从1开始自动增长</code></pre><p><strong>扩展</strong></p>
 <p>默认地 <code>AUTO_INCREMENT</code> 的开始值是1，如果希望修改起始值,请使用下列SQL语法。</p>
 <pre><code>ALTER TABLE 表名 AUTO_INCREMENT=起始值;</code></pre><p><code>DELETE</code>和<code>TRUNCATE</code>的区别(面试常问)：</p>
@@ -766,13 +766,13 @@ INSERT INTO hero2 (NAME, age) VALUES (&apos;孙膑&apos;, 20);
     id INT,
     NAME VARCHAR(20) UNIQUE
 );</code></pre><p>2.添加英雄</p>
-<pre><code>INSERT INTO hero3 VALUES (1, &apos;貂蝉&apos;);
-INSERT INTO hero3 VALUES (2, &apos;西施&apos;);
-INSERT INTO hero3 VALUES (3, &apos;王昭君&apos;);
-INSERT INTO hero3 VALUES (4, &apos;杨玉环&apos;);
+<pre><code>INSERT INTO hero3 VALUES (1, &#39;貂蝉&#39;);
+INSERT INTO hero3 VALUES (2, &#39;西施&#39;);
+INSERT INTO hero3 VALUES (3, &#39;王昭君&#39;);
+INSERT INTO hero3 VALUES (4, &#39;杨玉环&#39;);
 
-INSERT INTO hero3 VALUES (5, &apos;貂蝉&apos;);
--- 插入相同的名字出现name重复，报错Duplicate entry &apos;貂蝉&apos; for key &apos;name&apos;
+INSERT INTO hero3 VALUES (5, &#39;貂蝉&#39;);
+-- 插入相同的名字出现name重复，报错Duplicate entry &#39;貂蝉&#39; for key &#39;name&#39;
 
 INSERT INTO hero3 VALUES (5, NULL);
 INSERT INTO hero3 VALUES (6, NULL);
@@ -785,23 +785,23 @@ INSERT INTO hero3 VALUES (6, NULL);
     NAME VARCHAR(20) UNIQUE NOT NULL,
     gender CHAR(2)
 );</code></pre><p>2.添加一条完整的记录</p>
-<pre><code>INSERT INTO hero4 VALUES (1, &apos;扁鹊&apos;, &apos;男&apos;);
-INSERT INTO hero4 VALUES (2, &apos;镜&apos;, &apos;男&apos;);
-INSERT INTO hero4 VALUES (3, &apos;恺&apos;, &apos;男&apos;);
-INSERT INTO hero4 VALUES (4, &apos;貂蝉&apos;, &apos;男&apos;);
+<pre><code>INSERT INTO hero4 VALUES (1, &#39;扁鹊&#39;, &#39;男&#39;);
+INSERT INTO hero4 VALUES (2, &#39;镜&#39;, &#39;男&#39;);
+INSERT INTO hero4 VALUES (3, &#39;恺&#39;, &#39;男&#39;);
+INSERT INTO hero4 VALUES (4, &#39;貂蝉&#39;, &#39;男&#39;);
 
-INSERT INTO hero4 VALUES (5, NULL, &apos;男&apos;);
--- 姓名不赋值报错: Column &apos;name&apos; cannot be null</code></pre><h2 id="4-4-默认值约束"><a href="#4-4-默认值约束" class="headerlink" title="4.4 默认值约束"></a>4.4 默认值约束</h2><p>往表中添加数据时,如果不指定这个字段的数据,就使用默认值。</p>
+INSERT INTO hero4 VALUES (5, NULL, &#39;男&#39;);
+-- 姓名不赋值报错: Column &#39;name&#39; cannot be null</code></pre><h2 id="4-4-默认值约束"><a href="#4-4-默认值约束" class="headerlink" title="4.4 默认值约束"></a>4.4 默认值约束</h2><p>往表中添加数据时,如果不指定这个字段的数据,就使用默认值。</p>
 <p>默认值格式：</p>
 <pre><code>字段名 字段类型 DEFAULT 默认值</code></pre><p>具体操作示例：</p>
 <p>1.创建一个英雄表 hero5，包含字段(<code>id,name,location</code>)，默认的定位是射手</p>
 <pre><code>CREATE TABLE hero5 (
     id INT,
     NAME VARCHAR(20),
-    location VARCHAR(50) DEFAULT &apos;射手&apos;
+    location VARCHAR(50) DEFAULT &#39;射手&#39;
 );</code></pre><p>2.添加一条记录,使用默认地址</p>
-<pre><code>INSERT INTO hero5 (id, NAME) VALUES (1, &apos;后羿&apos;);</code></pre><p>3.添加一条记录,不使用默认地址</p>
-<pre><code>INSERT INTO hero5 VALUES (2, &apos;兰陵王&apos;, &apos;刺客&apos;);</code></pre>
+<pre><code>INSERT INTO hero5 (id, NAME) VALUES (1, &#39;后羿&#39;);</code></pre><p>3.添加一条记录,不使用默认地址</p>
+<pre><code>INSERT INTO hero5 VALUES (2, &#39;兰陵王&#39;, &#39;刺客&#39;);</code></pre>
                 
             </div>
             <hr/>
@@ -865,8 +865,8 @@ INSERT INTO hero4 VALUES (5, NULL, &apos;男&apos;);
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/SQL/">
-                                    <span class="chip bg-color">SQL</span>
+                                <a href="/tags/SQL%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">SQL语言</span>
                                 </a>
                             
                                 <a href="/tags/MySQL/">
@@ -958,8 +958,8 @@ INSERT INTO hero4 VALUES (5, NULL, &apos;男&apos;);
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SQL/">
-                        <span class="chip bg-color">SQL</span>
+                    <a href="/tags/SQL%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">SQL语言</span>
                     </a>
                     
                     <a href="/tags/MySQL/">
