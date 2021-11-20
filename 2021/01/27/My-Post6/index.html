@@ -383,12 +383,15 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="外部数据"><a href="#外部数据" class="headerlink" title="外部数据"></a>外部数据</h1><ul>
+                <h1 id="1-外部数据"><a href="#1-外部数据" class="headerlink" title="1 外部数据"></a>1 外部数据</h1><ul>
 <li>LUng Node Analysis Grand Challenge数据：来自外科医生的详细注释；</li>
 <li>LIDC-IDRI数据：上面有每个肿瘤的放射学家描述；</li>
 <li>Flickr CC, Wikipedia Commons datasets；</li>
@@ -400,7 +403,7 @@
 <li>用0.5阈值对三维分割进行聚类；</li>
 <li>确认在测试标签的分配上是否有实质性的差异。</li>
 </ul>
-<h1 id="图像预处理和数据增强"><a href="#图像预处理和数据增强" class="headerlink" title="图像预处理和数据增强"></a>图像预处理和数据增强</h1><p>图像预处理方法有：</p>
+<h1 id="2-图像预处理和数据增强"><a href="#2-图像预处理和数据增强" class="headerlink" title="2 图像预处理和数据增强"></a>2 图像预处理和数据增强</h1><p><strong>图像预处理方法</strong>有：</p>
 <ul>
 <li>使用高斯差分方法进行斑点检测；</li>
 <li>使用基于图像块的输入进行训练，以减少训练时间；</li>
@@ -421,7 +424,7 @@
 <li>转换DCM到PNG；</li>
 <li>当有重复的图像时，计算每个图像的md5哈希值。</li>
 </ul>
-<p>数据增强能够使网络具有更复杂的表征能力，从而减小网络性能在验证集和训练集以及最终测试集上的差距，让网络更好地学习迁移数据集上的数据分布。数据增强方法有：</p>
+<p>数据增强能够使网络具有更复杂的表征能力，从而减小网络性能在验证集和训练集以及最终测试集上的差距，让网络更好地学习迁移数据集上的数据分布。<strong>数据增强方法</strong>有：</p>
 <ul>
 <li>用 albumentations 包进行数据增强；</li>
 <li>使用 90 度随机旋转；</li>
@@ -441,7 +444,7 @@
 <li>对比度受限的自适应直方图均衡化；</li>
 <li>使用自动扩充策略。</li>
 </ul>
-<h1 id="模型架构的改进"><a href="#模型架构的改进" class="headerlink" title="模型架构的改进"></a>模型架构的改进</h1><p>可用在图像分割上的网络框架有：</p>
+<h1 id="3-模型架构的改进"><a href="#3-模型架构的改进" class="headerlink" title="3 模型架构的改进"></a>3 模型架构的改进</h1><p>可用在图像分割上的<strong>网络框架</strong>有：</p>
 <ul>
 <li>使用基于 U-net 的架构，采用这些概念并将其应用于三维输入张量；</li>
 <li>使用自动主动学习和添加手动注释；</li>
@@ -463,7 +466,7 @@
 <li>使用带有预先训练过的权值的UNet类型架构，以改善对8位RGB输入图像的二进制分割收敛性和性能；</li>
 <li>使用LinkNet因为它速度快，内存效率高。</li>
 </ul>
-<p>经典网络框架：</p>
+<p><strong>经典网络框架</strong>：</p>
 <ul>
 <li>MASKRCNN</li>
 <li>BN-Inception</li>
@@ -497,7 +500,7 @@
 <li>Deformable R-FCN</li>
 <li>Deformable Relation Networks</li>
 </ul>
-<h1 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h1><p>损失函数常用来估计模型预测结果与真值之间的差距。选择合适的损失函数，对模型效果很重要。一系列损失函数和使用场景如下：</p>
+<h1 id="4-损失函数"><a href="#4-损失函数" class="headerlink" title="4 损失函数"></a>4 损失函数</h1><p>损失函数常用来估计模型预测结果与真值之间的差距。选择<strong>合适的损失函数</strong>，对模型效果很重要。一系列损失函数和使用场景如下：</p>
 <ul>
 <li>dice 系数：能够很好地处理不平衡数据；</li>
 <li>加权边界损失：减少预测分割与真值之间的距离；</li>
@@ -528,34 +531,34 @@
 <li>nn.SmoothL1Loss()：创建如果绝对元素误差低于1，则使用平方项，否则使用L1项的标准；</li>
 <li>在使用均方误差目标函数的情况下，它似乎比二值交叉熵目标函数更好。</li>
 </ul>
-<h1 id="训练技巧"><a href="#训练技巧" class="headerlink" title="训练技巧"></a>训练技巧</h1><ul>
-<li>尝试不同的学习率；</li>
-<li>尝试不同批大小；</li>
-<li>使用带有动量项的SDG，并且手动设置学习率衰减；</li>
-<li>数据增强过多会降低准确率；</li>
-<li>使用裁剪后的图像训练，并在完整的图像上做预测；</li>
-<li>在学习速率调整上使用Keras中的ReduceLROnPlateau()方法；</li>
-<li>没有增强的训练直到稳定，然后在某些时期应用软增强和硬增强；</li>
-<li>冻结除了最后一层以外所有的网络层，并使用Stage1中的1000张图片进行模型微调；</li>
-<li>开发一个能使标签更加均匀的采样器；</li>
-<li>使用类别感知采样（class aware sampling）；</li>
-<li>在调整最后一层时使用dropout和增强；</li>
-<li>伪标记提高分数；</li>
-<li>用Adam优化算法减少稳定期的LR伴随着2-4的耐心；</li>
-<li>使用循环LR和SGD；</li>
+<h1 id="5-训练技巧"><a href="#5-训练技巧" class="headerlink" title="5 训练技巧"></a>5 训练技巧</h1><ul>
+<li>尝试不同的<strong>学习率</strong>；</li>
+<li>尝试不同<strong>批大小</strong>；</li>
+<li>使用带有动量项的SDG，并且手动设置<strong>学习率衰减</strong>；</li>
+<li><strong>数据增强</strong>过多会降低准确率；</li>
+<li>使用<strong>裁剪</strong>后的图像训练，并在完整的图像上做预测；</li>
+<li>在<strong>学习速率调整</strong>上使用Keras中的ReduceLROnPlateau()方法；</li>
+<li>没有增强的训练直到稳定，然后在某些时期应用<strong>软增强</strong>和<strong>硬增强</strong>；</li>
+<li>冻结除了最后一层以外所有的网络层，并使用Stage1中的1000张图片进行模型<strong>微调</strong>；</li>
+<li>开发一个能使标签更加均匀的<strong>采样器</strong>；</li>
+<li>使用<strong>类别感知采样</strong>（class aware sampling）；</li>
+<li>在调整最后一层时使用<strong>dropout</strong>和增强；</li>
+<li><strong>伪标记</strong>提高分数；</li>
+<li>用<strong>Adam优化</strong>算法减少稳定期的学习率伴随着2-4的耐心；</li>
+<li>使用<strong>循环学习率</strong>和<strong>SGD</strong>；</li>
 <li>如果验证损失在两个连续的时期没有改善，则将学习率降低两倍；</li>
 <li>重复10批中最差的一批；</li>
 <li>使用默认UNET进行训练；</li>
-<li>重叠贴图，使每个边缘像素被覆盖两次；</li>
-<li>超参数调优:训练的学习率，非最大抑制和推理的分数阈值；</li>
+<li>重叠贴图，使每个<strong>边缘像素</strong>被覆盖两次；</li>
+<li><strong>超参数</strong>调优:训练的学习率，非最大抑制和推理的分数阈值；</li>
 <li>移除低置信度得分的差边界框；</li>
 <li>训练不同的卷积神经网络，然后建立一个集成；</li>
-<li>当F1成绩下降时停止训练；</li>
+<li>当<strong>F1分数</strong>下降时停止训练；</li>
 <li>逐渐降低不同的学习率；</li>
-<li>用5次折叠和30次重复的堆叠方式训练ANNs；</li>
-<li>使用Neptune追踪你的实验。</li>
+<li>用<strong>5折交叉验证</strong>和30次重复验证方式训练ANNs；</li>
+<li>使用<strong>Neptune</strong>追踪你的实验。</li>
 </ul>
-<h1 id="集成方法"><a href="#集成方法" class="headerlink" title="集成方法"></a>集成方法</h1><p>许多机器学习竞赛（包括 Kaggle）中最优秀的解决方案所采用的集成方法都建立在一个这样的假设上：将<strong>多个模型组合在一起</strong>通常可以产生更强大的模型。集成方法有：</p>
+<h1 id="6-集成方法"><a href="#6-集成方法" class="headerlink" title="6 集成方法"></a>6 集成方法</h1><p>许多机器学习竞赛（包括 Kaggle）中最优秀的解决方案所采用的集成方法都建立在一个这样的假设上：将<strong>多个模型组合在一起</strong>通常可以产生更强大的模型。集成方法有：</p>
 <ul>
 <li>多数投票法</li>
 <li>XGBoost：最大恶性肿瘤在3个缩放等级，z位置和奇怪组织的数量；</li>
@@ -567,7 +570,7 @@
 <li>目标检测的集成方法；</li>
 <li>由Mask RCNN, YOLOv3和具有DenseNet-121分类网络的Faster RCNN架构n组成的集合，</li>
 </ul>
-<h1 id="模型评估和验证方法的改进"><a href="#模型评估和验证方法的改进" class="headerlink" title="模型评估和验证方法的改进"></a>模型评估和验证方法的改进</h1><ul>
+<h1 id="7-模型评估和验证方法的改进"><a href="#7-模型评估和验证方法的改进" class="headerlink" title="7 模型评估和验证方法的改进"></a>7 模型评估和验证方法的改进</h1><ul>
 <li>类别不统一的阶级划分；</li>
 <li>在调整模型最后一层时使用交叉验证方法以有效避免过拟合；</li>
 <li>用于分类的10倍CV集成；</li>
@@ -576,15 +579,15 @@
 <li>k折交叉验证;</li>
 <li>对抗验证和权衡。</li>
 </ul>
-<h1 id="后处理"><a href="#后处理" class="headerlink" title="后处理"></a>后处理</h1><ul>
-<li>测试时增强（Test Time Augmentation，TTA）：向模型多次展示经过不同随机变换的图像，取预测平均值；</li>
-<li>均衡使用测试预测概率，而不是仅使用预测类；</li>
-<li>将几何平均数应用于预测；</li>
+<h1 id="8-后处理"><a href="#8-后处理" class="headerlink" title="8 后处理"></a>8 后处理</h1><ul>
+<li><strong>测试时增强</strong>（Test Time Augmentation，TTA）：向模型多次展示经过不同随机变换的图像，取预测平均值；</li>
+<li><strong>均衡使用测试预测概率</strong>，而不是仅使用预测类；</li>
+<li>将<strong>几何平均数</strong>应用于预测；</li>
 <li>在推理过程中将图块重叠，使每个边缘像素至少覆盖 3 次，因为 UNET 在边缘区域范围的预测往往较差；</li>
-<li>非极大抑制和边界框收缩；</li>
-<li>分水岭后处理：在实例分割问题中分离对象。</li>
+<li><strong>非极大抑制</strong>和边界框收缩；</li>
+<li><strong>分水岭</strong>后处理：在实例分割问题中分离对象。</li>
 </ul>
-<h1 id="硬件配置"><a href="#硬件配置" class="headerlink" title="硬件配置"></a>硬件配置</h1><ul>
+<h1 id="9-硬件配置"><a href="#9-硬件配置" class="headerlink" title="9 硬件配置"></a>9 硬件配置</h1><ul>
 <li>AWS GPU，例如p2.xlarge with a NVIDIA K80 GPU</li>
 <li>Pascal Titan-X GPU</li>
 <li>8 TITAN X GPUs</li>
