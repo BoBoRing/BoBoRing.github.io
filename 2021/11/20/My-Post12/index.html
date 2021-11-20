@@ -1019,12 +1019,12 @@ INSERT INTO hero4 VALUES (5, NULL, &#39;男&#39;);
                         <span class="chip bg-color">Python</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
-                        <span class="chip bg-color">机器学习</span>
-                    </a>
-                    
                     <a href="/tags/%E9%A1%B9%E7%9B%AE/">
                         <span class="chip bg-color">项目</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
                     </a>
                     
                 </div>
@@ -1082,8 +1082,8 @@ INSERT INTO hero4 VALUES (5, NULL, &#39;男&#39;);
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -1095,7 +1095,7 @@ INSERT INTO hero4 VALUES (5, NULL, &#39;男&#39;);
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 

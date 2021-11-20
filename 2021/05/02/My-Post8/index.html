@@ -342,12 +342,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%A1%B9%E7%9B%AE/">
-                                <span class="chip bg-color">项目</span>
-                            </a>
-                        
                             <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
                                 <span class="chip bg-color">图像处理</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%A1%B9%E7%9B%AE/">
+                                <span class="chip bg-color">项目</span>
                             </a>
                         
                             <a href="/tags/MATLAB/">
@@ -503,12 +503,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%A1%B9%E7%9B%AE/">
-                                    <span class="chip bg-color">项目</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
                                     <span class="chip bg-color">图像处理</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%A1%B9%E7%9B%AE/">
+                                    <span class="chip bg-color">项目</span>
                                 </a>
                             
                                 <a href="/tags/MATLAB/">
@@ -594,12 +594,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E9%A1%B9%E7%9B%AE/">
-                        <span class="chip bg-color">项目</span>
-                    </a>
-                    
                     <a href="/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/">
                         <span class="chip bg-color">图像处理</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%A1%B9%E7%9B%AE/">
+                        <span class="chip bg-color">项目</span>
                     </a>
                     
                     <a href="/tags/MATLAB/">
@@ -710,8 +710,8 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('0'),
-            headingSelector: 'h2, h3, h4'
+            collapseDepth: Number('1'),
+            headingSelector: 'h1, h2, h3, h4'
         });
 
         // modify the toc link href to support Chinese.
@@ -723,7 +723,7 @@
 
         // modify the heading title id to support Chinese.
         i = 0;
-        $('#articleContent').children('h2, h3, h4').each(function () {
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
             $(this).attr('id', tocHeading + (++i));
         });
 
