@@ -1,0 +1,1401 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="MySQL8.0数据库的学习, BoBoRing&#39;s Blog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>MySQL8.0数据库的学习 | BoBoRing&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">BoBoRing&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">BoBoRing&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">MySQL8.0数据库的学习</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/SQL/">
+                                <span class="chip bg-color">SQL</span>
+                            </a>
+                        
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                <span class="chip bg-color">数据库</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="post-category">
+                                软件开发
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-11-20
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p><strong>SQL</strong>：结构化查询语言(Structured Query Language),是对数据库进行操作的一种语言。</p>
+<p>通过SQL语句我们可以方便的操作数据库中的数据库、表、数据。</p>
+<p>​SQL是数据库管理系统都需要遵循的规范。不同的数据库生产厂商都支持SQL语句，但都有特有内容。</p>
+<p>SQL语句分类：</p>
+<p>（1）<strong>DDL数据定义语言</strong>，用来定义数据库对象，如数据库，表，列等。关键字为create，drop，alter等。</p>
+<p>（2）<strong>DML数据操作语言</strong>，用来对数据库中表的数据进行增删改。关键字为insert，delete，update等。</p>
+<p>（3）<strong>DQL数据查询语言</strong>，用来查询数据库中表的记录(数据)。关键字为select，where等。</p>
+<p>（4）<strong>DCL数据控制语言</strong>(了解)，用来定义数据库的访问权限和安全级别，及创建用户。关键字为GRANT，REVOKE等。</p>
+<h1 id="1-DDL语句"><a href="#1-DDL语句" class="headerlink" title="1 DDL语句"></a>1 DDL语句</h1><h2 id="1-1-创建数据库"><a href="#1-1-创建数据库" class="headerlink" title="1.1 创建数据库"></a>1.1 创建数据库</h2><p>直接创建数据库：</p>
+<pre><code>CREATE DATABASE 数据库名;</code></pre><p>判断是否存在并创建数据库：</p>
+<pre><code>CREATE DATABASE IF NOT EXISTS 数据库名;</code></pre><p>创建数据库并指定字符集(编码表)：</p>
+<pre><code>CREATE DATABASE 数据库名 CHARACTER SET 字符集;</code></pre><p>MySQL8.0默认使用的字符集为utf8mb4(能使用任何类型数据)。</p>
+<h2 id="1-2-查看数据库"><a href="#1-2-查看数据库" class="headerlink" title="1.2 查看数据库"></a>1.2 查看数据库</h2><p>查看所有的数据库：</p>
+<pre><code>SHOW DATABASES;</code></pre><p>查看某个已创建数据库的信息：</p>
+<pre><code>SHOW CREATE DATABASE 数据库名;</code></pre><h2 id="1-3-修改数据库"><a href="#1-3-修改数据库" class="headerlink" title="1.3 修改数据库"></a>1.3 修改数据库</h2><p>修改数据库字符集格式：</p>
+<pre><code>ALTER DATABASE 数据库名 DEFAULT CHARACTER SET 字符集;</code></pre><h2 id="1-4-删除数据库"><a href="#1-4-删除数据库" class="headerlink" title="1.4 删除数据库"></a>1.4 删除数据库</h2><pre><code>DROP DATABASE 数据库名;</code></pre><h2 id="1-5-使用数据库"><a href="#1-5-使用数据库" class="headerlink" title="1.5 使用数据库"></a>1.5 使用数据库</h2><p>查看正在使用的数据库：</p>
+<pre><code>SELECT DATABASE();</code></pre><p>在对表进行操作前需要先使用/切换对应的数据库：</p>
+<pre><code>USE 数据库名;</code></pre><h2 id="1-6-创建表"><a href="#1-6-创建表" class="headerlink" title="1.6 创建表"></a>1.6 创建表</h2><p>前提：先使用某个数据库。</p>
+<p>语法：</p>
+<pre><code>CREATE TABLE 表名 (
+字段名1 字段类型1, 
+字段名2 字段类型2
+);</code></pre><p>示例：创建student表包含id,name,birthday字段</p>
+<pre><code>CREATE TABLE student (
+  id INT,
+  name VARCHAR(20),
+  birthday DATE
+);</code></pre><p>快速创建一个表结构相同的表：</p>
+<pre><code>CREATE TABLE 新表名 LIKE 旧表名;</code></pre><h2 id="1-7-查看表"><a href="#1-7-查看表" class="headerlink" title="1.7 查看表"></a>1.7 查看表</h2><p>查看某个数据库中的所有表：</p>
+<pre><code>SHOW TABLES;</code></pre><p>查看表结构：</p>
+<pre><code>DESC 表名;</code></pre><p>查看创建表的SQL语句：</p>
+<pre><code>SHOW CREATE TABLE 表名;</code></pre><h2 id="1-8-删除表"><a href="#1-8-删除表" class="headerlink" title="1.8 删除表"></a>1.8 删除表</h2><p>直接删除表：</p>
+<pre><code>DROP TABLE 表名;</code></pre><p>判断表是否存在并删除表：</p>
+<pre><code>DROP TABLE IF EXISTS 表名;</code></pre><h2 id="1-9-修改表结构"><a href="#1-9-修改表结构" class="headerlink" title="1.9 修改表结构"></a>1.9 修改表结构</h2><p>前提：在做开发之前库当中的所有表字段已经建立成功了，一般不需要修改只需要插入数据，但是难免因为团队讨论误差忘了加一些字段，这时候就需要这部分对表字段进行修改。</p>
+<p>添加表列(表列即为表中的字段)：</p>
+<pre><code>ALTER TABLE 表名 ADD 列名 类型;</code></pre><p>修改列类型：</p>
+<pre><code>ALTER TABLE 表名 MODIFY列名 新的类型;</code></pre><p>修改列名：</p>
+<pre><code>ALTER TABLE 表名 CHANGE 旧列名 新列名 类型;</code></pre><p>删除列：</p>
+<pre><code>ALTER TABLE 表名 DROP 列名;</code></pre><p>修改表名：</p>
+<pre><code>RENAME TABLE 表名 TO 新表名;</code></pre><p>修改表对应的字符集：</p>
+<pre><code>ALTER TABLE 表名 character set 字符集;</code></pre><h1 id="2-DML语句"><a href="#2-DML语句" class="headerlink" title="2 DML语句"></a>2 DML语句</h1><h2 id="2-1-插入数据的语法"><a href="#2-1-插入数据的语法" class="headerlink" title="2.1 插入数据的语法"></a>2.1 插入数据的语法</h2><p>关键字说明：</p>
+<pre><code>INSERT INTO 表名         –- 表示往哪张表中添加数据
+(字段名1, 字段名2, …)     -- 要给哪些字段设置值
+VALUES (值1, 值2, …);    -- 设置具体的值</code></pre><p>注意：</p>
+<ul>
+<li>值与字段必须对应，个数相同，类型相同；</li>
+<li>值的数据大小必须在字段的长度范围内；</li>
+<li>除了数值类型外，其它的字段类型的值必须使用引号引起（建议单引号）；</li>
+<li>如果要插入空值，可以不写字段，或者插入null。</li>
+</ul>
+<h2 id="2-2-插入全部数据"><a href="#2-2-插入全部数据" class="headerlink" title="2.2 插入全部数据"></a>2.2 插入全部数据</h2><p>所有的字段名都写出来：</p>
+<pre><code>INSERT INTO 表名 (字段名1, 字段名2, 字段名3…) VALUES (值1, 值2, 值3);</code></pre><p>不写字段名（会按照表已有的字段顺序赋值）：</p>
+<pre><code>INSERT INTO 表名 VALUES (值1, 值2, 值3…);</code></pre><h2 id="2-3-插入部分数据"><a href="#2-3-插入部分数据" class="headerlink" title="2.3 插入部分数据"></a>2.3 插入部分数据</h2><pre><code>INSERT INTO 表名 (字段名1, 字段名2, ...) VALUES (值1, 值2, ...);</code></pre><p>没有添加数据的字段会使用NULL。</p>
+<p>具体操作示例：</p>
+<p>1.创建db2数据库，并使用。</p>
+<pre><code>CREATE DATABASE db2;
+USE db2;</code></pre><p>2.创建完整学生信息表，包括学员的id，姓名，年龄，性别，家庭地址，电话号码，生日，数学成绩，英语成绩。</p>
+<pre><code>CREATE TABLE  student(
+    id int,
+    name varchar(20),
+    age int,
+    sex char(1),
+    address varchar(200),
+    phone varchar(20),
+    birthday date,
+    math double,
+    english double
+);</code></pre><p>3.插入全部数据。</p>
+<pre><code>INSERT INTO student VALUES (1,&apos;张三&apos;,19,&apos;男&apos;,&apos;北京市&apos;,&apos;18888888888&apos;,&apos;2010-12-12&apos;,92.5,32.5);</code></pre><p>4.插入部分数据，只往学生表中添加id, name, age, sex, address数据。</p>
+<pre><code>INSERT INTO student (id,name,age,sex,address) values (2,&apos;李四&apos;,20,&apos;女&apos;,&apos;北京市&apos;);</code></pre><p>5.查看表中的数据。</p>
+<pre><code>SELECT * FROM student;</code></pre><h2 id="2-4-蠕虫复制"><a href="#2-4-蠕虫复制" class="headerlink" title="2.4 蠕虫复制"></a>2.4 蠕虫复制</h2><p>在已有的数据基础之上，将原来的数据进行复制，插入到对应的表中。</p>
+<p>语法格式：</p>
+<pre><code>INSERT INTO 表名1 SELECT * FROM 表名2;</code></pre><p>作用:将表名2中的数据复制到表名1中。</p>
+<p>具体操作示例：</p>
+<p>1.创建student2表，student2结构和student1表结构一样；</p>
+<pre><code>CREATE TABLE student2 LIKE student1;</code></pre><p>2.将student1表中的数据添加到student2表中；</p>
+<pre><code>INSERT INTO student2 SELECT * FROM student1;</code></pre><p>3.如果只想复制student1表中name,age字段数据到student2表中使用如下格式。</p>
+<pre><code>INSERT INTO student2(name,age) SELECT name,age FROM student1;</code></pre><h2 id="2-5-表数据的修改"><a href="#2-5-表数据的修改" class="headerlink" title="2.5 表数据的修改"></a>2.5 表数据的修改</h2><p>不带条件修改数据（全部修改）：</p>
+<pre><code>UPDATE 表名 SET 字段名=值;</code></pre><p>带条件修改数据：</p>
+<pre><code>UPDATE 表名 SET 字段名=值 WHERE 字段名=值;</code></pre><p>关键字说明：</p>
+<pre><code>UPDATE: 修改数据
+SET: 修改哪些字段
+WHERE: 指定条件</code></pre><p>具体操作示例：</p>
+<ul>
+<li><p>不带条件修改数据，将所有的性别改成女：</p>
+<p>  <code>UPDATE student SET sex=&#39;女&#39;;</code></p>
+</li>
+<li><p>带条件修改数据，将id号为2的学生性别改成男：</p>
+<p>  <code>UPDATE student SET sex=&#39;男&#39; WHERE id=2;</code></p>
+</li>
+<li><p>一次修改多个列，把id为3的学生，年龄改成26岁，address改成北京</p>
+<p>  <code>UPDATE student SET age=26,address=&#39;北京&#39; WHERE id=3;</code></p>
+</li>
+</ul>
+<h2 id="2-6-表数据的删除"><a href="#2-6-表数据的删除" class="headerlink" title="2.6 表数据的删除"></a>2.6 表数据的删除</h2><p>不带条件删除数据（删除表里面的所有数据）：</p>
+<pre><code>DELETE FROM 表名;</code></pre><p>带条件删除数据：</p>
+<pre><code>DELETE FROM 表名 WHERE 字段名=值;</code></pre><p>具体操作示例：</p>
+<ul>
+<li><p>带条件删除数据，删除id为3的记录：</p>
+<p>  <code>DELETE FROM student WHERE id=3;</code></p>
+</li>
+<li><p>不带条件删除数据,删除表中的所有数据：</p>
+<p>  <code>DELETE FROM student;</code></p>
+</li>
+</ul>
+<p>truncate也可以用来删除表记录</p>
+<pre><code>TRUNCATE TABLE 表名;</code></pre><p><code>truncate</code>和<code>delete</code>的区别（面试题常问）：</p>
+<ul>
+<li><code>delete</code>是将表中的数据一条一条删除；</li>
+<li><code>truncate</code>是将整个表摧毁，重新创建一个新的表（全空）,新的表结构和原来表结构一模一样。</li>
+</ul>
+<h1 id="3-DQL语句"><a href="#3-DQL语句" class="headerlink" title="3 DQL语句"></a>3 DQL语句</h1><h2 id="3-1-简单查询"><a href="#3-1-简单查询" class="headerlink" title="3.1 简单查询"></a>3.1 简单查询</h2><h3 id="3-1-1-查询表所有数据"><a href="#3-1-1-查询表所有数据" class="headerlink" title="3.1.1 查询表所有数据"></a>3.1.1 查询表所有数据</h3><p>使用 <code>*</code> 表示所有列：</p>
+<pre><code>SELECT * FROM 表名;</code></pre><p>写出查询每列的名称（效率较高）：</p>
+<pre><code>SELECT 字段名1, 字段名2, 字段名3, ... FROM 表名;</code></pre><p>具体操作示例：</p>
+<pre><code>SELECT id,name,age,sex,address,phone,birthday,math,english FROM student;</code></pre><h3 id="3-1-2-查询指定列的数据"><a href="#3-1-2-查询指定列的数据" class="headerlink" title="3.1.2 查询指定列的数据"></a>3.1.2 查询指定列的数据</h3><p>多个列之间以逗号分隔：</p>
+<pre><code>SELECT 字段名1, 字段名2... FROM 表名;</code></pre><p>具体操作示例：查询student表中的name和age列</p>
+<pre><code>SELECT name, age FROM student;</code></pre><h3 id="3-1-3-别名查询"><a href="#3-1-3-别名查询" class="headerlink" title="3.1.3 别名查询"></a>3.1.3 别名查询</h3><pre><code>SELECT 字段名1 AS 别名, 字段名2 AS 别名... FROM 表名;</code></pre><ul>
+<li>查询时给列、表指定别名需要使用AS关键字，AS可以省略不写；</li>
+<li>使用别名的好处是方便观看和处理查询到的数据。</li>
+</ul>
+<p>具体操作示例：查询sudent表中name和age列，name列的别名为”姓名”，age列的别名为”年龄”。</p>
+<pre><code>SELECT name AS 姓名, age AS 年龄 FROM student;</code></pre><h3 id="3-1-4-清除重复值"><a href="#3-1-4-清除重复值" class="headerlink" title="3.1.4 清除重复值"></a>3.1.4 清除重复值</h3><p>查询指定列并且结果不出现重复数据（字段名可以是一列可以是多列）：</p>
+<pre><code>SELECT DISTINCT 字段名 FROM 表名;</code></pre><p>具体操作示例：查询name和age列并且结果不出现name和age都一样的重复数据</p>
+<pre><code>SELECT DISTINCT name, age FROM student;</code></pre><h3 id="3-1-5-查询结果参与运算"><a href="#3-1-5-查询结果参与运算" class="headerlink" title="3.1.5 查询结果参与运算"></a>3.1.5 查询结果参与运算</h3><p>某列数据和固定值运算：</p>
+<pre><code>SELECT 列名1 + 固定值 FROM 表名;</code></pre><p>某列数据和其他列数据参与运算：</p>
+<pre><code>SELECT 列名1 + 列名2 FROM 表名;</code></pre><p>注意: 参与运算的必须是数值类型。</p>
+<p>具体操作示例：</p>
+<ul>
+<li>查询的时候将数学和英语的成绩相加</li>
+<li>让学员的年龄增加10岁</li>
+</ul>
+<p>实现：</p>
+<p>1.查询 math + english 的和</p>
+<pre><code>SELECT math + english FROM student;</code></pre><p>2.查询 math + english 的和使用别名”总成绩”</p>
+<pre><code>SELECT math + english 总成绩 FROM student;</code></pre><p>3.查询所有列与 math + english（使用别名”总成绩”）</p>
+<pre><code>SELECT *, math + english 总成绩 FROM student;</code></pre><p>4.查询姓名、年龄，将每个人的年龄增加10岁（不影响原来表中的数据）</p>
+<pre><code>SELECT name, age + 10 FROM student;</code></pre><h2 id="3-2-Navicat的使用"><a href="#3-2-Navicat的使用" class="headerlink" title="3.2 Navicat的使用"></a>3.2 Navicat的使用</h2><p>Navicat是一套快速、可靠并价格相当便宜的数据库管理工具，专为简化数据库的管理及降低系统管理成本而设。它的设计符合数据库管理员、开发人员及中小企业的需要。</p>
+<p>Navicat是以直觉化的图形用户界面而建的，让你可以以安全并且简单的方式创建、组织、访问并共用信息。</p>
+<p>具体示例：使用Navicat完成hero表(游戏中英雄角色表)</p>
+<p>1.创建db数据库：右键新建数据库。</p>
+<p>2.使用db数据库：双击。</p>
+<p>3.创建hero表（在表上右键新建表添加字段和类型），表中包括：id，name，age，sex，attack(攻击力)，location(英雄的定位)，life(英雄的初始生命)，magic(英雄的初始魔法)，is_hot(是否是热门英雄)，grounding_date(英雄的上架日期)，max_score(英雄的最高评分)字段。然后ctrl+s保存并输入表名。</p>
+<p>4.双击hero表，添加一条数据，对数据进行增删改操作。</p>
+<p>注：还是要编写sql语句来实现功能不能单纯的依靠工具。</p>
+<p>5.在数据库下的查询位置右键新建查询，即可输入sql语句，选中语句右键运行选择的即可进行运行操作。</p>
+<h2 id="3-3-复杂条件查询"><a href="#3-3-复杂条件查询" class="headerlink" title="3.3 复杂条件查询"></a>3.3 复杂条件查询</h2><p>前面的查询是将所有数据都查询出来，但是有时候我们只想获取到满足条件的数据。</p>
+<p>语法格式：</p>
+<pre><code>SELECT 字段名 FROM 表名 WHERE 条件;</code></pre><p>流程：取出表中的每条数据，满足条件的记录就返回，不满足条件的记录不返回。</p>
+<h3 id="3-3-1-比较运算符"><a href="#3-3-1-比较运算符" class="headerlink" title="3.3.1 比较运算符"></a>3.3.1 比较运算符</h3><p><code>&gt;</code>大于</p>
+<p><code>&lt;</code>小于</p>
+<p><code>&lt;=</code>小于等于</p>
+<p><code>&gt;=</code>大于等于</p>
+<p><code>=</code>等于</p>
+<p><code>&lt;&gt;</code>、<code>!=</code>不等于</p>
+<p>具体操作示例：</p>
+<ul>
+<li><p>查询攻击大于350的英雄</p>
+<p>  <code>SELECT * FROM hero where attack&gt;350;</code></p>
+</li>
+<li><p>具体操作示例：查询评分小于12的英雄</p>
+<p>  <code>SELECT * FROM hero WHERE max_score&lt;12;</code></p>
+</li>
+<li><p>查询定位为射手的英雄</p>
+<p>  <code>SELECT * FROM hero WHERE location=&#39;射手&#39;;</code></p>
+</li>
+<li><p>查询不是热门的英雄，1表示热门，0表示非热门。</p>
+<p>  <code>SELECT * FROM hero WHERE is_hot=0;</code></p>
+<p>  <code>SELECT * FROM hero WHERE is_hot!=1;</code></p>
+<p>  <code>SELECT * FROM hero WHERE is_hot&lt;&gt;1;</code></p>
+</li>
+</ul>
+<h3 id="3-3-2-逻辑运算符"><a href="#3-3-2-逻辑运算符" class="headerlink" title="3.3.2 逻辑运算符"></a>3.3.2 逻辑运算符</h3><p><code>and</code> 多个条件同时满足</p>
+<p><code>or</code> 多个条件其中一个满足</p>
+<p><code>not</code> 不满足</p>
+<p>具体操作示例：</p>
+<ul>
+<li><p>查询age大于35且生命值大于2500的英雄(两个条件同时满足)</p>
+<p>  <code>SELECT * FROM hero WHERE age&gt;35 AND life&gt;2500;</code></p>
+</li>
+<li><p>查询age大于35或评分小于10的英雄(两个条件其中一个满足)</p>
+<p>  <code>SELECT * FROM hero WHERE age&gt;35 OR max_score&lt;10;</code></p>
+</li>
+<li><p>查询id是1或3或5的英雄</p>
+<p>  <code>SELECT * FROM hero WHERE id=1 OR id=3 OR id=5;</code></p>
+</li>
+</ul>
+<p>in关键字的语法格式：</p>
+<pre><code>`SELECT 字段名 FROM 表名 WHERE 字段 in (数据1, 数据2...);`</code></pre><p>in里面的每个数据都会作为一次条件，只要满足条件的就会显示。</p>
+<p>具体操作示例：</p>
+<ul>
+<li><p>查询id是1或3或5的英雄</p>
+<p>  <code>SELECT * FROM hero WHERE id in(1,3,5);</code></p>
+</li>
+<li><p>查询id不是1或3或5的英雄</p>
+<p>  <code>SELECT * FROM hero WHERE id not in(1,3,5);</code></p>
+</li>
+</ul>
+<h3 id="3-3-3-范围运算符"><a href="#3-3-3-范围运算符" class="headerlink" title="3.3.3 范围运算符"></a>3.3.3 范围运算符</h3><pre><code>BETWEEN 值1 AND 值2 </code></pre><p>表示从值1到值2范围，包头又包尾。</p>
+<p>比如：</p>
+<pre><code>age BETWEEN 35 AND 70</code></pre><p>相当于： </p>
+<pre><code>age&gt;=35 AND age&lt;=70</code></pre><p>具体操作示例：查询英雄上架日期大于等于2013-01-01小于等于2017-01-01之间的英雄</p>
+<pre><code>SELECT * FROM hero WHERE grounding_date BETWEEN &apos;2013-01-01&apos; AND &apos;2017-01-01&apos;;
+SELECT * FROM hero WHERE grounding_date &gt;=&apos;2013-01-01&apos;  AND grounding_date&lt;=&apos;2017-01-01&apos;;</code></pre><h3 id="3-3-4-模糊查询"><a href="#3-3-4-模糊查询" class="headerlink" title="3.3.4 模糊查询"></a>3.3.4 模糊查询</h3><p>用<code>LIKE</code>表示模糊查询</p>
+<pre><code>SELECT * FROM 表名 WHERE 字段名 LIKE &apos;通配符字符串&apos;;</code></pre><p>这样，满足通配符字符串规则的数据就会显示出来。</p>
+<p>MySQL通配符有两个：</p>
+<p><code>%</code>: 表示0个或多个字符(任意个字符)</p>
+<p><code>_</code>: 表示一个字符</p>
+<p>具体操作示例：</p>
+<ul>
+<li><p>查询姓孙的英雄</p>
+<p>  <code>SELECT * FROM hero WHERE name LIKE &#39;孙%&#39;;</code></p>
+</li>
+<li><p>查询姓名中包含’孙’字的英雄(前后都可以匹配任意个字符)</p>
+<p>  <code>SELECT * FROM hero WHERE name LIKE &#39;%孙%&#39;;</code></p>
+</li>
+<li><p>查询姓孙，且姓名有三个字的英雄</p>
+<p>  <code>SELECT * FROM hero WHERE name LIKE &#39;孙__&#39;;</code></p>
+</li>
+</ul>
+<h3 id="3-3-5-结果排序"><a href="#3-3-5-结果排序" class="headerlink" title="3.3.5 结果排序"></a>3.3.5 结果排序</h3><p>通过<code>ORDER BY</code>子句，可以将查询出的结果进行排序(排序只是显示方式，不会影响数据库中数据的顺序)。</p>
+<p>语法：</p>
+<pre><code>SELECT 字段名 FROM 表名 WHERE 字段=值 ORDER BY 字段名 [ASC|DESC];</code></pre><p><code>ASC</code>: 升序, 默认是升序</p>
+<p><code>DESC</code>: 降序</p>
+<p>1.单列排序：使用一个字段排序</p>
+<p>具体操作示例：查询年龄小于等于35岁的英雄，按照年龄升序排列</p>
+<pre><code>SELECT * FROM hero WHERE age&lt;=35 ORDER BY age ASC;</code></pre><p>2.组合排序：先按第一个字段进行排序，如果第一个字段相同，才按第二个字段进行排序，依次类推。</p>
+<pre><code>SELECT 字段名 FROM 表名 WHERE 字段=值 ORDER BY 字段名1 [ASC|DESC], 字段名2 [ASC|DESC];</code></pre><p>具体操作示例：查询年龄小于等于35岁的英雄，按照年龄升序排列，如果年龄相同按照生命的降序排列</p>
+<pre><code>SELECT * FROM hero WHERE age&lt;=35 ORDER BY age ASC,life DESC;</code></pre><h3 id="3-3-6-聚合函数"><a href="#3-3-6-聚合函数" class="headerlink" title="3.3.6 聚合函数"></a>3.3.6 聚合函数</h3><p>之前我们做的查询都是横向查询，它们都是根据条件一行一行的进行判断，而使用聚合函数查询是纵向查询，它是对一列的值进行计算，然后返回一个结果值。注意，聚合函数会忽略空值NULL。</p>
+<p>五个聚合函数：</p>
+<p><code>count</code>： 统计指定列记录数，记录为NULL的不统计</p>
+<p><code>sum</code>： 计算指定列的数值和，如果不是数值类型，那么计算结果为0</p>
+<p><code>max</code>： 计算指定列的最大值</p>
+<p><code>min</code>： 计算指定列的最小值</p>
+<p><code>avg</code>： 计算指定列的平均值，如果不是数值类型，那么计算结果为0</p>
+<p>聚合函数的使用：写在SQL语句 <code>SELECT</code> 后 <code>字段名</code> 的地方</p>
+<pre><code>SELECT 字段名... FROM 表名;
+SELECT COUNT(age) FROM 表名;</code></pre><p>具体操作示例：</p>
+<ul>
+<li><p>查询英雄总数</p>
+<p>  <code>SELECT COUNT(max_score) FROM hero</code></p>
+<p>  因为对于NULL的记录不会统计，所以使用某一列不够保险。</p>
+<p>  即，只要使用全部字段作为衡量标准就不会有遗漏的错误统计出现：</p>
+<p>  <code>SELECT COUNT(*) FROM hero</code></p>
+</li>
+<li><p>查询年龄大于35的英雄总数</p>
+<p>  <code>SELECT COUNT(*) FROM hero WHERE age&gt;35;</code></p>
+</li>
+<li><p>查询所用英雄的总评分</p>
+<p>  <code>SELECT SUM(max_score) FROM hero</code></p>
+</li>
+<li><p>查询英雄评分的平均分</p>
+<p>  <code>SELECT AVG(max_score) FROM hero</code></p>
+</li>
+<li><p>查询英雄评分的最高分</p>
+<p>  <code>SELECT MAX(max_score) FROM hero</code></p>
+</li>
+<li><p>查询英雄评分的最低分</p>
+<p>  <code>SELECT MIN(max_score) FROM hero</code></p>
+</li>
+</ul>
+<h3 id="3-3-6-分组查询"><a href="#3-3-6-分组查询" class="headerlink" title="3.3.6 分组查询"></a>3.3.6 分组查询</h3><p>分组查询是指使用 <code>GROUP BY</code> 语句对查询信息进行分组，相同数据作为一组:</p>
+<pre><code>SELECT 字段1,字段2... FROM 表名 GROUP BY 分组字段 [HAVING 条件];</code></pre><p>GROUP BY是通过将分组字段结果中相同内容作为一组来进行分组。</p>
+<pre><code>SELECT * FROM hero GROUP BY sex;</code></pre><p>上面这句话会将sex相同的数据作为一组，但是只会返回每组的第一条数据，没有任何意义。</p>
+<p>分组的目的就是为了统计，一般分组会跟聚合函数一起使用。</p>
+<p>分组后聚合函数的作用：不是操作所有数据，而是操作一组数据。例如求男生组生命总和及女生组生命总和的语句如下。</p>
+<pre><code>SELECT SUM(life) FROM hero GROUP BY sex</code></pre><p>注意事项：当我们使用某个字段分组,在查询的时候也需要将这个字段查询出来,否则看不到数据属于哪组的,正确写法如下。</p>
+<pre><code>SELECT SUM(life),sex FROM hero GROUP BY sex</code></pre><p>具体操作示例：</p>
+<ul>
+<li><p>查询年龄小于30岁的人,按性别分组,统计每组的人数</p>
+<p>   1.先查询年龄大于30岁的人；2.再分组；3.最后统计每组的人数。</p>
+<p>  <code>SELECT sex,count(*) FROM hero WHERE age&lt;30 GROUP BY sex;</code></p>
+</li>
+<li><p>查询年龄小于30岁的人,按性别分组,统计每组的人数,并只显示性别人数大于2的数据</p>
+<p>  其中，<code>并只显示性别人数&gt;2的数据</code>属于分组后的条件,对于分组后的条件需要使用having语句。</p>
+<p>  <code>SELECT sex,count(*) FROM hero WHERE age&lt;30 GROUP BY sex HAVING COUNT(*)&gt;2;</code></p>
+<p>  1.先查询年龄大于30岁的人；2.再分组；3.统计每组的人数；4.显示性别人数大于2的数据。</p>
+</li>
+</ul>
+<p><code>having</code>与<code>where</code>的区别（面试题常问）：</p>
+<ul>
+<li><code>having</code>是在分组后对数据进行过滤</li>
+<li><code>where</code>是在分组前对数据进行过滤</li>
+<li><code>having</code>后面可以使用聚合函数</li>
+<li><code>where</code>后面不可以使用聚合函数</li>
+</ul>
+<h3 id="3-3-7-Limit分页"><a href="#3-3-7-Limit分页" class="headerlink" title="3.3.7 Limit分页"></a>3.3.7 Limit分页</h3><p>LIMIT的作用是限制查询记录的条数：</p>
+<pre><code>SELECT *|字段列表 [as 别名] FROM 表名 [WHERE子句] [GROUP BY子句][HAVING子句][ORDER BY子句][LIMIT子句];</code></pre><p>思考：limit子句为什么排在最后？</p>
+<p>因为前面所有的限制条件都处理完了，只剩下显示多少条记录的问题了！</p>
+<p>LIMIT语法格式：</p>
+<pre><code>LIMIT offset,length; 或者 LIMIT length;</code></pre><p><code>offset</code>是指偏移量，可以认为是跳过的记录数量，默认为0；</p>
+<p><code>length</code>是指需要显示的总记录数，即要查几条记录。</p>
+<p>具体操作示例：查询hero表中数据，从第三条开始显示，显示6条，我们可以认为跳过前面2条，取6条数据。</p>
+<pre><code>SELECT * FROM student LIMIT 2,6;</code></pre><p><strong>LIMIT的使用场景</strong>：<strong>分页</strong></p>
+<p>比如我们登录京东，淘宝，返回的商品信息可能有几万条，不是一次全部显示出来。是一页显示固定的条数。</p>
+<p>假设我们每页显示5条记录的方式来分页，SQL语句如下：</p>
+<pre><code>-- 每页显示5条
+-- 第一页： LIMIT 0,5;   跳过0条，显示5条
+-- 第二页： LIMIT 5,5;   跳过5条，显示5条
+-- 第三页： LIMIT 10,5;  跳过10条，显示5条
+SELECT * FROM hero LIMIT 0,5;
+SELECT * FROM hero LIMIT 5,5;
+SELECT * FROM hero LIMIT 10,5;</code></pre><p>注意：</p>
+<p>1.如果第一个参数是0可以简写：</p>
+<pre><code>SELECT * FROM student3 LIMIT 0,5;
+SELECT * FROM student3 LIMIT 5;</code></pre><p>2.<code>LIMIT 10，5;</code> 不够5条，即最后一页有多少显示多少。</p>
+<h1 id="4-数据库约束"><a href="#4-数据库约束" class="headerlink" title="4 数据库约束"></a>4 数据库约束</h1><p>对表中的数据进行进一步的限制，保证数据的正确性、有效性和完整性。</p>
+<p>约束种类：</p>
+<p><code>PRIMARY KEY</code>: 主键</p>
+<p><code>UNIQUE</code>: 唯一</p>
+<p><code>NOT NULL</code>: 非空</p>
+<p><code>DEFAULT</code>: 默认</p>
+<p><code>FOREIGN KEY</code>: 外键</p>
+<h2 id="4-1-主键约束"><a href="#4-1-主键约束" class="headerlink" title="4.1 主键约束"></a>4.1 主键约束</h2><p>###4.1.1 主键的作用###</p>
+<p><strong>用来唯一标识一条记录</strong>，每个表都应该有一个主键，并且每个表只能有一个主键。</p>
+<p>有些记录的 <code>name,age,sex</code> 字段的值都一样时,那么就没法区分这些数据,造成数据库的记录不唯一,这样就不方便管理数据。</p>
+<p>哪个字段应该作为表的主键？</p>
+<p>​通常不用业务字段作为主键，单独给每张表设计一个 <code>id</code> 的字段，把 <code>id</code> 作为主键。主键是给数据库和程序使用的，不是给最终的客户使用的。所以主键有没有含义没有关系，只要不重复，非空就行。</p>
+<p>###4.1.2 创建主键###</p>
+<p>主键：<code>PRIMARY KEY</code></p>
+<p>主键的特点：</p>
+<ul>
+<li>主键必须包含唯一的值</li>
+<li>主键列不能包含NULL值</li>
+</ul>
+<p>创建主键方式：在创建表的时候给字段添加主键，或者直接在Navicat表的设计中点击钥匙。</p>
+<pre><code>字段名 字段类型 PRIMARY KEY</code></pre><p>具体操作示例：</p>
+<p>1.创建英雄表hero1, 包含字段(<code>id, name, age</code>)将 <code>id</code> 做为主键（主键在Navicat中会显示一个小钥匙）</p>
+<pre><code>CREATE TABLE hero1(
+    id int PRIMARY Key,
+    name varchar(20),
+    age int
+);</code></pre><p>2.添加数据</p>
+<pre><code>INSERT INTO hero1 (id, NAME) VALUES (1, &apos;盾山&apos;);
+INSERT INTO hero1 (id, NAME) VALUES (2, &apos;梦琪&apos;);
+INSERT INTO hero1 (id, NAME) VALUES (3, &apos;鲁班&apos;);
+INSERT INTO hero1 (id, NAME) VALUES (4, &apos;白起&apos;);</code></pre><p>3.再插入一个<code>id</code>为1的英雄，即插入重复的主键值</p>
+<pre><code>INSERT INTO hero1 (id, NAME) VALUES (1, &apos;盾山&apos;);
+-- 主键是唯一的不能重复，报错Duplicate entry &apos;1&apos; for key &apos;PRIMARY&apos;</code></pre><p>4.试着插入一个<code>id</code>为NULL的英雄，即插入NULL的主键值</p>
+<pre><code>INSERT INTO hero1 (id, NAME) VALUES (NULL, &apos;蔡文姬&apos;);
+-- 主键是不能为空的，报错Column &apos;id&apos; cannot be null</code></pre><p>###4.1.3 删除主键###</p>
+<pre><code>ALTER TABLE 表名 DROP PRIMARY KEY;</code></pre><p>具体操作示例：删除hero1表的主键</p>
+<pre><code>ALTER TABLE hero1 DROP PRIMARY KEY;</code></pre><p>###4.1.4 主键自增###</p>
+<p>​主键如果让我们自己添加很有可能重复，我们通常希望在每次插入新记录时，数据库自动生成主键字段的值。</p>
+<pre><code>AUTO_INCREMENT
+-- 表示自动增长(字段类型必须是整数类型)</code></pre><p>具体操作示例：</p>
+<p>1.创建英雄表hero2, 包含字段(<code>id, name, age</code>)将 <code>id</code> 做为主键并自动增长</p>
+<pre><code>CREATE TABLE hero2(
+    id int PRIMARY Key AUTO_INCREMENT,
+    name varchar(20),
+    age int
+);</code></pre><p>2.插入数据</p>
+<pre><code>INSERT INTO hero2 (NAME, age) VALUES (&apos;猪八戒&apos;, 22);
+INSERT INTO hero2 (NAME, age) VALUES (&apos;关羽&apos;, 26);
+INSERT INTO hero2 (NAME, age) VALUES (&apos;诸葛亮&apos;, 25);
+INSERT INTO hero2 (NAME, age) VALUES (&apos;孙膑&apos;, 20);
+-- 不维护id字段，主键默认从1开始自动增长</code></pre><p><strong>扩展</strong></p>
+<p>默认地 <code>AUTO_INCREMENT</code> 的开始值是1，如果希望修改起始值,请使用下列SQL语法。</p>
+<pre><code>ALTER TABLE 表名 AUTO_INCREMENT=起始值;</code></pre><p><code>DELETE</code>和<code>TRUNCATE</code>的区别(面试常问)：</p>
+<ul>
+<li><code>DELETE</code> 删除表中的数据，不会摧毁表，不重置AUTO_INCREMENT的值，接着之前的自增</li>
+<li><code>TRUNCATE</code> 摧毁表，重建表，AUTO_INCREMENT重置为1开始自增</li>
+</ul>
+<h2 id="4-2-唯一约束"><a href="#4-2-唯一约束" class="headerlink" title="4.2 唯一约束"></a>4.2 唯一约束</h2><p>在这张表中这个字段的值不能重复，比如身份证号手机号等信息。</p>
+<p>唯一约束的基本语法格式：</p>
+<pre><code>字段名 字段类型 UNIQUE</code></pre><p>具体实现步骤：</p>
+<p>1.创建英雄表hero3, 包含字段(<code>id, name</code>), <code>name</code> 这一列设置唯一约束,不能出现同名的英雄。</p>
+<pre><code>CREATE TABLE hero3 (
+    id INT,
+    NAME VARCHAR(20) UNIQUE
+);</code></pre><p>2.添加英雄</p>
+<pre><code>INSERT INTO hero3 VALUES (1, &apos;貂蝉&apos;);
+INSERT INTO hero3 VALUES (2, &apos;西施&apos;);
+INSERT INTO hero3 VALUES (3, &apos;王昭君&apos;);
+INSERT INTO hero3 VALUES (4, &apos;杨玉环&apos;);
+
+INSERT INTO hero3 VALUES (5, &apos;貂蝉&apos;);
+-- 插入相同的名字出现name重复，报错Duplicate entry &apos;貂蝉&apos; for key &apos;name&apos;
+
+INSERT INTO hero3 VALUES (5, NULL);
+INSERT INTO hero3 VALUES (6, NULL);
+-- 因为null是没有值，所以不存在重复的问题，可以插入多个NULL</code></pre><h2 id="4-3-非空约束"><a href="#4-3-非空约束" class="headerlink" title="4.3 非空约束"></a>4.3 非空约束</h2><p>表示这个字段必须设置值,不能是NULL。</p>
+<p>非空约束的基本语法格式：</p>
+<pre><code>字段名 字段类型 NOT NULL</code></pre><p>具体操作步骤：</p>
+<p>1.创建表英雄表hero4, 包含字段(<code>id,name,gender</code>)其中 <code>name</code> 不能为NULL</p>
+<pre><code>CREATE TABLE hero4 (
+    id INT,
+    NAME VARCHAR(20) UNIQUE NOT NULL,
+    gender CHAR(2)
+);</code></pre><p>2.添加一条完整的记录</p>
+<pre><code>INSERT INTO hero4 VALUES (1, &apos;扁鹊&apos;, &apos;男&apos;);
+INSERT INTO hero4 VALUES (2, &apos;镜&apos;, &apos;男&apos;);
+INSERT INTO hero4 VALUES (3, &apos;恺&apos;, &apos;男&apos;);
+INSERT INTO hero4 VALUES (4, &apos;貂蝉&apos;, &apos;男&apos;);
+
+INSERT INTO hero4 VALUES (5, NULL, &apos;男&apos;);
+-- 姓名不赋值报错: Column &apos;name&apos; cannot be null</code></pre><h2 id="4-4-默认值约束"><a href="#4-4-默认值约束" class="headerlink" title="4.4 默认值约束"></a>4.4 默认值约束</h2><p>往表中添加数据时,如果不指定这个字段的数据,就使用默认值。</p>
+<p>默认值格式：</p>
+<pre><code>字段名 字段类型 DEFAULT 默认值</code></pre><p>具体操作示例：</p>
+<p>1.创建一个英雄表 hero5，包含字段(<code>id,name,location</code>)，默认的定位是射手</p>
+<pre><code>CREATE TABLE hero5 (
+    id INT,
+    NAME VARCHAR(20),
+    location VARCHAR(50) DEFAULT &apos;射手&apos;
+);</code></pre><p>2.添加一条记录,使用默认地址</p>
+<pre><code>INSERT INTO hero5 (id, NAME) VALUES (1, &apos;后羿&apos;);</code></pre><p>3.添加一条记录,不使用默认地址</p>
+<pre><code>INSERT INTO hero5 VALUES (2, &apos;兰陵王&apos;, &apos;刺客&apos;);</code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">BoBoRing</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://boboring.github.io/2021/11/20/My-Post12/">http://boboring.github.io/2021/11/20/My-Post12/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">BoBoRing</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/SQL/">
+                                    <span class="chip bg-color">SQL</span>
+                                </a>
+                            
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                                    <span class="chip bg-color">数据库</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/11/20/My-Post12/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="MySQL8.0数据库的学习">
+                        
+                        <span class="card-title">MySQL8.0数据库的学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="post-category">
+                                    软件开发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SQL/">
+                        <span class="chip bg-color">SQL</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/05/31/My-Post11/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="基于机器学习的Udacity无人驾驶仿真">
+                        
+                        <span class="card-title">基于机器学习的Udacity无人驾驶仿真</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-31
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/" class="post-category">
+                                    计算机视觉
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Python/">
+                        <span class="chip bg-color">Python</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">机器学习</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%A1%B9%E7%9B%AE/">
+                        <span class="chip bg-color">项目</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2020-2021</span>
+            
+            <span id="year">2020</span>
+            <a href="/about" target="_blank">BoBoRing</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/BoBoRing" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:binrong_ai@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://mp.weixin.qq.com/s/jojYVEccfexV2hQ0clZp3g" class="tooltipped" target="_blank" data-tooltip="关注我的公众号" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=807362320" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 807362320" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.cnblogs.com/BoBoRing/" class="tooltipped" target="_blank" data-tooltip="关注我的博客园" data-position="top" data-delay="50">
+        <i class="fab fa-juejin">博</i>
+    </a>
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
