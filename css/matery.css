@@ -34,9 +34,11 @@
 }
 
 body {
-    background-color: #eaeaea;
+    /*background-color: #eaeaea;*/
     margin: 0;
     color: #34495e;
+    cursor:url(/cursor.svg),auto;
+    background: linear-gradient(60deg, #eee 5%, #e0e0e0 );
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -114,8 +116,8 @@ pre {
     width: 12px;
     height: 12px;
     top: 0;
-    left: 12px;
-    margin-top: 12px;
+    left: 14px;
+    margin-top: 10px;
     -webkit-box-shadow: 20px 0 #ffbd2e, 40px 0 #27c93f;
     box-shadow: 20px 0 #f3e157, 40px 0 #5bc796;
 }
@@ -183,11 +185,11 @@ code {
 
 pre code {
     padding-left: 13px;
-    padding-top: 26px;
+    padding-top: 27px;
     padding-bottom: 10px;
     color: #e8eaf6;
     background-color: #333;
-    #fafafa
+    display: block;
 }
 
 /* 键盘 kbd 标签样式 */
