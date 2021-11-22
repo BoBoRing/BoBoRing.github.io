@@ -569,7 +569,7 @@ header .go-back i {
     top: 0;
     content: "";
     background: rgba(0, 0, 0,0.5);
-    opacity: 0.4;
+    opacity: 0.3;
 }
 
 .bg-cover .container {
@@ -589,7 +589,7 @@ header .go-back i {
     font-weight: 300;
     font-size: 1.25rem;
     line-height: 1.4em;
-    color: #eee;
+    color: #fafafa;
 }
 
 .bg-cover .post-title {
