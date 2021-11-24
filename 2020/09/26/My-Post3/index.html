@@ -470,7 +470,8 @@ widget=QtWidgets.QWidget()
 ui=Ui_widge()
 ui.setupUi(widget)
 widget.show()
-sys.exit(app.exec_())</code></pre><p>2.将每个界面的ui文件转换成py文件，并且通过编写函数为控件添加功能，包括获取文本框的输入文本（文本框输入的是字符串，先用eval函数将其转换为列表或数字）、为按钮添加动作连接函数、获取滑块的值显示到文本框中、为实验添加说明框等等。下面为某个界面的<strong>功能函数和界面转换</strong>代码。</p>
+sys.exit(app.exec_())
+</code></pre><p>2.将每个界面的ui文件转换成py文件，并且通过编写函数为控件添加功能，包括获取文本框的输入文本（文本框输入的是字符串，先用eval函数将其转换为列表或数字）、为按钮添加动作连接函数、获取滑块的值显示到文本框中、为实验添加说明框等等。下面为某个界面的<strong>功能函数和界面转换</strong>代码。</p>
 <pre><code>def zhishu(self):
     Form_16 = QtWidgets.QDialog()
     self.ui = Ui_Form16()
@@ -488,7 +489,8 @@ def retranslateUi(self, Form10):
     self.pushButton_1.setText(_translate(&quot;Form10&quot;, &quot;指数信号&quot;))
     self.pushButton_1.clicked.connect(self.zhishu)
     self.pushButton_2.setText(_translate(&quot;Form10&quot;, &quot;返回上一级&quot;))
-    self.pushButton_2.clicked.connect(self.close)</code></pre><p><strong>1.4将matplotlib绘制的图片（信号波形和实验波形）插入到GUI界面</strong></p>
+    self.pushButton_2.clicked.connect(self.close)
+</code></pre><p><strong>1.4将matplotlib绘制的图片（信号波形和实验波形）插入到GUI界面</strong></p>
 <p>1.学习了用<strong>matplotlib</strong>绘图的基本方法，编写代码绘制实现了连续信号（阶跃、方波、正弦波、三角波、锯齿波），离散信号（单位序列、正弦序列、指数序列），信号和序列的相加相乘运算，卷积运算，方波合成与分解运算，不同间隔不同频率采样后的信号，不同滤波效果得到的信号等等。</p>
 <p>2.实现信号后绘制得到了相应图片，通过使用<strong>label控件的setPixmap函数</strong>将matplotlib绘制的图片插入到Qt界面中。</p>
 <p><strong>1.5实现多层界面转换（上一个界面仍然保留)，添加返回上一级按钮</strong></p>
@@ -1108,7 +1110,7 @@ def retranslateUi(self, Form10):
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.6k</span>&nbsp;字
+                class="white-color">38.8k</span>&nbsp;字
             
             
             

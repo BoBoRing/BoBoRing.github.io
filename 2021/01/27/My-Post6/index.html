@@ -592,7 +592,7 @@
 <li>Focal + kappa:Kappa是深度学习中对有序数据进行多类分类的损失函数,把它和Focal损失相加；</li>
 <li>ArcFaceLoss:用于深度人脸识别的附加角边缘损失；</li>
 <li>只在正样本下训练的Soft Dice:使用预测的概率的Soft Dice；</li>
-<li>2.7 * BCE(pred_mask, gt_mask) + 0.9 * DICE(pred_mask, gt_mask) + 0.1 * BCE(pred_empty, gt_empty)：Kaggler使用的自定义损失；</li>
+<li>2.7 <em> BCE(pred_mask, gt_mask) + 0.9 </em> DICE(pred_mask, gt_mask) + 0.1 * BCE(pred_empty, gt_empty)：Kaggler使用的自定义损失；</li>
 <li>nn.SmoothL1Loss()：创建如果绝对元素误差低于1，则使用平方项，否则使用L1项的标准；</li>
 <li>在使用均方误差目标函数的情况下，它似乎比二值交叉熵目标函数更好。</li>
 </ul>
@@ -1274,7 +1274,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.6k</span>&nbsp;字
+                class="white-color">38.8k</span>&nbsp;字
             
             
             

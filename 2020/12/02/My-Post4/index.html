@@ -472,11 +472,14 @@
 <li><strong>图像处理(Image Processing)</strong>。PIL包括了基础的图像处理函数，包括对点的处理，使用众多的卷积核(convolution kernels)做过滤(filter),还有颜色空间的转换。PIL库同样支持图像的大小转换，图像旋转，以及任意的仿射变换。PIL还有一些直方图的方法，允许你展示图像的一些统计特性。这个可以用来实现图像的自动对比度增强，还有全局的统计分析等。</li>
 </ul>
 <h1 id="2-PIL中的Image类及其常用方法"><a href="#2-PIL中的Image类及其常用方法" class="headerlink" title="2 PIL中的Image类及其常用方法"></a>2 PIL中的Image类及其常用方法</h1><p><strong>Image类是PIL中的核心类</strong>，你有很多种方式来对它进行初始化，比如从文件中加载一张图像，处理其他形式的图像，或者是从头创造一张图像等。Image模块操作的<strong>基本属性和方法</strong>都包含于此模块内。如size、model、format等属性；open、save、conver、show等方法。下面是PIL的 Image类中常用的属性和方法:</p>
-<h2 id="2-1-基本属性"><a href="#2-1-基本属性" class="headerlink" title="2.1 基本属性"></a>2.1 基本属性</h2><h3 id="2-1-1-format属性"><a href="#2-1-1-format属性" class="headerlink" title="2.1.1 format属性"></a>2.1.1 format属性</h3><pre><code>im.format ⇒ string or None</code></pre><p>这个属性标识了<strong>图像来源</strong>，如果图像不是从文件读取它的值就是None。</p>
+<h2 id="2-1-基本属性"><a href="#2-1-基本属性" class="headerlink" title="2.1 基本属性"></a>2.1 基本属性</h2><h3 id="2-1-1-format属性"><a href="#2-1-1-format属性" class="headerlink" title="2.1.1 format属性"></a>2.1.1 format属性</h3><pre><code>im.format ⇒ string or None
+</code></pre><p>这个属性标识了<strong>图像来源</strong>，如果图像不是从文件读取它的值就是None。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 print(im.format) #打印出格式信息
-im.show()</code></pre><h3 id="2-1-2-mode属性"><a href="#2-1-2-mode属性" class="headerlink" title="2.1.2 mode属性"></a>2.1.2 mode属性</h3><pre><code>im.mode ⇒ string</code></pre><p><strong>图像的模式</strong>，常见的mode 有 “L” (luminance) 表示灰度图像，“RGB”表示真彩色图像，和 “CMYK” 表示出版图像，表明图像所使用像素格式。如下为常见的mode描述：</p>
+im.show()
+</code></pre><h3 id="2-1-2-mode属性"><a href="#2-1-2-mode属性" class="headerlink" title="2.1.2 mode属性"></a>2.1.2 mode属性</h3><pre><code>im.mode ⇒ string
+</code></pre><p><strong>图像的模式</strong>，常见的mode 有 “L” (luminance) 表示灰度图像，“RGB”表示真彩色图像，和 “CMYK” 表示出版图像，表明图像所使用像素格式。如下为常见的mode描述：</p>
 <p>“1”表示1位像素，黑白图像，存成8位像素</p>
 <p>“L”表示8位像素，黑白图像</p>
 <p>“P”表示9位像素，使用调色板映射到任何其他模式</p>
@@ -490,39 +493,51 @@ im.show()</code></pre><h3 id="2-1-2-mode属性"><a href="#2-1-2-mode属性" clas
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 print(im.mode) #打印模式属性
-im.show()</code></pre><h3 id="2-1-3-size属性"><a href="#2-1-3-size属性" class="headerlink" title="2.1.3 size属性"></a>2.1.3 size属性</h3><pre><code>im.size ⇒ (width, height)</code></pre><p><strong>图像的尺寸</strong>，按照像素数计算，它的返回值为宽度和高度的二元组（width, height）。</p>
+im.show()
+</code></pre><h3 id="2-1-3-size属性"><a href="#2-1-3-size属性" class="headerlink" title="2.1.3 size属性"></a>2.1.3 size属性</h3><pre><code>im.size ⇒ (width, height)
+</code></pre><p><strong>图像的尺寸</strong>，按照像素数计算，它的返回值为宽度和高度的二元组（width, height）。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 print(im.size) ## 打印图像尺寸
-im.show()</code></pre><p>命令行输出图片的尺寸为426×306。</p>
-<h3 id="2-1-4-palette属性"><a href="#2-1-4-palette属性" class="headerlink" title="2.1.4 palette属性"></a>2.1.4 palette属性</h3><pre><code>im.palette ⇒ palette or None</code></pre><p><strong>颜色调色板表格</strong>。如果图像的模式是“P”，则返回Image  Palette类的实例；否则，将为None。</p>
+im.show()
+</code></pre><p>命令行输出图片的尺寸为426×306。</p>
+<h3 id="2-1-4-palette属性"><a href="#2-1-4-palette属性" class="headerlink" title="2.1.4 palette属性"></a>2.1.4 palette属性</h3><pre><code>im.palette ⇒ palette or None
+</code></pre><p><strong>颜色调色板表格</strong>。如果图像的模式是“P”，则返回Image  Palette类的实例；否则，将为None。</p>
 <p>如下为对非“P”模式下的图像进行palette信息显示：</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
-print(im.palette)</code></pre><p>返回值为none，对图像进行convert操作，转换成“P”模式：</p>
+print(im.palette)
+</code></pre><p>返回值为none，对图像进行convert操作，转换成“P”模式：</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 new_im = im.convert(&#39;P&#39;)
 print(new_im.mode)
-print(new_im.palette)</code></pre><p>返回值为ImagePalette类的实例。</p>
-<h3 id="2-1-5-info属性"><a href="#2-1-5-info属性" class="headerlink" title="2.1.5 info属性"></a>2.1.5 info属性</h3><pre><code>im.info ⇒ dictionary</code></pre><p><strong>存储图像相关数据的字典</strong>。文件句柄使用该字典传递从文件中读取的各种非图像信息。大多数方法在返回新的图像时都会忽略这个字典；因为字典中的键并非标准化的，对于一个方法，它不知道自己的操作如何影响这个字典。如果用户需要这些信息，需要在方法open()返回时保存这个字典。</p>
+print(new_im.palette)
+</code></pre><p>返回值为ImagePalette类的实例。</p>
+<h3 id="2-1-5-info属性"><a href="#2-1-5-info属性" class="headerlink" title="2.1.5 info属性"></a>2.1.5 info属性</h3><pre><code>im.info ⇒ dictionary
+</code></pre><p><strong>存储图像相关数据的字典</strong>。文件句柄使用该字典传递从文件中读取的各种非图像信息。大多数方法在返回新的图像时都会忽略这个字典；因为字典中的键并非标准化的，对于一个方法，它不知道自己的操作如何影响这个字典。如果用户需要这些信息，需要在方法open()返回时保存这个字典。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
-print(im.info)</code></pre><h2 id="2-2-基本方法"><a href="#2-2-基本方法" class="headerlink" title="2.2 基本方法"></a>2.2 基本方法</h2><h3 id="2-2-1-open方法"><a href="#2-2-1-open方法" class="headerlink" title="2.2.1 open方法"></a>2.2.1 open方法</h3><pre><code>Image.open(file) ⇒ image 
-Image.open(file, mode) ⇒ image</code></pre><p>要从文件<strong>加载图像</strong>，使用open()函数， 在Image模块代码如下:</p>
+print(im.info)
+</code></pre><h2 id="2-2-基本方法"><a href="#2-2-基本方法" class="headerlink" title="2.2 基本方法"></a>2.2 基本方法</h2><h3 id="2-2-1-open方法"><a href="#2-2-1-open方法" class="headerlink" title="2.2.1 open方法"></a>2.2.1 open方法</h3><pre><code>Image.open(file) ⇒ image 
+Image.open(file, mode) ⇒ image
+</code></pre><p>要从文件<strong>加载图像</strong>，使用open()函数， 在Image模块代码如下:</p>
 <pre><code>from PIL import Image           #调用库，包含图像类
 im = Image.open(&quot;3d.jpg&quot;)       #文件存在的路径，如果没有路径就是当前目录下文件
-im.show()</code></pre><p>需要知道的是在win的环境下im.show的方式为win自带的图像显示应用，打开并确认给定的图像文件。</p>
+im.show()
+</code></pre><p>需要知道的是在win的环境下im.show的方式为win自带的图像显示应用，打开并确认给定的图像文件。</p>
 <p>该函数只会读文件头，而真实的图像数据直到试图处理该数据时才会从文件读取（调用load()方法将强行加载图像数据）。如果变量mode被设置，那必须是“r”。用户可以使用一个字符串（表示文件名称的字符串）或者文件对象作为变量file的值。文件对象必须实现read()，seek()和tell()方法，并且以二进制模式打开。</p>
 <h3 id="2-2-2-save方法"><a href="#2-2-2-save方法" class="headerlink" title="2.2.2 save方法"></a>2.2.2 save方法</h3><pre><code>im.save(outfile,options…)
-im.save(outfile, format, options…)</code></pre><p>用Image类的save()方法<strong>保存文件</strong>，使用给定的文件名保存图像。如果变量format缺省，则从文件名称的扩展名判断文件的格式，该方法返回为空。关键字options为文件编写器提供一些额外的指令。如果编写器不能识别某个选项，它将忽略它。用户可以使用文件对象代替文件名称。在这种情况下，用户必须指定文件格式。文件对象必须实现seek()、tell()和write()方法，且其以二进制模式打开。</p>
+im.save(outfile, format, options…)
+</code></pre><p>用Image类的save()方法<strong>保存文件</strong>，使用给定的文件名保存图像。如果变量format缺省，则从文件名称的扩展名判断文件的格式，该方法返回为空。关键字options为文件编写器提供一些额外的指令。如果编写器不能识别某个选项，它将忽略它。用户可以使用文件对象代替文件名称。在这种情况下，用户必须指定文件格式。文件对象必须实现seek()、tell()和write()方法，且其以二进制模式打开。</p>
 <p>如果方法save()因为某些原因失败，这个方法将产生一个异常（通常为IOERROR异常）。如果发生了异常，该方法也有可能已经创建了文件，并向文件写入了一些数据。如果需要的话，用户的应用程序可以删除这个不完整的文件。</p>
 <h3 id="2-2-3-jpg转换成png方法"><a href="#2-2-3-jpg转换成png方法" class="headerlink" title="2.2.3 jpg转换成png方法"></a>2.2.3 jpg转换成png方法</h3><pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 print(im)
 im.save(&quot;3d.png&quot;)  #将&quot;3d.jpg&quot;保存为3d.png&quot;
 im = Image.open(&quot;3d.png&quot;)  #打开新的png图片
-print(im.format, im.size, im.mode)</code></pre><h3 id="2-2-4-convert方法"><a href="#2-2-4-convert方法" class="headerlink" title="2.2.4 convert方法"></a>2.2.4 convert方法</h3><p>①<code>im.convert(mode)⇒ image</code></p>
+print(im.format, im.size, im.mode)
+</code></pre><h3 id="2-2-4-convert方法"><a href="#2-2-4-convert方法" class="headerlink" title="2.2.4 convert方法"></a>2.2.4 convert方法</h3><p>①<code>im.convert(mode)⇒ image</code></p>
 <p>将当前图像<strong>转换为其他模式</strong>，并且返回新的图像。当从一个调色板图像转换时，这个方法通过这个调色板来转换像素。如果不对变量mode赋值，该方法将会选择一种模式，在没有调色板的情况下，使得图像和调色板中的所有信息都可以被表示出来。</p>
 <p>当从一个颜色图像转换为黑白图像时，PIL库使用ITU-R601-2 luma转换公式：<code>L = R * 299/1000 + G * 587/1000 + B * 114/1000</code></p>
 <p>当转换为2位图像（模式“1”）时，源图像首先被转换为黑白图像。结果数据中大于127的值被设置为白色，其他的设置为黑色；这样图像会出现抖动。如果要使用其他阈值，更改阈值127，可以使用方法point()。为了去掉图像抖动现象，可以使用dither选项。</p>
@@ -530,7 +545,8 @@ print(im.format, im.size, im.mode)</code></pre><h3 id="2-2-4-convert方法"><a h
 im = Image.open(&quot;3d.jpg&quot;)
 new_im = im.convert(&#39;P&#39;)
 print(new_im.mode)
-new_im.show()</code></pre><p>②P模式：<code>im.convert(“P”,**options) ⇒ image</code></p>
+new_im.show()
+</code></pre><p>②P模式：<code>im.convert(“P”,**options) ⇒ image</code></p>
 <p>这个与第一个方法定义一样，但是当“RGB”图像转换为8位调色板图像时能更好的处理。可供选择的选项为：</p>
 <p><strong>Dither=</strong>. 控制颜色抖动。默认是FLOYDSTEINBERG，与邻近的像素一起承担错误。不使能该功能，则赋值为NONE。</p>
 <p><strong>palette=</strong>. 控制调色板的产生。默认是WEB，这是标准的216色的“web<br>palette”。要使用优化的调色板，则赋值为adaptive。</p>
@@ -545,31 +561,41 @@ rgb2xyz = (0.412453,0.357580, 0.180423, 0,
   0.019334,0.119193, 0.950227, 0 )
 new_im = im.convert(&quot;L&quot;, rgb2xyz)
 print(new_im.mode)
-new_im.show()</code></pre><h3 id="2-2-5-new方法"><a href="#2-2-5-new方法" class="headerlink" title="2.2.5 new方法"></a>2.2.5 new方法</h3><pre><code>Image.new(mode,size) ⇒ image
-Image.new(mode, size,color) ⇒ image</code></pre><p>使用给定的变量mode和size<strong>生成新的图像</strong>。size是给定的宽/高二元组，这是按照像素数来计算的。对于单通道图像，变量color只给定一个值；对于多通道图像，变量color给定一个元组（每个通道对应一个值）。</p>
+new_im.show()
+</code></pre><h3 id="2-2-5-new方法"><a href="#2-2-5-new方法" class="headerlink" title="2.2.5 new方法"></a>2.2.5 new方法</h3><pre><code>Image.new(mode,size) ⇒ image
+Image.new(mode, size,color) ⇒ image
+</code></pre><p>使用给定的变量mode和size<strong>生成新的图像</strong>。size是给定的宽/高二元组，这是按照像素数来计算的。对于单通道图像，变量color只给定一个值；对于多通道图像，变量color给定一个元组（每个通道对应一个值）。</p>
 <p>在版本1.1.4及其之后，用户也可以用颜色的名称，比如给变量color赋值为“red”。如果没有对变量color赋值，图像内容将会被全部赋值为0（为黑色）。如果变量color是空，图像将不会被初始化，即图像的内容全为0，这对向该图像复制或绘制某些内容是有用的。</p>
 <p>下面将图像设置为128x128大小的红色图像：</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 n_im= Image.new(&quot;RGB&quot;, (128, 128), &quot;#FF0000&quot;)
-n_im.show()</code></pre><p>生成的图像为128x128大小的黑色图像，因为变量color不赋值的话，图像内容被设置为0，即黑色：</p>
+n_im.show()
+</code></pre><p>生成的图像为128x128大小的黑色图像，因为变量color不赋值的话，图像内容被设置为0，即黑色：</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 n_im= Image.new(&quot;RGB&quot;, (128, 128))
-n_im.show()</code></pre><p>生成的图像为128x128大小的绿色图像：</p>
+n_im.show()
+</code></pre><p>生成的图像为128x128大小的绿色图像：</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 n_im= Image.new(&quot;RGB&quot;, (128, 128),&quot;green&quot;)
-n_im.show()</code></pre><h3 id="2-2-6-copy方法"><a href="#2-2-6-copy方法" class="headerlink" title="2.2.6 copy方法"></a>2.2.6 copy方法</h3><pre><code>im.copy() ⇒ image</code></pre><p><strong>拷贝这个图像</strong>。如果用户想粘贴一些数据到这张图，可以使用这个方法，但是原始图像不会受到影响。</p>
+n_im.show()
+</code></pre><h3 id="2-2-6-copy方法"><a href="#2-2-6-copy方法" class="headerlink" title="2.2.6 copy方法"></a>2.2.6 copy方法</h3><pre><code>im.copy() ⇒ image
+</code></pre><p><strong>拷贝这个图像</strong>。如果用户想粘贴一些数据到这张图，可以使用这个方法，但是原始图像不会受到影响。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
-im_copy = im.copy()</code></pre><p>图像im_copy和im完全一样。</p>
-<h3 id="2-2-7-crop方法"><a href="#2-2-7-crop方法" class="headerlink" title="2.2.7 crop方法"></a>2.2.7 crop方法</h3><pre><code>im.crop(box) ⇒ image</code></pre><p>从当前的图像中返回一个<strong>矩形区域</strong>的拷贝。变量box是一个四元组，定义了左、上、右和下的像素坐标。用来表示在原始图像中截取的位置坐标，如box(100,100,200,200)就表示在原始图像中以左上角为坐标原点，截取一个100*100（像素为单位）的图像，对源图像的改变可能或者可能不体现在裁减下来的图像中。为了获取一个分离的拷贝，对裁剪的拷贝调用方法load()。</p>
+im_copy = im.copy()
+</code></pre><p>图像im_copy和im完全一样。</p>
+<h3 id="2-2-7-crop方法"><a href="#2-2-7-crop方法" class="headerlink" title="2.2.7 crop方法"></a>2.2.7 crop方法</h3><pre><code>im.crop(box) ⇒ image
+</code></pre><p>从当前的图像中返回一个<strong>矩形区域</strong>的拷贝。变量box是一个四元组，定义了左、上、右和下的像素坐标。用来表示在原始图像中截取的位置坐标，如box(100,100,200,200)就表示在原始图像中以左上角为坐标原点，截取一个100*100（像素为单位）的图像，对源图像的改变可能或者可能不体现在裁减下来的图像中。为了获取一个分离的拷贝，对裁剪的拷贝调用方法load()。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 box = (20, 30, 300, 200)  #确定拷贝区域大小
 region = im.crop(box)  #将im表示的图片对象拷贝到region中，大小为box
-region.show()</code></pre><h3 id="2-2-8-paste方法"><a href="#2-2-8-paste方法" class="headerlink" title="2.2.8 paste方法"></a>2.2.8 paste方法</h3><pre><code>im.paste(image,box)</code></pre><p>将一张图<strong>粘贴</strong>到另一张图像上。变量box或者是一个给定左上角的2元组，或者是定义了左，上，右和下像素坐标的4元组，或者为空（与（0，0）一样）。如果给定4元组，被粘贴的图像的尺寸必须与区域尺寸一样。如果模式不匹配，被粘贴的图像将被转换为当前图像的模式。</p>
+region.show()
+</code></pre><h3 id="2-2-8-paste方法"><a href="#2-2-8-paste方法" class="headerlink" title="2.2.8 paste方法"></a>2.2.8 paste方法</h3><pre><code>im.paste(image,box)
+</code></pre><p>将一张图<strong>粘贴</strong>到另一张图像上。变量box或者是一个给定左上角的2元组，或者是定义了左，上，右和下像素坐标的4元组，或者为空（与（0，0）一样）。如果给定4元组，被粘贴的图像的尺寸必须与区域尺寸一样。如果模式不匹配，被粘贴的图像将被转换为当前图像的模式。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 box=[0,0,100,100]
@@ -577,7 +603,9 @@ im_crop = im.crop(box)
 print(im_crop.size,im_crop.mode)
 im.paste(im_crop, (100,100)) #(100,100,0,0)
 im.paste(im_crop, (400,400,500,500))
-im.show()</code></pre><h3 id="2-2-9-filter方法"><a href="#2-2-9-filter方法" class="headerlink" title="2.2.9 filter方法"></a>2.2.9 filter方法</h3><pre><code>im.filter(filter) ⇒ image</code></pre><p>返回一个使用给定<strong>滤波器处理</strong>过的图像的拷贝。具体参考图像滤波在ImageFilter 模块的应用，在该模块中，预先定义了很多增强滤波器，可以通过filter( )函数使用，预定义滤波器包括：BLUR、CONTOUR、DETaiL、EDGE_ENHANCE、EDGE_ENHANCE_MORE、EMBOSS、FIND_EDGES、SMOOTH、SMOOTH_MORE、SHARPEN。其中BLUR就是均值滤波，CONTOUR找轮廓，FIND_EDGES边缘检测，使用该模块时，需先导入。</p>
+im.show()
+</code></pre><h3 id="2-2-9-filter方法"><a href="#2-2-9-filter方法" class="headerlink" title="2.2.9 filter方法"></a>2.2.9 filter方法</h3><pre><code>im.filter(filter) ⇒ image
+</code></pre><p>返回一个使用给定<strong>滤波器处理</strong>过的图像的拷贝。具体参考图像滤波在ImageFilter 模块的应用，在该模块中，预先定义了很多增强滤波器，可以通过filter( )函数使用，预定义滤波器包括：BLUR、CONTOUR、DETaiL、EDGE_ENHANCE、EDGE_ENHANCE_MORE、EMBOSS、FIND_EDGES、SMOOTH、SMOOTH_MORE、SHARPEN。其中BLUR就是均值滤波，CONTOUR找轮廓，FIND_EDGES边缘检测，使用该模块时，需先导入。</p>
 <pre><code>from PIL import Image
 from PIL import ImageFilter #调取ImageFilter
 imgF = Image.open(&quot;3d.jpg&quot;)
@@ -587,7 +615,9 @@ edgeF = imgF.filter(ImageFilter.FIND_EDGES) #边缘检测
 imgF.show()
 bluF.show()
 conF.show()
-edgeF.show()</code></pre><h3 id="2-2-10-blend方法"><a href="#2-2-10-blend方法" class="headerlink" title="2.2.10 blend方法"></a>2.2.10 blend方法</h3><pre><code>Image.blend(image1,image2, alpha) ⇒ image</code></pre><p>使用给定的两张图像及透明度变量alpha，<strong>插值出一张新的图像</strong>。这两张图像必须有一样的尺寸和模式。</p>
+edgeF.show()
+</code></pre><h3 id="2-2-10-blend方法"><a href="#2-2-10-blend方法" class="headerlink" title="2.2.10 blend方法"></a>2.2.10 blend方法</h3><pre><code>Image.blend(image1,image2, alpha) ⇒ image
+</code></pre><p>使用给定的两张图像及透明度变量alpha，<strong>插值出一张新的图像</strong>。这两张图像必须有一样的尺寸和模式。</p>
 <p>合成公式为：<code>out = image1 (1.0 - alpha) + image2  alpha</code></p>
 <p>若变量alpha为0.0，返回第一张图像的拷贝。若变量alpha为1.0，将返回第二张图像的拷贝。对变量alpha的值无限制。</p>
 <pre><code>from PIL import Image
@@ -596,14 +626,18 @@ im2 = Image.open(&quot;3dd.jpg&quot;)
 print(im1.mode,im1.size)
 print(im2.mode,im2.size)
 im = Image.blend(im1, im2, 0.40)
-im.show()</code></pre><p>需保证两张图像的模式和大小是一致的。im1按照40%的透明度，im2按照60%的透明度，合成为一张。</p>
-<h3 id="2-2-11-split方法"><a href="#2-2-11-split方法" class="headerlink" title="2.2.11 split方法"></a>2.2.11 split方法</h3><pre><code>im.split() ⇒ sequence</code></pre><p>返回当前图像<strong>各个通道组成的一个元组</strong>。例如，分离一个“RGB”图像将产生三个新的图像，分别对应原始图像的每个通道（红，绿，蓝）。</p>
+im.show()
+</code></pre><p>需保证两张图像的模式和大小是一致的。im1按照40%的透明度，im2按照60%的透明度，合成为一张。</p>
+<h3 id="2-2-11-split方法"><a href="#2-2-11-split方法" class="headerlink" title="2.2.11 split方法"></a>2.2.11 split方法</h3><pre><code>im.split() ⇒ sequence
+</code></pre><p>返回当前图像<strong>各个通道组成的一个元组</strong>。例如，分离一个“RGB”图像将产生三个新的图像，分别对应原始图像的每个通道（红，绿，蓝）。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 r,g,b = im.split()
 print(r.mode)
 print(r.size)
-print(im.size)</code></pre><h3 id="2-2-12-composite方法"><a href="#2-2-12-composite方法" class="headerlink" title="2.2.12 composite方法"></a>2.2.12 composite方法</h3><pre><code>Image.composite(image1,image2, mask) ⇒ image</code></pre><p><strong>复合类</strong>使用给定的两张图像及mask图像作为透明度，插值出一张新的图像。变量mask图像的模式可以为“1”，“L”或者“RGBA”。所有图像必须有相同的尺寸。</p>
+print(im.size)
+</code></pre><h3 id="2-2-12-composite方法"><a href="#2-2-12-composite方法" class="headerlink" title="2.2.12 composite方法"></a>2.2.12 composite方法</h3><pre><code>Image.composite(image1,image2, mask) ⇒ image
+</code></pre><p><strong>复合类</strong>使用给定的两张图像及mask图像作为透明度，插值出一张新的图像。变量mask图像的模式可以为“1”，“L”或者“RGBA”。所有图像必须有相同的尺寸。</p>
 <pre><code>from PIL import Image
 im1 = Image.open(&quot;3d.jpg&quot;)
 im2 = Image.open(&quot;3dd.jpg&quot;)
@@ -612,8 +646,10 @@ print(b.mode)
 print(im1.mode,im1.size)
 print(im2.mode,im2.size)
 im = Image.composite(im1,im2,b)
-im.show()</code></pre><p>b.mode为”L”，两图尺寸一致。</p>
-<h3 id="2-2-13-eval方法"><a href="#2-2-13-eval方法" class="headerlink" title="2.2.13 eval方法"></a>2.2.13 eval方法</h3><pre><code>Image.eval(image,function) ⇒ image</code></pre><p>使用变量function对应的函数（该函数应该有一个参数）<strong>处理变量image所代表图像中的每一个像素点</strong>。如果变量image所代表图像有多个通道，那变量function对应的函数作用于每一个通道。注意：变量function对每个像素只处理一次，所以不能使用随机组件和其他生成器。</p>
+im.show()
+</code></pre><p>b.mode为”L”，两图尺寸一致。</p>
+<h3 id="2-2-13-eval方法"><a href="#2-2-13-eval方法" class="headerlink" title="2.2.13 eval方法"></a>2.2.13 eval方法</h3><pre><code>Image.eval(image,function) ⇒ image
+</code></pre><p>使用变量function对应的函数（该函数应该有一个参数）<strong>处理变量image所代表图像中的每一个像素点</strong>。如果变量image所代表图像有多个通道，那变量function对应的函数作用于每一个通道。注意：变量function对每个像素只处理一次，所以不能使用随机组件和其他生成器。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 def fun1(x):
@@ -623,7 +659,9 @@ def fun2(y):
 im1_eval = Image.eval(im, fun1)
 im2_eval = Image.eval(im, fun2)
 im1_eval.show()
-im2_eval.show()</code></pre><h3 id="2-2-14-merge方法"><a href="#2-2-14-merge方法" class="headerlink" title="2.2.14 merge方法"></a>2.2.14 merge方法</h3><pre><code>Image.merge(mode,bands) ⇒ image</code></pre><p><strong>合并类</strong>使用一些单通道图像，创建一个新的图像。变量bands为一个图像的元组或者列表，每个通道的模式由变量mode描述。所有通道必须有相同的尺寸。<br>变量mode与变量bands的关系：<code>len(ImageMode.getmode(mode).bands)= len(bands)</code></p>
+im2_eval.show()
+</code></pre><h3 id="2-2-14-merge方法"><a href="#2-2-14-merge方法" class="headerlink" title="2.2.14 merge方法"></a>2.2.14 merge方法</h3><pre><code>Image.merge(mode,bands) ⇒ image
+</code></pre><p><strong>合并类</strong>使用一些单通道图像，创建一个新的图像。变量bands为一个图像的元组或者列表，每个通道的模式由变量mode描述。所有通道必须有相同的尺寸。<br>变量mode与变量bands的关系：<code>len(ImageMode.getmode(mode).bands)= len(bands)</code></p>
 <pre><code>from PIL import Image
 im1 = Image.open(&quot;3d.jpg&quot;)
 im2 = Image.open(&quot;3dd.jpg&quot;)
@@ -634,37 +672,50 @@ print(r2.mode,r2.size,g2.mode,g2.size)
 new_im=[r1,g2,b2]
 print(len(new_im))
 im_merge = Image.merge(&quot;RGB&quot;,new_im)
-im_merge.show()</code></pre><h3 id="2-2-15-draft方法"><a href="#2-2-15-draft方法" class="headerlink" title="2.2.15 draft方法"></a>2.2.15 draft方法</h3><pre><code>im.draft(mode,size)</code></pre><p>代码示例如下：</p>
+im_merge.show()
+</code></pre><h3 id="2-2-15-draft方法"><a href="#2-2-15-draft方法" class="headerlink" title="2.2.15 draft方法"></a>2.2.15 draft方法</h3><pre><code>im.draft(mode,size)
+</code></pre><p>代码示例如下：</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 print(im.size,im.mode)
 new_im = im.draft(&quot;L&quot;, (200,200))
 print(new_im.size,new_im.mode)
-new_im.show()</code></pre><p>关键信息显示。</p>
-<h3 id="2-2-16-getbands方法"><a href="#2-2-16-getbands方法" class="headerlink" title="2.2.16 getbands方法"></a>2.2.16 getbands方法</h3><pre><code>im.getbands()⇒ tuple of strings</code></pre><p>返回包括<strong>每个通道名称的元组</strong>。例如，对于RGB图像将返回（“R”,“G”,“B”）。</p>
+new_im.show()
+</code></pre><p>关键信息显示。</p>
+<h3 id="2-2-16-getbands方法"><a href="#2-2-16-getbands方法" class="headerlink" title="2.2.16 getbands方法"></a>2.2.16 getbands方法</h3><pre><code>im.getbands()⇒ tuple of strings
+</code></pre><p>返回包括<strong>每个通道名称的元组</strong>。例如，对于RGB图像将返回（“R”,“G”,“B”）。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
-print(im.getbands())</code></pre><h3 id="2-2-17-getbbox方法"><a href="#2-2-17-getbbox方法" class="headerlink" title="2.2.17 getbbox方法"></a>2.2.17 getbbox方法</h3><pre><code>im.getbbox() ⇒ 4-tuple or None</code></pre><p>计算<strong>图像非零区域的包围盒</strong>。这个包围盒是一个4元组，定义了左、上、右和下像素坐标。如果图像是空的，这个方法将返回空。</p>
+print(im.getbands())
+</code></pre><h3 id="2-2-17-getbbox方法"><a href="#2-2-17-getbbox方法" class="headerlink" title="2.2.17 getbbox方法"></a>2.2.17 getbbox方法</h3><pre><code>im.getbbox() ⇒ 4-tuple or None
+</code></pre><p>计算<strong>图像非零区域的包围盒</strong>。这个包围盒是一个4元组，定义了左、上、右和下像素坐标。如果图像是空的，这个方法将返回空。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
-print(im.getbbox())</code></pre><h3 id="2-2-18-getdata方法"><a href="#2-2-18-getdata方法" class="headerlink" title="2.2.18 getdata方法"></a>2.2.18 getdata方法</h3><pre><code>im.getdata() ⇒ sequence</code></pre><p>以包含像素值的sequence对象形式返回<strong>图像的内容</strong>。这个sequence对象是扁平的，以便第一行的值直接跟在第零行的值后面，等等。这个方法返回的sequence对象是PIL内部数据类型，它只支持某些sequence操作，包括迭代和基础sequence访问。使用<code>list(im.getdata())</code>，将它转换为普通的sequence。Sequence对象的每一个元素对应一个像素点的R、G和B三个值。</p>
+print(im.getbbox())
+</code></pre><h3 id="2-2-18-getdata方法"><a href="#2-2-18-getdata方法" class="headerlink" title="2.2.18 getdata方法"></a>2.2.18 getdata方法</h3><pre><code>im.getdata() ⇒ sequence
+</code></pre><p>以包含像素值的sequence对象形式返回<strong>图像的内容</strong>。这个sequence对象是扁平的，以便第一行的值直接跟在第零行的值后面，等等。这个方法返回的sequence对象是PIL内部数据类型，它只支持某些sequence操作，包括迭代和基础sequence访问。使用<code>list(im.getdata())</code>，将它转换为普通的sequence。Sequence对象的每一个元素对应一个像素点的R、G和B三个值。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 sequ = im.getdata()
 sequ0 = list(sequ)
 print(sequ0[0])
 print(sequ0[1])
-print(sequ0[2])</code></pre><h3 id="2-2-19-getextrema方法"><a href="#2-2-19-getextrema方法" class="headerlink" title="2.2.19 getextrema方法"></a>2.2.19 getextrema方法</h3><pre><code>im.getextrema() ⇒ 2-tuple</code></pre><p>返回一个2元组，包括该图像中的<strong>最小和最大值</strong></p>
+print(sequ0[2])
+</code></pre><h3 id="2-2-19-getextrema方法"><a href="#2-2-19-getextrema方法" class="headerlink" title="2.2.19 getextrema方法"></a>2.2.19 getextrema方法</h3><pre><code>im.getextrema() ⇒ 2-tuple
+</code></pre><p>返回一个2元组，包括该图像中的<strong>最小和最大值</strong></p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
-print(im.getextrema())</code></pre><p>该方法返回了R/G/B三个通道的最小和最大值的2元组。</p>
-<h3 id="2-2-20-getpixel方法"><a href="#2-2-20-getpixel方法" class="headerlink" title="2.2.20 getpixel方法"></a>2.2.20 getpixel方法</h3><pre><code>im.getpixel(xy) ⇒ value or tuple</code></pre><p>返回<strong>给定位置的像素值</strong>。如果图像为多通道，则返回一个元组。该方法执行比较慢；如果用户需要使用python处理图像中较大部分数据，可以使用像素访问对象（见load），或者方法getdata()。</p>
+print(im.getextrema())
+</code></pre><p>该方法返回了R/G/B三个通道的最小和最大值的2元组。</p>
+<h3 id="2-2-20-getpixel方法"><a href="#2-2-20-getpixel方法" class="headerlink" title="2.2.20 getpixel方法"></a>2.2.20 getpixel方法</h3><pre><code>im.getpixel(xy) ⇒ value or tuple
+</code></pre><p>返回<strong>给定位置的像素值</strong>。如果图像为多通道，则返回一个元组。该方法执行比较慢；如果用户需要使用python处理图像中较大部分数据，可以使用像素访问对象（见load），或者方法getdata()。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 print(im.getpixel((0,0)))
 print(im.getpixel((4,0)))
 r,g,b = im.split()
-print(b.getpixel((11,8)))  </code></pre><h3 id="2-2-21-histogram方法"><a href="#2-2-21-histogram方法" class="headerlink" title="2.2.21 histogram方法"></a>2.2.21 histogram方法</h3><p>①<code>im.histogram()⇒ list</code></p>
+print(b.getpixel((11,8)))  
+</code></pre><h3 id="2-2-21-histogram方法"><a href="#2-2-21-histogram方法" class="headerlink" title="2.2.21 histogram方法"></a>2.2.21 histogram方法</h3><p>①<code>im.histogram()⇒ list</code></p>
 <p>返回一个<strong>图像的直方图</strong>。这个直方图是关于像素数量的list，图像中的每个象素值对应一个成员。如果图像有多个通道，所有通道的直方图会连接起来（例如，“RGB”图像的直方图有768个值)。二值图像（模式为“1”）当作灰度图像（模式为“L”）处理。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
@@ -672,7 +723,8 @@ imhis = im.histogram()
 print(len(imhis))
 print(imhis[0])
 print(imhis[150])
-print(imhis[300])</code></pre><p>②<code>im.histogram(mask)⇒ list</code></p>
+print(imhis[300])
+</code></pre><p>②<code>im.histogram(mask)⇒ list</code></p>
 <p>返回图像中模板图像<strong>非零地方的直方图</strong>。模板图像与处理图像的尺寸必须相同，并且要么是二值图像（模式为“1”），要么为灰度图像（模式为“L”）。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
@@ -682,13 +734,17 @@ print(r.mode)
 print(len(imhis))
 print(imhis[0])
 print(imhis[150])
-print(imhis[300])</code></pre><h3 id="2-2-22-load方法"><a href="#2-2-22-load方法" class="headerlink" title="2.2.22 load方法###"></a>2.2.22 load方法###</h3><pre><code>im.load()</code></pre><p>为图像<strong>分配内存并从文件中加载它</strong>（或者从源图像，对于懒操作）。正常情况下，用户不需要调用这个方法，因为在第一次访问图像时，Image类会自动地加载打开的图像。目前的版本，方法load()返回一个用于读取和修改像素的像素访问对象。这个访问对象像一个二维队列，如：</p>
+print(imhis[300])
+</code></pre><h3 id="2-2-22-load方法"><a href="#2-2-22-load方法" class="headerlink" title="2.2.22 load方法"></a>2.2.22 load方法</h3><pre><code>im.load()
+</code></pre><p>为图像<strong>分配内存并从文件中加载它</strong>（或者从源图像，对于懒操作）。正常情况下，用户不需要调用这个方法，因为在第一次访问图像时，Image类会自动地加载打开的图像。目前的版本，方法load()返回一个用于读取和修改像素的像素访问对象。这个访问对象像一个二维队列，如：</p>
 <pre><code>pix = im.load()
-print(pix[x, y])</code></pre><p>其中<code>pix[x, y] =value</code>，通过这个对象访问比方法getpixel()和putpixel()快很多。</p>
+print(pix[x, y])
+</code></pre><p>其中<code>pix[x, y] =value</code>，通过这个对象访问比方法getpixel()和putpixel()快很多。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 pix = im.load()
-print(pix[0,2])</code></pre><h3 id="2-2-23-paste方法"><a href="#2-2-23-paste方法" class="headerlink" title="2.2.23 paste方法"></a>2.2.23 paste方法</h3><p>①<code>im.paste(colour,box)</code></p>
+print(pix[0,2])
+</code></pre><h3 id="2-2-23-paste方法"><a href="#2-2-23-paste方法" class="headerlink" title="2.2.23 paste方法"></a>2.2.23 paste方法</h3><p>①<code>im.paste(colour,box)</code></p>
 <p>使用<strong>同一种颜色填充变量box对应的区域</strong>。对于单通道图像，变量colour为单个颜色值；对于多通道，则为一个元组。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
@@ -698,7 +754,8 @@ im.show()
 from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 im.paste(&quot;blue&quot;,(0,0,100,100))#或者“blue”
-im.show()</code></pre><p>②<code>im.paste(image,box, mask)</code></p>
+im.show()
+</code></pre><p>②<code>im.paste(image,box, mask)</code></p>
 <p>使用变量<strong>mask对应的模板图像来填充所对应的区域</strong>。可以使用模式为“1”、“L”或者“RGBA”的图像作为模板图像。模板图像的尺寸必须与变量image对应的图像尺寸一致。如果变量mask对应图像的值为255，则模板图像的值直接被拷贝过来；如果变量mask对应图像的值为0，则保持当前图像的原始值。变量mask对应图像的其他值，将对两张图像的值进行透明融合,如果变量image对应的为“RGBA”图像，即粘贴的图像模式为“RGBA”，则alpha通道被忽略。用户可以使用同样的图像作为原图像和模板图像。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
@@ -706,26 +763,34 @@ box=[300,300,400,400]
 im_crop =im.crop(box)
 r,g,b =im_crop.split()
 im.paste(im_crop, (200,200,300,300), r)
-im.show()</code></pre><h3 id="2-2-24-putdata方法"><a href="#2-2-24-putdata方法" class="headerlink" title="2.2.24 putdata方法"></a>2.2.24 putdata方法</h3><pre><code>im.putdata(data)
-im.putdata(data, scale, offset)</code></pre><p>从sequence对象中<strong>拷贝数据</strong>到当前图像，从图像的左上角（0，0）位置开始。变量scale和offset用来调整sequence中的值：<code>pixel = value*scale + offset</code></p>
+im.show()
+</code></pre><h3 id="2-2-24-putdata方法"><a href="#2-2-24-putdata方法" class="headerlink" title="2.2.24 putdata方法"></a>2.2.24 putdata方法</h3><pre><code>im.putdata(data)
+im.putdata(data, scale, offset)
+</code></pre><p>从sequence对象中<strong>拷贝数据</strong>到当前图像，从图像的左上角（0，0）位置开始。变量scale和offset用来调整sequence中的值：<code>pixel = value*scale + offset</code></p>
 <p>如果变量scale忽略，则默认为1.0。如果变量offset忽略，则默认为0.0。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 r, g, b = im.split()
-print(r.getpixel((0, 0)),r.getpixel((1, 0)),r.getpixel((2, 0)),r.getpixel((3, 0)),r.putdata([1, 2, 3, 4]),r.getpixel((0, 0)),r.getpixel((1, 0)),r.getpixel((2, 0)),r.getpixel((3, 0)),</code></pre><h3 id="2-2-25-resize方法"><a href="#2-2-25-resize方法" class="headerlink" title="2.2.25 resize方法"></a>2.2.25 resize方法</h3><pre><code>im.resize(size) ⇒ image
-im.resize(size, filter) ⇒ image</code></pre><p>返回<strong>改变尺寸的图像的拷贝</strong>。变量size是所要求的尺寸，是一个二元组：（width, height）。变量filter为NEAREST、BILINEAR、BICUBIC或者ANTIALIAS之一。如果忽略，或者图像模式为“1”或者“P”，该变量设置为NEAREST。在当前的版本中bilinear和bicubic滤波器不能很好地适应大比例的下采样（例如生成缩略图）。用户需要使用ANTIALIAS，除非速度比质量更重要。</p>
+print(r.getpixel((0, 0)),r.getpixel((1, 0)),r.getpixel((2, 0)),r.getpixel((3, 0)),r.putdata([1, 2, 3, 4]),r.getpixel((0, 0)),r.getpixel((1, 0)),r.getpixel((2, 0)),r.getpixel((3, 0)),
+</code></pre><h3 id="2-2-25-resize方法"><a href="#2-2-25-resize方法" class="headerlink" title="2.2.25 resize方法"></a>2.2.25 resize方法</h3><pre><code>im.resize(size) ⇒ image
+im.resize(size, filter) ⇒ image
+</code></pre><p>返回<strong>改变尺寸的图像的拷贝</strong>。变量size是所要求的尺寸，是一个二元组：（width, height）。变量filter为NEAREST、BILINEAR、BICUBIC或者ANTIALIAS之一。如果忽略，或者图像模式为“1”或者“P”，该变量设置为NEAREST。在当前的版本中bilinear和bicubic滤波器不能很好地适应大比例的下采样（例如生成缩略图）。用户需要使用ANTIALIAS，除非速度比质量更重要。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 region = im.resize((400, 400)) #重新设定大小
-region.show()</code></pre><h3 id="2-2-26-rotate方法"><a href="#2-2-26-rotate方法" class="headerlink" title="2.2.26 rotate方法"></a>2.2.26 rotate方法</h3><pre><code>im.rotate(angle) ⇒ image
-im.rotate(angle,filter=NEAREST, expand=0) ⇒ image</code></pre><p>返回一个<strong>按照给定角度顺时钟围绕图像中心旋转后的图像拷贝</strong>。变量filter是NEAREST、BILINEAR或者BICUBIC之一。如果省略该变量，或者图像模式为“1”或者“P”，则默认为NEAREST。变量expand，如果为true，表示输出图像足够大，可以装载旋转后的图像。如果为false或者缺省，则输出图像与输入图像尺寸一样大。</p>
+region.show()
+</code></pre><h3 id="2-2-26-rotate方法"><a href="#2-2-26-rotate方法" class="headerlink" title="2.2.26 rotate方法"></a>2.2.26 rotate方法</h3><pre><code>im.rotate(angle) ⇒ image
+im.rotate(angle,filter=NEAREST, expand=0) ⇒ image
+</code></pre><p>返回一个<strong>按照给定角度顺时钟围绕图像中心旋转后的图像拷贝</strong>。变量filter是NEAREST、BILINEAR或者BICUBIC之一。如果省略该变量，或者图像模式为“1”或者“P”，则默认为NEAREST。变量expand，如果为true，表示输出图像足够大，可以装载旋转后的图像。如果为false或者缺省，则输出图像与输入图像尺寸一样大。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 im_45 = im.rotate(45)
 im_30 = im.rotate(30, Image.NEAREST,1)
 print(im_45.size,im_30.size)
 im_45.show()
-im_30.show()</code></pre><h3 id="2-2-27-seek方法"><a href="#2-2-27-seek方法" class="headerlink" title="2.2.27 seek方法"></a>2.2.27 seek方法</h3><pre><code>im.seek(frame)</code></pre><p>在给定的文件序列中<strong>查找指定的帧</strong>。如果查找超越了序列的末尾，则产生一个EOFError异常。当文件序列被打开时，PIL库自动指定到第0帧上。</p>
+im_30.show()
+</code></pre><h3 id="2-2-27-seek方法"><a href="#2-2-27-seek方法" class="headerlink" title="2.2.27 seek方法"></a>2.2.27 seek方法</h3><pre><code>im.seek(frame)
+</code></pre><p>在给定的文件序列中<strong>查找指定的帧</strong>。如果查找超越了序列的末尾，则产生一个EOFError异常。当文件序列被打开时，PIL库自动指定到第0帧上。</p>
 <pre><code>from PIL import Image
 im_gif = Image.open(&quot;miaomiao.gif&quot;)
 print(im_gif.mode)
@@ -733,19 +798,25 @@ im_gif.show()#第0帧
 im_gif.seek(1)
 im_gif.show()
 im_gif.seek(3)
-im_gif.show()</code></pre><h3 id="2-2-28-tell方法"><a href="#2-2-28-tell方法" class="headerlink" title="2.2.28 tell方法"></a>2.2.28 tell方法</h3><pre><code>im.tell() ⇒ integer</code></pre><p>返回<strong>当前帧所处位置</strong>，从0开始计算。</p>
+im_gif.show()
+</code></pre><h3 id="2-2-28-tell方法"><a href="#2-2-28-tell方法" class="headerlink" title="2.2.28 tell方法"></a>2.2.28 tell方法</h3><pre><code>im.tell() ⇒ integer
+</code></pre><p>返回<strong>当前帧所处位置</strong>，从0开始计算。</p>
 <pre><code>from PIL import Image
 im_gif = Image.open(&quot;3d.gif&quot;)
 print(im_gif.tell())
 im_gif.seek(8)
-print(im_gif.tell())</code></pre><h3 id="2-2-29-thumbnail方法"><a href="#2-2-29-thumbnail方法" class="headerlink" title="2.2.29 thumbnail方法"></a>2.2.29 thumbnail方法</h3><pre><code>im.thumbnail(size)
-im.thumbnail(size, filter)</code></pre><p>修改当前图像，使其<strong>包含</strong>一个自身的<strong>缩略图</strong>，该缩略图尺寸不大于给定的尺寸。该方法计算一个合适的缩略图尺寸，使其符合当前图像的宽高比，调用方法draft()配置文件读取器，最后改变图像的尺寸。变量filter应该是NEAREST、BILINEAR、BICUBIC或者ANTIALIAS之一。如果省略该变量，则默认为NEAREST。</p>
+print(im_gif.tell())
+</code></pre><h3 id="2-2-29-thumbnail方法"><a href="#2-2-29-thumbnail方法" class="headerlink" title="2.2.29 thumbnail方法"></a>2.2.29 thumbnail方法</h3><pre><code>im.thumbnail(size)
+im.thumbnail(size, filter)
+</code></pre><p>修改当前图像，使其<strong>包含</strong>一个自身的<strong>缩略图</strong>，该缩略图尺寸不大于给定的尺寸。该方法计算一个合适的缩略图尺寸，使其符合当前图像的宽高比，调用方法draft()配置文件读取器，最后改变图像的尺寸。变量filter应该是NEAREST、BILINEAR、BICUBIC或者ANTIALIAS之一。如果省略该变量，则默认为NEAREST。</p>
 <p>注意：在当前PIL的版本中，滤波器bilinear和bicubic不能很好地适应缩略图产生。用户应该使用ANTIALIAS，图像质量最好。如果处理速度比图像质量更重要，可以选用其他滤波器。这个方法在原图上进行修改。如果用户不想修改原图，可以使用方法copy()拷贝一个图像。这个方法返回空。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
-im.thumbnail((100,100))</code></pre><h3 id="2-2-30-transform方法"><a href="#2-2-30-transform方法" class="headerlink" title="2.2.30 transform方法"></a>2.2.30 transform方法</h3><p>①    </p>
+im.thumbnail((100,100))
+</code></pre><h3 id="2-2-30-transform方法"><a href="#2-2-30-transform方法" class="headerlink" title="2.2.30 transform方法"></a>2.2.30 transform方法</h3><p>①    </p>
 <pre><code>im.transform(size,method, data) ⇒ image
-im.transform(size, method, data, filter) ⇒ image</code></pre><p>用<strong>给定的尺寸生成一张新的图像</strong>，与原图有相同的模式，使用给定的转换方式将原图数据拷贝到新的图像中。</p>
+im.transform(size, method, data, filter) ⇒ image
+</code></pre><p>用<strong>给定的尺寸生成一张新的图像</strong>，与原图有相同的模式，使用给定的转换方式将原图数据拷贝到新的图像中。</p>
 <p>在当前的PIL版本中，参数method为EXTENT（裁剪出一个矩形区域），AFFINE（仿射变换），QUAD（将正方形转换为矩形），MESH（一个操作映射多个正方形）或者PERSPECTIVE。</p>
 <p>变量filter定义了对原始图像中像素的滤波器。在当前的版本中，变量filter为NEAREST、BILINEAR、BICUBIC或者ANTIALIAS之一。如果忽略，或者图像模式为“1”或者“P”，该变量设置为NEAREST。</p>
 <pre><code>from PIL import Image
@@ -753,37 +824,46 @@ im = Image.open(&quot;3d.jpg&quot;)
 print(im.size)
 imtra = im.transform((200, 200), Image.EXTENT, (0, 0, 300, 300))
 print(imtra.size)
-imtra.show()</code></pre><p>②</p>
+imtra.show()
+</code></pre><p>②</p>
 <pre><code>im.transform(size,EXTENT, data) ⇒ image
-im.transform(size, EXTENT, data, filter) ⇒ image</code></pre><p>从图像中<strong>裁剪一个区域</strong>。变量data为指定输入图像中两个坐标点的4元组(x0,y0,x1,y1)。输出图像为这两个坐标点之间像素的采样结果。例如，如果输入图像的(x0,y0)为输出图像的(0，0)点，(x1,y1)则与变量size一样。</p>
+im.transform(size, EXTENT, data, filter) ⇒ image
+</code></pre><p>从图像中<strong>裁剪一个区域</strong>。变量data为指定输入图像中两个坐标点的4元组(x0,y0,x1,y1)。输出图像为这两个坐标点之间像素的采样结果。例如，如果输入图像的(x0,y0)为输出图像的(0，0)点，(x1,y1)则与变量size一样。</p>
 <p>这个方法可以用于在当前图像中裁剪，放大，缩小或者镜像一个任意的长方形。它比方法crop()稍慢，但是与resize操作一样快。</p>
 <p>③</p>
 <pre><code>im.transform(size, AFFINE, data) ⇒ image
-im.transform(size, AFFINE,data, filter) ⇒ image</code></pre><p>对当前的图像进行<strong>仿射变换</strong>，变换结果体现在给定尺寸的新图像中。变量data是一个6元组(a,b,c,d,e,f)，包含一个仿射变换矩阵的第一个两行。输出图像中的每一个像素（x，y），新值由输入图像的位置（ax+by+c, dx+ey+f）的像素产生，使用最接近的像素进行近似。</p>
+im.transform(size, AFFINE,data, filter) ⇒ image
+</code></pre><p>对当前的图像进行<strong>仿射变换</strong>，变换结果体现在给定尺寸的新图像中。变量data是一个6元组(a,b,c,d,e,f)，包含一个仿射变换矩阵的第一个两行。输出图像中的每一个像素（x，y），新值由输入图像的位置（ax+by+c, dx+ey+f）的像素产生，使用最接近的像素进行近似。</p>
 <p>这个方法用于原始图像的缩放、转换、旋转和裁剪。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 print(im.size)
 imtra = im.transform((200, 200), Image.AFFINE, (1,2,3,2,1,4))
 print(imtra.size)
-imtra.show()</code></pre><p>④</p>
+imtra.show()
+</code></pre><p>④</p>
 <pre><code>im.transform(size,QUAD, data) ⇒ image
-im.transform(size, QUAD, data, filter) ⇒ image</code></pre><p>输入图像的一个<strong>四边形（通过四个角定义的区域）映射到给定尺寸的长方形</strong>。变量data是一个8元组(x0,y0,x1,y1,x2,y2,x3,y3)，它包括源四边形的左上，左下，右下和右上四个角。</p>
+im.transform(size, QUAD, data, filter) ⇒ image
+</code></pre><p>输入图像的一个<strong>四边形（通过四个角定义的区域）映射到给定尺寸的长方形</strong>。变量data是一个8元组(x0,y0,x1,y1,x2,y2,x3,y3)，它包括源四边形的左上，左下，右下和右上四个角。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 print(im.size)
 imtra = im.transform((200, 200), Image.QUAD, (0,0,0,500,600,500,600,0))
 print(imtra.size)
-imtra.show()</code></pre><p>⑤</p>
+imtra.show()
+</code></pre><p>⑤</p>
 <pre><code>im.transform(size,PERSPECTIVE, data) ⇒ image
-im.transform(size, PERSPECTIVE, data, filter) ⇒ image</code></pre><p>对当前图像进行<strong>透视变换</strong>，产生给定尺寸的新图像。变量data是一个8元组(a,b,c,d,e,f,g,h)，包括一个透视变换的系数。对于输出图像中的每个像素点，新的值来自于输入图像的位置的(a x + b y + c)/(g x + h y + 1), (d x+ e y + f)/(g x + h y + 1)像素，使用最接近的像素进行近似。</p>
+im.transform(size, PERSPECTIVE, data, filter) ⇒ image
+</code></pre><p>对当前图像进行<strong>透视变换</strong>，产生给定尺寸的新图像。变量data是一个8元组(a,b,c,d,e,f,g,h)，包括一个透视变换的系数。对于输出图像中的每个像素点，新的值来自于输入图像的位置的(a x + b y + c)/(g x + h y + 1), (d x+ e y + f)/(g x + h y + 1)像素，使用最接近的像素进行近似。</p>
 <p>这个方法用于原始图像的2D透视。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 print(im.size)
 imtra = im.transform((200, 200), Image.PERSPECTIVE, (1,2,3,2,1,6,1,2))
 print(imtra.size)
-imtra.show()</code></pre><h3 id="2-2-31-transpose方法"><a href="#2-2-31-transpose方法" class="headerlink" title="2.2.31 transpose方法"></a>2.2.31 transpose方法</h3><pre><code>im.transpose(method)⇒ image</code></pre><p>返回当前图像的<strong>翻转或者旋转</strong>的拷贝。变量方法的取值为：FLIP_LEFT_RIGHT，FLIP_TOP_BOTTOM，ROTATE_90，ROTATE_180，或ROTATE_270。</p>
+imtra.show()
+</code></pre><h3 id="2-2-31-transpose方法"><a href="#2-2-31-transpose方法" class="headerlink" title="2.2.31 transpose方法"></a>2.2.31 transpose方法</h3><pre><code>im.transpose(method)⇒ image
+</code></pre><p>返回当前图像的<strong>翻转或者旋转</strong>的拷贝。变量方法的取值为：FLIP_LEFT_RIGHT，FLIP_TOP_BOTTOM，ROTATE_90，ROTATE_180，或ROTATE_270。</p>
 <pre><code>from PIL import Image
 im = Image.open(&quot;3d.jpg&quot;)
 im.show()
@@ -798,7 +878,8 @@ im4.show()
 im5=im.transpose(Image.ROTATE_180)#旋转 180 度角。
 im5.show()
 im6=im.transpose(Image.ROTATE_270)#旋转 270 度角。
-im6.show()           </code></pre>
+im6.show()           
+</code></pre>
                 
             </div>
             <hr/>
@@ -1410,7 +1491,7 @@ im6.show()           </code></pre>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">37.6k</span>&nbsp;字
+                class="white-color">38.8k</span>&nbsp;字
             
             
             
