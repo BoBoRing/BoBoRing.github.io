@@ -4,7 +4,7 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="Python GUI开发记录, BoBoRing&#39;s Blog">
+    <meta name="keywords" content="JAVA语言基础学习, BoBoRing&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Python GUI开发记录 | BoBoRing&#39;s Blog</title>
+    <title>JAVA语言基础学习 | BoBoRing&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -271,7 +271,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Python GUI开发记录</h1>
+                    <h1 class="description center-align post-title">JAVA语言基础学习</h1>
                 </div>
             </div>
         </div>
@@ -390,12 +390,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Python/">
-                                <span class="chip bg-color">Python</span>
-                            </a>
-                        
-                            <a href="/tags/GUI/">
-                                <span class="chip bg-color">GUI</span>
+                            <a href="/tags/JAVA/">
+                                <span class="chip bg-color">JAVA</span>
                             </a>
                         
                     </div>
@@ -406,8 +402,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Python/" class="post-category">
-                                Python
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="post-category">
+                                软件开发
                             </a>
                         
                     </div>
@@ -419,7 +415,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-09-26
+                    2021-07-26
                 </div>
                 
 
@@ -428,14 +424,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    1 分
                 </div>
                 
 
@@ -460,53 +456,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-学习历程"><a href="#1-学习历程" class="headerlink" title="1 学习历程"></a>1 学习历程</h1><p><strong>1.1学习库Tkinter，PySide2和PyQt5</strong></p>
-<p>1.学习<strong>Tkinter</strong>库时跟着视频教程设计了<strong>登录窗口</strong> 并配置了用户数据库，设置了按钮的回调函数，添加了提示窗口，为主界面添加了<strong>菜单栏</strong>并且设置了菜单栏选项的回调函数。    </p>
-<p>2.跟着白月黑羽课程学习<strong>PySide2</strong>库的使用和<strong>Qt Designer</strong>平台的界面布局，学习对GUI窗口的相关操作，了解了常用控件和对应的操作函数，实现了一个小实例-统计薪资水平，学习了用PyInstaller发布程序和为界面添加图标的方法。</p>
-<p>3.PyQt5和PySide2操作类似，且使用更加方便，所以后面的设计采用<strong>PyQt5</strong>来完成，还学习了ui文件转py文件的方法，并且为我的pycharm配置了ui文件转py文件的快捷方式。</p>
-<p><strong>1.2使用Qt Designer搭建信号与系统虚拟实验平台界面</strong></p>
-<p>1.首先按照自己的想法设计了只有<strong>2层的系统界面</strong>，分别是连续和离散信号展示层、包含四个实验的实验层。</p>
-<p>2.然后根据导师的图纸设计了包含<strong>6层的系统界面</strong>（这里只截取了部分界面），具体思路就是将信号展示环节和实验操作环节分开。</p>
-<p><strong>1.3编写界面入口程序添加功能函数</strong></p>
-<p>1.编写整个系统的<strong>入口程序</strong>，该程序连接着系统开始界面。</p>
-<pre><code>app=QtWidgets.QApplication(sys.argv)
-widget=QtWidgets.QWidget()
-ui=Ui_widge()
-ui.setupUi(widget)
-widget.show()
-sys.exit(app.exec_())
-</code></pre><p>2.将每个界面的ui文件转换成py文件，并且通过编写函数为控件添加功能，包括获取文本框的输入文本（文本框输入的是字符串，先用eval函数将其转换为列表或数字）、为按钮添加动作连接函数、获取滑块的值显示到文本框中、为实验添加说明框等等。下面为某个界面的<strong>功能函数和界面转换</strong>代码。</p>
-<pre><code>def zhishu(self):
-    Form_16 = QtWidgets.QDialog()
-    self.ui = Ui_Form16()
-    self.ui.setupUi(Form_16)
-    Form_16.show()
-    Form_16.exec_()
-    self.Form10.show()
-def close(self):
-    self.Form10.close()
-
-def retranslateUi(self, Form10):
-    _translate = QtCore.QCoreApplication.translate
-    Form10.setWindowTitle(_translate(&quot;Form10&quot;, &quot;辅助实验教学子系统 - 信号 - 基本信号&quot;))
-    Form10.setWindowIcon(QtGui.QIcon(&#39;1.jpg&#39;))
-    self.pushButton_1.setText(_translate(&quot;Form10&quot;, &quot;指数信号&quot;))
-    self.pushButton_1.clicked.connect(self.zhishu)
-    self.pushButton_2.setText(_translate(&quot;Form10&quot;, &quot;返回上一级&quot;))
-    self.pushButton_2.clicked.connect(self.close)
-</code></pre><p><strong>1.4将matplotlib绘制的图片（信号波形和实验波形）插入到GUI界面</strong></p>
-<p>1.学习了用<strong>matplotlib</strong>绘图的基本方法，编写代码绘制实现了连续信号（阶跃、方波、正弦波、三角波、锯齿波），离散信号（单位序列、正弦序列、指数序列），信号和序列的相加相乘运算，卷积运算，方波合成与分解运算，不同间隔不同频率采样后的信号，不同滤波效果得到的信号等等。</p>
-<p>2.实现信号后绘制得到了相应图片，通过使用<strong>label控件的setPixmap函数</strong>将matplotlib绘制的图片插入到Qt界面中。</p>
-<p><strong>1.5实现多层界面转换（上一个界面仍然保留)，添加返回上一级按钮</strong></p>
-<p>1.在每个界面的py文件中先导入需要跳转的界面模块，用<strong>QDialog</strong>函数来连接需要跳转到的下一个界面，用<strong>show</strong>函数和<strong>exec</strong>函数实现界面显示运行。</p>
-<p>2.编写<strong>关闭函数</strong>，点击返回上一级按钮时将该界面关闭。</p>
-<p><strong>1.6用PyInstaller将所有py文件打包成exe可执行文件</strong></p>
-<p>1.在命令行中输入<strong>pyi-makespec 000_plot.py</strong>生成<strong>spec文件</strong>修改文本内容添加所有用到的py文件和图片数据并保存文件，在spec文件路径下打开命令行，输入<strong>pyinstaller -D 000_plot.spec</strong>生成exe程序。</p>
-<p>2.生成的exe程序在dist文件夹中，dist文件夹里包含了整个项目所需的代码和环境，可在其他电脑中进行使用。（这里必须在<strong>Anaconda</strong>中打包而且打包后的文件非常大，用其它打包会出错）</p>
-<p>3.最终打包成功了，文件夹比较大，点击exe文件每次都能成功打开系统。</p>
-<h1 id="2-设计心得"><a href="#2-设计心得" class="headerlink" title="2 设计心得"></a>2 设计心得</h1><p>此次设计是在学习Python语言之后尝试完成的一项具体性设计任务，我也深刻体会到了Python在GUI设计方面功能的强大。完成任何一项设计都是不易的，从前期基础知识的学习，到自己动手后的不知所措，这个过程中我遇到了非常多的难题，针对难题也查阅了无数的经验帖和资料，功夫不负有心人，难题被一个接一个的解决了，不过因为我看到论文不够多经验不够目前还是有些难题存在困难或者解决的效果不够好。</p>
-<p>此次任务，我发自内心地感受到了解决难题带给人的快乐，以后的学习中还是会遇到很多难题的，我会把这看成一件幸运的事情，<strong>遇到难题说明我正在提升的轨道上</strong>，只有攻克一道道难关才能看到最后的彩虹，加油向前冲！</p>
-
+                <p><img src="/.io//JAVAluxian.png" alt></p>
+<h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h1 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h1><h1 id="数据结构（集合）"><a href="#数据结构（集合）" class="headerlink" title="数据结构（集合）"></a>数据结构（集合）</h1><p><img src="/.io//JAVASHUJUJIEGOUY.png" alt></p>
+<p><img src="/.io//JAVASHUJUJIEGOUY2.png" alt></p>
+<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h1 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h1><h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1>
                 
             </div>
             <hr/>
@@ -532,7 +485,7 @@ def retranslateUi(self, Form10):
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://boboring.github.io/2020/09/26/My-Post3/">http://boboring.github.io/2020/09/26/My-Post3/</a>
+                    <a href="http://boboring.github.io/2021/07/26/My-Post14/">http://boboring.github.io/2021/07/26/My-Post14/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -570,12 +523,8 @@ def retranslateUi(self, Form10):
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Python/">
-                                    <span class="chip bg-color">Python</span>
-                                </a>
-                            
-                                <a href="/tags/GUI/">
-                                    <span class="chip bg-color">GUI</span>
+                                <a href="/tags/JAVA/">
+                                    <span class="chip bg-color">JAVA</span>
                                 </a>
                             
                         </div>
@@ -886,13 +835,13 @@ def retranslateUi(self, Form10):
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/10/25/My-Post2/">
+                <a href="/2021/11/20/My-Post12/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="西瓜书学习记录">
+                        <img src="/medias/featureimages/31.jpg" class="responsive-img" alt="MySQL数据库的学习">
                         
-                        <span class="card-title">西瓜书学习记录</span>
+                        <span class="card-title">MySQL数据库的学习</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -903,8 +852,65 @@ def retranslateUi(self, Form10):
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-10-25
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-20
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/" class="post-category">
+                                    软件开发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SQL%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">SQL语言</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/">
+                        <span class="chip bg-color">数据库</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/07/16/My-Post13/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="图像中的拉普拉斯平滑">
+                        
+                        <span class="card-title">图像中的拉普拉斯平滑</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -924,53 +930,8 @@ def retranslateUi(self, Form10):
                         <span class="chip bg-color">机器学习</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/06/16/My-New-Post/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/32.jpg" class="responsive-img" alt="2020上半年我读的5本书">
-                        
-                        <span class="card-title">2020上半年我读的5本书</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-16
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    读书笔记
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E9%98%85%E8%AF%BB/">
-                        <span class="chip bg-color">阅读</span>
+                    <a href="/tags/%E6%AD%A3%E5%88%99%E5%8C%96/">
+                        <span class="chip bg-color">正则化</span>
                     </a>
                     
                 </div>
@@ -1101,6 +1062,13 @@ def retranslateUi(self, Form10):
 
 </main>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
