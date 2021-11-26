@@ -424,14 +424,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    28
+                    633
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -456,9 +456,44 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="/.io//JAVAluxian.png" alt></p>
-<h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h1 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h1><h1 id="数据结构（集合）"><a href="#数据结构（集合）" class="headerlink" title="数据结构（集合）"></a>数据结构（集合）</h1><p><img src="/.io//JAVASHUJUJIEGOUY.png" alt></p>
-<p><img src="/.io//JAVASHUJUJIEGOUY2.png" alt></p>
+                <p>学习路线的思维导图如下：<br><img src="/.io//JAVAluxian.png" alt></p>
+<h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p>Java代码中的注释分为三种形式，分别是单行注释、多行注释和文档注释。</p>
+<p><img src="/.io//zhushi.png" alt></p>
+<p>注意：</p>
+<p>1.多行注释不能嵌套多行注释；</p>
+<p>2.文档注释用来解释这段代码的作用，敲/**然后回车会自动生成。</p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>Java的数据类型主要分为两大类，基本类型和引用类型。</p>
+<p><img src="/.io//jibenleix.png" alt></p>
+<p><img src="/.io//yinyongleix.png" alt></p>
+<h2 id="字面量"><a href="#字面量" class="headerlink" title="字面量"></a>字面量</h2><p>代码中直接写出来的数据类型值就叫字面量，代码中具体使用如下。</p>
+<p><img src="/.io//zhengshu.png" alt></p>
+<p><img src="/.io//fudian.png" alt></p>
+<p><img src="/.io//zifu.png" alt></p>
+<p><img src="/.io//buer.png" alt></p>
+<p><img src="/.io//null.png" alt></p>
+<p>注意：Java中if语句的条件必须是布尔类型，不像其它语言变量非0即表示真。</p>
+<p>字面量中的<strong>转义序列</strong>的写法如下（右边为其对应的Unicode编码）：</p>
+<p><img src="/.io//zhuanyi.png" alt></p>
+<p>注意：</p>
+<p>1.引用类型类似于C语言里面的指针类型；</p>
+<p>2.字符串类型属于引用类型，字符串内容为空代表指向的位置不放任何字符串，而空值null表示没有任何指向；</p>
+<p>3.为了增加代码的可读性，Java中可以在数字中使用下划线区分数字位数或者字节分组，具体使用示例如下图。<br><img src="/.io//xiahuaxian.png" alt></p>
+<h2 id="变量初始化"><a href="#变量初始化" class="headerlink" title="变量初始化"></a>变量初始化</h2><p>1.Java中任何变量在使用之前都必须要进行初始化（赋值）；</p>
+<p>2.局部变量：需要程序员手动初始化；</p>
+<p>3.非局部变量（实例变量、类变量）：编译器会自动给未初始化的变量设置一个初始值。<br><img src="/.io//chushihua.png" alt></p>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h2><p><img src="/.io//yunsuanfu.png" alt></p>
+<p>注意：</p>
+<p>1.运算符的优先级上面一行比下面一行高；</p>
+<p>2.同一行的优先级一样；</p>
+<p>3.当多个优先级一样的运算符一起使用时，按照结合性进行运算（只有赋值运算符的结合性是从右到左，其他运算符的结合性都是从左到右）；</p>
+<p>4.为了保证运算符按照预期执行，尽量多使用小括号；</p>
+<p>5.算术表示式的运算结果必须被使用。</p>
+<h2 id="字符串的拼接"><a href="#字符串的拼接" class="headerlink" title="字符串的拼接"></a>字符串的拼接</h2><p><img src="/.io//pinjie.png" alt></p>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><p>运算符中的按位与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>不仅可以应用到整数类型，还可以应用到布尔类型。<br><img src="/.io//weiyunsuan.png" alt></p>
+<p>按位与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>不具备短路功能，而逻辑与<code>&amp;&amp;</code>、或<code>||</code>具有短路功能，即只要第一个条件成立就不会执行后面的条件。</p>
+<p>其它位运算符：<br><img src="/.io//youyi.png" alt></p>
+<h1 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h1><h1 id="常用API"><a href="#常用API" class="headerlink" title="常用API"></a>常用API</h1><h1 id="数据结构（集合）"><a href="#数据结构（集合）" class="headerlink" title="数据结构（集合）"></a>数据结构（集合）</h1><p><img src="/.io//JAVASHUJUJIEGOUY.png" alt></p>
+<p><img src="/.io//JAVASHUJUJIEGOU2.png" alt></p>
 <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h1 id="IO"><a href="#IO" class="headerlink" title="IO"></a>IO</h1><h1 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h1><h1 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h1>
                 
             </div>
@@ -1084,7 +1119,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">38.9k</span>&nbsp;字
+                class="white-color">39.5k</span>&nbsp;字
             
             
             
