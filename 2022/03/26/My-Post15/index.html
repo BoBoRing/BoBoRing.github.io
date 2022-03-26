@@ -428,14 +428,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11
+                    5.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    20 分
                 </div>
                 
 
@@ -460,8 +460,1064 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>核心知识点思维导图如下：</p>
-<p><img src="/2022/03/26/My-Post15/数据库技术知识总结.png" alt></p>
+                <h1 id="数据库应用系统-DBAS-生命周期"><a href="#数据库应用系统-DBAS-生命周期" class="headerlink" title="数据库应用系统(DBAS)生命周期"></a>数据库应用系统(DBAS)生命周期</h1><h2 id="规划与分析"><a href="#规划与分析" class="headerlink" title="规划与分析"></a>规划与分析</h2><ul>
+<li><p>系统规划与定义</p>
+<ul>
+<li>任务陈述</li>
+<li>确定任务目标</li>
+<li>确定范围和边界</li>
+<li>确定用户视图</li>
+</ul>
+</li>
+<li><p>可行性分析</p>
+<ul>
+<li>技术、经济、操作可行性</li>
+<li>开发方案选择</li>
+</ul>
+</li>
+<li><p>项目规划</p>
+<ul>
+<li>项目团队、环境、活动</li>
+<li>成本预算</li>
+<li>进度计划</li>
+</ul>
+</li>
+</ul>
+<h2 id="需求分析"><a href="#需求分析" class="headerlink" title="需求分析"></a>需求分析</h2><ul>
+<li><p>数据需求分析</p>
+<ul>
+<li>数据项</li>
+<li>数据结构</li>
+<li>数据流</li>
+<li>数据存储和处理过程</li>
+</ul>
+</li>
+<li><p>功能需求分析</p>
+<ul>
+<li><p>数据处理需求</p>
+<ul>
+<li><p>数据流图</p>
+<ul>
+<li><p>DFD建模</p>
+<ul>
+<li><p>基本元素：数据流、处理、数据存储和外部项</p>
+<p>外部项是系统数据提供者或使用者</p>
+</li>
+<li><p>规则：父图中描述的数据流必须在相应子图中出现；一个处理至少一个输入、一个输出；一个数据流至少由一段是处理框</p>
+</li>
+</ul>
+</li>
+<li><p>IDEF0建模</p>
+<ul>
+<li>由箭头和矩形框两元素组成</li>
+<li>矩形框左侧“输入”，右侧“输出”，上方“控制”，下方“机制”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>事务规范  </p>
+<ul>
+<li>事务名称</li>
+<li>事务描述</li>
+<li>访问数据项</li>
+<li>用户</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>业务规则需求</p>
+</li>
+</ul>
+</li>
+<li><p>性能需求分析</p>
+<ul>
+<li>数据操作响应时间</li>
+<li>系统吞吐量</li>
+<li>允许并发访问最大用户量</li>
+<li>TPS代价值</li>
+</ul>
+</li>
+<li><p>存储、安全需求</p>
+</li>
+<li>备份和恢复需求</li>
+</ul>
+<h2 id="系统设计"><a href="#系统设计" class="headerlink" title="系统设计"></a>系统设计</h2><h3 id="数据库结构设计"><a href="#数据库结构设计" class="headerlink" title="数据库结构设计"></a>数据库结构设计</h3><ul>
+<li><p>概念模型设计</p>
+<ul>
+<li>明确建模目标</li>
+<li>定义实体集</li>
+<li>定义联系</li>
+<li><p>建立信息模型</p>
+<ul>
+<li><p>ER图</p>
+<ul>
+<li>实体（矩形框）</li>
+<li><p>联系（菱形框）</p>
+<ul>
+<li>1:1</li>
+<li>1:n</li>
+<li>m:n</li>
+</ul>
+</li>
+<li><p>属性（椭圆）</p>
+</li>
+</ul>
+</li>
+<li><p>IDEF1X</p>
+<ul>
+<li>实体集分为独立实体集(矩形框)；从属实体集(圆角矩形框)</li>
+<li><p>联系</p>
+<ul>
+<li><p>确定型联系</p>
+<ul>
+<li><p>标定型</p>
+<p>   子女实体集的每个实例都由它与双亲的联系而确定</p>
+</li>
+<li><p>非标定型</p>
+<p>   子女实体集的每个实例不用凭借其与双亲的联系而能被唯一确认</p>
+</li>
+</ul>
+</li>
+<li><p>分类联系</p>
+</li>
+<li>非确定型联系（多对多联系）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>确定实体集属性</p>
+</li>
+<li>集成与优化信息模型</li>
+</ul>
+</li>
+<li><p>逻辑结构设计</p>
+<ul>
+<li>依据：概念模型；数据处理要求；数据约束及安全性要求；DBMS的相关信息</li>
+<li>目标：DBMS可处理的模式；数据库物理设计指南</li>
+<li>过程：关系模式的转化（一般要求满足3NF）</li>
+</ul>
+</li>
+<li><p>物理结构设计</p>
+<ul>
+<li><p>解决问题</p>
+<ul>
+<li>文件的组织</li>
+<li>文件的结构</li>
+<li>文件的存取</li>
+<li><p>索引技术</p>
+<ul>
+<li><p>有序索引</p>
+<ul>
+<li>两个主体：数据文件和索引文件</li>
+<li><p>分类</p>
+<ul>
+<li><p>聚集索引和非聚集索引—一个表或视图只允许有一个聚集索引</p>
+<p>  索引文件按照其查找码的顺序与数据文件中数据记录的排列顺序一致，该索引文件为聚集索引。</p>
+</li>
+<li><p>稠密索引和稀疏索引</p>
+<p>  数据文件中的每个查找码值在索引文件中都对应一个索引记录，则该索引成为稠密</p>
+</li>
+<li><p>主索引和辅索引</p>
+<p>  在数据文件的主码属性上建立的索引为主</p>
+</li>
+<li><p>唯一索引：确保索引列不包含重复值</p>
+</li>
+<li>单层和多层索引（B+树索引即为多层）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>散列索引</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>环节</p>
+<ul>
+<li><p>数据库逻辑模式描述</p>
+<ul>
+<li>满足应用要求的完整性约束的基本表和视图</li>
+<li>基本表业务规则</li>
+</ul>
+</li>
+<li><p>文件组织与存取设计</p>
+<ul>
+<li><p>分析和理解数据库事物的数据访问特性</p>
+<ul>
+<li>事物-基本表交叉引用矩阵</li>
+<li>估计各事务的执行频率</li>
+<li>对每张基本表汇总作用于其上的各事务的操作频率</li>
+</ul>
+</li>
+<li><p>选择合适的文件结构</p>
+<ul>
+<li>数据量少，且插删改操作频繁的基本表采用“堆文件”组织方式</li>
+<li>用户查询条件定义在查找码上，用“顺序文件”</li>
+<li>用户查询基于散列值域的等值匹配，用“散列文件”</li>
+<li>数据查询效率更高的“B+树文件”</li>
+<li>频繁执行且需要进行多表连接的操作，考虑将这些表组织为“聚集文件”</li>
+</ul>
+</li>
+<li><p>设计合理的存取路径——建立索引</p>
+<ul>
+<li><p>原则</p>
+<ul>
+<li>经常更新、删除和插入或数据量小的表避免</li>
+<li>经常查询、连接、统计且数据量大的表优先</li>
+</ul>
+</li>
+<li><p>属性选择</p>
+<ul>
+<li>为主码建立唯一索引</li>
+<li>参与连接操作</li>
+<li>查询条件</li>
+<li>分组和排序条件</li>
+<li>当一个属性有相对较多不同值时</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据库分布设计</p>
+<ul>
+<li><p>物理分布</p>
+<ul>
+<li>数据文件和索引文件存放在不同的磁盘上——得到较快的文件读写速度</li>
+<li>数据文件和日志文件存放在不同磁盘上——改善I/O性能</li>
+</ul>
+</li>
+<li><p>数据的划分</p>
+<ul>
+<li>水平划分</li>
+<li>垂直划分</li>
+</ul>
+</li>
+<li><p>关系模式去规范化</p>
+</li>
+</ul>
+</li>
+<li><p>确定系统配置</p>
+</li>
+<li>物理模式评估</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="DBAS功能设计与实施"><a href="#DBAS功能设计与实施" class="headerlink" title="DBAS功能设计与实施"></a>DBAS功能设计与实施</h3><p>  总体、概要和详细设计分别与结构设计的三阶段相对应</p>
+<ul>
+<li><p>总体设计</p>
+<ul>
+<li><p>C/S结构</p>
+<ul>
+<li><p>“胖”客户端</p>
+<ul>
+<li>用户界面</li>
+<li>应用业务规则</li>
+</ul>
+</li>
+<li><p>数据库服务器</p>
+<ul>
+<li>事务逻辑</li>
+<li>数据存储和存取</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>B/S结构 (三层结构)</p>
+<ul>
+<li>表示层：“瘦”客户端-浏览器</li>
+<li>功能层：Web应用服务器</li>
+<li>数据层：数据库服务器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>概要设计和详细设计</p>
+<ul>
+<li><p>表示层</p>
+<ul>
+<li>用户界面设计</li>
+</ul>
+</li>
+<li><p>业务逻辑层</p>
+<ul>
+<li>概要：将各项业务活动表示为各种“构件”</li>
+<li>详细编码设计</li>
+</ul>
+</li>
+<li><p>数据访问层：针对DBAS的数据处理需求设计用于操作数据库的各类事务</p>
+<ul>
+<li><p>概要设计：将数据处理需求的结果表示为事务规范</p>
+<ul>
+<li>事务名称</li>
+<li>事务所访问的关系表以及关系属性</li>
+<li>事务处理逻辑</li>
+<li>事务用户</li>
+</ul>
+</li>
+<li><p>详细设计</p>
+</li>
+</ul>
+</li>
+<li><p>数据持久层：保存和管理应用系统数据（数据组织与存储）</p>
+</li>
+</ul>
+</li>
+<li><p>安全架构设计</p>
+<ul>
+<li><p>数据安全</p>
+<ul>
+<li><p>数据库的安全性保护</p>
+<ul>
+<li>用户身份鉴定</li>
+<li>权限控制</li>
+<li>视图机制</li>
+</ul>
+</li>
+<li><p>完整性保护</p>
+<ul>
+<li>列级完整性约束</li>
+<li>元组级完整性约束</li>
+<li>关系级别完整性约束</li>
+</ul>
+</li>
+<li><p>并发控制</p>
+<ul>
+<li>封锁技术</li>
+<li><p>避免死锁</p>
+<ul>
+<li>按同一顺序访问资源</li>
+<li>采用小事务模式</li>
+<li>尽量使用“行锁”，避免使用表级别锁</li>
+<li>使用绑定连接</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>备份与恢复</p>
+<ul>
+<li>双机热备</li>
+<li>数据转储</li>
+<li>数据加密存储-针对高敏感数据</li>
+</ul>
+</li>
+<li><p>加密传输</p>
+<ul>
+<li>数字安全证书</li>
+<li>对称密钥加密</li>
+<li>数字签名</li>
+<li>数字信封</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>环境安全</p>
+<ul>
+<li>漏洞与补丁（操作系统安全性）</li>
+<li>计算机病毒防护</li>
+<li><p>网络环境安全</p>
+<ul>
+<li>防火墙</li>
+<li>入侵检测系统</li>
+<li>网络隔离</li>
+</ul>
+</li>
+<li><p>物理环境安全</p>
+</li>
+</ul>
+</li>
+<li><p>制度安全—技术层面和管理层面</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="实现与部署"><a href="#实现与部署" class="headerlink" title="实现与部署"></a>实现与部署</h2><ul>
+<li>建立数据库结构</li>
+<li>数据加载</li>
+<li>事务和应用程序的编码及测试</li>
+<li>系统集成、测试与试运行</li>
+<li>系统部署</li>
+</ul>
+<h2 id="运行与维护"><a href="#运行与维护" class="headerlink" title="运行与维护"></a>运行与维护</h2><ul>
+<li><p>日常维护</p>
+<ul>
+<li>备份与恢复</li>
+<li>完整性、安全性维护</li>
+<li>存储空间管理</li>
+<li>并发控制</li>
+</ul>
+</li>
+<li><p>监控与分析</p>
+<ul>
+<li>数据采集与统计</li>
+<li>操作分析</li>
+<li>基准程序评估</li>
+</ul>
+</li>
+<li><p>性能优化调整</p>
+<ul>
+<li>查询调整与优化</li>
+<li>索引调整，事务调整，模式调整，参数调整</li>
+<li>硬件调整和升级</li>
+<li>应用程序优化</li>
+</ul>
+</li>
+<li><p>系统升级</p>
+<p>主要由数据管理员DBA负责，有时也需要其他设计开发人员参与</p>
+<ul>
+<li>应用程序升级</li>
+<li>数据库重组</li>
+<li>DBMS和OS升级</li>
+</ul>
+</li>
+</ul>
+<h1 id="统一建模语言UML"><a href="#统一建模语言UML" class="headerlink" title="统一建模语言UML"></a>统一建模语言UML</h1><h2 id="四层建模框架"><a href="#四层建模框架" class="headerlink" title="四层建模框架"></a>四层建模框架</h2><p>每后一层是上一层概念的一个实例</p>
+<ul>
+<li>元元模型</li>
+<li>元模型</li>
+<li>模型</li>
+<li>用户模型</li>
+</ul>
+<h2 id="DBAS描述"><a href="#DBAS描述" class="headerlink" title="DBAS描述"></a>DBAS描述</h2><ul>
+<li><p>业务流程-活动图</p>
+<ul>
+<li>用于描述系统、用例和程序模块中逻辑流程的先后执行顺序</li>
+<li>必须有且只有一个起始点，可以有多个结束点。利用分区将活动分配给对应的角色</li>
+</ul>
+</li>
+<li><p>需求表达-用例图</p>
+<ul>
+<li><p>组成</p>
+<ul>
+<li>系统</li>
+<li>角色：系统外部的人或其他实体</li>
+<li>用例：系统内部的功能描述</li>
+</ul>
+</li>
+<li><p>关系</p>
+<ul>
+<li>角色间的通用化关系</li>
+<li>用例与角色间的关联关系</li>
+<li><p>用例与用例之间 </p>
+<ul>
+<li>扩展关系</li>
+<li>使用（包含）关系</li>
+<li>关联（组合）关系</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>内部结构的表达</p>
+<ul>
+<li>静态结构：类图</li>
+<li><p>动态结构</p>
+<ul>
+<li>顺序图（强调时间）：系统内对象间发送、接受消息的序列</li>
+<li>通信图（强调空间）：系统中对象间的练习以及对象间发送和接收的消息</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>微观设计的表达</p>
+<ul>
+<li>对象图：系统在某一时间的快照</li>
+<li>状态机图：陈述系统中有关事件或对象的状态转移（一个起始，可多个结束）</li>
+<li>时间图：当状态转换由时间因素决定时</li>
+</ul>
+</li>
+<li><p>宏观设计的表达</p>
+<ul>
+<li>包图：表达系统中不同包、命名空间或不同项目间的关系</li>
+<li>交互概述图：用交互框取代活动图中的活动框</li>
+<li>复合结构图：系统与外部系统之间的关系</li>
+</ul>
+</li>
+<li><p>实现与部署的表达</p>
+<ul>
+<li>组件图：展现组件 之间的组织和依赖</li>
+<li>部署图（配置图）：描述系统中硬件和软件的物理配置情况和系统体系结构</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据库及数据库对象"><a href="#数据库及数据库对象" class="headerlink" title="数据库及数据库对象"></a>数据库及数据库对象</h1><h2 id="SQL-Server2008系统数据库"><a href="#SQL-Server2008系统数据库" class="headerlink" title="SQL Server2008系统数据库"></a>SQL Server2008系统数据库</h2><ul>
+<li>master</li>
+<li>msdb</li>
+<li>model—当用户创建数据库时，系统自动复制到新建数据库中</li>
+<li>tempdb—临时数据库，无需备份</li>
+<li>Resources:只读，包含所有系统对象</li>
+</ul>
+<h2 id="SQL-Server数据库组成"><a href="#SQL-Server数据库组成" class="headerlink" title="SQL Server数据库组成"></a>SQL Server数据库组成</h2><ul>
+<li><p>数据文件</p>
+<ul>
+<li>主要文件.mdf</li>
+<li>次要文件.ndf</li>
+</ul>
+</li>
+<li><p>事务日志文件.ldf</p>
+</li>
+<li><p>数据库存储空间的分配</p>
+<ul>
+<li>SQL Server2008中一页（数据最小存储单位）是8kb</li>
+<li>一行数据不能跨页存储</li>
+</ul>
+</li>
+</ul>
+<h2 id="数据库文件组"><a href="#数据库文件组" class="headerlink" title="数据库文件组"></a>数据库文件组</h2><ul>
+<li>主文件组：系统定义好的一个文件组，包含主要数据文件和其他没明确分配给其他文件组的数据文件（因此也会包含次要文件）</li>
+<li><p>用户定义文件组</p>
+<ul>
+<li>一个文件不能是多个文件组的成员</li>
+<li>日志文件不包含在文件组中</li>
+<li>如果文件组有多个文件。在所有文件被填满之前，它们不会自动增长</li>
+</ul>
+</li>
+</ul>
+<h2 id="T-SQL-2018年后貌似不考"><a href="#T-SQL-2018年后貌似不考" class="headerlink" title="T-SQL(2018年后貌似不考)"></a>T-SQL(2018年后貌似不考)</h2><ul>
+<li>创建数据库</li>
+<li>修改数据库</li>
+<li>分离和附加数据库（数据库服务器启动，但是无用户使用的状态下）</li>
+</ul>
+<h2 id="架构（SCHEMA）"><a href="#架构（SCHEMA）" class="headerlink" title="架构（SCHEMA）"></a>架构（SCHEMA）</h2><ul>
+<li>定义：存放数据库对象的容器.架构名可以是显式的，也可以由DBMS提供默认</li>
+<li>创建：CREATE SCHEMA schema_name AUTHORIZATION user_name</li>
+<li>删除：DROP SCHEMA schema_name</li>
+</ul>
+<h2 id="数据库对象"><a href="#数据库对象" class="headerlink" title="数据库对象"></a>数据库对象</h2><ul>
+<li><p>分区表</p>
+<ul>
+<li>分区条件：表当前和未来的数据量大小，以及对表中数据操作的特点</li>
+<li><p>步骤</p>
+<ul>
+<li><p>创建分区函数</p>
+<p>CREATE PARTITION FUNCTION function_name（int）括号中为用于分区的列的数据类型</p>
+<p>AS RANGE LEFT/RIGHT FOR VALUES(num1,num2,…)</p>
+<p>分区数=边界数+1</p>
+</li>
+<li><p>创建分区方案:将分区隐射到文件组</p>
+<p>CREATE PARTITION SCHEME partition_scheme_name</p>
+<p>AS PARTITION partition_function_name</p>
+<p>TO(filegroup1,filegroup2,…)</p>
+</li>
+<li><p>使用分区方案创建表</p>
+<p>CREATE TABLE table_name</p>
+<p>(col_name1 int,</p>
+<p>col_name2 char(10)</p>
+<p>)</p>
+<p>ON partition_scheme_name(col_name)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>索引</p>
+<ul>
+<li>CREATE UNIQUE CLUSTERED/NONCLUSTERED INDEX index_name        ON table_name(col_name)</li>
+<li>DROP INDEX index_name</li>
+</ul>
+</li>
+<li><p>索引视图</p>
+<ul>
+<li>首先定义一个视图 CREATE VIEW view_name AS…</li>
+<li>在视图上定义一个唯一聚集索引 CREATE UNIQUE CLUSTERED INDEX…</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据库后台编程技术"><a href="#数据库后台编程技术" class="headerlink" title="数据库后台编程技术"></a>数据库后台编程技术</h1><h2 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a>存储过程</h2><p>可以有多个输入和多个输出</p>
+<ul>
+<li><p>创建存储过程</p>
+<p>  CREATE PROC/PROCEDURE proc_name</p>
+<p>  @a int, @b int ,@c int output</p>
+<p>  AS</p>
+<p>  SELECT…</p>
+</li>
+<li><p>执行存储过程</p>
+<p>  对于有输出参数的，执行前先生命输出参数</p>
+<p>  DECLARE @c int</p>
+<p>  EXEC proc_name 1, 2, @c output</p>
+</li>
+</ul>
+<pre><code>或者(但注意两种方式不能混用)
+
+EXEC proc_name @a=1,@b=2, @c output
+</code></pre><h2 id="用户定义函数"><a href="#用户定义函数" class="headerlink" title="用户定义函数"></a>用户定义函数</h2><ul>
+<li><p>标量函数</p>
+<p>  CREATE FUNCTION fuc_name(@a int）</p>
+<p>  RETURNS int</p>
+<p>  AS</p>
+<p>  BEGIN</p>
+<p>  DECLARE @x int</p>
+<p>  …</p>
+<p>  RETURN @x</p>
+<p>  END</p>
+</li>
+</ul>
+<ul>
+<li><p>表值函数</p>
+<ul>
+<li><p>内联表值函数</p>
+<p>  CREATE FUNCTION fuc_name（@c char(10))</p>
+<p>  RETURNS table</p>
+<p>  AS</p>
+<p>  RETURN</p>
+<p>  (</p>
+<p>  SELECT…</p>
+<p>  )</p>
+</li>
+<li><p>多语句表值</p>
+<p>  CREATE FUNCTION fuc_name(@c char(10))</p>
+<p>  RETURNS @table_name  TABLE(商品名 varchar(50),…)</p>
+<p>  AS</p>
+<p>  BEGIN</p>
+<p>  INSERT INTO @table_name</p>
+<p>  …</p>
+<p>  RETURN</p>
+<p>  END</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a>触发器</h2><p>CREATE TIGGER trigger_name ON table_name</p>
+<p>FOR(AFTER)/INSTEAD OF INSERT/UPDATE/DELET</p>
+<p>AS</p>
+<p>…</p>
+<ul>
+<li>后触发器</li>
+<li>前触发器：在一个表上针对同一个数据操作只能建立一个</li>
+</ul>
+<h2 id="游标"><a href="#游标" class="headerlink" title="游标"></a>游标</h2><ul>
+<li><p>声明游标</p>
+<p>  DECLARE cursor_name CURSOR FOR …</p>
+</li>
+</ul>
+<ul>
+<li>打开游标</li>
+<li><p>提取数据</p>
+<ul>
+<li>当前行的前一行：FETCH PRIOR FROM cursor_name INTO @存放结果集</li>
+<li>当前行后一行：FETCH NEXT</li>
+<li>每次提取数据都会对@@FETCH_STATUS进行赋值</li>
+</ul>
+</li>
+<li><p>关闭游标</p>
+</li>
+<li>释放游标</li>
+</ul>
+<h1 id="安全管理"><a href="#安全管理" class="headerlink" title="安全管理"></a>安全管理</h1><h2 id="SQL-Server安全控制"><a href="#SQL-Server安全控制" class="headerlink" title="SQL Server安全控制"></a>SQL Server安全控制</h2><ul>
+<li><p>身份验证模式</p>
+<ul>
+<li>WINDOWS身份验证模式</li>
+<li>混合身份验证模式</li>
+</ul>
+</li>
+<li><p>登录账户 “LOGIN”：CREATE LOGIN SQL_User WITH PASSWORD=’123456’</p>
+</li>
+<li>数据库用户：一个登录账户可以隐射为多个数据库中的用户 “USER”；但每个数据库用户只能对应一个登录账户</li>
+<li><p>权限管理</p>
+<ul>
+<li>授权|收权|拒绝【对象】级别：GRANT|REVOKE|DENY 【SELECT/INSERT/UPDATE/DELETE/REFERENCE/EXECUTE】 ON … TO|FROM|TO …</li>
+<li>语句级别：GRANT 【CREATE TABLE/BACKUP DATABASE】 TO user</li>
+</ul>
+</li>
+<li><p>角色</p>
+<ul>
+<li>固定服务器角色</li>
+<li>固定数据库角色</li>
+<li><p>用户定义角色（属于数据库这一级别）</p>
+<ul>
+<li>创建：CREATE ROLE role_name AUTHORIZATION …</li>
+<li>删除：DROP ROLE role_name</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Oracle安全控制"><a href="#Oracle安全控制" class="headerlink" title="Oracle安全控制"></a>Oracle安全控制</h2><ul>
+<li><p>分为数据库级别的安全控制；表级、行级、列级的安全控制</p>
+<ul>
+<li>数据库级：通过用户身份认证和授予用户相应权限保证</li>
+<li>表、行、列级：通过授予或回收对象特权保证</li>
+</ul>
+</li>
+<li><p>用户按操作权限分为DBA用户（拥有全部系统特权）和普通用户两类</p>
+</li>
+</ul>
+<h1 id="运行维护与优化"><a href="#运行维护与优化" class="headerlink" title="运行维护与优化"></a>运行维护与优化</h1><h2 id="运行维护"><a href="#运行维护" class="headerlink" title="运行维护"></a>运行维护</h2><ul>
+<li>数据库的转储与恢复</li>
+<li>数据库的安全性与完整性控制</li>
+<li>数据库性能的监控分析和改进</li>
+<li><p>数据库的重组和重构</p>
+<ul>
+<li>重组：不改变原有逻辑和物理结构（如调整磁盘分区方法和存储空间，整理回收碎块等）</li>
+<li>重构：部分修改数据库的模式和内模式（如改变数据类型）</li>
+</ul>
+</li>
+</ul>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><ul>
+<li><p>运行环境和参数调整</p>
+<ul>
+<li>外部：CPU;网络</li>
+<li>调整内存分配</li>
+<li>调整磁盘I/O</li>
+<li>调整竞争</li>
+</ul>
+</li>
+<li><p>模式调整与优化</p>
+<ul>
+<li>增加派生性冗余列</li>
+<li>增加冗余列</li>
+<li>去规范化重新组表</li>
+<li><p>分割表</p>
+<ul>
+<li>水平分割</li>
+<li>垂直分割</li>
+</ul>
+</li>
+<li><p>新增汇总表</p>
+</li>
+</ul>
+</li>
+<li><p>存储优化</p>
+<ul>
+<li>物化视图：预先计算并保存 费时的操作结果</li>
+<li>聚集：将具有公共列值的多个表中的数据行存储在一起，由公共列构成聚集码</li>
+</ul>
+</li>
+<li><p>查询优化</p>
+<ul>
+<li><p>合理使用索引</p>
+<ul>
+<li>聚簇索引最适合用于范围查询</li>
+<li>散列索引适合等值查询（尤其是在连接操作中）</li>
+<li>B+树支持作为搜索码属性上的等值查询和范围查询</li>
+</ul>
+</li>
+<li><p>使用临时表加速查询</p>
+</li>
+<li>避免或者简化排序</li>
+<li>避免复杂的正则表达式</li>
+<li>消除对大型表的顺序存取（对连接的列进行索引）</li>
+<li>用排序取代非顺序磁盘存取</li>
+<li>尽量避免不充分的连接条件</li>
+<li>对于频繁使用的SQL语句建议使用存储过程（不用编译直接执行）</li>
+<li>不要随意使用游标</li>
+<li>一个事务中尽量少的处理</li>
+</ul>
+</li>
+</ul>
+<h1 id="故障管理，备份与恢复"><a href="#故障管理，备份与恢复" class="headerlink" title="故障管理，备份与恢复"></a>故障管理，备份与恢复</h1><h2 id="故障管理"><a href="#故障管理" class="headerlink" title="故障管理"></a>故障管理</h2><ul>
+<li><p>事务内部故障</p>
+<p>  事务故障的恢复是由系统自动完成，对用户是透明的</p>
+<ul>
+<li><p>事务特征</p>
+<ul>
+<li>原子性、一致性、隔离性、持久性</li>
+</ul>
+</li>
+<li><p>预期的—可以通过事务程序本身发现，通过将事务回滚使数据库回到一致性的状态</p>
+</li>
+<li>非预期的—不能由事务程序处理（如运算溢出，并发死锁等）。利用日志文件撤销其对数据库的修改。</li>
+</ul>
+</li>
+<li><p>系统故障</p>
+<ul>
+<li>原因：硬件故障、数据库软件和操作系统漏洞或突然停电</li>
+<li>恢复：REDO已提交的事务，UNDO未完成的事务。必须使用日志文件</li>
+</ul>
+</li>
+<li><p>介质故障</p>
+<ul>
+<li>原因：物理存储设备损坏</li>
+<li><p>容错对策</p>
+<ul>
+<li>软件容错：使用数据库备份和事务日志文件恢复数据库到备份结束时的状态</li>
+<li><p>硬件容错：采用双物理存储设备</p>
+<ul>
+<li><p>磁盘保护技术：磁盘阵列</p>
+<ul>
+<li>RAID0：采用数据分块，并行传送方式。能够提高读写速度，但对系统可靠性没有帮助</li>
+<li>RAID1：提高读速度，加强系统可靠性。但是硬盘利用率50%（另一半作为镜像），同时写速度没有提高</li>
+<li>RAID5：比RAID1磁盘利用率高，但保障程度低；读取速度与RAID0相近；写入速度比单个磁盘还低。</li>
+<li>RAID10:冗余度为50%，但读写速度均提高</li>
+</ul>
+</li>
+<li><p>服务器容错：active-standby工作模式（提高可靠性，但因为始终只有一台服务器工作，所以对性能没有提升）</p>
+</li>
+<li><p>数据库镜像</p>
+<ul>
+<li><p>分类</p>
+<ul>
+<li>双机互备援：两台均工作，互相监视</li>
+<li>双机热备份：一台工作，一台监视</li>
+</ul>
+</li>
+<li><p>SQL Server数据库镜像三种实现</p>
+<ul>
+<li>高可用性</li>
+<li>高保护性</li>
+<li>高性能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>计算机病毒故障</p>
+<ul>
+<li><p>软件容错方法恢复</p>
+<ul>
+<li><p>数据转储</p>
+<ul>
+<li>静态：期间不能运行其他事务</li>
+<li>动态：允许与用户事务并发执行</li>
+<li>引入日志文件。使用动态转储的备份副本加上日志文件进行恢复。静态转储时非必须使用。</li>
+<li>检查点技术：最大限度减少数据库完全恢复时所必须执行的日志部分</li>
+<li><p>转储机制</p>
+<ul>
+<li>完全转储</li>
+<li>增量转储：只复制上次转储后发生变化的文件或者数据块</li>
+<li>差量转储（差异转储）：对最近一次数据库完全转储以来发生的数据变化进行转储</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="SQL-Server恢复模式"><a href="#SQL-Server恢复模式" class="headerlink" title="SQL Server恢复模式"></a>SQL Server恢复模式</h2><ul>
+<li>简单恢复模式：不备份事务日志</li>
+<li>完整恢复</li>
+<li>大容量日志恢复模式：只对大容量操作进行最小记录，是完整恢复模式的附加模式</li>
+</ul>
+<h2 id="SQL-Server备份机制"><a href="#SQL-Server备份机制" class="headerlink" title="SQL Server备份机制"></a>SQL Server备份机制</h2><ul>
+<li>备份设备：备份的数据库文件可以建立在磁带上，或者磁盘上</li>
+<li><p>备份类型</p>
+<ul>
+<li><p>数据库备份</p>
+<p>  备份数据文件、日志文件，文件的存储位置以及数据库的全部对象。不影响用户对数据库数据进行增删改等操作，能将备份过程中的操作也备份下来</p>
+<ul>
+<li>完整</li>
+<li>差异 WITH DIFFERENTIAL</li>
+</ul>
+</li>
+<li><p>文件备份</p>
+</li>
+<li><p>事务日志备份：仅用于完整恢复模式和大容量日志恢复模式</p>
+<ul>
+<li>纯日志备份：不包含在大容量日志恢复模式下执行的任何大容量更改的备份</li>
+<li>大容量操作日志备份：不允许对其进行时点恢复</li>
+<li>结尾日志备份：可以包括纯日志记录或大容量操作日志记录。用以捕获尚未备份的日志记录，是恢复计划中最后一个相关备份</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="大规模数据库架构"><a href="#大规模数据库架构" class="headerlink" title="大规模数据库架构"></a>大规模数据库架构</h1><h2 id="分布式数据库"><a href="#分布式数据库" class="headerlink" title="分布式数据库"></a>分布式数据库</h2><ul>
+<li><p>DDBS:物理上分散的，但逻辑上集中的数据库系统</p>
+<ul>
+<li>分布式查询：除了考虑CPU代价和I/O代价，，还要考虑站点之间的通信代价</li>
+<li><p>分布式事务管理</p>
+<ul>
+<li>恢复控制：基于两阶段的提交协议</li>
+<li>基于封锁协议的并发控制</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DDB：DDBS中各场地上数据库的逻辑集合</p>
+<ul>
+<li>最基本特征：本地自治、非集中式管理，高可用性</li>
+<li><p>数据分布策略</p>
+<ul>
+<li><p>数据分片</p>
+<ul>
+<li>水平分片：每一行至少属于一个片段</li>
+<li>垂直分片：各片段中必须包含对应关系的KEY</li>
+<li>导出分片：依据其他关系属性的条件进行分片</li>
+<li>混合分片</li>
+</ul>
+</li>
+<li><p>数据分配</p>
+<ul>
+<li>集中式：所有数据片段安排在一个场地</li>
+<li>分割式：全局数据被分割成若干片段，每个被分配在特定场地</li>
+<li>全复制式：全局数据有多个副本，每个场地有一个完整副本</li>
+<li>混合式：介于分割和全复制之间</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>分布透明性</p>
+<ul>
+<li>数据分片独立性（分片透明性）：最高级别的透明性</li>
+<li>位置独立性：数据分配片的分配位置对用户是透明的。只需要考虑数据分片情况，无需了解各分片在各场地的分配情况</li>
+<li>数据复制独立性（局部数据模型透明性）</li>
+</ul>
+</li>
+<li><p>体系结构</p>
+<ul>
+<li>全局外模式：用户视图</li>
+<li>全局概念模式：全体数据逻辑结构和特征</li>
+<li>分片模式：全局数据的逻辑划分视图</li>
+<li>分配模式：各片段到物理存放场地的映像</li>
+<li>局部概念模式：描述全局关系在场地上存储的物理片段的逻辑结构以及特征</li>
+<li>局部内模式：描述局部概念模式设计的数据在本场地的物理存储</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="并行数据库"><a href="#并行数据库" class="headerlink" title="并行数据库"></a>并行数据库</h2><ul>
+<li><p>系统结构</p>
+<ul>
+<li>共享内存</li>
+<li>共享磁盘</li>
+<li>无共享（适用于银行出纳，民航售票等OLTP类应用）</li>
+<li>层次结构：顶层无共享，底层共享内存或者磁盘</li>
+</ul>
+</li>
+<li><p>数据划分</p>
+<ul>
+<li><p>一维划分</p>
+<ul>
+<li>论转法：扫描整个关系</li>
+<li>散列划分：适合于点查询</li>
+<li>范围划分：利于范围查询和点查询</li>
+</ul>
+</li>
+<li><p>多维划分</p>
+</li>
+</ul>
+</li>
+<li><p>并行算法</p>
+<ul>
+<li>并行排序</li>
+<li>并行连接</li>
+<li>选择，消除重复，投影，聚集函数</li>
+</ul>
+</li>
+</ul>
+<h2 id="云计算数据库架构"><a href="#云计算数据库架构" class="headerlink" title="云计算数据库架构"></a>云计算数据库架构</h2><ul>
+<li>云计算：包含Internet上的应用服务及在数据中心提供这些服务的软硬件设施</li>
+<li><p>云+数据库体系结构（以Google AppEgine）</p>
+<ul>
+<li>分布式编程环境Map/Reduce</li>
+<li>文件系统 Google File System</li>
+<li>分布式锁机构 Chubby</li>
+<li><p>大规模分布式数据库BigTable</p>
+<ul>
+<li>索引是行关键字，列关键字和时间戳</li>
+<li>可以随意增减行的数量，还可以对列的数量进行扩展</li>
+<li>稀疏存储的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="XML数据库"><a href="#XML数据库" class="headerlink" title="XML数据库"></a>XML数据库</h2><ul>
+<li>定义：支持对XML格式文档进行存储和查询的DBMS</li>
+<li><p>优势</p>
+<ul>
+<li>对半结构化数据（如网页内容）进行存取管理</li>
+<li>提供对标签和路径的操作</li>
+<li>便于对层次化数据进行操作</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据仓库与数据挖掘"><a href="#数据仓库与数据挖掘" class="headerlink" title="数据仓库与数据挖掘"></a>数据仓库与数据挖掘</h1><h2 id="基于数据仓库-Data-Warehouse-的决策支持系统（DDS）"><a href="#基于数据仓库-Data-Warehouse-的决策支持系统（DDS）" class="headerlink" title="基于数据仓库(Data Warehouse)的决策支持系统（DDS）"></a>基于数据仓库(Data Warehouse)的决策支持系统（DDS）</h2><ul>
+<li><p>体系结构</p>
+<ul>
+<li><p>数据仓库是核心</p>
+<ul>
+<li>特性：面向主题的，集成的，非易失的且随时间变化</li>
+<li>体系结构：数据处理，数据管理和数据应用三个层次</li>
+<li><p>数据组织</p>
+<ul>
+<li>粒度：粒度越小，细节程度越高，空间代价越大</li>
+<li><p>数据分区</p>
+<ul>
+<li>系统层分区：各分区在逻辑上是一个表，但物理上属于不同表</li>
+<li>应用层分区：不同分区在逻辑和物理上都是不同的表</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>元数据：描述数据的数据</p>
+<ul>
+<li>技术型</li>
+<li>业务型</li>
+</ul>
+</li>
+<li><p>数据的更新维护</p>
+<ul>
+<li><p>维护策略</p>
+<ul>
+<li>实时维护</li>
+<li>延时维护</li>
+<li>快照维护：无法提供最新的数据</li>
+</ul>
+</li>
+<li><p>导出数据的刷新</p>
+<ul>
+<li>重新计算</li>
+<li>增量式维护</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>操作型系统是基本数据源</p>
+<ul>
+<li><p>与数据仓库之间有一个“操作型数据存储”(ODS)的数据层</p>
+<ul>
+<li>特点：面向主题的，集成的，可变的，数据是当前或接近当前的</li>
+<li>用以支撑及时OLAP和全局型OLTP应用</li>
+<li>分类：ODSI(秒级)；ODSII(小时级)；ODSIII(天级)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>DDS是数据的需求者</p>
+</li>
+</ul>
+</li>
+<li><p>数据</p>
+<ul>
+<li>操作型数据</li>
+<li><p>DSS型数据（支持分析型应用）</p>
+<ul>
+<li>面向主题的</li>
+<li>不更新</li>
+<li>对性能要求宽松</li>
+<li>松弛的可用性</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="OLAP联机分析处理"><a href="#OLAP联机分析处理" class="headerlink" title="OLAP联机分析处理"></a>OLAP联机分析处理</h2><ul>
+<li><p>多维分析</p>
+<ul>
+<li>钻取与卷起</li>
+<li>切片</li>
+<li>旋转</li>
+</ul>
+</li>
+</ul>
+<h2 id="关联规则挖掘：关联规则的成立与否一般由“支持度”和“置信度”两个指标描述"><a href="#关联规则挖掘：关联规则的成立与否一般由“支持度”和“置信度”两个指标描述" class="headerlink" title="关联规则挖掘：关联规则的成立与否一般由“支持度”和“置信度”两个指标描述"></a>关联规则挖掘：关联规则的成立与否一般由“支持度”和“置信度”两个指标描述</h2><p><em>XMind - Trial Version</em></p>
 
                 
             </div>
@@ -1087,7 +2143,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">39.9k</span>&nbsp;字
+                class="white-color">45.8k</span>&nbsp;字
             
             
             
