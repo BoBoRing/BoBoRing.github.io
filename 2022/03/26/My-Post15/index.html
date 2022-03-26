@@ -947,20 +947,20 @@
 </li>
 </ul>
 <h1 id="3-数据库及数据库对象"><a href="#3-数据库及数据库对象" class="headerlink" title="3 数据库及数据库对象"></a>3 数据库及数据库对象</h1><h2 id="3-1-SQL-Server2008系统数据库"><a href="#3-1-SQL-Server2008系统数据库" class="headerlink" title="3.1 SQL Server2008系统数据库"></a>3.1 SQL Server2008系统数据库</h2><ul>
-<li>master</li>
-<li>msdb</li>
-<li>model—当用户创建数据库时，系统自动复制到新建数据库中</li>
-<li>tempdb—临时数据库，无需备份</li>
-<li>Resources:只读，包含所有系统对象</li>
+<li><code>master</code></li>
+<li><code>msdb</code></li>
+<li><code>model</code>—当用户创建数据库时，系统自动复制到新建数据库中</li>
+<li><code>tempdb</code>—临时数据库，无需备份</li>
+<li><code>Resources</code>：只读，包含所有系统对象</li>
 </ul>
 <h2 id="3-2-SQL-Server数据库组成"><a href="#3-2-SQL-Server数据库组成" class="headerlink" title="3.2 SQL Server数据库组成"></a>3.2 SQL Server数据库组成</h2><ul>
 <li><p>数据文件</p>
 <ul>
-<li>主要文件.mdf</li>
-<li>次要文件.ndf</li>
+<li>主要文件<code>.mdf</code></li>
+<li>次要文件<code>.ndf</code></li>
 </ul>
 </li>
-<li><p>事务日志文件.ldf</p>
+<li><p>事务日志文件<code>.ldf</code></p>
 </li>
 <li><p>数据库存储空间的分配</p>
 <ul>
@@ -995,113 +995,149 @@
 <li>分区条件：表当前和未来的数据量大小，以及对表中数据操作的特点</li>
 <li><p>步骤</p>
 <ul>
-<li><p>创建分区函数</p>
-<p>CREATE PARTITION FUNCTION function_name（int）括号中为用于分区的列的数据类型</p>
-<p>AS RANGE LEFT/RIGHT FOR VALUES(num1,num2,…)</p>
-<p>分区数=边界数+1</p>
-</li>
-<li><p>创建分区方案:将分区隐射到文件组</p>
-<p>CREATE PARTITION SCHEME partition_scheme_name</p>
-<p>AS PARTITION partition_function_name</p>
-<p>TO(filegroup1,filegroup2,…)</p>
-</li>
-<li><p>使用分区方案创建表</p>
-<p>CREATE TABLE table_name</p>
-<p>(col_name1 int,</p>
-<p>col_name2 char(10)</p>
-<p>)</p>
-<p>ON partition_scheme_name(col_name)</p>
-</li>
+<li>创建分区函数</li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+<pre><code>            CREATE PARTITION FUNCTION function_name（int）括号中为用于分区的列的数据类型
+
+            AS RANGE LEFT/RIGHT FOR VALUES(num1,num2,...)
+
+      分区数=边界数+1
+
+    - 创建分区方案:将分区隐射到文件组
+
+            CREATE PARTITION SCHEME partition_scheme_name
+
+            AS PARTITION partition_function_name
+
+            TO(filegroup1,filegroup2,...)
+
+    - 使用分区方案创建表
+
+            CREATE TABLE table_name
+
+            (col_name1 int,
+
+            col_name2 char(10)
+
+            )
+
+            ON partition_scheme_name(col_name)
+</code></pre><ul>
 <li><p>索引</p>
-<ul>
-<li>CREATE UNIQUE CLUSTERED/NONCLUSTERED INDEX index_name        ON table_name(col_name)</li>
-<li>DROP INDEX index_name</li>
-</ul>
-</li>
+<pre><code>  CREATE UNIQUE CLUSTERED/NONCLUSTERED INDEX index_name ON table_name(col_name)
+
+  DROP INDEX index_name
+</code></pre></li>
 <li><p>索引视图</p>
 <ul>
-<li>首先定义一个视图 CREATE VIEW view_name AS…</li>
-<li>在视图上定义一个唯一聚集索引 CREATE UNIQUE CLUSTERED INDEX…</li>
+<li>首先定义一个视图 <code>CREATE VIEW view_name AS...</code></li>
+<li>在视图上定义一个唯一聚集索引 <code>CREATE UNIQUE CLUSTERED INDEX...</code></li>
 </ul>
 </li>
 </ul>
 <h1 id="4-数据库后台编程技术"><a href="#4-数据库后台编程技术" class="headerlink" title="4 数据库后台编程技术"></a>4 数据库后台编程技术</h1><h2 id="4-1-存储过程"><a href="#4-1-存储过程" class="headerlink" title="4.1 存储过程"></a>4.1 存储过程</h2><p>可以有多个输入和多个输出</p>
 <ul>
 <li><p>创建存储过程</p>
-<p>  CREATE PROC/PROCEDURE proc_name</p>
-<p>  @a int, @b int ,@c int output</p>
-<p>  AS</p>
-<p>  SELECT…</p>
-</li>
+<pre><code>  CREATE PROC/PROCEDURE proc_name
+
+  @a int, @b int ,@c int output
+
+  AS
+
+  SELECT...
+</code></pre></li>
 <li><p>执行存储过程</p>
 <p>  对于有输出参数的，执行前先生命输出参数</p>
-<p>  DECLARE @c int</p>
-<p>  EXEC proc_name 1, 2, @c output</p>
-</li>
-</ul>
-<pre><code>或者(但注意两种方式不能混用)
+<pre><code>  DECLARE @c int
 
-EXEC proc_name @a=1,@b=2, @c output
-</code></pre><h2 id="4-2-用户定义函数"><a href="#4-2-用户定义函数" class="headerlink" title="4.2 用户定义函数"></a>4.2 用户定义函数</h2><ul>
+  EXEC proc_name 1, 2, @c output
+</code></pre><p>  或者(但注意两种方式不能混用)</p>
+<pre><code>  EXEC proc_name @a=1,@b=2, @c output
+</code></pre></li>
+</ul>
+<h2 id="4-2-用户定义函数"><a href="#4-2-用户定义函数" class="headerlink" title="4.2 用户定义函数"></a>4.2 用户定义函数</h2><ul>
 <li><p>标量函数</p>
-<p>  CREATE FUNCTION fuc_name(@a int）</p>
-<p>  RETURNS int</p>
-<p>  AS</p>
-<p>  BEGIN</p>
-<p>  DECLARE @x int</p>
-<p>  …</p>
-<p>  RETURN @x</p>
-<p>  END</p>
-</li>
+<pre><code>  CREATE FUNCTION fuc_name(@a int）
+
+  RETURNS int
+
+  AS
+
+  BEGIN
+
+  DECLARE @x int
+
+  ...
+
+  RETURN @x
+
+  END
+</code></pre></li>
 </ul>
 <ul>
 <li><p>表值函数</p>
 <ul>
 <li><p>内联表值函数</p>
-<p>  CREATE FUNCTION fuc_name（@c char(10))</p>
-<p>  RETURNS table</p>
-<p>  AS</p>
-<p>  RETURN</p>
-<p>  (</p>
-<p>  SELECT…</p>
-<p>  )</p>
-</li>
+<pre><code>  CREATE FUNCTION fuc_name（@c char(10))
+
+  RETURNS table
+
+  AS
+
+  RETURN
+
+  (
+
+  SELECT...
+
+  )
+</code></pre></li>
 <li><p>多语句表值</p>
-<p>  CREATE FUNCTION fuc_name(@c char(10))</p>
-<p>  RETURNS @table_name  TABLE(商品名 varchar(50),…)</p>
-<p>  AS</p>
-<p>  BEGIN</p>
-<p>  INSERT INTO @table_name</p>
-<p>  …</p>
-<p>  RETURN</p>
-<p>  END</p>
 </li>
 </ul>
 </li>
 </ul>
-<h2 id="4-3-触发器"><a href="#4-3-触发器" class="headerlink" title="4.3 触发器"></a>4.3 触发器</h2><p>CREATE TIGGER trigger_name ON table_name</p>
-<p>FOR(AFTER)/INSTEAD OF INSERT/UPDATE/DELET</p>
-<p>AS</p>
-<p>…</p>
-<ul>
+<pre><code>        CREATE FUNCTION fuc_name(@c char(10))
+
+        RETURNS @table_name  TABLE(商品名 varchar(50),...)
+
+        AS
+
+        BEGIN
+
+        INSERT INTO @table_name
+
+        ...
+
+        RETURN
+
+        END
+</code></pre><h2 id="4-3-触发器"><a href="#4-3-触发器" class="headerlink" title="4.3 触发器"></a>4.3 触发器</h2><pre><code>CREATE TIGGER trigger_name ON table_name
+
+FOR(AFTER)/INSTEAD OF INSERT/UPDATE/DELET
+
+AS
+
+...
+</code></pre><ul>
 <li>后触发器</li>
 <li>前触发器：在一个表上针对同一个数据操作只能建立一个</li>
 </ul>
 <h2 id="4-4-游标"><a href="#4-4-游标" class="headerlink" title="4.4 游标"></a>4.4 游标</h2><ul>
 <li><p>声明游标</p>
-<p>  DECLARE cursor_name CURSOR FOR …</p>
-</li>
+<pre><code>  DECLARE cursor_name CURSOR FOR ...
+</code></pre></li>
 </ul>
 <ul>
 <li>打开游标</li>
 <li><p>提取数据</p>
 <ul>
-<li>当前行的前一行：FETCH PRIOR FROM cursor_name INTO @存放结果集</li>
-<li>当前行后一行：FETCH NEXT</li>
+<li>当前行的前一行：<code>FETCH PRIOR FROM cursor_name INTO @存放结果集</code></li>
+<li>当前行后一行：<code>FETCH NEXT</code></li>
 <li>每次提取数据都会对@@FETCH_STATUS进行赋值</li>
 </ul>
 </li>
@@ -1116,13 +1152,13 @@ EXEC proc_name @a=1,@b=2, @c output
 <li>混合身份验证模式</li>
 </ul>
 </li>
-<li><p>登录账户 “LOGIN”：CREATE LOGIN SQL_User WITH PASSWORD=’123456’</p>
+<li><p>登录账户 “LOGIN”：<code>CREATE LOGIN SQL_User WITH PASSWORD=&#39;123456&#39;</code></p>
 </li>
 <li>数据库用户：一个登录账户可以隐射为多个数据库中的用户 “USER”；但每个数据库用户只能对应一个登录账户</li>
 <li><p>权限管理</p>
 <ul>
-<li>授权|收权|拒绝【对象】级别：GRANT|REVOKE|DENY 【SELECT/INSERT/UPDATE/DELETE/REFERENCE/EXECUTE】 ON … TO|FROM|TO …</li>
-<li>语句级别：GRANT 【CREATE TABLE/BACKUP DATABASE】 TO user</li>
+<li>授权|收权|拒绝【对象】级别：<code>GRANT|REVOKE|DENY 【SELECT/INSERT/UPDATE/DELETE/REFERENCE/EXECUTE】 ON ... TO|FROM|TO ...</code></li>
+<li>语句级别：<code>GRANT 【CREATE TABLE/BACKUP DATABASE】 TO user</code></li>
 </ul>
 </li>
 <li><p>角色</p>
@@ -1131,8 +1167,8 @@ EXEC proc_name @a=1,@b=2, @c output
 <li>固定数据库角色</li>
 <li><p>用户定义角色（属于数据库这一级别）</p>
 <ul>
-<li>创建：CREATE ROLE role_name AUTHORIZATION …</li>
-<li>删除：DROP ROLE role_name</li>
+<li>创建：<code>CREATE ROLE role_name AUTHORIZATION ...</code></li>
+<li>删除：<code>DROP ROLE role_name</code></li>
 </ul>
 </li>
 </ul>
@@ -1162,7 +1198,7 @@ EXEC proc_name @a=1,@b=2, @c output
 <h2 id="6-2-性能优化"><a href="#6-2-性能优化" class="headerlink" title="6.2 性能优化"></a>6.2 性能优化</h2><ul>
 <li><p>运行环境和参数调整</p>
 <ul>
-<li>外部：CPU;网络</li>
+<li>外部：CPU，网络</li>
 <li>调整内存分配</li>
 <li>调整磁盘I/O</li>
 <li>调整竞争</li>
@@ -1517,7 +1553,9 @@ EXEC proc_name @a=1,@b=2, @c output
 </ul>
 </li>
 </ul>
-<h2 id="9-3-关联规则挖掘：关联规则的成立与否一般由“支持度”和“置信度”两个指标描述"><a href="#9-3-关联规则挖掘：关联规则的成立与否一般由“支持度”和“置信度”两个指标描述" class="headerlink" title="9.3 关联规则挖掘：关联规则的成立与否一般由“支持度”和“置信度”两个指标描述"></a>9.3 关联规则挖掘：关联规则的成立与否一般由“支持度”和“置信度”两个指标描述</h2><p><em>XMind - Trial Version</em></p>
+<h2 id="9-3-关联规则挖掘"><a href="#9-3-关联规则挖掘" class="headerlink" title="9.3 关联规则挖掘"></a>9.3 关联规则挖掘</h2><ul>
+<li>关联规则的成立与否一般由“支持度”和“置信度”两个指标描述</li>
+</ul>
 
                 
             </div>
@@ -2369,8 +2407,8 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
     <!--浏览器搞笑标题-->
-    <script type="text/javascript" src="/js/FunnyTitle.js"></script>
+    <script type="text/javascript" src="/js/FunnyTitle.js"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","hOffset":5,"vOffset":-80,"width":200,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","hOffset":5,"vOffset":-80,"width":200,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
 </html>
