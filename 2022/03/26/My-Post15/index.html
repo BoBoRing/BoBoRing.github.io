@@ -1005,7 +1005,9 @@
 
             AS RANGE LEFT/RIGHT FOR VALUES(num1,num2,...)
 
-      分区数=边界数+1
+
+       分区数=边界数+1
+
 
     - 创建分区方案:将分区隐射到文件组
 
@@ -1014,6 +1016,7 @@
             AS PARTITION partition_function_name
 
             TO(filegroup1,filegroup2,...)
+
 
     - 使用分区方案创建表
 
