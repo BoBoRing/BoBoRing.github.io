@@ -1,0 +1,1658 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="贪吃蛇游戏构建, BoBoRing&#39;s Blog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>贪吃蛇游戏构建 | BoBoRing&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-darcula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">BoBoRing&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/navigate" class="waves-effect waves-light">
+      
+      <i class="fas fa-location-arrow" style="zoom: 0.6;"></i>
+      
+      <span>工具箱</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">BoBoRing&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/navigate" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-location-arrow"></i>
+			
+			工具箱
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/33.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">贪吃蛇游戏构建</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+    width: 345px;
+    padding-left: 20px;
+    background-color: rgb(255, 255, 255,0.7);
+    border-radius: 10px;
+    box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">C语言</span>
+                            </a>
+                        
+                            <a href="/tags/JavaScrip/">
+                                <span class="chip bg-color">JavaScrip</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" class="post-category">
+                                游戏开发
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-02-06
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.1k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    10 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        <!-- 代码块折行 -->
+        
+        <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+       </style>
+       
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>本文尝试使用C语言和JavaScrip语言实现家喻户晓的经典电子游戏：贪吃蛇。</p>
+<h1 id="1-基于C语言实现贪吃蛇"><a href="#1-基于C语言实现贪吃蛇" class="headerlink" title="1 基于C语言实现贪吃蛇"></a>1 基于C语言实现贪吃蛇</h1><p>实现C语言实现起来还是比较简单的，难点在于：</p>
+<p>（1）输入为键盘的“上”“下”“左”“右”键，可通过switch语句来完成控制。</p>
+<p>（2）<strong>蛇的结构体定义</strong>，<strong>游戏窗口设置</strong>，<strong>显示屏句柄变量定义</strong>需要扎实的C语言功底的。</p>
+<p>（3）<strong>蛇的移动控制</strong>，<strong>蛇和菜单的打印</strong>，<strong>蛇吃食物后的加速控制</strong>等难度较大。</p>
+<p>游戏构建的C语言代码如下：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;windows.h&gt;
+#include &lt;conio.h&gt;
+#include &lt;time.h&gt;
+
+//游戏窗口
+#define FrameX 4   //游戏窗口左上角的X轴坐标
+#define FrameY 4   //游戏窗口左上角的Y轴坐标
+#define Frame_height  20 //游戏窗口的高度
+#define Frame_width   20 //游戏窗口的宽度
+
+//定义全局变量
+int i,j;
+int a[2];  //用于记住蛇尾坐标，其中a[0]、a[1]分别表示横、竖坐标
+
+//蛇的结构体定义
+struct Snake
+{
+ int x[100]; //蛇的横坐标，其中x[0]表示蛇尾的横坐标，x[N-1]表示蛇头的横坐标
+ int y[100]; //蛇的竖坐标，其中y[0]表示蛇尾的竖坐标，y[N-1]表示蛇头的竖坐标
+ int count;  //蛇吃食物的个数
+ int length; //蛇的长度
+ int speed;  //蛇的速度
+};
+
+//食物结构体定义
+struct Food
+{
+ int x;  //食物的横坐标
+ int y;  //食物的竖坐标
+};
+
+void start_game();
+void over_game();
+
+int main()
+{
+ system(&quot;color 0D&quot;);  //设置文本为粉红色
+ start_game();        //开始游戏
+ over_game();         //结束游戏
+}
+
+/****************************光标移到指定位置****************************************/
+void gotoxy(HANDLE hOut, int x, int y)
+{
+ COORD pos;
+ pos.X = x;  //横坐标
+ pos.Y = y;  //纵坐标
+ SetConsoleCursorPosition(hOut, pos);
+}
+
+/******************************设置文本为绿色****************************************/
+void Set_TextColor_Green (void)
+{
+ HANDLE Handle = GetStdHandle(STD_OUTPUT_HANDLE);
+
+ SetConsoleTextAttribute(Handle, FOREGROUND_INTENSITY | FOREGROUND_GREEN);
+}
+
+/*******************************制作游戏窗口****************************************/
+void make_frame()
+{
+ HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);  //定义显示器句柄变量
+ gotoxy(hOut,FrameX+2*Frame_width+3,FrameY+13);  //打印选择菜单
+ printf(&quot;Esc 退出游戏&quot;);
+ gotoxy(hOut,FrameX+2*Frame_width+3,FrameY+15);
+ printf(&quot;长按方向键：加速&quot;);
+ gotoxy(hOut,FrameX,FrameY);   //打印框角
+ printf(&quot;╔&quot;);
+ gotoxy(hOut,FrameX+2*Frame_width-2,FrameY);
+ printf(&quot;╗&quot;);
+ gotoxy(hOut,FrameX,FrameY+Frame_height);
+ printf(&quot;╚&quot;);
+ gotoxy(hOut,FrameX+2*Frame_width-2,FrameY+Frame_height);
+ printf(&quot;╝&quot;);
+ for(i=2;i&lt;2*Frame_width-2;i+=2)
+ {
+  gotoxy(hOut,FrameX+i,FrameY);
+  printf(&quot;═&quot;); //打印上横框
+ }
+ for(i=2;i&lt;2*Frame_width-2;i+=2)
+ {
+  gotoxy(hOut,FrameX+i,FrameY+Frame_height);
+  printf(&quot;═&quot;); //打印下横框
+ }
+ for(i=1;i&lt;Frame_height;i++)
+ {
+  gotoxy(hOut,FrameX,FrameY+i);
+  printf(&quot;║&quot;); //打印左竖框
+ }
+ for(i=1;i&lt;Frame_height;i++)
+ {
+  gotoxy(hOut,FrameX+2*Frame_width-2,FrameY+i);
+  printf(&quot;║&quot;); //打印右竖框
+ }
+ gotoxy(hOut,FrameX+Frame_width-5,FrameY-2);   //打印游戏名称
+ Set_TextColor_Green ();//设置蛇为绿色
+ printf(&quot;贪吃蛇游戏&quot;);
+}
+
+/************************************结束菜单****************************************/
+void over_game()
+{
+ system(&quot;cls&quot;);
+ printf(&quot;\n\n\n\n\n\n\n\n\t\t\t\t游戏结束\n\n\n&quot;);
+ Sleep(2000);
+ getch();
+}
+
+/*************************************菜单信息*************************************/
+void print_information(HANDLE hOut,struct Snake *snake,struct Food *food)
+{
+ gotoxy(hOut,FrameX+2*Frame_width+3,FrameY+1);
+ printf(&quot;level : %d&quot;,snake-&gt;count/5+1);//打印游戏等级
+ gotoxy(hOut,FrameX+2*Frame_width+3,FrameY+3);
+ printf(&quot;score : %d&quot;,10*snake-&gt;count);//打印游戏得分
+ gotoxy(hOut,FrameX+2*Frame_width+3,FrameY+5);
+ printf(&quot;eat food : %d&quot;,snake-&gt;count);//打印产生食物个数
+ gotoxy(hOut,FrameX+2*Frame_width+3,FrameY+7);
+ printf(&quot;speed : %dms&quot;,snake-&gt;speed);//打印游戏速度
+ gotoxy(hOut,FrameX+2*Frame_width+3,FrameY+9);
+ printf(&quot;foodX : %d&quot;,food-&gt;x);  //打印食物的横坐标
+ gotoxy(hOut,FrameX+2*Frame_width+3,FrameY+11);
+ printf(&quot;foodY : %d&quot;,food-&gt;y);  //打印食物的竖坐标
+}
+
+/************************************初始化蛇**************************************/
+void init_snake(struct Snake *snake)
+{
+ snake-&gt;x[0]=FrameX+2; //初始化蛇的横坐标
+ snake-&gt;y[0]=FrameY+Frame_height/2;  //初始化蛇的竖坐标
+ snake-&gt;speed=300;  //初始化蛇的速度为300ms
+ snake-&gt;length=3;  //初始化蛇的长度为3节
+ snake-&gt;count=0;   //初始化蛇吃的个数为0
+ for(i=1;i&lt;snake-&gt;length;i++)
+ {/* 依次得到蛇身、蛇头的坐标 */
+  snake-&gt;x[i]=snake-&gt;x[i-1]+2;
+  snake-&gt;y[i]=snake-&gt;y[i-1];
+ }
+}
+
+/*************************************移动蛇****************************************/
+void move_snake(HANDLE hOut,struct Snake *snake)
+{
+ gotoxy(hOut,snake-&gt;x[0],snake-&gt;y[0]);
+ printf(&quot;  &quot;);   /* 清除蛇尾*/
+ for(i=1;i&lt;snake-&gt;length;i++)
+ {/* 后一节的坐标依次取代前一节的坐标 */
+  snake-&gt;x[i-1]=snake-&gt;x[i];
+  snake-&gt;y[i-1]=snake-&gt;y[i];
+ }
+}
+
+/***************************************打印蛇**************************************/
+void print_snake(HANDLE hOut,struct Snake *snake)
+{
+ for(i=0;i&lt;snake-&gt;length;i++)
+ {
+  gotoxy(hOut,snake-&gt;x[i],snake-&gt;y[i]);
+  if(i==0)
+  {
+   printf(&quot;○&quot;);   //打印蛇尾
+  }
+  else if(i==snake-&gt;length-1)
+  {
+   printf(&quot;¤&quot;);   //打印蛇头
+  }
+  else
+  {
+   printf(&quot;⊙&quot;);   //打印蛇身
+  }
+ }
+}
+
+/**************************************随机产生食物***********************************/
+void get_food(HANDLE hOut,struct Snake *snake,struct Food *food)
+{
+ srand((unsigned)time(NULL));   //初始化随机数
+ while(1)
+ {/* 产生食物的条件：1.在游戏窗口内 2.不在蛇的身上 */
+  food-&gt;x = rand() % (Frame_width-1);
+  food-&gt;y = rand() % Frame_height;
+  if( food-&gt;x==0 || food-&gt;y==0 )
+  {
+   continue;
+  }
+  food-&gt;x = 2*food-&gt;x + FrameX;  //得到食物的横坐标
+  food-&gt;y+=FrameY; //得到食物的竖坐标
+  for(i=0;i&lt;snake-&gt;length;i++)
+  {/* 判断食物是否在蛇的身上，如果在蛇身上，则重新产生；否则，打印蛇身 */
+   if( food-&gt;x==snake-&gt;x[i] &amp;&amp; food-&gt;y==snake-&gt;y[i] )
+   {
+break;
+   }
+  }
+  if(i==snake-&gt;length)
+  {
+   gotoxy(hOut,food-&gt;x,food-&gt;y);
+   printf(&quot;⊙&quot;);
+   break;
+  }
+ }
+}
+
+/***************************************吃食物***************************************/
+void eat_food(HANDLE hOut,struct Snake *snake,struct Food *food)
+{
+ if( snake-&gt;x[snake-&gt;length-1]==food-&gt;x &amp;&amp; snake-&gt;y[snake-&gt;length-1]==food-&gt;y )
+ {/* 如果蛇头位置与食物位置相同，吃食物 */
+  snake-&gt;length++;  //吃一个食物，蛇身增长一节
+  for(i=snake-&gt;length-1;i&gt;=1;i--)
+  {/* 蛇后节坐标依次赋值给蛇前一节的坐标，依次得到蛇身及蛇头的坐标 */
+   snake-&gt;x[i]=snake-&gt;x[i-1];
+   snake-&gt;y[i]=snake-&gt;y[i-1];
+  }
+  snake-&gt;x[0]=a[0];  //得到蛇尾移动前的横坐标
+  snake-&gt;y[0]=a[1];  //得到蛇尾移动前的竖坐标
+  get_food(hOut,snake,food);//重新产生食物
+  snake-&gt;count++;   //食物的个数增1
+  if( snake-&gt;count%5==0 )
+  {/* 当蛇吃Up_level个食物时，速度加快Up_speed毫秒并且升一级 */
+   snake-&gt;speed-=50;
+  }
+ }
+}
+
+/**************************************穿墙***************************************/
+void through_wall(HANDLE hOut,struct Snake *snake,char ch)
+{
+ if( ch==72 &amp;&amp; snake-&gt;y[snake-&gt;length-1]==FrameY)
+ {
+  snake-&gt;y[snake-&gt;length-1] = FrameY+Frame_height-1; //如果蛇在上框且向上移动，穿墙
+ }
+ if( ch==80 &amp;&amp; snake-&gt;y[snake-&gt;length-1]==FrameY+Frame_height )
+ {
+  snake-&gt;y[snake-&gt;length-1] = FrameY+1;//如果蛇在下框且向下移动，穿墙
+ }
+ if( ch==75 &amp;&amp; snake-&gt;x[snake-&gt;length-1]==FrameX )
+ {
+  snake-&gt;x[snake-&gt;length-1] = FrameX+2*Frame_width-4; //如果蛇在左框且向左移动，穿墙
+ }
+ if( ch==77 &amp;&amp; snake-&gt;x[snake-&gt;length-1]==FrameX+2*Frame_width-2 )
+ {
+  snake-&gt;x[snake-&gt;length-1] = FrameX+2;//如果蛇在右框且向右移动，穿墙
+ }
+}
+
+/**********************************判断蛇是否死************************************/
+int if_die(struct Snake *snake)
+{/* 当蛇头碰到自身时，蛇死 ，返回值为0 */
+ for(i=0;i&lt;snake-&gt;length-1;i++)
+ {
+  if( snake-&gt;x[snake-&gt;length-1]==snake-&gt;x[i] &amp;&amp; snake-&gt;y[snake-&gt;length-1]==snake-&gt;y[i] )
+  {
+   return 0;
+  }
+ }
+ return 1;
+}
+
+/************************************开始游戏*************************************/
+void start_game()
+{
+ unsigned char ch=77;//定义用于接收键盘输入的字符变量
+ HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE); //定义显示器句柄变量
+ struct Snake s,*snake=&amp;s;  //定义蛇的结构体指针并指向蛇的结构体
+ struct Food f,*food=&amp;f;   //定义食物的结构体指针并指向食物的结构体
+
+ make_frame(); //制作游戏窗口
+ init_snake(snake);//初始化蛇
+ get_food(hOut,snake,food);  //随机产生食物
+ while(1)
+ {
+  print_information(hOut,snake,food);   //打印菜单信息
+  a[0]=snake-&gt;x[0];   //记住蛇尾的横坐标
+  a[1]=snake-&gt;y[0];   //记住蛇尾的竖坐标
+  j=0;
+  if(kbhit())
+  {/* 判断是否按下键盘，如果按下，ch接收键盘输入 */
+   ch=getch();
+   if(kbhit())
+   {/* 如果长按键盘，则加速 */
+Sleep(20);
+j=1;
+   }
+  }
+  switch(ch)
+  {
+   case 72:
+{/* 向上移动 */
+ move_snake(hOut,snake);   //移动蛇
+ snake-&gt;y[snake-&gt;length-1]-=1; //蛇头的竖坐标向上移，即减1
+ break;
+}
+   case 80:
+{/* 向下移动 */
+ move_snake(hOut,snake);   //移动蛇
+ snake-&gt;y[snake-&gt;length-1]+=1; //蛇头的竖坐标向下移，即加1
+ break;
+}
+   case 75:
+{/* 向左移动 */
+ move_snake(hOut,snake);   //移动蛇
+ snake-&gt;x[snake-&gt;length-1]-=2; //蛇头的横坐标向左移，即减2
+ break;
+}
+   case 77:
+{/* 向右移动 */
+ move_snake(hOut,snake);   //移动蛇
+ snake-&gt;x[snake-&gt;length-1]+=2; //蛇头的横坐标向右移，即加2
+ break;
+}
+  }
+  through_wall(hOut,snake,ch);//穿墙
+  eat_food(hOut,snake,food); //吃食物
+  print_snake(hOut,snake); //打印蛇
+  if( if_die(snake)==0 || ch==27 || snake-&gt;speed==50 )
+  {/* 游戏结束条件：1.蛇碰到自身 2.按Esc键 3.速度为50ms */
+   gotoxy(hOut,FrameX+Frame_width-2,FrameY+Frame_height/2-1);
+   printf(&quot;Game Over&quot;);
+   Sleep(2000);
+   break;
+  }
+  if(j==0)
+  {
+   Sleep(snake-&gt;speed);  //延迟时间
+  }
+  else
+  {
+   Sleep(10);
+  }
+ }
+}
+</code></pre><p>运行结果如下图：</p>
+<p><img src="/2020/02/06/My-Post0-2/ctanchi.png" alt></p>
+<h1 id="2-基于JavaScrip实现贪吃蛇"><a href="#2-基于JavaScrip实现贪吃蛇" class="headerlink" title="2 基于JavaScrip实现贪吃蛇"></a>2 基于JavaScrip实现贪吃蛇</h1>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">BoBoRing</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://boboring.github.io/2020/02/06/My-Post0-2/">http://boboring.github.io/2020/02/06/My-Post0-2/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">BoBoRing</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">C语言</span>
+                                </a>
+                            
+                                <a href="/tags/JavaScrip/">
+                                    <span class="chip bg-color">JavaScrip</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '49SujOC6eSH5mGt7oM0RUs7f-gzGzoHsz',
+        appKey: 'AoxETEehzrwjnbd8Ei9nBMnD',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '请畅所欲言'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/03/06/My-Post0-3/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="单链表，二叉树，图，查找和排序的程序设计">
+                        
+                        <span class="card-title">单链表，二叉树，图，查找和排序的程序设计</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">C语言</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/02/06/My-Post0-2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/33.jpg" class="responsive-img" alt="贪吃蛇游戏构建">
+                        
+                        <span class="card-title">贪吃蛇游戏构建</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" class="post-category">
+                                    游戏开发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">C语言</span>
+                    </a>
+                    
+                    <a href="/tags/JavaScrip/">
+                        <span class="chip bg-color">JavaScrip</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2020-2022</span>
+            
+            <a href="/about" target="_blank">BoBoRing</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">61.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/BoBoRing" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:binrong_ai@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://mp.weixin.qq.com/s/jojYVEccfexV2hQ0clZp3g" class="tooltipped" target="_blank" data-tooltip="关注我的公众号" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=807362320" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 807362320" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.cnblogs.com/BoBoRing/" class="tooltipped" target="_blank" data-tooltip="关注我的博客园" data-position="top" data-delay="50">
+        <i class="fab fa-juejin">博</i>
+    </a>
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+    <!--浏览器搞笑标题-->
+    <script type="text/javascript" src="/js/FunnyTitle.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","hOffset":5,"vOffset":-80,"width":200,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+
+</html>

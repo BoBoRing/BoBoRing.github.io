@@ -424,7 +424,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    998
+                    1.1k
                 </div>
                 
 
@@ -470,7 +470,8 @@
 <p><img src="/2021/11/26/My-Post14/buer.png" alt></p>
 <p><img src="/2021/11/26/My-Post14/null.png" alt></p>
 <p>注意：Java中if语句的条件必须是布尔类型，不像其它语言变量非0即表示真。</p>
-<p>字面量中的<strong>转义序列</strong>的写法如下（右边为其对应的Unicode编码）：<br><img src="/2021/11/26/My-Post14/zhuanyi.png" alt></p>
+<p>字面量中的<strong>转义序列</strong>的写法如下（右边为其对应的Unicode编码）：</p>
+<p><img src="/2021/11/26/My-Post14/zhuanyi.png" alt></p>
 <p>注意：</p>
 <p>1.引用类型类似于C语言里面的指针类型；</p>
 <p>2.字符串类型属于引用类型，字符串内容为空代表指向的位置不放任何字符串，而空值null表示没有任何指向；</p>
@@ -486,12 +487,14 @@
 <p>3.当多个优先级一样的运算符一起使用时，按照结合性进行运算（只有赋值运算符的结合性是从右到左，其他运算符的结合性都是从左到右）；</p>
 <p>4.为了保证运算符按照预期执行，尽量多使用小括号；</p>
 <p>5.算术表示式的运算结果必须被使用。</p>
-<p><strong>字符串的拼接</strong><br><img src="/2021/11/26/My-Post14/pinjie.png" alt></p>
+<p><strong>字符串的拼接</strong></p>
+<p><img src="/2021/11/26/My-Post14/pinjie.png" alt></p>
 <p><strong>位运算</strong></p>
-<p>运算符中的按位与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>不仅可以应用到整数类型，还可以应用到布尔类型。<br><img src="/2021/11/26/My-Post14/weiyunsuan.png" alt></p>
+<p>运算符中的按位与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>不仅可以应用到整数类型，还可以应用到布尔类型。</p>
+<p><img src="/2021/11/26/My-Post14/weiyunsuan.png" alt></p>
 <p>按位与<code>&amp;</code>、或<code>|</code>、异或<code>^</code>不具备短路功能，而逻辑与<code>&amp;&amp;</code>、或<code>||</code>具有短路功能，即只要第一个条件成立就不会执行后面的条件。</p>
 <p>其它位运算符：<br><img src="/2021/11/26/My-Post14/youyi.png" alt></p>
-<h2 id="1-4-类型转换"><a href="#1-4-类型转换" class="headerlink" title="1.4 类型转换"></a>1.4 类型转换</h2><p>类型转换分两种，拓宽和窄化。<br><img src="/2021/11/26/My-Post14/leixingzhuanh.png" alt></p>
+<h2 id="1-4-类型转换"><a href="#1-4-类型转换" class="headerlink" title="1.4 类型转换"></a>1.4 类型转换</h2><p>类型转换分两种：拓宽和窄化。<br><img src="/2021/11/26/My-Post14/leixingzhuanh.png" alt></p>
 <p><img src="/2021/11/26/My-Post14/leixingzhuanh2.png" alt></p>
 <p>注意：布尔类型和其它类型之间不能相互转换。</p>
 <p><strong>一元数字提升</strong>：表示将byte、short、char类型的一元数字自动提升为int类型（属于拓宽基本类型转换）。</p>
@@ -500,14 +503,34 @@
 <p><strong>二元数字提升</strong>：即如果二元运算的两个变量类型不一样的时候，需要转换成数据范围大的那个变量的类型，如果既不是double又不是float也不是long，那么大家都转换为int。<br><img src="/2021/11/26/My-Post14/eryuantisheng.png" alt></p>
 <p>图中代码第三行两个byte相加都会转换成int，int到byte需要强制转换，第四五行有byte就会转换成int。</p>
 <h2 id="1-5-关键字和标识符"><a href="#1-5-关键字和标识符" class="headerlink" title="1.5 关键字和标识符"></a>1.5 关键字和标识符</h2><p><strong>关键字</strong><br><img src="/2021/11/26/My-Post14/guanjianzi.png" alt></p>
-<p><strong>标识符</strong><br><img src="/2021/11/26/My-Post14/biaoshifu.png" alt></p>
-<p><strong>命名建议：</strong><br><img src="/2021/11/26/My-Post14/mingming.png" alt></p>
+<p><strong>标识符</strong></p>
+<p><img src="/2021/11/26/My-Post14/biaoshifu.png" alt></p>
+<p><strong>命名建议：</strong></p>
+<p><img src="/2021/11/26/My-Post14/mingming.png" alt></p>
 <h2 id="1-6-数组"><a href="#1-6-数组" class="headerlink" title="1.6 数组"></a>1.6 数组</h2><p><strong>数组的创建：</strong><br><img src="/2021/11/26/My-Post14/shuzuchuangjian.png" alt></p>
-<p><strong>数组的内存：</strong><br><img src="/2021/11/26/My-Post14/shuzuneicun.png" alt></p>
-<p><strong>数组的遍历：</strong><br><img src="/2021/11/26/My-Post14/shuzubianli.png" alt></p>
+<p><strong>数组的内存：</strong></p>
+<p><img src="/2021/11/26/My-Post14/shuzuneicun.png" alt></p>
+<p><strong>数组的遍历：</strong></p>
+<p><img src="/2021/11/26/My-Post14/shuzubianli.png" alt></p>
 <p>注意：可以直接输出数组元素，如果输出数组会打印数组类型和十六进制的哈希值。</p>
-<h2 id="1-7-方法"><a href="#1-7-方法" class="headerlink" title="1.7 方法"></a>1.7 方法</h2><p>Java中的方法其实就是其他编程语言中的函数。<br><img src="/2021/11/26/My-Post14/ff.png" alt></p>
-<p><strong>可变参数</strong>：用三个点表示，可以传递任意数量任意类型的参数。<br><img src="/2021/11/26/My-Post14/kebiancanshu.png" alt></p>
+<h2 id="1-7-方法"><a href="#1-7-方法" class="headerlink" title="1.7 方法"></a>1.7 方法</h2><p>Java中的方法其实就是其他编程语言中的<strong>函数</strong>。</p>
+<p><img src="/2021/11/26/My-Post14/ff.png" alt></p>
+<p><strong>方法中的可变参数</strong>：</p>
+<p>用三个点表示，可以传递任意数量类型的参数。</p>
+<p><img src="/2021/11/26/My-Post14/kebiancanshu.png" alt></p>
+<p><strong>参数传递</strong></p>
+<p>八种基本类型和引用类型（数组、对象）的参数传递类型不一样。</p>
+<p><img src="/2021/11/26/My-Post14/canshuchuandi.png" alt></p>
+<p><strong>方法的签名和重载</strong></p>
+<p>方法签名包括方法名和参数类型。</p>
+<p><img src="/2021/11/26/My-Post14/ffqianming.png" alt></p>
+<p>注意：在同一个类中不能定义2个方法签名一样的方法。</p>
+<p><img src="/2021/11/26/My-Post14/ffchongzai.png" alt></p>
+<p><strong>方法中的栈帧</strong></p>
+<p><img src="/2021/11/26/My-Post14/zhanzhen.png" alt></p>
+<p>递归调用：栈帧的逐步创建和销毁</p>
+<p><img src="/2021/11/26/My-Post14/diguidiaoyong1.png" alt></p>
+<p><img src="/2021/11/26/My-Post14/diguidiaoyong2.png" alt></p>
 <h1 id="2-面向对象"><a href="#2-面向对象" class="headerlink" title="2 面向对象"></a>2 面向对象</h1><h1 id="3-常用API"><a href="#3-常用API" class="headerlink" title="3 常用API"></a>3 常用API</h1><h1 id="4-数据结构（集合）"><a href="#4-数据结构（集合）" class="headerlink" title="4 数据结构（集合）"></a>4 数据结构（集合）</h1><p><img src="/2021/11/26/My-Post14/JAVASHUJUJIEGOUY.png" alt></p>
 <p><img src="/2021/11/26/My-Post14/JAVASHUJUJIEGOU2.png" alt></p>
 <h1 id="5-多线程"><a href="#5-多线程" class="headerlink" title="5 多线程"></a>5 多线程</h1><h1 id="6-IO"><a href="#6-IO" class="headerlink" title="6 IO"></a>6 IO</h1><h1 id="7-异常"><a href="#7-异常" class="headerlink" title="7 异常"></a>7 异常</h1><h1 id="8-正则表达式"><a href="#8-正则表达式" class="headerlink" title="8 正则表达式"></a>8 正则表达式</h1>
@@ -1137,7 +1160,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">45.9k</span>&nbsp;字
+                class="white-color">61.3k</span>&nbsp;字
             
             
             

@@ -1,0 +1,2167 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="语音信号处理, BoBoRing&#39;s Blog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>语音信号处理 | BoBoRing&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-darcula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">BoBoRing&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/navigate" class="waves-effect waves-light">
+      
+      <i class="fas fa-location-arrow" style="zoom: 0.6;"></i>
+      
+      <span>工具箱</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">BoBoRing&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/navigate" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-location-arrow"></i>
+			
+			工具箱
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">语音信号处理</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+    width: 345px;
+    padding-left: 20px;
+    background-color: rgb(255, 255, 255,0.7);
+    border-radius: 10px;
+    box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/MATLAB/">
+                                <span class="chip bg-color">MATLAB</span>
+                            </a>
+                        
+                            <a href="/tags/GUI/">
+                                <span class="chip bg-color">GUI</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/" class="post-category">
+                                音频处理
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-04-06
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    35 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        <!-- 代码块折行 -->
+        
+        <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+       </style>
+       
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1-语音信号的采集"><a href="#1-语音信号的采集" class="headerlink" title="1 语音信号的采集"></a>1 语音信号的采集</h1><h2 id="1-1-题目要求"><a href="#1-1-题目要求" class="headerlink" title="1.1 题目要求"></a>1.1 题目要求</h2><p>使用windows下的录音机录制一段语音信号、音乐信号或者采用其他软件截取一段音乐信号（要求：时间不超过5s，文件格式为WAV。）</p>
+<p>① 请每位同学都参与录音，内容自定。</p>
+<p>② 使用wavread语句读取语音/音乐信号获取抽样率；（注意：读取的信号是双声道信号，即为双列向量，需要分列处理）；</p>
+<p>③ 输出时域语音/音乐信号的波形。</p>
+<p>④ 实现对录音信号的声音大小的调节。</p>
+<p>⑤ 实现对两种语音/音乐信号的混音音效。</p>
+<p>⑥ 实现音乐信号的回音音效。</p>
+<h2 id="1-2-设计内容及方案"><a href="#1-2-设计内容及方案" class="headerlink" title="1.2 设计内容及方案"></a>1.2 设计内容及方案</h2><p>① 读取音频信号：我是通过wavread函数读取.wav文件的方式来获得，当然首先要自己创建一个.wav音频，我是通过电脑录音生成.mp3然后格式工厂转成.wav的，需保存到同一文件夹下。</p>
+<p>② 分声道处理：一般音乐和语音信号都是双声道信号，时域和频谱图会有两个颜色，所以要取单列来分析，通过x1=x(:,1)语句来实现。</p>
+<p>③ 画时域波形图：用plot函数来画图，注意横坐标为时间t。</p>
+<p>④ 音量大小调节：通过将音频直接乘一个系数来实现调音量。</p>
+<p>⑤ 混音和回声：混音即将两个音频相加，要相加就得保证矩阵一样，所以要通过截取并补零矩阵来实现；回声是把三个信号叠加，这三个信号在不同位置补零音量也逐渐变小，就可以实现回声。</p>
+<p>⑥ 播放声音：本题我使用wavplay来播放声音，会有警告，后面的题我用sound比较好。</p>
+<h2 id="1-3-程序源码及注释"><a href="#1-3-程序源码及注释" class="headerlink" title="1.3 程序源码及注释"></a>1.3 程序源码及注释</h2><pre><code>clear
+[x,fs] = wavread(&#39;beautiful.wav&#39;);%音乐信号
+[y,fs1]= wavread(&#39;1.wav&#39;);%女生声音
+[z,fs2]= wavread(&#39;2.wav&#39;);%男生声音
+
+%输出频率
+fs
+fs1
+fs2
+
+%音乐语音信号分声道处理
+x1=x(:,1);
+y1=y(:,1);
+z1=z(:,1);
+
+%画音乐信号时域图
+n1=length(x1);%length取数列长度即元素个数
+figure(1)
+t1=(0:(n1-1))/fs;
+plot(t1,x1);
+axis([0,5,-1,1]);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;音乐信号时域波形&#39;);
+
+%画语音信号时域图
+n2=length(y1);
+figure(2)
+subplot(2,1,1);
+t2=(0:(n2-1))/fs1;
+plot(t2,y1);%女生
+axis([0,4,-0.5,0.5]);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;女生语音信号时域波形&#39;);
+n3=length(z1);
+subplot(2,1,2);
+t3=(0:(n3-1))/fs2;
+plot(t3,z1);%男生
+axis([0,4,-0.5,0.5]);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;男生语音信号时域波形&#39;);
+
+%对语音信号声音大小调节
+wavplay(y,fs1); %播放原语音
+y11=10*y;
+wavplay(y11,fs1); %加大音量播放
+y22=0.5*y;
+wavplay(y22,fs1); %减小音量播放
+
+%两种语音信号的混音
+[m,n]=size(y1);%size取矩阵的行列数
+[m0,n0]=size(z1);
+a=zeros(abs(m-m0),n);%两矩阵行数差为零矩阵行数
+if length(y1)&lt;length(z1)
+ y2=[y1;a];
+ y3=y2+z1;%两个矩阵行数一样才能相加，所以要补零
+else 
+ y2=[z1;a];
+ y3=y2+y1;%y1和z1中长的那个不变，短的那个补零
+end;
+wavplay(y3,fs1) ;%播放混音语音
+
+%画混音波形
+figure(3)
+subplot(2,1,1);
+t4=(0:(max(n2,n3)-1))/fs1;
+plot(t4,y3);
+axis([0,4.5,-0.5,0.5]);
+xlabel(&#39;时间&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;两语音信号叠加后时域波形&#39;);
+
+%音乐信号的回音
+x11=x1(1:200000);%截取部分
+x11=x11&#39;;%因为输出为一列所以要转置成一行
+int0=zeros(1,20000);%1行2000列的零矩阵
+temp1=[x11,int0,int0];
+temp2=[int0,0.6*x11,int0];
+temp3=[int0,int0,0.3*x11];%通过补零实现延时，同时声音一个比一个小
+hui=temp1+temp2+temp3;%三重声音相加实现回声
+N=length(hui);
+wavplay(hui,fs1);%播放回音音乐
+
+%画回声波形
+subplot(2,1,2);
+t1=(0:(N-1))/fs;
+plot(t1,hui);
+axis([0,4.5,-1,1]);
+xlabel(&#39;时间&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;回声时域波形&#39;);
+</code></pre><h1 id="2-语音-音乐信号的频谱和音谱的观察"><a href="#2-语音-音乐信号的频谱和音谱的观察" class="headerlink" title="2 语音/音乐信号的频谱和音谱的观察"></a>2 语音/音乐信号的频谱和音谱的观察</h1><h2 id="2-1-题目要求"><a href="#2-1-题目要求" class="headerlink" title="2.1 题目要求"></a>2.1 题目要求</h2><p>① 输出语音/音乐信号的波形和频谱，观察现象；</p>
+<p>② 使用sound语句播放语音/音乐信号，注意不同抽样率下音调变化，解释现象。</p>
+<h2 id="2-2-设计内容及方案"><a href="#2-2-设计内容及方案" class="headerlink" title="2.2 设计内容及方案"></a>2.2 设计内容及方案</h2><p>本题读取音频信号、画时域波形和播放原理和上题一样，涉及的新内容有：</p>
+<p>① 画频谱图：我将横坐标设为频率f，纵坐标需要用fft函数求傅里叶变换然后利用abs函数求幅值画幅度谱，再用plot画出频谱图。</p>
+<p>② 调节频率：我将频率fs乘一个系数放大缩小并播放，感受频率对语音的影响。</p>
+<h2 id="2-3-程序源码及注释"><a href="#2-3-程序源码及注释" class="headerlink" title="2.3 程序源码及注释"></a>2.3 程序源码及注释</h2><pre><code>clear
+[x,fs] = wavread(&#39;beautiful.wav&#39;);%音乐信号
+[y,fs1]= wavread(&#39;1.wav&#39;);%女生声音
+[z,fs2]= wavread(&#39;2.wav&#39;);%男生声音
+
+%输出频率
+fs
+fs1
+fs2
+
+%音乐语音信号分声道处理
+x1=x(:,1);
+y1=y(:,1);
+z1=z(:,1);
+
+%画音乐信号时域图
+n1=length(x1);%length取数列长度即元素个数
+figure(1)
+subplot(2,1,1);
+t1=(0:(n1-1))/fs;
+plot(t1,x1);
+axis([0,5,-1,1]);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;音乐信号时域波形&#39;);
+
+%画音乐信号频域图
+X1=fft(x1,n1);
+subplot(2,1,2);
+f1=0:fs/n1:fs*(n1-1)/n1;
+plot(f1,abs(X1));%也可以使用fftshift函数使fft后的结果以fs/2为中心左右互换
+axis([0,44100,0,6000]);
+xlabel(&#39;频率f&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;音乐信号频谱&#39;);
+
+%画女生语音信号时域图
+n2=length(y1);
+figure(2)
+subplot(2,2,1);
+t2=(0:(n2-1))/fs1;
+plot(t2,y1);
+axis([0,4,-0.5,0.5]);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;女生语音信号时域波形&#39;);
+
+%画女生语音信号频域图
+Y=fft(y1,n2);
+subplot(2,2,2);
+f2=0:fs1/n2:fs1*(n2-1)/n2;
+plot(f2,abs(Y));
+axis([0,48000,0,700]);
+xlabel(&#39;频率f&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;女生语音信号频谱&#39;);
+
+%画男生语音信号时域图
+n3=length(z1);
+subplot(2,2,3);
+t3=(0:(n3-1))/fs2;
+plot(t3,z1);
+axis([0,4,-0.5,0.5]);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;男生语音信号时域波形&#39;);
+
+%画男生语音信号频域图
+Z=fft(z1,n3);
+subplot(2,2,4);
+f3=0:fs2/n3:fs2*(n3-1)/n3;
+plot(f3,abs(Z));
+axis([0,48000,0,700]);
+xlabel(&#39;频率f&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;男生语音信号频谱&#39;);
+
+%不同抽样率语音信号
+sound(y1,fs);%播放原音乐
+pause(5);
+sound(y1,2*fs);%播放高频率音乐
+pause(2);
+sound(y1,0.5*fs);%播放低频率音乐
+</code></pre><h1 id="3-语音-音乐信号的抽取（减抽样）"><a href="#3-语音-音乐信号的抽取（减抽样）" class="headerlink" title="3 语音/音乐信号的抽取（减抽样）"></a>3 语音/音乐信号的抽取（减抽样）</h1><h2 id="3-1-题目要求"><a href="#3-1-题目要求" class="headerlink" title="3.1 题目要求"></a>3.1 题目要求</h2><p>① 观察语音/音乐信号频率的上限，选择适当的抽取间隔对信号进行减抽样（给出两种抽取间隔，代表混叠与非混叠）；</p>
+<p>② 输出减抽样语音/音乐信号的波形和频谱，观察现象，给出理论解释；</p>
+<p>③ 播放减抽样语音/音乐信号，注意抽样率改变，比较不同抽取间隔下的声音，解释现象。</p>
+<h2 id="3-2-设计内容及方案"><a href="#3-2-设计内容及方案" class="headerlink" title="3.2 设计内容及方案"></a>3.2 设计内容及方案</h2><p>本题研究的唯一内容就是对信号以不同间隔抽样，这里抽取了200000长度的信号，便于以一定间隔抽样。</p>
+<p>首先以小间隔2抽样，信号声音基本和原声差不多，没有发生混叠；而后又用大间隔20抽样，信号声音有了很明显的变化，即发生了混叠。</p>
+<p>原因：采样频率fs必须大于等于2fc，采样频率小于2fc时，发生混叠，若采样频率越小，则混叠越明显。音频fc不到5000Hz,间隔2采样频率fs为22000Hz大于两倍的fc所以不混叠；间隔20采样频率fs为2200Hz小于两倍的fc所以发生混叠。</p>
+<h2 id="3-3-程序源码及注释"><a href="#3-3-程序源码及注释" class="headerlink" title="3.3 程序源码及注释"></a>3.3 程序源码及注释</h2><pre><code>clear
+[x,fs]=wavread(&#39;beautiful.wav&#39;);%音乐信号
+x1=x(:,1);%取单列
+x2=x1(1:200000);%截取长度
+N1=length(x2)%求信号长度
+
+%画原信号时域波形和频谱
+t1=(0:(N1-1))/fs;
+figure(1);
+subplot(2,1,1);
+plot(t1,x2);
+title(&#39;原信号时域波形&#39;);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+f1=0:fs/N1:fs*(N1-1)/N1;
+Fx1=fft(x2,N1); %求傅里叶变换
+subplot(2,1,2);
+plot(f1,abs(Fx1));
+title(&#39;原信号的频谱&#39;);%画原信号频谱
+xlabel(&#39;频率f&#39;);
+ylabel(&#39;幅度&#39;);
+
+%非混叠间隔减抽样
+d1=2;j=0;
+for i=1:d1:200000
+j=j+1;
+x22(j)=x2(i);%对信号以d1为间隔做减抽样
+end
+N2=length(x22);%对信号以d1为间隔做减抽样的长度
+
+%画d1间隔抽样图
+t2=(0:(N2-1))/fs;
+figure(2);
+subplot(2,1,1);
+plot(t2,x22);
+title(&#39;以d1为间隔减抽样时域波形&#39;);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+subplot(2,1,2);
+f2=0:(fs/d1)/N2:(fs/d1)*(N2-1)/N2;
+Fx2=fft(x22,N2);%求傅里叶变换画频谱
+plot(f2,abs(Fx2));
+title(&#39;以d1为间隔减抽样后的频谱(非混叠)&#39;);
+xlabel(&#39;频率f&#39;);
+ylabel(&#39;幅度&#39;);
+
+%混叠间隔减抽样
+d2=20;j=0;
+for i=1:d2:200000
+j=j+1;
+x3(j)=x2(i);%对信号以d2为间隔做减抽样
+end
+N3=length(x3) ;%对信号以d2为间隔做减抽样长度
+
+%画d2间隔抽样图
+t3=(0:(N3-1))/fs;
+figure(3)
+subplot(2,1,1);
+plot(t3,x3);
+title(&#39;以d2为间隔减抽样后的时域波形&#39;);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+subplot(2,1,2);
+f3=0:(fs/d2)/N3:(fs/d2)*(N3-1)/N3;
+Fx3=fft(x3,N3);%求傅里叶变换画频谱
+plot(f3,abs(Fx3));
+title(&#39;以d2为间隔减抽样后的频谱(混叠)&#39;);
+xlabel(&#39;频率f&#39;);
+ylabel(&#39;幅度&#39;);
+
+%播放减抽样信号
+sound(x2,fs);%原信号播放
+pause(5);
+sound(x22,fs/d1);%以d1为间隔减抽样信号播放(非混叠)
+pause(8);
+sound(x3,fs*(1/d2));%以d2为间隔减抽样信号播放(混叠)
+</code></pre><h1 id="4-语音-音乐信号的AM调制"><a href="#4-语音-音乐信号的AM调制" class="headerlink" title="4 语音/音乐信号的AM调制"></a>4 语音/音乐信号的AM调制</h1><h2 id="4-1-题目要求"><a href="#4-1-题目要求" class="headerlink" title="4.1 题目要求"></a>4.1 题目要求</h2><p>① 观察语音/音乐信号的频率上限，选择适当调制频率对信号进行调制（给出高、低两种调制频率）；</p>
+<p>② 输出调制信号的波形和频谱，观察现象，给出理论解释；</p>
+<p>③ 播放调制语音/音乐信号，注意不同调制频率下的声音，解释现象。</p>
+<h2 id="4-2-设计内容及方案"><a href="#4-2-设计内容及方案" class="headerlink" title="4.2 设计内容及方案"></a>4.2 设计内容及方案</h2><p>在这道题中我统一使用了频率归一化，便于从原信号中读取截止频率和设置载波频率。</p>
+<p>① 取低频载波对信号进行AM调制：这里取了0.1pi为低频调制载波频率，与原信号相乘实现AM调制，这里用点乘转置矩阵实现。</p>
+<p>② 取高频载波对信号进行AM调制：这里取了0.7pi为低频调制载波频率，与原信号相乘实现AM调制，这里用点乘转置矩阵实现。</p>
+<p>③ 播放调制后信号：分别播放低频和高频调制时的音乐，用sound函数播放。</p>
+<h2 id="4-3-程序源码及注释"><a href="#4-3-程序源码及注释" class="headerlink" title="4.3 程序源码及注释"></a>4.3 程序源码及注释</h2><pre><code>clear
+[x,fs]=wavread(&#39;beautiful.wav&#39;); %读取音乐信号
+x1=x(:,1);%取单列 
+N=length(x1);%求信号长度 
+n=0:N-1;%所有元素
+t=(0:(N-1))/fs;%时间
+f=0:fs/N:fs*(N-1)/N;%频率
+w=2*f/fs;%归一化
+
+%画原信号时域波形和频谱
+figure(1);
+subplot(2,1,1);
+plot(t,x1);
+title(&#39;原信号时域波形&#39;);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+Fx1=fft(x1,N); %求傅里叶变换
+subplot(2,1,2);
+plot(w,abs(Fx1));
+title(&#39;原信号的频谱&#39;);%画原信号频谱
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+
+%低频调制
+x2=cos(n*0.1*pi);%低频时余弦信号
+x22=x1.*x2&#39;;%低频调制信号
+X2=fft(x2); 
+X22=fft(x22);
+
+%高频调制
+x3=cos(n*0.7*pi);%高频时余弦信号
+x33=x1.*x3&#39;;%高频调制信号
+X3=fft(x3); 
+X33=fft(x33); 
+
+%画出低频时载波和调制信号波形
+figure(2)
+subplot(2,2,1);
+plot(t,x2);
+axis([0,0.001,-1,1]);
+title(&#39;低频时余弦信号时域波形&#39;);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+subplot(2,2,2);
+plot(w,abs(X2));
+title(&#39;低频时余弦信号频谱&#39;);
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+
+subplot(2,2,3);
+plot(t,x22);
+title(&#39;低频调制信号时域波形&#39;);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+subplot(2,2,4);
+plot(w,abs(X22));
+title(&#39;低频调制信号频谱&#39;);
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+%画出高频时载波和调制信号波形
+figure(3)
+
+subplot(2,2,1);
+plot(t,x3);
+axis([0,0.001,-1,1]);
+title(&#39;高频时余弦信号时域波形&#39;);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+subplot(2,2,2);
+plot(w,abs(X3));
+title(&#39;高频时余弦信号频谱&#39;);
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+
+subplot(2,2,3);
+plot(t,x33);
+title(&#39;高频调制信号时域波形&#39;);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+subplot(2,2,4);
+plot(w,abs(X33));
+title(&#39;高频调制信号频谱&#39;);
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+
+%播放调制信号
+sound(x1,fs);%播放原音乐
+pause(5);
+sound(x22,fs);%低频调制播放
+pause(5);
+sound(x33,fs);%高频调制播放
+</code></pre><h1 id="5-AM调制语音-音乐信号的同步解调"><a href="#5-AM调制语音-音乐信号的同步解调" class="headerlink" title="5 AM调制语音/音乐信号的同步解调"></a>5 AM调制语音/音乐信号的同步解调</h1><h2 id="5-1-题目要求"><a href="#5-1-题目要求" class="headerlink" title="5.1 题目要求"></a>5.1 题目要求</h2><p>① 设计巴特沃斯滤波器完成同步解调，观察滤波器频率响应曲线；</p>
+<p>② 窗函数法设计FIR滤波器完成同步解调，观察滤波器频率响应曲线（要求：分别使用矩形窗和布莱克曼窗，进行比较）；</p>
+<p>③ 输出解调信号的波形和频谱，观察现象，给出理论解释；</p>
+<p>④ 播放解调语音/音乐信号，比较不同滤波器下的声音，解释现象。</p>
+<h2 id="5-2-设计内容及方案"><a href="#5-2-设计内容及方案" class="headerlink" title="5.2 设计内容及方案"></a>5.2 设计内容及方案</h2><p>① 对调制后的信号进行解调：将调制后的信号与调制时相同的载波相乘实现解调，这里用点乘转置矩阵实现。</p>
+<p>② 用巴特沃斯滤波器对解调信号进行滤波：首先求巴特沃斯滤波器的频率响应，其中用到了buttord求满足性能指标的滤波器阶数N和3dB截止频率wc、用butter计算模拟滤波器的传输函数Ha(s)、用freqz求频响。然后用filter实现滤波。</p>
+<p>③ 用矩形窗FIR滤波器对解调信号进行滤波：首先求矩形窗FIR滤波器的频率响应，其中先求理想低通单位脉冲响应hd，然后加矩形窗截断求模拟脉冲响应，再利用freqz求频率响应。然后利用卷积conv实现滤波。</p>
+<p>④ 用布莱克曼窗FIR滤波器对解调信号进行滤波：首先求布莱克曼窗FIR滤波器的频率响应，其中先求理想低通单位脉冲响应hd，然后加布莱克曼窗截断求模拟脉冲响应，再利用freqz求频率响应。然后利用卷积conv实现滤波。</p>
+<p>⑤ 播放调制、解调和滤波后的声音：通过声音变化感受调制、解调和滤波。</p>
+<h2 id="5-3-程序源码及注释"><a href="#5-3-程序源码及注释" class="headerlink" title="5.3 程序源码及注释"></a>5.3 程序源码及注释</h2><pre><code>clear
+[y,fs]=audioread(&#39;beautiful.wav&#39;);%读取音乐信号
+y1=y(:,1);%取单列 
+N1=length(y1);%求信号长度 
+n=0:N1-1;%所有元素
+t=n/fs;%时间
+f=0:fs/N1:fs*(N1-1)/N1;%频率
+w=2*f/fs;%归一化
+y2=cos(n*pi*0.12);%0.12pi时余弦信号  
+Y=y1.*y2&#39;;%音乐信号AM调制
+Y2=Y.*y2&#39;;%解调相乘器
+Y22=fft(Y2);%傅里叶变换
+
+%画解调信号时域波形和频谱
+figure(1);
+subplot(2,1,1);
+plot(t,Y2);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;解调信号时域波形&#39;);
+subplot(2,1,2);
+plot(w,abs(Y22));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;解调信号频谱&#39;);
+
+%求巴特沃斯滤波器频率响应
+wp=0.12;ws=0.3;rp=1;rs=50; %设计巴特沃斯IIR滤波器参数
+[N,wc]=buttord(wp,ws,rp,rs); %求满足性能指标的滤波器阶数N和3dB截止频率wc
+[b,a]=butter(N,wc); %计算模拟滤波器的传输函数Ha(s)
+[Hd,w]=freqz(b,a);%求频响
+figure(2)
+subplot(3,1,1);
+plot(w/pi,abs(Hd));
+axis([0,1,0,1.5]);
+xlabel(&#39;w/π&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;巴特沃斯频率响应曲线&#39;);
+
+%求巴特沃斯滤波器滤波信号
+Y3=filter(b,a,Y2);%滤波音乐信号
+N3=length(Y3)
+t1=(0:(N3-1))/fs;%时间
+f1=0:fs/N3:fs*(N3-1)/N3;%频率
+w1=2*f1/fs;%归一化
+Y33=fft(Y3);%傅里叶变换
+subplot(3,1,2);
+plot(t1,Y3);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;巴特沃斯滤波信号时域波形&#39;);
+subplot(3,1,3);
+plot(w1,abs(Y33));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;巴特沃斯滤波信号频谱&#39;);
+%理想低通单位脉冲响应hd计算(窗函数法要用)
+N=11;n1=[0:1:(N-1)];wc1=0.2*pi;  
+alpha=(N-1)/2;
+m=n1-alpha+eps;%加一个小数避免0作除数
+hd=sin(wc1*m)./(pi*m);
+
+%求矩形窗FIR滤波器频率响应
+w_han1=(boxcar(N))&#39;;%矩形窗
+h1=hd.*w_han1;%加窗截断得脉冲响应
+%以下为频率响应计算
+[H,w]=freqz(h1,1,1000,&#39;whole&#39;);
+mag=abs(H);%mag为幅度
+db=20*log10((mag+eps)/max(mag));
+pha=angle(H);%pha为相位
+grd=grpdelay(h1,1,w);%grd为群延迟
+%以下为画图
+figure(3);
+subplot(3,2,1);
+plot(w/pi,db);
+axis([0,2,-200,30]);
+xlabel(&#39;w/π&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;矩形窗频响图&#39;);
+
+%求矩形窗FIR滤波器滤波信号
+Y4=conv(Y2,h1);%卷积滤波
+N4=length(Y4);
+t2=(0:(N4-1))/fs;%时间
+f2=0:fs/N4:fs*(N4-1) /N4;%频率
+w2=2*f2/fs;%归一化
+Y44=fft(Y4,N4);%傅里叶变换
+subplot(3,2,3);
+plot(t2,Y4);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;矩形窗滤波信号时域波形&#39;);
+subplot(3,2,5);
+plot(w2,abs(Y44));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;矩形窗滤波信号频谱&#39;);
+
+%求布莱克曼窗FIR滤波器频率响应
+w_han2=(blackman(N))&#39;;%布莱克窗
+h2=hd.*w_han2;%加窗截断得脉冲响应
+%以下为频率响应计算
+[H,w]=freqz(h2,1,1000,&#39;whole&#39;);
+mag=abs(H);%mag为幅度
+db=20*log10(mag+eps)/max(mag);
+pha=angle(H);%pha为相位
+grd=grpdelay(h2,1,w);%grd为群延迟
+%以下为画图
+subplot(3,2,2);
+plot(w/pi,db);
+axis([0,2,-200,30]);
+xlabel(&#39;w/π&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;布莱克曼窗频响图&#39;);
+
+%求布莱克曼窗FIR滤波器滤波信号
+Y5=conv(Y2,h2);%卷积滤波
+N5=length(Y5);
+t3=(0:(N4-1))/fs;%时间
+f3=0:fs/N4:fs*(N4-1)/N4;%频率
+w3=2*f3/fs;%归一化
+Y55=fft(Y5,N5);%傅里叶变换
+subplot(3,2,4);
+plot(t3,Y5);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;布莱克曼滤波信号时域波形&#39;);
+subplot(3,2,6);
+plot(w3,abs(Y55));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;布莱克曼滤波信号频谱图&#39;);
+
+%播放解调后声音
+sound(y1,fs);%原声音
+pause(5);
+sound(Y,fs);%AM调制后的声音 
+pause(5);
+sound(Y2,fs);%解调后的声音 
+pause(5);
+sound(Y3,fs);%巴特沃斯滤波器滤波后的声音 
+pause(5);
+sound(Y4,fs);%矩形窗滤波器滤波后的声音 
+pause(5);
+sound(Y5,fs);%布莱克曼窗滤波后的声音
+</code></pre><h1 id="6-语音-音乐信号的滤波去噪"><a href="#6-语音-音乐信号的滤波去噪" class="headerlink" title="6 语音/音乐信号的滤波去噪"></a>6 语音/音乐信号的滤波去噪</h1><h2 id="6-1-题目要求"><a href="#6-1-题目要求" class="headerlink" title="6.1 题目要求"></a>6.1 题目要求</h2><p>① 原始信号叠加幅度为0.05，频率为3kHz,5kHz,8kHz的三余弦混合噪声，观察噪声频谱以及加噪后语音/音乐信号的音频和频谱，并播放音乐，感受噪声对语音/音乐信号的影响；</p>
+<p>② 给原始语音/音乐信号叠加幅度为0.5的随机白噪声（可用rand语句产生），观察噪声频谱以及加噪后语音/音乐信号的音频和频谱，并播放音乐，感受噪声对语音/音乐信号的影响；</p>
+<p>③ 根据步骤①、②观察到的频谱，选择合适指标设计滤波器进行滤波去噪，关注去噪后信号音谱和频谱，并播放音乐，解释现象。</p>
+<h2 id="6-2-设计内容及方案"><a href="#6-2-设计内容及方案" class="headerlink" title="6.2 设计内容及方案"></a>6.2 设计内容及方案</h2><p>① 给信号加三余弦混合噪声：首先求得三余弦混合噪声，幅值为0.05，分别给频率3kHz,5kHz,8kHz，叠加得到噪声，然后将噪声和原信号叠加。</p>
+<p>② 给信号加随机白噪声：首先求得随机白噪声，幅值为0.5，用randn语句产生噪声，然后将噪声和原信号叠加。</p>
+<p>③ 滤掉噪声：我使用了巴特沃斯滤波器来滤噪，其中用到buttord求满足性能指标的滤波器阶数N和3dB截止频率wc、用butter求s域的频率响应的参数、用bilinear函数即利用双线性变换实现频率响应s域到z域的变换，然后用filter求滤波后信号。</p>
+<h2 id="6-3-程序源码及注释"><a href="#6-3-程序源码及注释" class="headerlink" title="6.3 程序源码及注释"></a>6.3 程序源码及注释</h2><pre><code>clear
+[y,fs]=audioread(&#39;beautiful.wav&#39;);%读取音乐信号
+y1=y(:,1);%取单列
+N=length(y1);%求信号长度 
+Y=fft(y1,N);%傅里叶变换
+t=(0:(N-1))/fs;%时间
+f=0:fs/N:fs*(N-1)/N;%频率
+w=2*f/fs;%归一化
+
+%原信号时域波形和频谱图
+figure(1);
+subplot(2,1,1);
+plot(t,y1);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;原信号时域波形&#39;);
+subplot(2,1,2);
+plot(w,abs(Y));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;原信号频谱图&#39;);
+
+%加三余弦混合噪声
+A0=0.05;%噪声幅度
+d1=A0*cos(2*pi*3000*t);%3kHz的余弦噪音
+d2=A0*cos(2*pi*5000*t);%5kHz的余弦噪音
+d3=A0*cos(2*pi*8000*t);%8kHz的余弦噪音
+x1=d1+d2+d3;%噪声叠加
+X1=fft(x1);%噪声傅里叶变换
+y2=y1+(x1)&#39;;%加三余弦混合噪声后信号
+Y1=fft(y2);%加噪信号傅里叶变换
+figure(2);
+subplot(3,2,1);
+plot(w,abs(X1));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;三余弦噪声频谱&#39;);
+subplot(3,2,3);
+plot(t,y2);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;加三余弦噪声信号时域波形&#39;);
+subplot(3,2,5);
+plot(w,abs(Y1));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;加三余弦噪声信号频谱图&#39;);
+
+%加随机白噪声
+x2=0.5*randn(N,1);%噪声
+X2=fft(x2);%噪声傅里叶变换
+y3=y1+x2;%加随机噪声后信号   
+Y2=fft(y3);%加噪信号傅里叶变换
+subplot(3,2,2);
+plot(w,abs(X2));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;随机白噪声频谱图&#39;);
+subplot(3,2,4);
+plot(t,y3);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;加随机噪声信号时域波形&#39;);
+subplot(3,2,6);
+plot(w,abs(Y2));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;加随机噪声信号频谱图&#39;);
+
+%巴特沃斯滤波器去噪
+wp=0.1;ws=0.16;Rp=1;Rs=15;
+[n1,Wn1]=buttord(wp,ws,Rp,Rs,&#39;s&#39;);%求低通滤波器的阶数和截止频率
+[b1,a1]=butter(n1,Wn1,&#39;s&#39;);%求s域的频率响应的参数
+[b2,a2]=bilinear(b1,a1,1);%利用双线性变换实现频率响应s域到z域的变换
+z1=filter(b2,a2,y2);%求滤三余弦混合噪声后的信号
+z2=filter(b2,a2,y3);%求滤随机噪声后的信号
+
+%画滤噪后的图
+m1=fft(z1);
+m2=fft(z2);
+figure(3);
+subplot(2,2,1);
+plot(t,z1);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;滤三余弦噪声后信号时域波形&#39;);
+subplot(2,2,3);
+plot(w,abs(m1));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;滤三余弦噪声后信号频谱&#39;);
+subplot(2,2,2);
+plot(t,z2);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;滤随机噪声后信号时域波形&#39;);
+subplot(2,2,4);
+plot(w,abs(m2));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;滤随机噪声后信号频谱&#39;);
+
+%播放
+sound(y1,fs);%原音乐
+pause(5);
+sound(y2,fs);%加三余弦噪声
+pause(5);
+sound(y3,fs);%加随机噪声
+pause(5);
+sound(z1,fs);%滤三余弦噪声
+pause(5);
+sound(z2,fs);%滤随机噪声
+</code></pre><h1 id="7-语音-音乐信号的幅频滤波及相频分析"><a href="#7-语音-音乐信号的幅频滤波及相频分析" class="headerlink" title="7 语音/音乐信号的幅频滤波及相频分析"></a>7 语音/音乐信号的幅频滤波及相频分析</h1><h2 id="7-1-题目要求"><a href="#7-1-题目要求" class="headerlink" title="7.1 题目要求"></a>7.1 题目要求</h2><p>① 设计低通滤波器（可自行选择不同的截止频率），滤除原始语音/音乐信号的高频信息，观察滤波前后的幅度频谱，并比较滤波前后的音乐效果，感受高频信息对语音/音乐信号的影响；</p>
+<p>② 设计高通滤波器（可自行选择不同的截止频率），滤除原始语音/音乐信号的低频信息，观察滤波前后的幅度频谱，并比较滤波前后的音乐效果，感受低频信息对语音/音乐信号的影响；</p>
+<p>③ 选取两段不同的语音/音乐信号，分别将其幅度谱与相位谱交叉组合构成新的语音/音乐信号，播放比较组合后的音乐与原始音乐，感受相频信息对语音/音乐信号的影响。</p>
+<h2 id="7-2-设计内容及方案"><a href="#7-2-设计内容及方案" class="headerlink" title="7.2 设计内容及方案"></a>7.2 设计内容及方案</h2><p>① 低通滤波器设计：我这里用了巴特沃斯低通滤波器，其中用buttord求低通滤波器的阶数和截止频率，用butter求s域的频率响应的参数，用bilinear即双线性变换法实现频率响应s域到z域的变换，用filter实现滤波。</p>
+<p>② 高通滤波器设计：我这里用了巴特沃斯低通滤波器转高通，其中用buttord求低通滤波器的阶数和截止频率，用buttap创建巴特沃斯低通滤波器原型，用zp2tf将模拟低通变高通，用bilinear即双线性变换法实现频率响应s域到z域的变换，用filter实现滤波。</p>
+<p>③ 幅度谱和相位谱交叉：用函数abs和angle分别取信号的幅度和相位，然后将其交叉创建新的信号。</p>
+<h2 id="7-3-程序源码及注释"><a href="#7-3-程序源码及注释" class="headerlink" title="7.3 程序源码及注释"></a>7.3 程序源码及注释</h2><pre><code>clear
+[y,fs]=audioread(&#39;突然好想你.wav&#39;);%读取音乐信号
+y1=y(:,1);%取单列
+N=length(y1);%求信号长度
+Y=fft(y1,N);%傅里叶变换
+t=(0:(N-1))/fs;%时间
+f=0:fs/N:fs*(N-1)/N;%频率
+w=2*f/fs;%归一化
+
+%IIR低通滤波器
+wp=0.1;ws=0.2;Rp=1;Rs=15;
+[n1,Wn1]=buttord(wp,ws,Rp,Rs,&#39;s&#39;);%求低通滤波器的阶数和截止频率
+[b1,a1]=butter(n1,Wn1,&#39;s&#39;);%求s域的频率响应的参数
+[b2,a2]=bilinear(b1,a1,1);%利用双线性变换实现频率响应s域到z域的变换
+z1=filter(b2,a2,y1);%滤波后信号
+m1=fft(z1);
+figure(1);
+subplot(2,1,1);
+plot(w,abs(Y));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;原信号频谱&#39;);
+subplot(2,1,2);
+plot(w,abs(m1));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;低通滤波信号频谱&#39;);
+
+%高通滤波器
+wp=0.1;ws=0.2;rp=1;rs=15;
+[n,Wn]=buttord(wp,ws,rp,rs,&#39;s&#39;);%设计模拟滤波器
+[z,p,k]=buttap(n);%创建巴特沃斯低通滤波器原型
+[b,a]=zp2tf(z,p,k);%由零极点转换为传递函数
+[b11,a11]=lp2hp(b,a,Wn);%模拟低通变高通
+[b22,a22]=bilinear(b11,a11,0.5);%利用双线性变换实现频率响应S域到Z域的变换
+z2=filter(b22,a22,y1);%滤波后信号
+m2=fft(z2);
+figure(2);
+subplot(2,1,1);
+plot(w,abs(Y));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;原信号频谱&#39;);
+subplot(2,1,2);
+plot(w,abs(m2));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;高通滤波信号频谱&#39;);
+
+%幅度谱相位谱交叉
+[x,fs0]=audioread(&#39;beautiful.wav&#39;);
+x0=x(:,1); 
+x1=x0(1:200000);%信号2截取长度200000
+y2=y1(1:200000);%信号1截取长度200000
+N=length(x1);
+X=fft(x1,N);
+Y=fft(y2,N);
+t0=(0:(N-1))/fs0;
+f0=0:fs0/N:fs0*(N-1)/N;
+w0=2*f0/fs0;%数字角频率
+
+%画两信号的幅度谱和相位谱
+figure(3); 
+subplot(2,2,1);
+plot(w0,abs(Y));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;信号1的幅度谱&#39;);
+subplot(2,2,2);
+plot(w0,abs(X));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;信号2的幅度谱&#39;);
+subplot(2,2,3);
+plot(w0,angle(Y));   
+xlabel(&#39;w&#39;);
+ylabel(&#39;相位&#39;);
+title(&#39;信号1的相位谱&#39;);
+subplot(2,2,4);
+plot(w0,angle(X));
+xlabel(&#39;w&#39;);
+ylabel(&#39;相位&#39;);
+title(&#39;信号2的相位谱&#39;);
+F1=abs(Y).*exp(1i*angle(X));%音乐信号1的幅度谱和音乐信号2的相位谱交叉
+F2=abs(X).*exp(1i*angle(Y));%音乐信号2的幅度谱和音乐信号1的相位谱交叉y3=real(ifft(F1,N));%对交叉得到的频域信号做傅里叶逆变换
+y4=real(ifft(F2,N));%对交叉得到的频域信号做傅里叶逆变换
+
+%绘制交叉得到的信号的波形和频谱
+figure(4)
+subplot(2,2,1);
+plot(t0,y3);
+xlabel(&#39;时间&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;1幅度谱和2相位谱交叉信号时域波形&#39;);
+subplot(2,2,2);
+plot(w0,abs(F1));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;1幅度谱和2相位谱交叉信号频谱&#39;);
+subplot(2,2,3);
+plot(t0,y4);
+xlabel(&#39;时间&#39;);
+ylabel(&#39;幅度&#39;)
+title(&#39;2幅度谱和1相位谱交叉信号时域波形&#39;);
+subplot(2,2,4);
+plot(w0,abs(F2));
+xlabel(&#39;w&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;2幅度谱和1相位谱交叉信号频谱&#39;);
+
+%播放
+sound(y1,fs);%原音乐
+pause(5);
+sound(z1,fs);%低通滤波声音
+pause(5);
+sound(z2,fs);%高通滤波声音
+pause(5);
+sound(y3,fs);%幅度谱1与相位谱2交叉
+pause(5);
+sound(y4,fs);%相位谱1与幅度谱2交叉
+</code></pre><h1 id="8-语音信号变声处理系统"><a href="#8-语音信号变声处理系统" class="headerlink" title="8 语音信号变声处理系统"></a>8 语音信号变声处理系统</h1><h2 id="8-1-题目要求"><a href="#8-1-题目要求" class="headerlink" title="8.1 题目要求"></a>8.1 题目要求</h2><p>① 电视台经常针对某些事件的知情者进行采访，为了保护知情者，经常改变说话人的声音，请利用所学的知识，将其实现；</p>
+<p>② 要求处理后的语音信号基本不影响正常收听与理解。</p>
+<h2 id="8-2-设计内容及方案"><a href="#8-2-设计内容及方案" class="headerlink" title="8.2 设计内容及方案"></a>8.2 设计内容及方案</h2><p>变声主要通过调用voice函数来实现，改变voice函数的参数，小于1时偏女声，大于1时偏男声。</p>
+<h2 id="8-3-程序源码及注释"><a href="#8-3-程序源码及注释" class="headerlink" title="8.3 程序源码及注释"></a>8.3 程序源码及注释</h2><pre><code>clear
+[y1,fs]=audioread(&#39;beautiful.wav&#39;);%读取音乐信号
+y1=y1(:,1);%取单列
+N1=length(y1);%求信号长度
+n=0:N1-1;%所有元素
+t=n/fs;%时间
+f=0:fs/N1:fs*(N1-1)/N1;%频率
+Y1=fft(y1,N1);%傅里叶变换
+
+%画原信号图
+figure(1)
+subplot(2,2,1);
+plot(t,y1);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;原信号时域波形图&#39;);
+subplot(2,2,2);
+plot(f,abs(Y1));
+xlabel(&#39;频率f&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;原信号频谱图&#39;);
+y2=voice(y1,0.5);  %变声
+N2=length(y2);
+k=0:1:N2-1;
+t=k/fs;
+f=k*fs/N2;
+Y2=fft(y2,N2);
+
+%画变音后信号图
+subplot(2,2,3);
+plot(t,y2);
+xlabel(&#39;时间t&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;变声信号时域波形图&#39;);
+subplot(2,2,4);
+plot(f,abs(Y2));
+xlabel(&#39;频率f&#39;);
+ylabel(&#39;幅度&#39;);
+title(&#39;变声信号频谱图&#39;);
+sound(y2,fs);
+</code></pre><p>voice函数：</p>
+<pre><code>function Y=voice(y1,f)  %更改采样率使基频改变 f&gt;1降低;f&lt;1升高?
+f=round(f*1000);
+d=resample(y1,f,1000);  %时长整合使语音文件恢复原来时长
+W=400;
+Wov=W/2;
+Kmax=W*2;
+Wsim=Wov;
+xdecim=8;
+kdecim=2;
+X=d&#39;;
+F=f/1000;
+Ss=W-Wov;
+xpts=size(X,2);
+ypts=round(xpts/F);
+Y=zeros(1,ypts);
+xfwin=(1:Wov)/(Wov+1);
+ovix=(1-Wov):0;
+newix=1:(W-Wov);
+simix=(1:xdecim:Wsim)-Wsim;
+padX=[zeros(1,Wsim),X,zeros(1,Kmax+W-Wov)];
+Y(1:Wsim)=X(1:Wsim);
+lastxpos=0;
+km=0;
+for ypos=Wsim:Ss:(ypts-W)
+xpos=round(F*ypos);
+kmpred=km+(xpos-lastxpos);
+lastxpos=xpos;
+if(kmpred&lt;=Kmax)
+   km=kmpred;
+else
+ysim=Y(ypos+simix);
+rxy=zeros(1,Kmax+1);
+rxx=zeros(1,Kmax+1);
+Kmin=0;
+for k=Kmin:kdecim:Kmax
+xsim=padX(Wsim+xpos+k+simix);
+rxx(k+1)=norm(xsim);
+rxy(k+1)=(ysim*xsim&#39;);
+end
+Rxy=(rxx~=0).*rxy./(rxx+(rxx==0));
+km=min(find(Rxy==max(Rxy))-1);
+end
+xabs=xpos+km;
+Y(ypos+ovix)=((1-xfwin).*Y(ypos+ovix))+(xfwin.*padX(Wsim+xabs+ovix));
+Y(ypos+newix)=padX(Wsim+xabs+newix);
+end
+end
+</code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">BoBoRing</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://boboring.github.io/2020/04/06/My-Post0-4/">http://boboring.github.io/2020/04/06/My-Post0-4/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">BoBoRing</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/MATLAB/">
+                                    <span class="chip bg-color">MATLAB</span>
+                                </a>
+                            
+                                <a href="/tags/GUI/">
+                                    <span class="chip bg-color">GUI</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '49SujOC6eSH5mGt7oM0RUs7f-gzGzoHsz',
+        appKey: 'AoxETEehzrwjnbd8Ei9nBMnD',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '请畅所欲言'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/06/16/My-New-Post/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="2020上半年读的5本书">
+                        
+                        <span class="card-title">2020上半年读的5本书</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-16
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/03/06/My-Post0-3/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="单链表，二叉树，图，查找和排序的程序设计">
+                        
+                        <span class="card-title">单链表，二叉树，图，查找和排序的程序设计</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                    数据结构
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">C语言</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2020-2022</span>
+            
+            <a href="/about" target="_blank">BoBoRing</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">61.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/BoBoRing" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:binrong_ai@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://mp.weixin.qq.com/s/jojYVEccfexV2hQ0clZp3g" class="tooltipped" target="_blank" data-tooltip="关注我的公众号" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=807362320" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 807362320" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.cnblogs.com/BoBoRing/" class="tooltipped" target="_blank" data-tooltip="关注我的博客园" data-position="top" data-delay="50">
+        <i class="fab fa-juejin">博</i>
+    </a>
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+    <!--浏览器搞笑标题-->
+    <script type="text/javascript" src="/js/FunnyTitle.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","hOffset":5,"vOffset":-80,"width":200,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+
+</html>

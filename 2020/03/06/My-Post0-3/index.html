@@ -1,0 +1,1964 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
+    <meta name="keywords" content="单链表，二叉树，图，查找和排序的程序设计, BoBoRing&#39;s Blog">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>单链表，二叉树，图，查找和排序的程序设计 | BoBoRing&#39;s Blog</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="stylesheet" href="/css/prism-darcula.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+
+
+
+<body>
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <span class="logo-span">BoBoRing&#39;s Blog</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/navigate" class="waves-effect waves-light">
+      
+      <i class="fas fa-location-arrow" style="zoom: 0.6;"></i>
+      
+      <span>工具箱</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <div class="logo-name">BoBoRing&#39;s Blog</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/navigate" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-location-arrow"></i>
+			
+			工具箱
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">单链表，二叉树，图，查找和排序的程序设计</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+    width: 345px;
+    padding-left: 20px;
+    background-color: rgb(255, 255, 255,0.7);
+    border-radius: 10px;
+    box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                <span class="chip bg-color">C语言</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="post-category">
+                                数据结构
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-03-06
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    17 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        <!-- 代码块折行 -->
+        
+        <style type="text/css">
+        code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+       </style>
+       
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1-单链表设计"><a href="#1-单链表设计" class="headerlink" title="1 单链表设计"></a>1 单链表设计</h1><p>要求：</p>
+<p>(1)建立单向链表，表长任意；</p>
+<p>(2)可交互输出单链表中的内容；</p>
+<p>(3)编写算法计算出自己所建单链表的长度并输出；</p>
+<p>(4)删除自己所建单链表中的第K个结点，并将剩余结点输出；</p>
+<p>(5)将单链表倒排，输出结果。</p>
+<p>程序：</p>
+<pre><code>#include &lt;stdio.h&gt;  
+#include &lt;stdlib.h&gt;
+//定义链表中的节点  
+struct node
+{  
+unsigned char data;//链表中的数据     
+struct node * next;//指向下一节点的指针  
+};
+
+//变量定义
+struct node  *p,*p1,*p2,*head;
+
+//函数声明 
+void ListCreate();
+void ListTraverse();
+void ListLength();
+int ListDelete();
+int ListReverse();
+
+//主函数  
+int main()
+{ 
+    ListCreate();        //单向链表的建立  
+    ListTraverse();      //单向链表的输出 
+    ListLength();        //单向链表长度计算 
+    ListDelete();        //单向链表结点的删除 
+    ListReverse();      //单链表的倒排 
+}
+
+//单向链表的建立 
+void ListCreate()
+{        
+    head=p=(struct node * )malloc(sizeof(struct node)); 
+    printf(&quot;请输入链表数据元素值(0为结束标志,中间不能用任何符号)：\n&quot;);      
+    scanf(&quot;%c&quot;,&amp;p-&gt;data);//头结点的数据成员      
+    while(p-&gt;data!=&#39;0&#39;)//给出0结束条件,退出循环    
+    {       
+        p1=p;        
+        p=(struct node * )malloc(sizeof(struct node));        
+        scanf(&quot;%c&quot;,&amp;p-&gt;data);//中间结点数据成员       
+        p1-&gt;next=p;//中间结点的指针成员值    
+    }      
+    p-&gt;next=NULL;//尾结点的指针成员值  
+}
+
+//单向链表的输出 
+void ListTraverse()
+{      
+    p=head;     
+    printf(&quot;\n链表数据成员是：&quot;);      
+    while(p-&gt;next!=NULL)      
+    {        
+        printf(&quot;%c  &quot;,p-&gt;data);  //输出成员数据       
+        p=p-&gt;next;      
+    }    
+}
+
+//单向链表长度计算 
+void ListLength()
+{    
+    p2=head-&gt;next;    
+    int  j=1;            //j用来存放链表的长度    
+    while((p2-&gt;data)-48)    
+    {      
+        p2=p2-&gt;next;      
+        j++;    
+    }    
+    printf(&quot;\n链表长度是:  %d&quot;,j);
+}
+
+//单向链表结点的删除 
+int ListDelete()
+{    
+    p2 = head;
+    int j = 1,M,K;        
+    printf(&quot;\n要删除第几个节点: &quot;); 
+    scanf(&quot;%d&quot;,&amp;K);
+    if ( j &gt; (K-1)) //删除头节点   
+    {       
+        struct node  *p3;      
+        p3=p2;      
+        p2=p3-&gt;next;    
+    }    
+    else   //删除其它节点     
+    {    
+        while ((p2-&gt;next)-48 &amp;&amp; j &lt; (K-1))  
+        {        
+            p2 = p2-&gt;next;        
+            ++j;    
+        }     
+        if (p2-&gt;next == NULL )  
+        {         
+            printf(&quot;Position Error\n&quot;);        
+            return 0;    
+        }    
+        struct node *temp = p2-&gt;next;  //执行删除操作    
+        p2-&gt;next = temp-&gt;next;    
+    }        
+    p=head;     
+    printf(&quot;删除后的链表数据成员是：&quot;);      
+    while(p-&gt;next!=NULL)      
+    {        
+        printf(&quot;%c  &quot;,p-&gt;data);  //输出成员数据       
+        p=p-&gt;next;      
+    }  
+}
+
+//单链表的倒排
+int ListReverse()
+{    
+    struct node *h,*h1,*h2;    
+    h=head;    
+    h1=h;                         
+    h=NULL;    
+    while(h1-&gt;next!=NULL)      //通过循环使h从最后一个元素依次向前    
+    {          
+        h2 = h1-&gt;next;          
+        h1-&gt;next = h;          
+        h = h1;          
+        h1 = h2;    
+    }       
+    printf(&quot;\n倒排后的链表数据成员是：&quot;);      
+    while(h!=NULL)  //输出数据元素    
+    {        
+        printf(&quot;%c  &quot;,h-&gt;data);        
+        h=h-&gt;next;      
+    }   
+}
+</code></pre><p>难点：单链表的倒排，这里有两种方法实现</p>
+<p>1）逆序单链表的循环算法：</p>
+<pre><code>LINK_NODE *ReverseLink(LINK_NODE *head)
+{
+    LINK_NODE *next;
+    LINK_NODE *prev = NULL;
+
+    while(head != NULL)
+    {
+        next = head-&gt;next;
+        head-&gt;next = prev;
+        prev = head;
+        head = next;
+    }
+
+    return prev;
+}
+</code></pre><p>2）逆序单链表的递归算法：</p>
+<pre><code>LINK_NODE *ReverseLink2(LINK_NODE *head)
+{
+    LINK_NODE *newHead;
+
+    if((head == NULL) || (head-&gt;next == NULL))
+        return head;
+
+    newHead = ReverseLink2(head-&gt;next); /*递归部分*/
+    head-&gt;next-&gt;next = head; /*回朔部分*/
+    head-&gt;next = NULL;
+
+    return newHead;
+}
+</code></pre><p>我们该选择循环还是递归？</p>
+<p>根据问题的类型和规模作出选择。对于线性数据结构，比较适合用迭代循环方法，而对于树状数据结构，比如二叉树，递归方法则非常简洁优雅。</p>
+<h1 id="2-二叉树设计"><a href="#2-二叉树设计" class="headerlink" title="2 二叉树设计"></a>2 二叉树设计</h1><p>要求：<br>(1)动态交互建立二叉树，结点个数任意；</p>
+<p>(2)分别用DLR,LDR,LRD三种方式对二叉树进行遍历，并输出结果；</p>
+<p>(3)计算二叉树中的结点个数并输出；</p>
+<p>(4)计算二叉树的深度并输出。</p>
+<p>程序:</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt; 
+
+//节点声明，数据域、左指针、右指针
+typedef struct BiTNode
+{   
+    int data;//二叉树数据元素    
+    struct BiTNode *Left,*Right;//二叉树左右指针 
+}BiTNode,*BiTree;
+
+//函数声明 
+int CreateBiTree(BiTNode **T);
+void DLR_BiTree(BiTNode *T); 
+void LDR_BiTree(BiTNode *T);
+void LRD_BiTree(BiTNode *T);
+int BiTreeCount(BiTNode *T);
+int BiTreeDeep(BiTNode *T); 
+
+//主函数 
+int main()
+{   
+    BiTree T;   
+    int depth,Count = 0;      
+    printf(&quot;请输入第一个节点的值(0表示没有该节点)： &quot;);   
+    CreateBiTree(&amp;T);//二叉树建立   
+    printf(&quot;\n&quot;);      
+    printf(&quot;先序遍历二叉树：&quot;);   
+    DLR_BiTree(T);//二叉树先序遍历    
+    printf(&quot;\n&quot;);      
+    printf(&quot;中序遍历二叉树：&quot;);   
+    LDR_BiTree(T);//二叉树中序遍历    
+    printf(&quot;\n&quot;);      
+    printf(&quot;后序遍历二叉树：&quot;);   
+    LRD_BiTree(T);//二叉树后序遍历    
+    printf(&quot;\n&quot;);      
+    Count = BiTreeCount(T);//求二叉树结点个数      
+    printf(&quot;二叉树结点个数：%d\n&quot;,Count);        
+    depth = BiTreeDeep(T);//求二叉树深度     
+    printf(&quot;二叉树的深度为：%d\n&quot;,depth);
+}
+
+//先序创建二叉树  
+int CreateBiTree(BiTNode **T)  
+{     
+    int ch;      
+    scanf(&quot;%d&quot;,&amp;ch);//给二叉树第一个节点赋值      
+    if (ch == 0)      
+    {          
+        *T = NULL;  //输入为0表示没有该节点         
+        return 0;      
+    }      
+    else      
+    {          
+        *T = (BiTNode *)malloc(sizeof(BiTNode));  //给二叉树节点分配内存         
+        if (T == NULL)          
+        {              
+            printf(&quot;failed\n&quot;);              
+            return 0;          
+        }          
+        else          
+        {              
+            (*T)-&gt;data = ch;              
+            printf(&quot;输入%d的左子节点：&quot;,ch);              
+            CreateBiTree(&amp;((*T)-&gt;Left));  //递归给二叉树左节点赋值             
+            printf(&quot;输入%d的右子节点：&quot;,ch);              
+            CreateBiTree((&amp;(*T)-&gt;Right)); //递归给二叉树右节点赋值         
+        }      
+    }        
+    return 1;  
+} 
+
+//二叉树先序遍历
+void DLR_BiTree(BiTNode *T)
+{ 
+    if( T == NULL) return;//递归调用的结束条件  
+    printf(&quot;%d&quot;,T-&gt;data);//访问节点的数据域  
+    DLR_BiTree(T-&gt;Left);//先序递归遍历左子树  
+    DLR_BiTree(T-&gt;Right);//先序递归遍历右子树 
+}
+
+//二叉树中序遍历     
+void LDR_BiTree(BiTNode *T)
+{ 
+    if(T==NULL) return;//递归调用的结束条件 
+    LDR_BiTree(T-&gt;Left);//中序递归遍历左子树 
+    printf(&quot;%d&quot;,T-&gt;data);//访问节点的数据域 
+    LDR_BiTree(T-&gt;Right);//中序递归遍历右子树
+}
+
+//二叉树后序遍历 
+void LRD_BiTree(BiTNode *T)
+{ 
+    if(T==NULL) return;//递归调用的结束条件 
+    LRD_BiTree(T-&gt;Left);//后序递归遍历左子树 
+    LRD_BiTree(T-&gt;Right);//后序递归遍历右子树 
+    printf(&quot;%d&quot;,T-&gt;data);//访问节点的数据域
+}
+
+//求二叉树结点个数 
+int BiTreeCount(BiTNode *T)
+{    
+    if(T==NULL)        
+        return 0;//空二叉树结点数为0    
+    else                                    
+        return BiTreeCount(T-&gt;Left)+BiTreeCount(T-&gt;Right)+1;//左右子树结点总数加1
+} 
+
+//求二叉树深度 
+int BiTreeDeep(BiTNode *T)  
+{      
+    int deep = 0;      
+    if (T != NULL)      
+    {          
+        int leftdeep = BiTreeDeep(T-&gt;Left);//递归得到左子树深度          
+        int rightdeep = BiTreeDeep(T-&gt;Right);//递归得到右子树深度         
+        deep = leftdeep &gt;= rightdeep?leftdeep+1:rightdeep+1;//比较得到二叉树深度      
+    }        
+    return deep;  
+}
+</code></pre><h1 id="3-图的设计"><a href="#3-图的设计" class="headerlink" title="3 图的设计"></a>3 图的设计</h1><p>要求：</p>
+<p>(1)根据书本上算法，完成图的深度和广度优先遍历，要求任意给定起始点，输出结果。</p>
+<p>(2)根据书本上算法，完成图的单元最短路径的算法，要求任意给定源点，输出结果。</p>
+<p>程序：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+#define MAXVEX  100  //最大顶点数  
+#define INFINITY 65535//用65535来代表无穷大  
+
+//定义访问标记 
+int visited[MAXVEX]={0};  
+
+//定义图结构体  
+typedef struct  
+{  
+    char vexs[MAXVEX];//顶点表  
+    int  arc[MAXVEX][MAXVEX]; //邻接矩阵，可看作边  
+    int  numVertexes, numEdges;   //图中当前的顶点数和边数  
+}Graph;   
+
+//辅助数组中的元素定义  
+typedef struct 
+{  
+    int distance;  
+    int path[MAXVEX];  
+}ArrayNode;
+
+//函数声明
+void CreateGraph(Graph *g);
+void DFS(Graph g,int v);
+void BFS(Graph g,int v);
+void SHORT(Graph *g,int from,int to);
+void SHORT(Graph *g,int from,int to);
+
+//主函数 
+int main()
+{
+    Graph g;
+    int i,from,to;
+    printf(&quot;t为1-4,分别表示无向图、有向图、带权无向图、带权有向图\n&quot;);
+    CreateGraph(&amp;g);//创建图 
+
+    printf(&quot;\n输入遍历起点: &quot;);  
+    scanf(&quot;%d&quot;,&amp;i);  
+    printf(&quot;\n深度优先搜索遍历：&quot;);
+    DFS(g,i);//深度优先遍历函数 
+    printf(&quot;NULL\n&quot;);
+
+    printf(&quot;广度优先搜索遍历：&quot;); 
+    BFS(g,i);//广度优先遍历函数 
+    printf(&quot;NULL\n&quot;);
+
+    printf(&quot;\nDijkstra算法单元最短路径：&quot;);
+    printf(&quot;\n请输入起点和终点（中间用空格）：&quot;);
+    scanf(&quot;%d %d&quot;,&amp;from,&amp;to);
+    SHORT(&amp;g,from,to);//Dijkstra算法单元最短路径函数    
+}
+
+//创建图  
+void CreateGraph(Graph *g)  
+{
+     int i,j,k,w,t;  
+     printf(&quot;输入顶点数，边数和t（中间用空格）:&quot;);  
+     scanf(&quot;%d %d %d&quot;, &amp;(g-&gt;numVertexes), &amp;(g-&gt;numEdges),&amp;t);  
+     printf(&quot;\n&quot;);  
+     for(i=1;i&lt;=g-&gt;numVertexes;i++)//通过循环输入顶点信息  
+     {  
+         getchar();  
+         printf(&quot;输入第%d顶点信息vexs[%d]=&quot;,i,i);  
+         scanf(&quot;%c&quot;,&amp;(g-&gt;vexs[i]));  
+     }  
+     printf(&quot;\n&quot;);  
+     for(i=1;i&lt;=g-&gt;numVertexes;i++)  
+        for(j=1;j&lt;=g-&gt;numVertexes;j++)  
+            if (t&gt;2)
+                    g-&gt;arc[i][j] = INFINITY;//区别是否带权值  
+            else
+                    g-&gt;arc[i][j]=0;   
+     for(k=1;k&lt;=g-&gt;numEdges;k++)//通过循环输入边的信息  
+       {  
+        printf(&quot;输入有联系的两个顶点（中间用空格）:&quot;);  
+        scanf(&quot;%d %d&quot;,&amp;i,&amp;j);  
+        if(i&gt;g-&gt;numVertexes ||j&gt;g-&gt;numVertexes)  
+            exit(0);  
+        if(t&gt;2)  
+        {  
+              printf(&quot;输入权值:&quot;);  
+              scanf(&quot;%d&quot;,&amp;w);  
+              g-&gt;arc[i][j]=w;  
+              if(t==3)  
+                g-&gt;arc[j][i]=w;  
+        }  
+        else  
+        { 
+            g-&gt;arc[i][j]=1;  
+              if (t==1)
+                g-&gt;arc[j][i]=1;  
+        }  
+     }  
+     printf(&quot;\n&quot;);  
+     printf(&quot;输出邻接矩阵:\n&quot;);  
+     for(i=1;i&lt;=g-&gt;numVertexes ;i++)  
+     {  
+         for(j=1;j&lt;=g-&gt;numVertexes ;j++)  
+         {  
+             printf(&quot;%8d&quot;,g-&gt;arc[i][j]);  //输出邻接矩阵 
+         }  
+          printf(&quot;\n&quot;);  
+     }  
+}  
+
+//深度优先遍历
+void DFS(Graph g,int v)
+{
+    int j;  
+    printf(&quot;%d-&gt;&quot;,v); //输出访问顶点  
+    visited[v]=1;//全局数组访问标记置1表示已经访问  
+    for(j=1; j&lt;=g.numVertexes; j++)  
+           if ((g.arc[v][j]!=0)&amp;&amp;(g.arc[v][j]!=65535)&amp;&amp;(!visited[j]))  
+            DFS (g,j);//递归访问非0非无穷顶点 
+} 
+
+//广度优先遍历
+void BFS(Graph g,int v)
+{
+    int  q[g.numVertexes+1] ;  
+    int  i,f,r,j ;
+    for(i=0;i&lt;g.numVertexes;i++)
+        visited[i]=0;  //重置访问标记 
+    f=r=0 ;  
+    printf(&quot;%d-&gt;&quot;,v);//输出第一个顶点  
+    visited[v]=1 ;//标记已访问  
+    r++;  
+    q[r]=v;  
+    while (f&lt;r)  
+    {
+          f++; 
+          v=q[f];  
+          for (j=1; j&lt;=g.numVertexes; j++) //广度优先遍历依次访问与上一顶点有联系的点 
+        {
+            if ((g.arc[v][j]!=0)&amp;&amp;(g.arc[v][j]!=65535)&amp;&amp;(!visited[j]))  
+            {   
+                printf(&quot;%d-&gt;&quot;,j);//输出访问顶点 
+                visited[j]=1 ; 
+                r++; 
+                q[r]=j ;  
+            }
+        }  
+    }  
+} 
+
+//单元最短路径算法
+void SHORT(Graph *g,int from,int to)
+{
+    int i,j,index=-1;  
+    int n=1;//记录已经求出的两个点之间的最短距离的个数  
+    ArrayNode shortestPath[MAXVEX];  
+    int flag[MAXVEX]={0};//标记，为1表示到这个顶点的最短距离已求出  
+
+    //1.求from到各个顶点的直接距离，即初始化shortestPath数组  
+    for(i=1;i&lt;=g-&gt;numVertexes;i++)
+    {  
+        if(from==i)
+        {  
+            shortestPath[i].distance=0;  
+            shortestPath[i].path[0]=i;  
+            flag[from]=1;  
+        }  
+        else if(g-&gt;arc[from][i]&gt;0)
+        {  
+            shortestPath[i].path[0]=from;  
+            shortestPath[i].path[1]=i;  
+            shortestPath[i].distance=g-&gt;arc[from][i];  
+        }
+        else 
+            shortestPath[i].distance=INFINITY;  
+    }
+
+    //2.每次求一个最短路径  
+    while(n&lt;=g-&gt;numVertexes)
+    {  
+        //选择shortestPath中距离最小的，求出from到这个顶点的最短路径  
+        index=-1;  
+        for(i=1;i&lt;=g-&gt;numVertexes;i++)
+        {  
+            if(i==from)  
+                continue;  
+            if(flag[i]==0 &amp;&amp; index==-1 &amp;&amp; shortestPath[i].distance!=INFINITY)  
+                index=i;  
+            if(flag[i]==0 &amp;&amp; index!=-1 &amp;&amp; shortestPath[i].distance&lt;shortestPath[index].distance)  
+                index=i;  
+        }  
+        flag[index]=1;  
+        //修改到各个顶点的最短路径  
+        for(i=1;i&lt;=g-&gt;numVertexes;i++)
+        {  
+            if(i==from)  
+            continue;  
+            if(g-&gt;arc[index][i]&gt;0 &amp;&amp; g-&gt;arc[index][i]+shortestPath[index].distance&lt;shortestPath[i].distance)
+            {  
+                shortestPath[i].distance=g-&gt;arc[index][i]+shortestPath[index].distance;  
+                //修改路径  
+                j=0;  
+                while(1)
+                {  
+                    shortestPath[i].path[j]=shortestPath[index].path[j];  
+                    if(shortestPath[index].path[j]==index)  
+                        break;  
+                    j++;  
+                }  
+                shortestPath[i].path[j+1]=i;  
+            }  
+        }  
+        n++;  
+    }  
+
+    //输出from到to的最短路径及长度  
+    if(shortestPath[to].distance==INFINITY)
+    {  
+        printf(&quot;%d到%d没有路径\n&quot;,from,to);  
+        return;  
+    }  
+    printf(&quot;%d到%d的最短路径长度是：%d\n&quot;,from,to,shortestPath[to].distance);  
+    printf(&quot;经过的顶点：  &quot;);  
+    i=0;  
+    while(1)
+    {  
+        printf(&quot;%-3d&quot;,shortestPath[to].path[i]);  
+        if(shortestPath[to].path[i]==to)  
+        break;  
+        i++;  
+    }  
+    printf(&quot;\n&quot;);
+} 
+</code></pre><h1 id="4-查找和排序"><a href="#4-查找和排序" class="headerlink" title="4 查找和排序"></a>4 查找和排序</h1><p>要求：</p>
+<p>(1)任意给定无序序列，用对半检索法，交互检索任意给定的关键字KEY；</p>
+<p>(2)任意给定无序序列，用快速排序法对序列进行排序，并统计交换次数；</p>
+<p>(3)任意给定无序序列，用冒泡排序法对序列进行排序，并统计交换次数和排序趟数。</p>
+<p>程序：</p>
+<pre><code>#include &quot;stdio.h&quot;
+#define N 6//序列长度(可修改)
+
+//函数声明 
+int halfSort(int *b,int n); 
+void quickSort(int *b,int l,int r);
+void bubbleSort(int *bb,int r);
+
+//全局变量定义 
+int o,p,k;
+int KEY; //检索的关键字 
+
+//主函数 
+int main()
+{
+    int i,j,q;
+    int a[100],aa[100],aaa[100];//以数组方式定义序列 
+    printf(&quot;Hello World!\n&quot;);
+
+    printf(&quot;\n1.请输入任意序列(用回车隔开)\n&quot;);
+    for(i=1;i&lt;=N;i++)
+    scanf(&quot;%d&quot;,&amp;a[i]);//输入无序序列 
+    quickSort(a,1,N);//先排序再进行对半检索
+    printf(&quot;排序后序列为：&quot;);
+    for(j=1;j&lt;=N;j++)
+    printf(&quot;%d &quot;,a[j]);//输出有序序列 
+    printf(&quot;\n请输入需要检索的关键字KEY:&quot;); 
+    scanf(&quot;%d &quot;,&amp;KEY);
+    q=halfSort(a,N);//对半检索函数调用 
+    printf(&quot;对半检索-关键字位置为：%d\n&quot;,q);
+
+    printf(&quot;\n2.请输入任意序列(用回车隔开)\n&quot;);
+    for(i=0;i&lt;N;i++)
+    scanf(&quot;%d&quot;,&amp;aa[i]);//输入无序序列 
+    quickSort(aa,0,N-1);//快速排序函数调用 
+    printf(&quot;快速排序后序列为：&quot;);
+    for(j=0;j&lt;N;j++)
+    printf(&quot;%d &quot;,aa[j]);//输出有序序列 
+    printf(&quot;\n交换次数为：%d\n&quot;,k);
+
+    printf(&quot;\n3.请输入任意序列(用回车隔开)\n&quot;);
+    for(i=0;i&lt;N;i++)
+    scanf(&quot;%d&quot;,&amp;aaa[i]);//输入无序序列 
+    bubbleSort(aaa,N);
+    printf(&quot;冒泡排序后序列为：&quot;);//冒泡排序函数调用 
+    for(j=0;j&lt;N;j++)
+    printf(&quot;%d &quot;,aaa[j]);//输出有序序列 
+    printf(&quot;\n交换次数为：%d\n&quot;,o);
+    printf(&quot;排序趟数为：%d\n&quot;,p);
+
+    return 0; 
+}
+
+//对半检索函数 
+int halfSort(int *b,int n)
+{
+    int high,mid,low;
+    int rs=0;
+    low=1;high=n;//初始状态 
+    while(low&lt;=high)//判断查找是否结束 
+    {
+        mid=(low+high)/2;
+        if(KEY&lt;b[mid]) high=mid-1;//关键字在前半区 
+        else
+        if(KEY&gt;b[mid]) low=mid+1;//关键字在后半区 
+        else {rs=mid;break;}
+    }
+    return rs;
+}
+
+//快速排序函数 
+void quickSort(int *bb,int l,int r)
+{
+   int m,n;
+   int temp;
+   if(l&gt;=r) return;//只有一个记录或无记录，无须排序 
+   m=l;
+   n=r;
+   temp=bb[m];
+   while(m!=n)//寻找temp的最终位置 
+   {
+           while((bb[n]&gt;=temp)&amp;&amp;(n&gt;m))
+           n--;//从右向左扫描，查找第一个小于temp的记录 
+           if(m&lt;n)
+           {
+            bb[m++]=bb[n];k++;
+        }
+           while((bb[m]&lt;=temp)&amp;&amp;(n&gt;m))
+           m++;//从左向右扫描，查找第一个大于temp的记录 
+           if(m&lt;n)
+           {
+            bb[n--]=bb[m];k++;
+          }
+       }
+       bb[m]=temp;//找到temp的最终位置 
+       quickSort(bb,l,m-1);//递归处理左区间 
+       quickSort(bb,m+1,r);//递归处理右区间 
+}    
+
+//冒泡排序函数 
+void bubbleSort(int *bbb,int r)
+{
+    int m,n,noswap;
+    int temp;
+    for(m=0;m&lt;(r-1);m++)//外循环，做N-1次起泡 
+    {
+        noswap=1;
+        for(n=0;n&lt;(r-m-1);n++)//内循环，置交换标志 
+        if(bbb[n+1]&lt;bbb[n])//比较 
+        {
+            temp=bbb[n];
+            bbb[n]=bbb[n+1];
+            bbb[n+1]=temp;//交换 
+            o++;
+            noswap=0;
+        }
+        if(noswap) break;//本趟起泡未发生记录交换，算法结束 
+        p++;
+    }
+}
+</code></pre>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">BoBoRing</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://boboring.github.io/2020/03/06/My-Post0-3/">http://boboring.github.io/2020/03/06/My-Post0-3/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">BoBoRing</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                                    <span class="chip bg-color">C语言</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: '49SujOC6eSH5mGt7oM0RUs7f-gzGzoHsz',
+        appKey: 'AoxETEehzrwjnbd8Ei9nBMnD',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: '请畅所欲言'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/04/06/My-Post0-4/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="语音信号处理">
+                        
+                        <span class="card-title">语音信号处理</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-04-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%9F%B3%E9%A2%91%E5%A4%84%E7%90%86/" class="post-category">
+                                    音频处理
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/MATLAB/">
+                        <span class="chip bg-color">MATLAB</span>
+                    </a>
+                    
+                    <a href="/tags/GUI/">
+                        <span class="chip bg-color">GUI</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/02/06/My-Post0-2/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/33.jpg" class="responsive-img" alt="贪吃蛇游戏构建">
+                        
+                        <span class="card-title">贪吃蛇游戏构建</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/" class="post-category">
+                                    游戏开发
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/C%E8%AF%AD%E8%A8%80/">
+                        <span class="chip bg-color">C语言</span>
+                    </a>
+                    
+                    <a href="/tags/JavaScrip/">
+                        <span class="chip bg-color">JavaScrip</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
+
+
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2020-2022</span>
+            
+            <a href="/about" target="_blank">BoBoRing</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">61.3k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/BoBoRing" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:binrong_ai@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+    <a href="https://mp.weixin.qq.com/s/jojYVEccfexV2hQ0clZp3g" class="tooltipped" target="_blank" data-tooltip="关注我的公众号" data-position="top" data-delay="50">
+        <i class="fab fa-weixin"></i>
+    </a>
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=807362320" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 807362320" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+    <a href="https://www.cnblogs.com/BoBoRing/" class="tooltipped" target="_blank" data-tooltip="关注我的博客园" data-position="top" data-delay="50">
+        <i class="fab fa-juejin">博</i>
+    </a>
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+    <!--浏览器搞笑标题-->
+    <script type="text/javascript" src="/js/FunnyTitle.js"></script>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/tororo.model.json"},"display":{"position":"right","hOffset":5,"vOffset":-80,"width":200,"height":400},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+
+</html>
